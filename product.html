@@ -1,708 +1,313 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Details | CLARA Bags Sri Lanka</title>
-  <meta name="description" content="View handcrafted luxury bag specifications, dimensions, available colors, and order securely online with islandwide courier delivery.">
-  
-  <link rel="icon" type="image/jpeg" href="assets/clara-rose-logo.jpg">
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            obsidian: '#121214',
-            charcoal: '#1A1A1E',
-            warmSilk: '#FAF8F5',
-            ecru: '#F4F0E8',
-            sand: '#E8E2D5',
-            gold: '#C5A880',
-            goldMuted: '#A68A68',
-            wine: '#7A1B24'
-          },
-          fontFamily: {
-            editorial: ['Cormorant Garamond', 'Georgia', 'serif'],
-            sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
-          },
-          letterSpacing: {
-            'micro': '0.15em',
-            'ultra': '0.22em',
-            'mega': '0.32em'
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Font Awesome 6 Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Bespoke Luxury Stylesheet -->
+  <title>Product | CLARA Bags Sri Lanka</title>
+  <meta name="description" content="CLARA handbag details — dimensions, materials, colours, delivery and payment options.">
+  <meta name="theme-color" content="#FBF7F3">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap">
   <link rel="stylesheet" href="css/main.css">
+  <script src="js/products-data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/layout.js"></script>
 </head>
-<body class="bg-[#FAF8F5] text-[#1A1A1E] font-sans antialiased selection:bg-[#7A1B24] selection:text-white">
+<body data-page="product">
+  <script>Clara.header();</script>
 
-  <!-- Top Announcement Strip -->
-  <div class="bg-[#121214] text-[#D8D2C5] py-2.5 px-4 sm:px-8 text-[11px] tracking-ultra uppercase border-b border-white/10">
-    <div class="max-w-[1840px] w-full mx-auto flex items-center justify-center md:justify-between gap-4">
-      <div class="flex items-center gap-2.5 whitespace-nowrap">
-        <span class="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
-        <span class="text-white/90">Complimentary Islandwide Courier Delivery Over Rs. 10,000</span>
-      </div>
-      <div class="hidden md:flex items-center gap-6 text-[11px] text-neutral-400 whitespace-nowrap">
-        <span>Mount Lavinia Flagship: No. 587/A Galle Road</span>
-        <span class="text-white/20">|</span>
-        <a href="tel:0773173217" class="hover:text-white transition text-[#C5A880]">
-          Client Care: 077 317 3217
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Main Luxury Header -->
-  <header class="sticky top-0 z-40 bg-[#FAF8F5]/96 backdrop-blur-md hairline-b transition-all">
-    <div class="max-w-[1840px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 h-22 sm:h-24 flex items-center justify-between gap-6">
-      
-      <!-- LEFT: Brand Logo & Emblem -->
-      <a href="index.html" class="flex items-center gap-4 group flex-shrink-0" title="CLARA Bags Homepage">
-        <div class="brand-emblem-wrap">
-          <img src="assets/clara-rose-logo.jpg" alt="CLARA Rose Blossom Emblem" class="w-full h-full object-cover">
-        </div>
-        <div class="flex flex-col">
-          <span class="font-editorial text-2xl sm:text-3xl lg:text-[32px] font-light tracking-[0.26em] text-[#121214] group-hover:text-[#7A1B24] transition-colors leading-none uppercase">
-            CLARA
-          </span>
-          <span class="text-[9.5px] font-medium uppercase tracking-mega text-[#A68A68] mt-1.5">
-            Atelier • Sri Lanka
-          </span>
-        </div>
-      </a>
-
-      <!-- CENTER: Navigation Menu -->
-      <nav class="hidden lg:flex items-center gap-6 xl:gap-9 text-[11px] font-medium tracking-ultra uppercase text-neutral-800 whitespace-nowrap">
-        <a href="shop.html" class="hover:text-[#7A1B24] transition">All Handbags</a>
-        <a href="shop.html?cat=vanity" class="hover:text-[#7A1B24] transition">Structured Vanity</a>
-        <a href="shop.html?cat=totes" class="hover:text-[#7A1B24] transition">Work & Totes</a>
-        <a href="shop.html?cat=crossbody" class="hover:text-[#7A1B24] transition">Crossbody</a>
-        <a href="about.html" class="hover:text-[#7A1B24] transition">The Atelier</a>
-        <a href="contact.html" class="hover:text-[#7A1B24] transition">Showroom</a>
+  <main id="main">
+    <div class="container" style="padding-top:28px">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a><span class="sep"></span>
+        <a href="shop.html">Shop</a><span class="sep"></span>
+        <a id="pdpCatBreadcrumb" href="shop.html">Category</a><span class="sep"></span>
+        <span class="current" id="pdpNameBreadcrumb">Bag</span>
       </nav>
-
-      <!-- RIGHT: Utilities (Search, Cart, Mobile Menu) -->
-      <div class="flex items-center gap-4 flex-shrink-0">
-        <a href="shop.html" class="p-2 text-neutral-700 hover:text-black transition" title="Search Handbags">
-          <i class="fas fa-search text-sm"></i>
-        </a>
-
-        <!-- Shopping Bag Trigger -->
-        <button 
-          type="button" 
-          onclick="openSlideCart()" 
-          class="relative flex items-center gap-2 px-3.5 py-1.5 border border-neutral-300 hover:border-black bg-white transition group"
-          title="View Shopping Bag"
-        >
-          <i class="fas fa-shopping-bag text-xs text-neutral-800 group-hover:text-[#7A1B24]"></i>
-          <span class="text-[10px] tracking-ultra uppercase font-medium text-neutral-800">Bag</span>
-          <span class="cart-count-badge hidden w-4 h-4 bg-[#7A1B24] text-white text-[9px] font-medium rounded-full flex items-center justify-center">
-            0
-          </span>
-        </button>
-
-        <button 
-          type="button" 
-          onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" 
-          class="lg:hidden p-2 text-neutral-800 hover:text-black transition"
-          aria-label="Toggle Navigation"
-        >
-          <i class="fas fa-bars text-lg"></i>
-        </button>
-      </div>
-
     </div>
 
-    <!-- Mobile Dropdown Navigation -->
-    <div id="mobileMenu" class="hidden lg:hidden bg-[#FAF8F5] hairline-b px-6 py-5 space-y-4 text-xs tracking-ultra uppercase">
-      <a href="shop.html" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">All Handbags</a>
-      <a href="shop.html?cat=vanity" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Structured Vanity</a>
-      <a href="shop.html?cat=totes" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Work & Laptop Totes</a>
-      <a href="shop.html?cat=crossbody" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Crossbody & Slings</a>
-      <a href="about.html" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">The Atelier Story</a>
-      <a href="contact.html" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Mount Lavinia Showroom</a>
-      <a href="cart.html" class="block font-medium text-[#7A1B24]">View Shopping Bag</a>
-      <a href="checkout.html" class="block font-medium text-neutral-900">Direct Online Checkout</a>
-    </div>
-  </header>
-
-  <!-- Breadcrumb Bar -->
-  <div class="py-4 bg-[#F4F0E8] hairline-b">
-    <div class="luxury-container">
-      <div class="breadcrumb-nav text-[10px] tracking-mega uppercase text-neutral-500 flex flex-wrap items-center gap-2">
-        <a href="index.html">Home</a>
-        <span>/</span>
-        <a href="shop.html">The Collection</a>
-        <span>/</span>
-        <a id="pdpCatBreadcrumb" href="shop.html">Category</a>
-        <span>/</span>
-        <span id="pdpNameBreadcrumb" class="text-neutral-900 font-medium">Silhouette</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Main Single Product View -->
-  <main class="py-14 lg:py-20 bg-[#FAF8F5]">
-    <div class="luxury-container">
-      
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        
-        <!-- Left: Image Gallery Showcase -->
-        <div class="lg:col-span-7 space-y-4">
-          <!-- Main Display Image -->
-          <div class="relative aspect-[4/5] bg-[#F4F1EA] overflow-hidden border border-neutral-300/60 shadow-xs">
-            <img 
-              id="pdpMainImage" 
-              src="" 
-              alt="Handbag Preview" 
-              class="w-full h-full object-cover object-center transition-all duration-300"
-            >
-            <div id="pdpBadgeContainer" class="absolute top-4 left-4 z-10">
-              <!-- Injected by script -->
+    <section class="container section-tight" style="padding-top:28px">
+      <div class="pdp">
+        <!-- Gallery -->
+        <div class="gallery">
+          <div class="gallery__thumbs" id="pdpThumbnailStrip"></div>
+          <div class="gallery__main" id="pdpMain">
+            <img id="pdpMainImage" src="" alt="">
+            <div class="pcard__badges" id="pdpBadgeContainer"></div>
+            <button type="button" class="heart-btn" id="pdpHeart" aria-label="Save to wishlist">
+              <span data-icon="heart"></span>
+            </button>
+            <div class="gallery__nav">
+              <button type="button" aria-label="Previous image" onclick="stepImage(-1)"><span data-icon="chev-left"></span></button>
+              <button type="button" aria-label="Next image" onclick="stepImage(1)"><span data-icon="chev-right"></span></button>
             </div>
-          </div>
-
-          <!-- Thumbnail Strips -->
-          <div id="pdpThumbnailStrip" class="grid grid-cols-4 gap-3">
-            <!-- Injected by script -->
           </div>
         </div>
 
-        <!-- Right: Purchase Details & Controls -->
-        <div class="lg:col-span-5 space-y-6">
-          
-          <div>
-            <div class="flex items-center justify-between text-xs text-neutral-500 mb-2">
-              <span id="pdpCategoryTag" class="text-[10px] tracking-mega uppercase font-medium text-[#A68A68]"></span>
-              <span id="pdpSkuCode" class="font-mono text-[10px] text-neutral-500 bg-white px-2 py-0.5 border border-neutral-200"></span>
+        <!-- Buy box -->
+        <div class="buybox">
+          <div class="buybox__head">
+            <div class="buybox__top">
+              <a class="eyebrow" id="pdpCategoryTag" href="shop.html"></a>
+              <span class="small" id="pdpSkuCode"></span>
             </div>
+            <h1 id="pdpTitle"></h1>
+            <div class="rating-line">
+              <span class="stars" id="pdpStars"></span>
+              <span id="pdpRatingText"></span>
+              <span class="in-stock" id="pdpStockBadge"></span>
+            </div>
+          </div>
 
-            <h1 id="pdpTitle" class="font-editorial text-3xl sm:text-4xl font-light text-neutral-900 leading-tight"></h1>
-            
-            <!-- Rating -->
-            <div class="flex items-center gap-2 mt-2 text-xs">
-              <div class="flex text-amber-500 text-[11px] gap-0.5">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <div>
+            <div class="price"><b id="pdpPrice"></b><s id="pdpOriginalPrice"></s><span class="save" id="pdpSave"></span></div>
+          </div>
+
+          <div class="koko-note"><span class="koko-tag">KOKO</span><span id="pdpInstallmentText"></span></div>
+
+          <p class="lead" id="pdpShortDescription" style="font-size:15.5px"></p>
+
+          <div>
+            <div class="opt-label">Colour <b id="pdpActiveColorName"></b></div>
+            <div class="swatch-picker" id="pdpColorSwatches"></div>
+          </div>
+
+          <div>
+            <div class="opt-label">Quantity</div>
+            <div class="buy-row" id="pdpBuyRow">
+              <div class="qty lg">
+                <button type="button" onclick="changePdpQty(-1)" aria-label="Decrease quantity"><span data-icon="minus"></span></button>
+                <input type="number" id="pdpQuantityInput" value="1" min="1" max="10" aria-label="Quantity">
+                <button type="button" onclick="changePdpQty(1)" aria-label="Increase quantity"><span data-icon="plus"></span></button>
               </div>
-              <span id="pdpRatingText" class="text-neutral-500 font-medium"></span>
-              <span class="text-neutral-300">•</span>
-              <span id="pdpStockBadge" class="text-emerald-700 font-medium text-[11px]"></span>
+              <button type="button" class="btn btn-dark" onclick="handlePdpAddToCart()"><span data-icon="bag"></span>Add to bag</button>
+              <button type="button" class="heart-btn" id="pdpHeart2" aria-label="Save to wishlist"><span data-icon="heart"></span></button>
             </div>
           </div>
 
-          <!-- Price Display & Installment Plan -->
-          <div class="py-4 hairline-t hairline-b">
-            <div class="flex items-baseline gap-3">
-              <span id="pdpPrice" class="font-editorial text-3xl font-light text-neutral-900"></span>
-              <span id="pdpOriginalPrice" class="text-sm text-neutral-400 line-through"></span>
-            </div>
-            <div class="mt-2 text-[11px] text-neutral-600 bg-[#F4F0E8] p-2.5 border border-neutral-300/60 flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
-              <span id="pdpInstallmentText">Or 3 interest-free payments with Koko / Mintpay</span>
-            </div>
-          </div>
-
-          <!-- Short Summary -->
-          <p id="pdpShortDescription" class="text-xs sm:text-sm text-neutral-600 font-normal leading-relaxed"></p>
-
-          <!-- Color Swatch Selector -->
-          <div>
-            <label class="block text-xs uppercase tracking-ultra font-medium text-neutral-700 mb-2">
-              Select Colorway: <span id="pdpActiveColorName" class="font-bold text-neutral-900"></span>
-            </label>
-            <div id="pdpColorSwatches" class="flex flex-wrap gap-2.5">
-              <!-- Injected by script -->
-            </div>
-          </div>
-
-          <!-- Quantity Stepper -->
-          <div>
-            <label class="block text-xs uppercase tracking-ultra font-medium text-neutral-700 mb-2">
-              Quantity
-            </label>
-            <div class="flex items-center border border-neutral-300 bg-white w-32">
-              <button 
-                type="button" 
-                onclick="changePdpQty(-1)" 
-                class="w-10 h-11 flex items-center justify-center text-neutral-600 hover:bg-neutral-100 text-sm font-bold"
-              >
-                -
-              </button>
-              <input 
-                type="number" 
-                id="pdpQuantityInput" 
-                value="1" 
-                min="1" 
-                max="10" 
-                class="w-12 h-11 text-center font-mono text-xs font-semibold focus:outline-none"
-              >
-              <button 
-                type="button" 
-                onclick="changePdpQty(1)" 
-                class="w-10 h-11 flex items-center justify-center text-neutral-600 hover:bg-neutral-100 text-sm font-bold"
-              >
-                +
-              </button>
-            </div>
-          </div>
-
-          <!-- Dual Call to Action Buttons -->
-          <div class="space-y-2.5 pt-2">
-            <button 
-              type="button" 
-              onclick="handlePdpAddToCart()" 
-              class="w-full py-4 bg-[#121214] text-white hover:bg-[#7A1B24] text-[11px] font-medium tracking-ultra uppercase transition shadow-sm flex items-center justify-center gap-2"
-            >
-              <i class="fas fa-shopping-bag text-xs"></i>
-              <span>Add to Shopping Bag</span>
-            </button>
-
-            <button 
-              type="button" 
-              onclick="handlePdpBuyNow()" 
-              class="w-full py-4 bg-[#C5A880] text-black hover:bg-amber-600 text-[11px] font-bold tracking-ultra uppercase transition shadow-sm flex items-center justify-center gap-2"
-            >
-              <span>Instant Buy Now & Checkout</span>
-              <i class="fas fa-arrow-right text-xs"></i>
-            </button>
-
-            <!-- WhatsApp Boutique Concierge -->
-            <a 
-              id="pdpWhatsappConciergeLink" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              href="https://wa.me/94773173217" 
-              class="w-full py-3.5 border border-neutral-300 hover:border-black bg-white text-neutral-800 text-[10px] tracking-ultra uppercase font-medium transition shadow-2xs flex items-center justify-center gap-2"
-            >
-              <i class="fab fa-whatsapp text-emerald-600 text-sm"></i>
-              <span>Inquire with Mount Lavinia Showroom via WhatsApp</span>
+          <div style="display:grid;gap:10px">
+            <button type="button" class="btn btn-rose btn-block" onclick="handlePdpBuyNow()">Buy it now <span data-icon="arrow" data-icon-class="arrow"></span></button>
+            <a id="pdpWhatsappConciergeLink" class="btn btn-whatsapp btn-block" target="_blank" rel="noopener noreferrer" href="https://wa.me/94773173217">
+              <span data-icon="whatsapp"></span>Ask about this bag on WhatsApp
             </a>
           </div>
 
-          <!-- Trust Badges -->
-          <div class="pt-4 hairline-t space-y-2 text-xs text-neutral-600">
-            <div class="flex items-center gap-3">
-              <i class="fas fa-truck-fast text-[#A68A68] w-4 text-center"></i>
-              <span>Complimentary Islandwide Delivery on orders over Rs. 10,000</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <i class="fas fa-store text-[#A68A68] w-4 text-center"></i>
-              <span>Showroom Pickup Available: No. 587/A Galle Road, Mount Lavinia</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <i class="fas fa-shield-halved text-[#A68A68] w-4 text-center"></i>
-              <span>7-Day Quality Inspection & Exchange Guarantee</span>
-            </div>
+          <div class="assure">
+            <div><span data-icon="truck"></span><span><b>Free islandwide delivery</b> on orders over Rs. 10,000</span></div>
+            <div><span data-icon="store"></span><span>Collect free from our <b>Mount Lavinia boutique</b></span></div>
+            <div><span data-icon="exchange"></span><span><b>7-day</b> inspection &amp; exchange guarantee</span></div>
           </div>
 
-          <!-- Accordion Tabs -->
-          <div class="pt-6 hairline-t space-y-2">
-            
-            <!-- Tab 1: Detailed Specifications -->
-            <div class="accordion-item border border-neutral-300/80 bg-white active">
-              <button 
-                type="button" 
-                onclick="toggleAccordion(this)" 
-                class="w-full p-4 flex items-center justify-between text-left text-xs uppercase tracking-ultra font-medium text-neutral-900"
-              >
-                <span>Dimensions & Craftsmanship</span>
-                <i class="fas fa-chevron-down chevron-icon text-xs text-neutral-400"></i>
-              </button>
-              <div class="accordion-content px-4 pb-4 text-xs text-neutral-600 space-y-2.5">
+          <div class="accordion">
+            <div class="acc is-open">
+              <button type="button" onclick="toggleAccordion(this)" aria-expanded="true">Details &amp; dimensions <span data-icon="plus"></span></button>
+              <div class="acc__body"><div><div class="acc__content">
                 <div><strong>Dimensions:</strong> <span id="pdpDimText"></span></div>
-                <div><strong>Strap Drop:</strong> <span id="pdpStrapText"></span></div>
+                <div><strong>Strap:</strong> <span id="pdpStrapText"></span></div>
                 <div><strong>Materials:</strong> <span id="pdpMatText"></span></div>
-                <div><strong>What Fits Inside:</strong> <span id="pdpWhatFitsText" class="text-neutral-900 font-medium"></span></div>
-                <div class="pt-2">
-                  <strong class="block mb-1">Architectural Features:</strong>
-                  <ul id="pdpFeaturesList" class="list-disc pl-4 space-y-1 text-neutral-600"></ul>
-                </div>
-              </div>
+                <div><strong>What fits:</strong> <span id="pdpWhatFitsText"></span></div>
+                <ul id="pdpFeaturesList"></ul>
+              </div></div></div>
             </div>
-
-            <!-- Tab 2: Full Narrative -->
-            <div class="accordion-item border border-neutral-300/80 bg-white">
-              <button 
-                type="button" 
-                onclick="toggleAccordion(this)" 
-                class="w-full p-4 flex items-center justify-between text-left text-xs uppercase tracking-ultra font-medium text-neutral-900"
-              >
-                <span>The Design Story</span>
-                <i class="fas fa-chevron-down chevron-icon text-xs text-neutral-400"></i>
-              </button>
-              <div class="accordion-content px-4 pb-4 text-xs text-neutral-600 leading-relaxed">
-                <p id="pdpFullDescription"></p>
-              </div>
+            <div class="acc">
+              <button type="button" onclick="toggleAccordion(this)" aria-expanded="false">The story <span data-icon="plus"></span></button>
+              <div class="acc__body"><div><div class="acc__content"><p id="pdpFullDescription"></p></div></div></div>
             </div>
-
-            <!-- Tab 3: Delivery & Payment Options -->
-            <div class="accordion-item border border-neutral-300/80 bg-white">
-              <button 
-                type="button" 
-                onclick="toggleAccordion(this)" 
-                class="w-full p-4 flex items-center justify-between text-left text-xs uppercase tracking-ultra font-medium text-neutral-900"
-              >
-                <span>Shipping & Payment Options</span>
-                <i class="fas fa-chevron-down chevron-icon text-xs text-neutral-400"></i>
-              </button>
-              <div class="accordion-content px-4 pb-4 text-xs text-neutral-600 space-y-2">
-                <p><strong>Western Province:</strong> 1–2 business days (Rs. 350 flat rate)</p>
-                <p><strong>Outstation Islandwide:</strong> 2–4 business days (Rs. 550 flat rate)</p>
-                <p><strong>Payment Methods:</strong> Credit/Debit Card online, Direct Bank Transfer (Sampath / Commercial Bank), or Cash on Delivery upon arrival.</p>
-              </div>
+            <div class="acc">
+              <button type="button" onclick="toggleAccordion(this)" aria-expanded="false">Delivery &amp; payment <span data-icon="plus"></span></button>
+              <div class="acc__body"><div><div class="acc__content">
+                <div><strong>Colombo &amp; Western Province:</strong> 1–2 business days · Rs. 350</div>
+                <div><strong>Islandwide:</strong> 2–4 business days · Rs. 550</div>
+                <div><strong>Free delivery</strong> on orders over Rs. 10,000, or collect free from our boutique.</div>
+                <div><strong>Payment:</strong> Visa, Mastercard, Amex, direct bank transfer, cash on delivery or pay at the boutique.</div>
+              </div></div></div>
             </div>
-
           </div>
-
         </div>
-
       </div>
+    </section>
 
-      <!-- Related Products Section -->
-      <section class="mt-20 pt-16 hairline-t">
-        <div class="flex items-end justify-between mb-8">
+    <section class="section bg-ivory">
+      <div class="container">
+        <div class="section-head">
           <div>
-            <span class="text-[10px] tracking-mega uppercase font-medium text-[#A68A68] block mb-1">Complementary Silhouettes</span>
-            <h2 class="font-editorial text-3xl font-light text-neutral-900">You May Also Admire</h2>
+            <span class="eyebrow">Complete the look</span>
+            <h2 class="h2" style="margin-top:14px">You may also <em>love</em></h2>
           </div>
-          <a href="shop.html" class="text-xs tracking-ultra uppercase text-neutral-800 hover:text-[#7A1B24]">
-            View All →
-          </a>
+          <a href="shop.html" class="link-underline">View all <span data-icon="arrow"></span></a>
         </div>
-
-        <div id="pdpRelatedGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          <!-- Injected by script -->
-        </div>
-      </section>
-
-    </div>
+        <div class="product-grid" id="pdpRelatedGrid"></div>
+      </div>
+    </section>
   </main>
 
-  <!-- Slide-Over Shopping Bag Drawer -->
-  <div id="slideCartDrawer" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-200 flex justify-end">
-    <div class="slide-cart-panel w-full max-w-md bg-[#FAF8F5] h-full flex flex-col shadow-2xl transform translate-x-full border-l border-neutral-300/60">
-      
-      <div class="p-5 border-b border-neutral-200 bg-white flex items-center justify-between">
-        <div class="flex items-center gap-2">
-          <i class="fas fa-shopping-bag text-neutral-900 text-sm"></i>
-          <h3 class="font-editorial text-xl font-normal text-neutral-900">Your Shopping Bag</h3>
-        </div>
-        <button onclick="closeSlideCart()" class="p-2 text-neutral-400 hover:text-black transition" title="Close Drawer">
-          <i class="fas fa-times text-sm"></i>
-        </button>
-      </div>
-
-      <div class="p-4 bg-[#F4F0E8] border-b border-neutral-200/80">
-        <div class="text-[11px] text-neutral-700 mb-1.5" id="slideCartFreeShipText">
-          Add more items for <strong>Complimentary Islandwide Delivery</strong>
-        </div>
-        <div class="w-full h-1.5 bg-neutral-200 rounded-full overflow-hidden">
-          <div id="slideCartFreeShipBar" class="h-1.5 bg-[#121214] transition-all duration-300" style="width: 0%;"></div>
-        </div>
-      </div>
-
-      <div id="slideCartItems" class="flex-grow overflow-y-auto p-4 space-y-3"></div>
-
-      <div class="p-5 border-t border-neutral-200 bg-white space-y-3">
-        <div class="flex justify-between items-baseline text-sm">
-          <span class="text-neutral-500 uppercase tracking-ultra text-[10px]">Subtotal</span>
-          <span id="slideCartSubtotal" class="font-editorial text-2xl font-light text-neutral-900">Rs. 0</span>
-        </div>
-
-        <div class="grid grid-cols-2 gap-2.5 pt-2">
-          <a 
-            href="cart.html" 
-            class="w-full py-3.5 bg-white border border-neutral-300 hover:border-black text-neutral-900 text-center text-[11px] font-medium tracking-ultra uppercase transition"
-          >
-            View Full Cart
-          </a>
-
-          <a 
-            id="slideCartCheckoutBtn"
-            href="checkout.html" 
-            class="w-full py-3.5 bg-[#121214] hover:bg-[#7A1B24] text-white text-center text-[11px] font-medium tracking-ultra uppercase transition shadow-sm"
-          >
-            Checkout
-          </a>
-        </div>
-      </div>
-
-    </div>
+  <div class="sticky-buy" id="stickyBuy">
+    <img id="stickyImg" src="" alt="">
+    <div class="t"><b id="stickyName"></b><span id="stickyPrice"></span></div>
+    <button type="button" class="btn btn-rose" onclick="handlePdpAddToCart()">Add to bag</button>
   </div>
 
-  <!-- Footer -->
-  <footer class="bg-[#121214] text-white pt-18 pb-14">
-    <div class="luxury-container">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-14 border-b border-white/10">
-        
-        <div class="lg:col-span-2 space-y-4">
-          <div class="flex items-center gap-3.5">
-            <div class="w-12 h-12 rounded-full overflow-hidden bg-black flex items-center justify-center border-2 border-[#C5A880]/80 shadow-md">
-              <img src="assets/clara-rose-logo.jpg" alt="CLARA Rose Blossom" class="w-full h-full object-cover">
-            </div>
-            <div>
-              <span class="font-editorial text-2xl sm:text-3xl font-light tracking-[0.25em] text-white leading-none uppercase">CLARA</span>
-              <span class="block text-[9px] font-normal uppercase tracking-mega text-[#A68A68] mt-0.5">Bags • Sri Lanka</span>
-            </div>
-          </div>
-          <p class="text-xs text-neutral-400 leading-relaxed max-w-sm">
-            We create new fashion and trend in the bag industry. Handcrafted luxury handbags, structured vanity bags, executive totes, and travel companions.
-          </p>
-          <p class="text-xs text-neutral-500">
-            Showroom: No. 587/A, Galle Road, Mount Lavinia, Sri Lanka<br>
-            Hotlines: 077 317 3217 / 011 703 7030
-          </p>
-        </div>
+  <script>Clara.footer();</script>
 
-        <div class="space-y-3">
-          <h4 class="text-[11px] font-medium text-white tracking-ultra uppercase">Collections</h4>
-          <ul class="space-y-2 text-xs text-neutral-400">
-            <li><a href="shop.html?cat=vanity" class="hover:text-white transition">Structured Vanity</a></li>
-            <li><a href="shop.html?cat=totes" class="hover:text-white transition">Work & Laptop Totes</a></li>
-            <li><a href="shop.html?cat=crossbody" class="hover:text-white transition">Crossbody & Slings</a></li>
-            <li><a href="shop.html?cat=shoulder" class="hover:text-white transition">Shoulder Satchels</a></li>
-            <li><a href="shop.html?cat=clutches" class="hover:text-white transition">Evening Clutches</a></li>
-            <li><a href="shop.html?cat=travel" class="hover:text-white transition">Travel Holdalls</a></li>
-          </ul>
-        </div>
-
-        <div class="space-y-3">
-          <h4 class="text-[11px] font-medium text-white tracking-ultra uppercase">Client Care</h4>
-          <ul class="space-y-2 text-xs text-neutral-400">
-            <li><a href="shop.html" class="hover:text-white transition">Shop All Products</a></li>
-            <li><a href="cart.html" class="hover:text-white transition">Shopping Cart</a></li>
-            <li><a href="checkout.html" class="hover:text-white transition">Direct Checkout</a></li>
-            <li><a href="about.html" class="hover:text-white transition">About Our Atelier</a></li>
-            <li><a href="contact.html" class="hover:text-white transition">Showroom Location</a></li>
-          </ul>
-        </div>
-
-        <div class="space-y-3">
-          <h4 class="text-[11px] font-medium text-white tracking-ultra uppercase">Secure Payments</h4>
-          <p class="text-xs text-neutral-400 leading-relaxed">
-            We accept Visa, Mastercard, Direct Bank Transfer (Commercial/Sampath Bank), and Cash on Delivery across Sri Lanka.
-          </p>
-          <div class="pt-2 flex flex-wrap gap-2 text-neutral-400 text-xs">
-            <span class="px-2.5 py-1 border border-white/10 bg-white/5">Visa / Mastercard</span>
-            <span class="px-2.5 py-1 border border-white/10 bg-white/5">Bank Deposit</span>
-            <span class="px-2.5 py-1 border border-white/10 bg-white/5">Cash on Delivery</span>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
-        <p>© 2026 CLARA Bags (DJ Industries). All Rights Reserved.</p>
-        <p class="text-[11px]">Designed with WooCommerce Block Theme Architecture.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="js/products-data.js"></script>
-  <script src="js/store.js"></script>
   <script>
     let currentProduct = null;
     let selectedColor = "";
+    let imageIndex = 0;
 
     document.addEventListener("DOMContentLoaded", () => {
-      // 1. Get Product ID from URL
       const urlParams = new URLSearchParams(window.location.search);
-      const idParam = urlParams.get("id");
-      currentProduct = getProductById(idParam || 1);
-      selectedColor = currentProduct.colors[0];
+      currentProduct = getProductById(urlParams.get("id") || 1);
+      const p = currentProduct;
+      selectedColor = p.colors[0];
 
-      // Update Page Title
-      document.title = `${currentProduct.name} | CLARA Bags Sri Lanka`;
+      document.title = `${p.name} | CLARA Bags Sri Lanka`;
+      const meta = document.querySelector('meta[name="description"]');
+      if (meta) meta.content = p.shortDescription;
 
-      // 2. Populate Breadcrumbs
-      const catBreadcrumb = document.getElementById("pdpCatBreadcrumb");
-      catBreadcrumb.textContent = currentProduct.categoryName;
-      catBreadcrumb.href = `shop.html?cat=${currentProduct.category}`;
-      document.getElementById("pdpNameBreadcrumb").textContent = currentProduct.name;
+      const catLink = document.getElementById("pdpCatBreadcrumb");
+      catLink.textContent = p.categoryName;
+      catLink.href = `shop.html?cat=${p.category}`;
+      document.getElementById("pdpNameBreadcrumb").textContent = p.name;
 
-      // 3. Populate Gallery
-      const mainImg = document.getElementById("pdpMainImage");
-      mainImg.src = currentProduct.images[0];
-      mainImg.alt = currentProduct.name;
+      // Gallery
+      document.getElementById("pdpThumbnailStrip").innerHTML = p.images.map((img, idx) => `
+        <button type="button" class="${idx === 0 ? "is-active" : ""}" onclick="showImage(${idx})" aria-label="View image ${idx + 1}">
+          <img src="${img}" alt="">
+        </button>`).join("");
+      showImage(0);
 
-      const badgeContainer = document.getElementById("pdpBadgeContainer");
-      if (currentProduct.badge) {
-        badgeContainer.innerHTML = `
-          <span class="bg-[#FAF8F5]/90 backdrop-blur-xs text-[10px] tracking-ultra uppercase font-medium px-3 py-1 text-neutral-900 border border-neutral-300/40">
-            ${currentProduct.badge}
-          </span>
-        `;
-      }
+      const pct = Clara.discountPct(p);
+      document.getElementById("pdpBadgeContainer").innerHTML =
+        (p.isNew ? `<span class="badge new">New in</span>` : p.badge ? `<span class="badge">${p.badge}</span>` : "") +
+        (pct ? `<span class="badge sale">−${pct}%</span>` : "");
 
-      const thumbStrip = document.getElementById("pdpThumbnailStrip");
-      thumbStrip.innerHTML = currentProduct.images.map((img, idx) => `
-        <button 
-          type="button" 
-          onclick="switchMainImage('${img}', this)" 
-          class="aspect-square bg-white border ${idx === 0 ? 'border-neutral-900' : 'border-neutral-200'} overflow-hidden transition hover:border-black"
-        >
-          <img src="${img}" alt="${currentProduct.name} - view ${idx + 1}" class="w-full h-full object-cover">
-        </button>
-      `).join('');
+      // Meta
+      const catTag = document.getElementById("pdpCategoryTag");
+      catTag.textContent = p.categoryName;
+      catTag.href = `shop.html?cat=${p.category}`;
+      document.getElementById("pdpSkuCode").textContent = `Ref. ${p.sku}`;
+      document.getElementById("pdpTitle").textContent = p.name;
+      document.getElementById("pdpStars").innerHTML = Array.from({ length: 5 }, () => Clara.icon("star")).join("");
+      document.getElementById("pdpRatingText").textContent = `${p.rating.toFixed(1)} · ${p.reviewCount} reviews`;
+      document.getElementById("pdpStockBadge").textContent = p.stockQuantity <= 9 ? `Only ${p.stockQuantity} left` : p.stockStatus;
 
-      // 4. Populate Meta & Title
-      document.getElementById("pdpCategoryTag").textContent = currentProduct.categoryName;
-      document.getElementById("pdpSkuCode").textContent = currentProduct.sku;
-      document.getElementById("pdpTitle").textContent = currentProduct.name;
-      document.getElementById("pdpRatingText").textContent = `★ ${currentProduct.rating} (${currentProduct.reviewCount} Client Reviews)`;
-      document.getElementById("pdpStockBadge").textContent = `• ${currentProduct.stockStatus}`;
+      // Price
+      document.getElementById("pdpPrice").textContent = formatLKR(p.price);
+      document.getElementById("pdpOriginalPrice").textContent = p.originalPrice ? formatLKR(p.originalPrice) : "";
+      document.getElementById("pdpSave").textContent = p.originalPrice ? `You save ${formatLKR(p.originalPrice - p.price)}` : "";
+      document.getElementById("pdpInstallmentText").innerHTML = `Pay in 3 interest-free instalments of <b>${formatLKR(Math.round(p.price / 3))}</b>`;
+      document.getElementById("pdpShortDescription").textContent = p.shortDescription;
 
-      // 5. Populate Prices
-      document.getElementById("pdpPrice").textContent = formatLKR(currentProduct.price);
-      const origPriceElem = document.getElementById("pdpOriginalPrice");
-      if (currentProduct.originalPrice) {
-        origPriceElem.textContent = formatLKR(currentProduct.originalPrice);
-      } else {
-        origPriceElem.textContent = "";
-      }
-
-      const installmentVal = Math.round(currentProduct.price / 3);
-      document.getElementById("pdpInstallmentText").textContent = `Or 3 interest-free installments of ${formatLKR(installmentVal)} with Koko / Mintpay`;
-
-      document.getElementById("pdpShortDescription").textContent = currentProduct.shortDescription;
-
-      // 6. Populate Color Swatches
-      const swatchesContainer = document.getElementById("pdpColorSwatches");
+      // Colours
       document.getElementById("pdpActiveColorName").textContent = selectedColor;
+      document.getElementById("pdpColorSwatches").innerHTML = p.colors.map((color, idx) => `
+        <button type="button" class="${idx === 0 ? "is-active" : ""}" style="background:${p.colorHex[idx]}" title="${color}" aria-label="${color}" onclick="selectPdpColor(${idx}, this)"></button>`).join("");
 
-      swatchesContainer.innerHTML = currentProduct.colors.map((color, idx) => `
-        <button 
-          type="button" 
-          onclick="selectPdpColor('${color}', this)" 
-          class="pdp-color-btn px-4 py-2 text-xs font-medium border ${idx === 0 ? 'border-neutral-900 bg-neutral-900 text-white' : 'border-neutral-300 bg-white text-neutral-800'} transition flex items-center gap-2"
-        >
-          <span class="w-2.5 h-2.5 rounded-full border border-neutral-300" style="background-color: ${currentProduct.colorHex[idx]}"></span>
-          <span>${color}</span>
-        </button>
-      `).join('');
+      // Specs
+      document.getElementById("pdpDimText").textContent = p.dimensions;
+      document.getElementById("pdpStrapText").textContent = p.strapDrop;
+      document.getElementById("pdpMatText").textContent = p.material;
+      document.getElementById("pdpWhatFitsText").textContent = p.whatFits || "Phone, keys, wallet and daily essentials";
+      document.getElementById("pdpFullDescription").textContent = p.description;
+      document.getElementById("pdpFeaturesList").innerHTML = p.features.map(f => `<li>${f}</li>`).join("");
 
-      // 7. Populate Specifications & Narrative
-      document.getElementById("pdpDimText").textContent = currentProduct.dimensions;
-      document.getElementById("pdpStrapText").textContent = currentProduct.strapDrop;
-      document.getElementById("pdpMatText").textContent = currentProduct.material;
-      const whatFitsElem = document.getElementById("pdpWhatFitsText");
-      if (whatFitsElem) {
-        whatFitsElem.textContent = currentProduct.whatFits || "Standard daily essentials (phone, keys, wallet, cosmetics)";
+      // Wishlist hearts
+      ["pdpHeart", "pdpHeart2"].forEach(id => {
+        const btn = document.getElementById(id);
+        btn.dataset.id = p.id;
+        btn.classList.toggle("is-saved", Clara.isSaved(p.id));
+        btn.addEventListener("click", () => Clara.toggleWishlist(p.id, btn));
+      });
+
+      // Sticky mobile bar
+      document.getElementById("stickyImg").src = p.images[0];
+      document.getElementById("stickyName").textContent = p.name;
+      document.getElementById("stickyPrice").textContent = formatLKR(p.price);
+      const buyRow = document.getElementById("pdpBuyRow");
+      const sticky = document.getElementById("stickyBuy");
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(([e]) => {
+          sticky.classList.toggle("is-visible", !e.isIntersecting && e.boundingClientRect.top < 0);
+        }).observe(buyRow);
       }
-      document.getElementById("pdpFullDescription").textContent = currentProduct.description;
 
-      const featList = document.getElementById("pdpFeaturesList");
-      featList.innerHTML = currentProduct.features.map(f => `<li>${f}</li>`).join('');
+      // Hover zoom
+      const main = document.getElementById("pdpMain");
+      const mainImg = document.getElementById("pdpMainImage");
+      main.addEventListener("mousemove", e => {
+        if (e.target.closest("button")) { main.classList.remove("is-zoom"); return; }
+        const r = main.getBoundingClientRect();
+        mainImg.style.transformOrigin = `${((e.clientX - r.left) / r.width) * 100}% ${((e.clientY - r.top) / r.height) * 100}%`;
+        main.classList.add("is-zoom");
+      });
+      main.addEventListener("mouseleave", () => main.classList.remove("is-zoom"));
 
-      // WhatsApp Concierge Link Pre-fill
       updatePdpWhatsappLink();
-
-      // 8. Populate Related Products
       renderRelatedProducts();
+      Clara.hydrateIcons();
     });
+
+    function showImage(idx) {
+      const imgs = currentProduct.images;
+      imageIndex = (idx + imgs.length) % imgs.length;
+      const mainImg = document.getElementById("pdpMainImage");
+      mainImg.style.opacity = 0;
+      setTimeout(() => {
+        mainImg.src = imgs[imageIndex];
+        mainImg.alt = `${currentProduct.name} — image ${imageIndex + 1}`;
+        mainImg.style.opacity = 1;
+      }, 150);
+      document.querySelectorAll("#pdpThumbnailStrip button").forEach((b, i) => b.classList.toggle("is-active", i === imageIndex));
+    }
+
+    function stepImage(delta) { showImage(imageIndex + delta); }
 
     function updatePdpWhatsappLink() {
       const link = document.getElementById("pdpWhatsappConciergeLink");
-      if (!link || !currentProduct) return;
-      const msg = `Hello CLARA Mount Lavinia, I am viewing "${currentProduct.name}" in shade "${selectedColor}" (${formatLKR(currentProduct.price)}). Could you please share more details or showroom availability?`;
-      link.href = `https://wa.me/94773173217?text=${encodeURIComponent(msg)}`;
+      const msg = `Hello CLARA, I'm interested in the ${currentProduct.name} in ${selectedColor} (${formatLKR(currentProduct.price)}). Is it available?`;
+      link.href = Clara.waLink(msg);
     }
 
-    function switchMainImage(src, btn) {
-      document.getElementById("pdpMainImage").src = src;
-      document.querySelectorAll("#pdpThumbnailStrip button").forEach(b => {
-        b.classList.remove("border-neutral-900");
-        b.classList.add("border-neutral-200");
-      });
-      btn.classList.add("border-neutral-900");
-      btn.classList.remove("border-neutral-200");
-    }
-
-    function selectPdpColor(color, btn) {
-      selectedColor = color;
-      document.getElementById("pdpActiveColorName").textContent = color;
-      document.querySelectorAll(".pdp-color-btn").forEach(b => {
-        b.classList.remove("border-neutral-900", "bg-neutral-900", "text-white");
-        b.classList.add("border-neutral-300", "bg-white", "text-neutral-800");
-      });
-      btn.classList.add("border-neutral-900", "bg-neutral-900", "text-white");
-      btn.classList.remove("border-neutral-300", "bg-white", "text-neutral-800");
+    function selectPdpColor(idx, btn) {
+      selectedColor = currentProduct.colors[idx];
+      document.getElementById("pdpActiveColorName").textContent = selectedColor;
+      document.querySelectorAll("#pdpColorSwatches button").forEach(b => b.classList.remove("is-active"));
+      btn.classList.add("is-active");
       updatePdpWhatsappLink();
     }
 
     function changePdpQty(delta) {
       const input = document.getElementById("pdpQuantityInput");
-      let val = parseInt(input.value, 10) || 1;
-      val = Math.max(1, Math.min(10, val + delta));
+      const val = Math.max(1, Math.min(10, (parseInt(input.value, 10) || 1) + delta));
       input.value = val;
     }
 
+    function getPdpQty() {
+      return Math.max(1, Math.min(10, parseInt(document.getElementById("pdpQuantityInput").value, 10) || 1));
+    }
+
     function handlePdpAddToCart() {
-      const qty = parseInt(document.getElementById("pdpQuantityInput").value, 10) || 1;
-      addToCart(currentProduct.id, selectedColor, qty, { openDrawer: true });
+      addToCart(currentProduct.id, selectedColor, getPdpQty(), { openDrawer: true });
     }
 
     function handlePdpBuyNow() {
-      const qty = parseInt(document.getElementById("pdpQuantityInput").value, 10) || 1;
-      addToCart(currentProduct.id, selectedColor, qty, { openDrawer: false });
+      addToCart(currentProduct.id, selectedColor, getPdpQty(), { openDrawer: false });
       window.location.href = "checkout.html";
     }
 
     function toggleAccordion(btn) {
-      const item = btn.closest(".accordion-item");
-      item.classList.toggle("active");
+      const item = btn.closest(".acc");
+      const open = item.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", String(open));
     }
 
     function renderRelatedProducts() {
-      const container = document.getElementById("pdpRelatedGrid");
-      if (!container) return;
-      const related = getRelatedProducts(currentProduct.id, 4);
-
-      container.innerHTML = related.map(p => `
-        <article class="product-card group flex flex-col justify-between">
-          <div class="card-media relative aspect-[3/4] w-full">
-            <a href="product.html?id=${p.id}" class="block w-full h-full">
-              <img src="${p.images[0]}" alt="${p.name}" class="primary-img w-full h-full object-cover object-center" onerror="this.src='assets/banner.jpg'">
-              <img src="${p.images[1] || p.images[0]}" alt="${p.name}" class="secondary-img w-full h-full object-cover object-center" onerror="this.src='assets/banner.jpg'">
-            </a>
-            
-            <div class="card-hover-actions absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 to-transparent z-10 flex gap-2">
-              <a href="product.html?id=${p.id}" class="flex-1 py-2 bg-white text-neutral-900 text-center text-[10px] tracking-ultra uppercase font-medium hover:bg-neutral-100 transition">
-                View Bag
-              </a>
-              <button onclick="addToCart(${p.id}, '${p.colors[0]}', 1)" class="flex-1 py-2 bg-[#121214] text-white text-center text-[10px] tracking-ultra uppercase font-medium hover:bg-[#7A1B24] transition">
-                Add to Cart
-              </button>
-            </div>
-          </div>
-
-          <div class="pt-4 flex flex-col flex-grow justify-between">
-            <div>
-              <span class="text-[10px] tracking-ultra uppercase text-neutral-400 block mb-1">${p.categoryName}</span>
-              <h3 class="font-editorial text-lg font-normal text-neutral-900 hover:text-[#7A1B24] transition">
-                <a href="product.html?id=${p.id}">${p.name}</a>
-              </h3>
-            </div>
-            <div class="mt-2 flex items-baseline gap-2">
-              <span class="font-editorial text-lg text-neutral-900">${formatLKR(p.price)}</span>
-            </div>
-          </div>
-        </article>
-      `).join('');
+      const grid = document.getElementById("pdpRelatedGrid");
+      grid.innerHTML = getRelatedProducts(currentProduct.id, 4).map((p, i) => Clara.productCard(p, { index: i })).join("");
+      Clara.observeReveals(grid);
     }
   </script>
 </body>
 </html>
-

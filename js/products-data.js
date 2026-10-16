@@ -23,10 +23,10 @@ const CLARA_PRODUCTS = [
     colors: ["Bordeaux Wine", "Onyx Noir", "Rose Quartz"],
     colorHex: ["#6B1420", "#141416", "#D9A5A9"],
     images: [
-      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=1000&q=85"
+      "assets/img/p-1575032617751.jpg",
+      "assets/img/p-1606522754091.jpg",
+      "assets/img/p-1506152983158.jpg",
+      "assets/img/p-1617019114583.jpg"
     ],
     shortDescription: "An architectural vanity silhouette defined by rigid contours, polished brass turn-lock hardware, and an ergonomic arched top handle.",
     description: "The Sovereign Structured Vanity Bag represents the pinnacle of CLARA craftsmanship. Designed with an unwavering attention to architectural balance, its rigid frame preserves a pristine silhouette whether placed on a pedestal or draped across the shoulder. The exterior features premium micro-textured vegan leather, resistant to scuffs and daily wear, while the interior is lined in plush suede-touch microfibre with dedicated card and lipstick sleeves.",
@@ -61,10 +61,10 @@ const CLARA_PRODUCTS = [
     colors: ["Cognac Tan", "Midnight Noir", "British Forest Green"],
     colorHex: ["#8B4513", "#121212", "#1C352D"],
     images: [
-      "https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1000&q=85"
+      "assets/img/p-1614179689702.jpg",
+      "assets/img/p-1605733513597.jpg",
+      "assets/img/p-1624687943971.jpg",
+      "assets/img/p-1617019114583.jpg"
     ],
     shortDescription: "Tailored for the corporate professional. Accommodates up to a 14-inch MacBook with reinforced padded protection and twin shoulder arches.",
     description: "The Kensington Executive Tote unites boardroom authority with everyday practicality. Structured in rich pebbled faux leather that softens gracefully with age, this spacious tote easily hosts your laptop, daily documents, charger, and cosmetic pouch without losing its crisp lines. Reinforced tubular handles ensure supreme comfort when commuting through Colombo or traveling interstate.",
@@ -99,10 +99,10 @@ const CLARA_PRODUCTS = [
     colors: ["Camel Suede", "Dark Espresso", "Classic Noir"],
     colorHex: ["#B8860B", "#382212", "#111111"],
     images: [
-      "assets/banner.jpg",
-      "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1000&q=85"
+      "assets/img/p-1612902456551.jpg",
+      "assets/img/p-1590874103328.jpg",
+      "assets/img/p-1605733513597.jpg",
+      "assets/img/p-1483985988355.jpg"
     ],
     shortDescription: "Featured on our Mount Lavinia showroom façade. Sumptuous tactile suede framed by polished twist hardware and accordion gusseting.",
     description: "As showcased on the CLARA Mount Lavinia flagship banner, the Riviera Satchel marries textural suede softness with structured edge-painted contours. Its multi-compartment accordion construction organizes belongings effortlessly, while the silver-chrome lock plate commands attention wherever you arrive.",
@@ -137,10 +137,10 @@ const CLARA_PRODUCTS = [
     colors: ["Alabaster Cream", "Warm Taupe", "Onyx Noir"],
     colorHex: ["#F5F5DC", "#8E8279", "#111111"],
     images: [
-      "https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1575032617751-6ddec2089882?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1000&q=85"
+      "assets/img/p-1566150905458.jpg",
+      "assets/img/p-1628149455678.jpg",
+      "assets/img/p-1506152983158.jpg",
+      "assets/img/p-1617922001439.jpg"
     ],
     shortDescription: "Flawlessly proportioned curved saddle silhouette with magnetic flap closure and interchangeable wide guitar-style strap.",
     description: "The Milano Saddle Crossbody embodies hands-free luxury. Inspired by traditional equestrian saddlery, its curved base and clean flap are highlighted by fine tonal edge-painting. Lightweight yet remarkably accommodating, it comfortably holds your phone, wallet, cosmetics, and keys for effortless weekend strolls or high-society lunches.",
@@ -175,10 +175,10 @@ const CLARA_PRODUCTS = [
     colors: ["Champagne Gold", "Sterling Silver", "Rose Bronze"],
     colorHex: ["#D4AF37", "#C0C0C0", "#B76E79"],
     images: [
-      "https://images.unsplash.com/photo-1566150902887-9679ec15dcb7?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?auto=format&fit=crop&w=1000&q=85"
+      "assets/img/p-1563904092230.jpg",
+      "assets/img/p-1575032617751.jpg",
+      "assets/img/p-1550614000.jpg",
+      "assets/img/p-1492707892479.jpg"
     ],
     shortDescription: "Sculptural metallic hard-case clutch crowned with an ornate faceted jewel clasp. Includes a detachable serpentine gold drop chain.",
     description: "Designed for galas, wedding celebrations, and cocktail evenings. The Aura Minaudière is crafted inside a rigid metallic shell wrapped in shimmering fine-grain poly-lamé. Topped with a cut-crystal clasp, it can be grasped elegantly in the palm or worn over the shoulder using the concealed serpentine drop chain.",
@@ -213,10 +213,10 @@ const CLARA_PRODUCTS = [
     colors: ["Espresso Brown", "Matte Noir"],
     colorHex: ["#3E2723", "#111111"],
     images: [
-      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=1000&q=85"
+      "assets/img/p-1624687943971.jpg",
+      "assets/img/p-1622560480605.jpg",
+      "assets/img/p-1614179689702.jpg",
+      "assets/img/p-1617922001439.jpg"
     ],
     shortDescription: "A sophisticated travel holdall engineered for spontaneous weekend escapes. Features a separate ventilated shoe compartment and luggage sleeve.",
     description: "The Oxford Grand Voyage Weekender redefines travel luxury. Sized precisely to satisfy standard airline cabin baggage dimensions, it accommodates 3 to 4 days of clothing and footwear. The bottom zippered foundation houses a separate water-resistant shoe deck, keeping pristine apparel completely isolated.",
@@ -251,10 +251,10 @@ const CLARA_PRODUCTS = [
     colors: ["Oatmeal Ecru", "Olive Drab", "Rich Cocoa"],
     colorHex: ["#E3DAC9", "#556B2F", "#3B2F2F"],
     images: [
-      "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1575032617751-6ddec2089882?auto=format&fit=crop&w=1000&q=85"
+      "assets/img/p-1564422170194.jpg",
+      "assets/img/p-1598532163257.jpg",
+      "assets/img/p-1591561954557.jpg",
+      "assets/img/p-1483985988355.jpg"
     ],
     shortDescription: "Slouchy, cloud-like gathered vegan leather inspired by Parisian haute couture. Sits with effortless poise under the arm.",
     description: "The Saint-Germain Hobo captures effortless Parisian elegance with its organic pleated drapes. Crafted from buttery-soft microfibre leather that drapes like genuine nappa, it secures with a concealed magnetic top closure and nests comfortably beneath your shoulder.",
@@ -289,10 +289,10 @@ const CLARA_PRODUCTS = [
     colors: ["Gloss Noir", "Deep Bordeaux", "Chestnut Brown"],
     colorHex: ["#0E0E10", "#58111A", "#654321"],
     images: [
-      "https://images.unsplash.com/photo-1575032617751-6ddec2089882?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1000&q=85"
+      "assets/img/p-1506152983158.jpg",
+      "assets/img/p-1612902456551.jpg",
+      "assets/img/p-1564422170194.jpg",
+      "assets/img/p-1492707892479.jpg"
     ],
     shortDescription: "Clean, horizontal proportions paying homage to 1990s high-fashion minimalism. Designed to tuck neatly under the shoulder.",
     description: "The Vendôme Baguette is an ode to nineties understated chic. Defined by its elongated rectangular frame, high-shine finish, and minimalist strap, it elevates monochrome tailoring or evening slips effortlessly.",
@@ -327,10 +327,10 @@ const CLARA_PRODUCTS = [
     colors: ["Alabaster Ivory", "Imperial Emerald", "Matte Noir"],
     colorHex: ["#F5F2EB", "#0B4F37", "#111111"],
     images: [
-      "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?auto=format&fit=crop&w=1000&q=85"
+      "assets/img/p-1594223274512.jpg",
+      "assets/img/p-1606522754091.jpg",
+      "assets/img/p-1612902456551.jpg",
+      "assets/img/p-1617019114583.jpg"
     ],
     shortDescription: "An architectural masterpiece defined by sharp geometric angles and an integrated sculpted arch handle.",
     description: "The Mayfair Trapezoid Bag is wearable architecture. Every line is deliberate: sharp flared sides taper into an elegant top arch, secured with a custom brushed-brass lock plate. Built for women who treat accessories as sculpture.",
@@ -365,10 +365,10 @@ const CLARA_PRODUCTS = [
     colors: ["Mustard Monogram", "Monochrome Noir"],
     colorHex: ["#D4AF37", "#1E1E22"],
     images: [
-      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?auto=format&fit=crop&w=1000&q=85"
+      "assets/img/p-1591561954557.jpg",
+      "assets/img/p-1598532163257.jpg",
+      "assets/img/p-1483985988355.jpg",
+      "assets/img/p-1624687943971.jpg"
     ],
     shortDescription: "Matches the striking mannequin showcase from our Mount Lavinia boutique. Rich patterned canvas framed with cognac leatherette straps.",
     description: "Inspired by European cobblestone ateliers, the Montmartre Tote features a stylized geometric motif printed on durable textured canvas. Cognac brown leatherette shoulder straps provide comfort and enduring structural integrity for shopping, work, and city outings.",
@@ -403,10 +403,10 @@ const CLARA_PRODUCTS = [
     colors: ["Butterscotch Tan", "Deep Merlot", "Midnight Noir"],
     colorHex: ["#D27D2D", "#5C061B", "#111111"],
     images: [
-      "https://images.unsplash.com/photo-1575032617751-6ddec2089882?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=1000&q=85"
+      "assets/img/p-1590874103328.jpg",
+      "assets/img/p-1575032617751.jpg",
+      "assets/img/p-1563904092230.jpg",
+      "assets/img/p-1550614000.jpg"
     ],
     shortDescription: "A playful yet impeccably refined cylindrical silhouette. Converts effortlessly from a top-handle vanity roll to a crossbody cylinder.",
     description: "The Palais-Royal Cylinder Bag is a sculptural conversation piece. Its tubular profile is encircled by polished brass hardware rings, allowing the strap to be detached so you can carry it as an avant-garde evening clutch or as an everyday crossbody roll.",
@@ -441,10 +441,10 @@ const CLARA_PRODUCTS = [
     colors: ["Scarlet Red", "Onyx Noir", "Blush Petal"],
     colorHex: ["#C41E3A", "#141416", "#FADADD"],
     images: [
-      "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1566150902887-9679ec15dcb7?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1000&q=85",
-      "https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?auto=format&fit=crop&w=1000&q=85"
+      "assets/img/p-1627123424574.jpg",
+      "assets/img/p-1492707892479.jpg",
+      "assets/img/p-1566150905458.jpg",
+      "assets/img/p-1594223274512.jpg"
     ],
     shortDescription: "A tactile diamond-quilted continental zip wallet with 12 card slots, full currency sleeves, and a centered zip coin pouch.",
     description: "The Elegance Continental Wallet delivers comprehensive luxury organization in a slender, pocket-friendly silhouette. Diamond-quilted exterior cushioning is accented with a delicate gold rose emblem, while the smooth perimeter zipper reveals an accordion interior engineered to keep cash, cards, and receipts pristine.",

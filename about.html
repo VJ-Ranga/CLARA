@@ -1,217 +1,90 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Atelier Story | CLARA Bags Sri Lanka</title>
-  <meta name="description" content="Discover the craftsmanship, philosophy, and heritage behind CLARA Bags. Flagship boutique at No. 587/A Galle Road, Mount Lavinia.">
-  
-  <link rel="icon" type="image/jpeg" href="assets/clara-rose-logo.jpg">
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            obsidian: '#121214',
-            charcoal: '#1A1A1E',
-            warmSilk: '#FAF8F5',
-            ecru: '#F4F0E8',
-            sand: '#E8E2D5',
-            gold: '#C5A880',
-            goldMuted: '#A68A68',
-            wine: '#7A1B24'
-          },
-          fontFamily: {
-            editorial: ['Cormorant Garamond', 'Georgia', 'serif'],
-            sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
-          },
-          letterSpacing: {
-            'micro': '0.15em',
-            'ultra': '0.22em',
-            'mega': '0.32em'
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Font Awesome 6 Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Bespoke Luxury Stylesheet -->
+  <title>Our Story | CLARA Bags Sri Lanka</title>
+  <meta name="description" content="The story of CLARA Bags — handbags for the modern Sri Lankan woman, from our boutique on Galle Road, Mount Lavinia.">
+  <meta name="theme-color" content="#FBF7F3">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap">
   <link rel="stylesheet" href="css/main.css">
-</head>
-<body class="bg-[#FAF8F5] text-[#1A1A1E] font-sans antialiased selection:bg-[#7A1B24] selection:text-white">
-
-  <!-- Top Announcement Strip -->
-  <div class="bg-[#121214] text-[#D8D2C5] py-2.5 px-4 sm:px-8 text-[11px] tracking-ultra uppercase border-b border-white/10">
-    <div class="max-w-[1840px] w-full mx-auto flex items-center justify-center md:justify-between gap-4">
-      <div class="flex items-center gap-2.5 whitespace-nowrap">
-        <span class="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
-        <span class="text-white/90">Complimentary Islandwide Courier Delivery Over Rs. 10,000</span>
-      </div>
-      <div class="hidden md:flex items-center gap-6 text-[11px] text-neutral-400 whitespace-nowrap">
-        <span>Mount Lavinia Flagship: No. 587/A Galle Road</span>
-        <span class="text-white/20">|</span>
-        <a href="tel:0773173217" class="hover:text-white transition text-[#C5A880]">
-          Client Care: 077 317 3217
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Main Luxury Header -->
-  <header class="sticky top-0 z-40 bg-[#FAF8F5]/96 backdrop-blur-md hairline-b transition-all">
-    <div class="max-w-[1840px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 h-22 sm:h-24 flex items-center justify-between gap-6">
-      
-      <!-- LEFT: Brand Logo & Emblem -->
-      <a href="index.html" class="flex items-center gap-4 group flex-shrink-0" title="CLARA Bags Homepage">
-        <div class="brand-emblem-wrap">
-          <img src="assets/clara-rose-logo.jpg" alt="CLARA Rose Blossom Emblem" class="w-full h-full object-cover">
-        </div>
-        <div class="flex flex-col">
-          <span class="font-editorial text-2xl sm:text-3xl lg:text-[32px] font-light tracking-[0.26em] text-[#121214] group-hover:text-[#7A1B24] transition-colors leading-none uppercase">
-            CLARA
-          </span>
-          <span class="text-[9.5px] font-medium uppercase tracking-mega text-[#A68A68] mt-1.5">
-            Atelier • Sri Lanka
-          </span>
-        </div>
-      </a>
-
-      <!-- CENTER: Navigation Menu -->
-      <nav class="hidden lg:flex items-center gap-6 xl:gap-9 text-[11px] font-medium tracking-ultra uppercase text-neutral-800 whitespace-nowrap">
-        <a href="shop.html" class="hover:text-[#7A1B24] transition">All Handbags</a>
-        <a href="shop.html?cat=vanity" class="hover:text-[#7A1B24] transition">Structured Vanity</a>
-        <a href="shop.html?cat=totes" class="hover:text-[#7A1B24] transition">Work & Totes</a>
-        <a href="shop.html?cat=crossbody" class="hover:text-[#7A1B24] transition">Crossbody</a>
-        <a href="about.html" class="text-[#7A1B24] font-semibold transition">The Atelier</a>
-        <a href="contact.html" class="hover:text-[#7A1B24] transition">Showroom</a>
-      </nav>
-
-      <!-- RIGHT: Utilities (Search, Cart, Mobile Menu) -->
-      <div class="flex items-center gap-4 flex-shrink-0">
-        <a href="shop.html" class="p-2 text-neutral-700 hover:text-black transition" title="Search Handbags">
-          <i class="fas fa-search text-sm"></i>
-        </a>
-
-        <!-- Shopping Bag Trigger -->
-        <button 
-          type="button" 
-          onclick="openSlideCart()" 
-          class="relative flex items-center gap-2 px-3.5 py-1.5 border border-neutral-300 hover:border-black bg-white transition group"
-          title="View Shopping Bag"
-        >
-          <i class="fas fa-shopping-bag text-xs text-neutral-800 group-hover:text-[#7A1B24]"></i>
-          <span class="text-[10px] tracking-ultra uppercase font-medium text-neutral-800">Bag</span>
-          <span class="cart-count-badge hidden w-4 h-4 bg-[#7A1B24] text-white text-[9px] font-medium rounded-full flex items-center justify-center">
-            0
-          </span>
-        </button>
-
-        <button 
-          type="button" 
-          onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" 
-          class="lg:hidden p-2 text-neutral-800 hover:text-black transition"
-          aria-label="Toggle Navigation"
-        >
-          <i class="fas fa-bars text-lg"></i>
-        </button>
-      </div>
-
-    </div>
-
-    <!-- Mobile Dropdown Navigation -->
-    <div id="mobileMenu" class="hidden lg:hidden bg-[#FAF8F5] hairline-b px-6 py-5 space-y-4 text-xs tracking-ultra uppercase">
-      <a href="shop.html" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">All Handbags</a>
-      <a href="shop.html?cat=vanity" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Structured Vanity</a>
-      <a href="shop.html?cat=totes" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Work & Laptop Totes</a>
-      <a href="shop.html?cat=crossbody" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Crossbody & Slings</a>
-      <a href="about.html" class="block font-medium text-[#7A1B24]">The Atelier Story</a>
-      <a href="contact.html" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Mount Lavinia Showroom</a>
-      <a href="cart.html" class="block font-medium text-[#7A1B24]">View Shopping Bag</a>
-      <a href="checkout.html" class="block font-medium text-neutral-900">Direct Online Checkout</a>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="py-16 lg:py-24 bg-[#F4F0E8] hairline-b text-center">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <span class="text-[10px] tracking-mega uppercase font-medium text-[#A68A68] block mb-2">Heritage & Craftsmanship</span>
-      <h1 class="font-editorial text-4xl sm:text-6xl font-light text-neutral-900 leading-tight">
-        "We Create the New Fashion in the Bag Industry."
-      </h1>
-      <p class="text-xs sm:text-sm text-neutral-600 max-w-xl mx-auto mt-4 font-normal leading-relaxed">
-        From our flagship boutique along Galle Road in Mount Lavinia to fashion enthusiasts across Sri Lanka — CLARA was founded on the belief that a woman's handbag is her most intimate architectural staple.
-      </p>
-    </div>
-  </section>
-
-  <!-- Editorial Manifesto -->
-  <main class="py-16 lg:py-24 bg-[#FAF8F5]">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div class="aspect-[4/5] bg-neutral-100 overflow-hidden border border-neutral-300/80 shadow-xs">
-          <img 
-            src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1000&q=85" 
-            alt="Handcrafting luxury bags" 
-            class="w-full h-full object-cover"
-          >
-        </div>
-        <div class="space-y-4">
-          <span class="text-[10px] tracking-mega uppercase font-medium text-[#7A1B24] block">Our Philosophy</span>
-          <h2 class="font-editorial text-3xl font-light text-neutral-900">Sculptural Form That Retains Its Grace</h2>
-          <p class="text-xs text-neutral-600 leading-relaxed font-normal">
-            Every CLARA silhouette begins with structural engineering. We select high-density vegan leathers, including rigid Palmellato, textured Saffiano, and supple pebbled finishes, calibrated to resist moisture, daily friction, and weather conditions while maintaining crisp architectural silhouettes.
-          </p>
-          <p class="text-xs text-neutral-600 leading-relaxed font-normal">
-            Whether engineered for an executive carrying her laptop through Colombo or a bride celebrating in an evening gown, our bags are designed to make a quiet yet unmistakable statement of refinement.
-          </p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div class="order-2 md:order-1 space-y-4">
-          <span class="text-[10px] tracking-mega uppercase font-medium text-[#A68A68] block">Mount Lavinia Flagship</span>
-          <h2 class="font-editorial text-3xl font-light text-neutral-900">No. 587/A Galle Road Boutique</h2>
-          <p class="text-xs text-neutral-600 leading-relaxed font-normal">
-            Our physical showroom in Mount Lavinia is a sanctuary for bag lovers. Here, clients can touch every leather grain, test interior compartments, inspect hardware weight, and receive personalized styling guidance.
-          </p>
-          <p class="text-xs text-neutral-600 leading-relaxed font-normal">
-            We operate both retail collections for individual shoppers and wholesale supply for boutique partners across Kandy, Galle, Kurunegala, and Jaffna.
-          </p>
-          <div class="pt-2">
-            <a href="contact.html" class="inline-block px-7 py-3.5 bg-[#121214] text-white text-[10px] tracking-ultra uppercase hover:bg-neutral-800 transition">
-              Showroom Hours & Directions
-            </a>
-          </div>
-        </div>
-        <div class="order-1 md:order-2 aspect-[4/5] bg-neutral-900 overflow-hidden border border-neutral-300/80 shadow-xs">
-          <img 
-            src="assets/banner.jpg" 
-            alt="CLARA Mount Lavinia Showroom" 
-            class="w-full h-full object-cover"
-          >
-        </div>
-      </div>
-
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-[#121214] text-white pt-16 pb-12">
-    <div class="luxury-container text-center text-xs text-neutral-500 space-y-2">
-      <p>© 2026 CLARA Bags (DJ Industries). All Rights Reserved.</p>
-      <p>Showroom: No. 587/A, Galle Road, Mount Lavinia, Sri Lanka • Hotline: 077 317 3217</p>
-    </div>
-  </footer>
-
   <script src="js/products-data.js"></script>
   <script src="js/store.js"></script>
+  <script src="js/layout.js"></script>
+</head>
+<body data-page="about">
+  <script>Clara.header();</script>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container page-hero__inner">
+        <div>
+          <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="sep"></span><span class="current">Our story</span></nav>
+          <h1 class="display" style="font-size:clamp(2.6rem,5vw,4.4rem)">Made for <em>her</em></h1>
+          <p class="lead">CLARA began with a simple belief: a great handbag is the one piece every woman reaches for, every single day. So we set out to create bags that feel special — and are made to last.</p>
+        </div>
+        <div class="page-hero__img"><img src="assets/img/mood-day.jpg" alt="Woman in a white shirt dress"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div class="split__media arch reveal"><img src="assets/img/rack.jpg" alt="Soft-toned garments on a boutique rail" loading="lazy"></div>
+        <div class="split__copy">
+          <span class="eyebrow reveal">Our philosophy</span>
+          <h2 class="h2 reveal reveal-d1">Form that keeps <em>its grace</em></h2>
+          <p class="reveal reveal-d2">Every CLARA silhouette starts with structure. We choose dense vegan leathers — firm Palmellato, textured Saffiano and soft pebbled finishes — that resist humidity, daily wear and Colombo's busy streets, while keeping their crisp, beautiful lines.</p>
+          <p class="reveal reveal-d3">Whether she's carrying a laptop to the office or a jewelled clutch to a wedding, our bags are designed to make a quiet, unmistakable statement — never loud, always elegant.</p>
+          <div class="reveal reveal-d4"><a href="shop.html" class="btn btn-dark">Explore the collection <span data-icon="arrow" data-icon-class="arrow"></span></a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blush">
+      <div class="container quote-band">
+        <img src="assets/rose.png" alt="" class="reveal">
+        <blockquote class="reveal reveal-d1">“We create the new fashion and trend in the bag industry — because what is more of a staple than a great handbag?”</blockquote>
+        <cite class="reveal reveal-d2">The CLARA philosophy</cite>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow center reveal">What we stand for</span>
+          <h2 class="h2 reveal reveal-d1">The CLARA <em>promise</em></h2>
+        </div>
+        <div class="values">
+          <div class="value reveal reveal-d1"><span class="num">01</span><h3>Considered design</h3><p>Architectural shapes, reinforced handles, smooth zips and protective base studs — details you feel every time you pick it up.</p></div>
+          <div class="value reveal reveal-d2"><span class="num">02</span><h3>Honest value</h3><p>Boutique-quality bags at fair prices, with flexible ways to pay — card, bank transfer or cash on delivery.</p></div>
+          <div class="value reveal reveal-d3"><span class="num">03</span><h3>Real service</h3><p>A real team you can visit, call or WhatsApp — plus a 7-day inspection &amp; exchange guarantee on every order.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-ivory">
+      <div class="container split">
+        <div class="split__copy">
+          <span class="eyebrow reveal">The Mount Lavinia boutique</span>
+          <h2 class="h2 reveal reveal-d1">587/A Galle Road — <em>our home</em></h2>
+          <p class="reveal reveal-d2">Our boutique is a little sanctuary for bag lovers. Come in to feel every leather, check every compartment, try strap lengths and get honest styling advice from our team.</p>
+          <p class="reveal reveal-d3">We serve individual shoppers and wholesale partners alike, supplying boutiques across Kandy, Galle, Kurunegala and Jaffna.</p>
+          <div class="reveal reveal-d4" style="display:flex;gap:12px;flex-wrap:wrap">
+            <a href="contact.html" class="btn btn-rose">Visit us</a>
+            <a href="contact.html#enquiry" class="btn btn-outline">Wholesale enquiries</a>
+          </div>
+        </div>
+        <div class="reveal" style="display:grid;gap:16px">
+          <div class="split__media" style="aspect-ratio:4/3"><img src="assets/img/boutique.jpg" alt="Boutique interior with neutral garments" loading="lazy"></div>
+          <img src="assets/banner.jpg" alt="CLARA boutique banner with address and phone numbers" style="border-radius:16px;box-shadow:var(--shadow)" loading="lazy">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>Clara.footer();</script>
 </body>
 </html>
-

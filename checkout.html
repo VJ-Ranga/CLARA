@@ -1,667 +1,227 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Checkout | CLARA Bags Sri Lanka</title>
-  <meta name="description" content="Complete your luxury handbag purchase with secure online checkout, direct bank deposit, or cash on delivery across Sri Lanka.">
-  
-  <link rel="icon" type="image/jpeg" href="assets/clara-rose-logo.jpg">
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            obsidian: '#121214',
-            charcoal: '#1A1A1E',
-            warmSilk: '#FAF8F5',
-            ecru: '#F4F0E8',
-            sand: '#E8E2D5',
-            gold: '#C5A880',
-            goldMuted: '#A68A68',
-            wine: '#7A1B24'
-          },
-          fontFamily: {
-            editorial: ['Cormorant Garamond', 'Georgia', 'serif'],
-            sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
-          },
-          letterSpacing: {
-            'micro': '0.15em',
-            'ultra': '0.22em',
-            'mega': '0.32em'
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Font Awesome 6 Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Bespoke Luxury Stylesheet -->
+  <meta name="description" content="Secure checkout for CLARA Bags — card, bank transfer, cash on delivery or showroom pickup.">
+  <meta name="theme-color" content="#FBF7F3">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap">
   <link rel="stylesheet" href="css/main.css">
-</head>
-<body class="bg-[#FAF8F5] text-[#1A1A1E] font-sans antialiased selection:bg-[#7A1B24] selection:text-white">
-
-  <!-- Top Announcement Strip -->
-  <div class="bg-[#121214] text-[#D8D2C5] py-2.5 px-4 sm:px-8 text-[11px] tracking-ultra uppercase border-b border-white/10">
-    <div class="max-w-[1840px] w-full mx-auto flex items-center justify-center md:justify-between gap-4">
-      <div class="flex items-center gap-2.5 whitespace-nowrap">
-        <span class="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
-        <span class="text-white/90">Complimentary Islandwide Courier Delivery Over Rs. 10,000</span>
-      </div>
-      <div class="hidden md:flex items-center gap-6 text-[11px] text-neutral-400 whitespace-nowrap">
-        <span>Mount Lavinia Flagship: No. 587/A Galle Road</span>
-        <span class="text-white/20">|</span>
-        <a href="tel:0773173217" class="hover:text-white transition text-[#C5A880]">
-          Client Care: 077 317 3217
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Main Luxury Header -->
-  <header class="sticky top-0 z-40 bg-[#FAF8F5]/96 backdrop-blur-md hairline-b transition-all">
-    <div class="max-w-[1840px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 h-22 sm:h-24 flex items-center justify-between gap-6">
-      
-      <!-- LEFT: Brand Logo & Emblem -->
-      <a href="index.html" class="flex items-center gap-4 group flex-shrink-0" title="CLARA Bags Homepage">
-        <div class="brand-emblem-wrap">
-          <img src="assets/clara-rose-logo.jpg" alt="CLARA Rose Blossom Emblem" class="w-full h-full object-cover">
-        </div>
-        <div class="flex flex-col">
-          <span class="font-editorial text-2xl sm:text-3xl lg:text-[32px] font-light tracking-[0.26em] text-[#121214] group-hover:text-[#7A1B24] transition-colors leading-none uppercase">
-            CLARA
-          </span>
-          <span class="text-[9.5px] font-medium uppercase tracking-mega text-[#A68A68] mt-1.5">
-            Atelier • Sri Lanka
-          </span>
-        </div>
-      </a>
-
-      <!-- CENTER: Navigation Menu -->
-      <nav class="hidden lg:flex items-center gap-6 xl:gap-9 text-[11px] font-medium tracking-ultra uppercase text-neutral-800 whitespace-nowrap">
-        <a href="shop.html" class="hover:text-[#7A1B24] transition">All Handbags</a>
-        <a href="shop.html?cat=vanity" class="hover:text-[#7A1B24] transition">Structured Vanity</a>
-        <a href="shop.html?cat=totes" class="hover:text-[#7A1B24] transition">Work & Totes</a>
-        <a href="shop.html?cat=crossbody" class="hover:text-[#7A1B24] transition">Crossbody</a>
-        <a href="about.html" class="hover:text-[#7A1B24] transition">The Atelier</a>
-        <a href="contact.html" class="hover:text-[#7A1B24] transition">Showroom</a>
-      </nav>
-
-      <!-- RIGHT: Utilities (Search, Cart, Mobile Menu) -->
-      <div class="flex items-center gap-4 flex-shrink-0">
-        <a href="shop.html" class="p-2 text-neutral-700 hover:text-black transition" title="Search Handbags">
-          <i class="fas fa-search text-sm"></i>
-        </a>
-
-        <!-- Shopping Bag Trigger -->
-        <a 
-          href="cart.html" 
-          class="relative flex items-center gap-2 px-3.5 py-1.5 border border-neutral-300 hover:border-black bg-white transition group"
-          title="View Shopping Bag"
-        >
-          <i class="fas fa-shopping-bag text-xs text-neutral-800 group-hover:text-[#7A1B24]"></i>
-          <span class="text-[10px] tracking-ultra uppercase font-medium text-neutral-800">Bag</span>
-          <span class="cart-count-badge hidden w-4 h-4 bg-[#7A1B24] text-white text-[9px] font-medium rounded-full flex items-center justify-center">
-            0
-          </span>
-        </a>
-
-        <button 
-          type="button" 
-          onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" 
-          class="lg:hidden p-2 text-neutral-800 hover:text-black transition"
-          aria-label="Toggle Navigation"
-        >
-          <i class="fas fa-bars text-lg"></i>
-        </button>
-      </div>
-
-    </div>
-
-    <!-- Mobile Dropdown Navigation -->
-    <div id="mobileMenu" class="hidden lg:hidden bg-[#FAF8F5] hairline-b px-6 py-5 space-y-4 text-xs tracking-ultra uppercase">
-      <a href="shop.html" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">All Handbags</a>
-      <a href="shop.html?cat=vanity" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Structured Vanity</a>
-      <a href="shop.html?cat=totes" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Work & Laptop Totes</a>
-      <a href="shop.html?cat=crossbody" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Crossbody & Slings</a>
-      <a href="about.html" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">The Atelier Story</a>
-      <a href="contact.html" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Mount Lavinia Showroom</a>
-      <a href="cart.html" class="block font-medium text-[#7A1B24]">View Shopping Bag</a>
-      <a href="checkout.html" class="block font-medium text-neutral-900">Direct Online Checkout</a>
-    </div>
-  </header>
-
-  <!-- Page Header -->
-  <section class="py-12 bg-[#F4F0E8] hairline-b">
-    <div class="luxury-container text-center">
-      <div class="breadcrumb-nav text-[10px] tracking-mega uppercase text-neutral-500 mb-2.5">
-        <a href="index.html">Home</a>
-        <span class="mx-2.5">•</span>
-        <a href="cart.html">Shopping Bag</a>
-        <span class="mx-2.5">•</span>
-        <span class="text-neutral-900">Direct Checkout</span>
-      </div>
-      <h1 class="font-editorial text-3xl sm:text-4xl lg:text-5xl font-light text-neutral-900">Direct Online Checkout</h1>
-    </div>
-  </section>
-
-  <!-- Main Checkout Area -->
-  <main class="py-14 lg:py-20 bg-[#FAF8F5]">
-    <div class="luxury-container">
-      
-      <form id="checkoutForm" onsubmit="handlePlaceOrder(event)">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
-          <!-- Left Column: Billing Details & Payment Methods -->
-          <div class="lg:col-span-7 space-y-10">
-            
-            <!-- 1. Contact Information -->
-            <div class="bg-white p-6 sm:p-8 border border-neutral-300/80 shadow-xs space-y-4">
-              <div class="flex items-center justify-between pb-3 hairline-b">
-                <h3 class="font-editorial text-2xl font-light text-neutral-900">1. Contact Information</h3>
-                <span class="text-[10px] tracking-ultra uppercase text-neutral-400">Step 1 of 3</span>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-xs uppercase tracking-ultra font-medium text-neutral-700 mb-1">
-                    Email Address *
-                  </label>
-                  <input 
-                    type="email" 
-                    id="chkEmail" 
-                    required 
-                    placeholder="e.g. dilani.perera@gmail.com" 
-                    class="luxury-input"
-                  >
-                </div>
-
-                <div>
-                  <label class="block text-xs uppercase tracking-ultra font-medium text-neutral-700 mb-1">
-                    Mobile / WhatsApp Hotline *
-                  </label>
-                  <input 
-                    type="tel" 
-                    id="chkPhone" 
-                    required 
-                    placeholder="e.g. 077 123 4567" 
-                    class="luxury-input"
-                  >
-                </div>
-              </div>
-            </div>
-
-            <!-- 2. Shipping & Delivery Address -->
-            <div class="bg-white p-6 sm:p-8 border border-neutral-300/80 shadow-xs space-y-4">
-              <div class="flex items-center justify-between pb-3 hairline-b">
-                <h3 class="font-editorial text-2xl font-light text-neutral-900">2. Delivery Address</h3>
-                <span class="text-[10px] tracking-ultra uppercase text-neutral-400">Step 2 of 3</span>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-xs uppercase tracking-ultra font-medium text-neutral-700 mb-1">
-                    First Name *
-                  </label>
-                  <input type="text" id="chkFirstName" required placeholder="Dilani" class="luxury-input">
-                </div>
-                <div>
-                  <label class="block text-xs uppercase tracking-ultra font-medium text-neutral-700 mb-1">
-                    Last Name *
-                  </label>
-                  <input type="text" id="chkLastName" required placeholder="Perera" class="luxury-input">
-                </div>
-              </div>
-
-              <div>
-                <label class="block text-xs uppercase tracking-ultra font-medium text-neutral-700 mb-1">
-                  Street Address & House / Suite No. *
-                </label>
-                <input type="text" id="chkAddress" required placeholder="No. 142/3, Galle Road" class="luxury-input">
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div>
-                  <label class="block text-xs uppercase tracking-ultra font-medium text-neutral-700 mb-1">
-                    City / Town *
-                  </label>
-                  <input type="text" id="chkCity" required placeholder="Mount Lavinia" class="luxury-input">
-                </div>
-                <div>
-                  <label class="block text-xs uppercase tracking-ultra font-medium text-neutral-700 mb-1">
-                    Postal Code
-                  </label>
-                  <input type="text" id="chkPostal" placeholder="10370" class="luxury-input">
-                </div>
-                <div>
-                  <label class="block text-xs uppercase tracking-ultra font-medium text-neutral-700 mb-1">
-                    District / Province
-                  </label>
-                  <input type="text" id="chkProvince" placeholder="Colombo" class="luxury-input">
-                </div>
-              </div>
-
-              <!-- Shipping Method Selection in Checkout -->
-              <div class="pt-4 hairline-t">
-                <label class="block text-xs uppercase tracking-ultra font-medium text-neutral-700 mb-2">
-                  Select Courier Method *
-                </label>
-                
-                <div class="space-y-2">
-                  <label class="luxury-radio-card flex items-start gap-3">
-                    <input type="radio" name="checkoutShipping" value="western" checked onchange="handleShippingChange('western')" class="mt-1">
-                    <div class="flex-grow">
-                      <div class="flex justify-between items-center">
-                        <span class="font-medium text-neutral-900 text-xs">Colombo & Western Province Courier (1–2 Days)</span>
-                        <span id="rateWesternText" class="font-semibold text-xs text-neutral-900">Rs. 350</span>
-                      </div>
-                      <p class="text-[11px] text-neutral-500 mt-0.5">Prompt door-to-door insured dispatch across Western Province.</p>
-                    </div>
-                  </label>
-
-                  <label class="luxury-radio-card flex items-start gap-3">
-                    <input type="radio" name="checkoutShipping" value="islandwide" onchange="handleShippingChange('islandwide')" class="mt-1">
-                    <div class="flex-grow">
-                      <div class="flex justify-between items-center">
-                        <span class="font-medium text-neutral-900 text-xs">Islandwide Outstation Courier (2–4 Days)</span>
-                        <span id="rateIslandwideText" class="font-semibold text-xs text-neutral-900">Rs. 550</span>
-                      </div>
-                      <p class="text-[11px] text-neutral-500 mt-0.5">Reliable tracking via Pronto, Domex, or Certis Lanka to any district.</p>
-                    </div>
-                  </label>
-
-                  <label class="luxury-radio-card flex items-start gap-3">
-                    <input type="radio" name="checkoutShipping" value="pickup" onchange="handleShippingChange('pickup')" class="mt-1">
-                    <div class="flex-grow">
-                      <div class="flex justify-between items-center">
-                        <span class="font-medium text-neutral-900 text-xs">Flagship Showroom Collection (Mount Lavinia)</span>
-                        <span class="font-semibold text-xs text-emerald-700">Complimentary</span>
-                      </div>
-                      <p class="text-[11px] text-neutral-500 mt-0.5">Collect at No. 587/A Galle Road, Mount Lavinia. Open daily 9:30 AM – 7:30 PM.</p>
-                    </div>
-                  </label>
-                </div>
-              </div>
-
-              <div>
-                <label class="block text-xs uppercase tracking-ultra font-medium text-neutral-700 mb-1">
-                  Delivery Notes / Gate Code (Optional)
-                </label>
-                <input type="text" id="chkNotes" placeholder="e.g. Please call before arrival, gift packaging requested" class="luxury-input">
-              </div>
-            </div>
-
-            <!-- 3. Payment Method Selection -->
-            <div class="bg-white p-6 sm:p-8 border border-neutral-300/80 shadow-xs space-y-4">
-              <div class="flex items-center justify-between pb-3 hairline-b">
-                <h3 class="font-editorial text-2xl font-light text-neutral-900">3. Payment Method</h3>
-                <span class="text-[10px] tracking-ultra uppercase text-neutral-400">Step 3 of 3</span>
-              </div>
-
-              <div class="space-y-3">
-                
-                <!-- Option 1: Credit / Debit Card -->
-                <label class="luxury-radio-card block">
-                  <div class="flex items-start gap-3">
-                    <input type="radio" name="chkPayment" value="card" checked onchange="togglePaymentPanels('card')" class="mt-1">
-                    <div class="flex-grow">
-                      <div class="flex items-center justify-between">
-                        <span class="font-medium text-neutral-900 text-xs">Credit / Debit Card (Online Gateway)</span>
-                        <div class="flex gap-1 text-neutral-600 text-xs">
-                          <i class="fab fa-cc-visa"></i>
-                          <i class="fab fa-cc-mastercard"></i>
-                          <i class="fab fa-cc-amex"></i>
-                        </div>
-                      </div>
-                      <p class="text-[11px] text-neutral-500 mt-0.5">Secure 256-bit encrypted checkout via local payment gateway.</p>
-                    </div>
-                  </div>
-
-                  <!-- Mock Card Fields -->
-                  <div id="cardFieldsPanel" class="mt-4 pt-4 hairline-t space-y-3">
-                    <div>
-                      <label class="block text-[10px] uppercase tracking-ultra text-neutral-600 mb-1">Card Number</label>
-                      <input type="text" placeholder="4111 2222 3333 4444" maxlength="19" class="luxury-input text-xs font-mono">
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
-                      <div>
-                        <label class="block text-[10px] uppercase tracking-ultra text-neutral-600 mb-1">Expiry Date</label>
-                        <input type="text" placeholder="MM / YY" maxlength="5" class="luxury-input text-xs font-mono">
-                      </div>
-                      <div>
-                        <label class="block text-[10px] uppercase tracking-ultra text-neutral-600 mb-1">CVC / CVV</label>
-                        <input type="password" placeholder="123" maxlength="4" class="luxury-input text-xs font-mono">
-                      </div>
-                    </div>
-                  </div>
-                </label>
-
-                <!-- Option 2: Direct Bank Transfer (BACS) -->
-                <label class="luxury-radio-card block">
-                  <div class="flex items-start gap-3">
-                    <input type="radio" name="chkPayment" value="bank_transfer" onchange="togglePaymentPanels('bank_transfer')" class="mt-1">
-                    <div class="flex-grow">
-                      <span class="font-medium text-neutral-900 text-xs block">Direct Bank Transfer / Bank Deposit</span>
-                      <p class="text-[11px] text-neutral-500 mt-0.5">Transfer directly into our Commercial or Sampath Bank corporate account.</p>
-                    </div>
-                  </div>
-
-                  <!-- Bank Details Panel -->
-                  <div id="bankDetailsPanel" class="hidden mt-4 pt-4 hairline-t space-y-2 text-xs bg-[#FAF8F5] p-3 border border-neutral-200">
-                    <p class="font-medium text-neutral-900">Official Corporate Account Details:</p>
-                    <div class="space-y-1 font-mono text-[11px] text-neutral-700">
-                      <p><strong>Bank:</strong> Commercial Bank of Ceylon PLC</p>
-                      <p><strong>Account Name:</strong> CLARA BAGS (DJ INDUSTRIES)</p>
-                      <p><strong>Account No:</strong> 8003492819</p>
-                      <p><strong>Branch:</strong> Mount Lavinia</p>
-                    </div>
-                    <p class="text-[10px] text-neutral-500 pt-1">
-                      Please use your Order Number as the transfer reference. Upload or WhatsApp the slip to 077 317 3217 for instant dispatch.
-                    </p>
-                  </div>
-                </label>
-
-                <!-- Option 3: Cash on Delivery (COD) -->
-                <label class="luxury-radio-card block">
-                  <div class="flex items-start gap-3">
-                    <input type="radio" name="chkPayment" value="cod" onchange="togglePaymentPanels('cod')" class="mt-1">
-                    <div class="flex-grow">
-                      <span class="font-medium text-neutral-900 text-xs block">Cash on Delivery (COD)</span>
-                      <p class="text-[11px] text-neutral-500 mt-0.5">Pay in cash directly to the courier rider upon inspecting your package.</p>
-                    </div>
-                  </div>
-                </label>
-
-                <!-- Option 4: Pay at Showroom -->
-                <label class="luxury-radio-card block">
-                  <div class="flex items-start gap-3">
-                    <input type="radio" name="chkPayment" value="showroom" onchange="togglePaymentPanels('showroom')" class="mt-1">
-                    <div class="flex-grow">
-                      <span class="font-medium text-neutral-900 text-xs block">Pay at Mount Lavinia Showroom</span>
-                      <p class="text-[11px] text-neutral-500 mt-0.5">We will reserve your bag. Pay via Cash or Card at No. 587/A Galle Road.</p>
-                    </div>
-                  </div>
-                </label>
-
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Right Column: Order Review & Place Order Button -->
-          <div class="lg:col-span-5 sticky top-28 space-y-6">
-            
-            <div class="bg-white p-6 border border-neutral-300/80 shadow-xs space-y-5">
-              <h3 class="font-editorial text-2xl font-light text-neutral-900 pb-3 hairline-b">
-                Your Order
-              </h3>
-
-              <!-- Itemized Cart Products in Checkout -->
-              <div id="checkoutOrderItems" class="divide-y divide-neutral-200 max-h-80 overflow-y-auto pr-1">
-                <!-- Injected by script -->
-              </div>
-
-              <!-- Coupon Input in Checkout -->
-              <div class="pt-3 hairline-t">
-                <div class="flex items-center gap-2">
-                  <input 
-                    type="text" 
-                    id="checkoutCouponInput" 
-                    placeholder="Voucher code (e.g. WELCOME10)" 
-                    class="flex-grow px-3 py-2 bg-neutral-50 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-black uppercase tracking-wider"
-                  >
-                  <button 
-                    type="button" 
-                    onclick="handleCheckoutApplyCoupon()" 
-                    class="px-4 py-2 bg-neutral-900 hover:bg-neutral-800 text-white text-[10px] tracking-ultra uppercase font-medium transition"
-                  >
-                    Apply
-                  </button>
-                </div>
-                <span class="text-[10px] text-neutral-500 block mt-1.5">
-                  Client code: <button type="button" onclick="document.getElementById('checkoutCouponInput').value='WELCOME10'; handleCheckoutApplyCoupon()" class="underline font-semibold hover:text-[#7A1B24]">WELCOME10</button> (10% off)
-                </span>
-              </div>
-
-              <!-- Totals Breakdown -->
-              <div class="space-y-2 pt-3 hairline-t text-xs text-neutral-600">
-                <div class="flex justify-between">
-                  <span>Subtotal</span>
-                  <span id="chkSubtotal" class="font-medium text-neutral-900">Rs. 0</span>
-                </div>
-
-                <div id="chkDiscountRow" class="hidden flex justify-between text-emerald-700 font-medium">
-                  <span id="chkDiscountLabel">Voucher Discount</span>
-                  <span id="chkDiscountVal">-Rs. 0</span>
-                </div>
-
-                <div class="flex justify-between">
-                  <span>Courier Shipping</span>
-                  <span id="chkShippingFee" class="font-medium text-neutral-900">Rs. 350</span>
-                </div>
-
-                <div class="pt-3 hairline-t flex justify-between items-baseline">
-                  <span class="text-xs uppercase tracking-ultra font-medium text-neutral-900">Total Payable</span>
-                  <span id="chkGrandTotal" class="font-editorial text-3xl font-light text-neutral-900">Rs. 0</span>
-                </div>
-              </div>
-
-              <!-- Terms Checkbox -->
-              <div class="pt-2">
-                <label class="flex items-start gap-2.5 text-[11px] text-neutral-600 cursor-pointer">
-                  <input type="checkbox" required checked class="mt-0.5">
-                  <span>I agree to the 7-day inspection guarantee and delivery terms of CLARA Bags Sri Lanka.</span>
-                </label>
-              </div>
-
-              <!-- Submit Button -->
-              <div class="pt-2">
-                <button 
-                  type="submit" 
-                  id="chkPlaceOrderBtn"
-                  class="w-full py-4 bg-[#121214] hover:bg-[#7A1B24] text-white text-[11px] font-medium tracking-ultra uppercase transition shadow-md flex items-center justify-center gap-2"
-                >
-                  <span id="chkBtnText">Place Order & Confirm</span>
-                  <i id="chkBtnIcon" class="fas fa-lock text-xs"></i>
-                </button>
-              </div>
-
-              <div class="text-[10px] text-neutral-400 space-y-1 text-center pt-1">
-                <p>Order receipt and dispatch confirmation will be generated instantly.</p>
-                <p>Support Hotline: 077 317 3217 (Mount Lavinia)</p>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-      </form>
-
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-[#121214] text-white pt-18 pb-14">
-    <div class="luxury-container">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-14 border-b border-white/10">
-        
-        <div class="lg:col-span-2 space-y-4">
-          <div class="flex items-center gap-3.5">
-            <div class="w-12 h-12 rounded-full overflow-hidden bg-black flex items-center justify-center border-2 border-[#C5A880]/80 shadow-md">
-              <img src="assets/clara-rose-logo.jpg" alt="CLARA Rose Blossom" class="w-full h-full object-cover">
-            </div>
-            <div>
-              <span class="font-editorial text-2xl sm:text-3xl font-light tracking-[0.25em] text-white leading-none uppercase">CLARA</span>
-              <span class="block text-[9px] font-normal uppercase tracking-mega text-[#A68A68] mt-0.5">Bags • Sri Lanka</span>
-            </div>
-          </div>
-          <p class="text-xs text-neutral-400 leading-relaxed max-w-sm">
-            We create new fashion and trend in the bag industry. Handcrafted luxury handbags, structured vanity bags, executive totes, and travel companions.
-          </p>
-          <p class="text-xs text-neutral-500">
-            Showroom: No. 587/A, Galle Road, Mount Lavinia, Sri Lanka<br>
-            Hotlines: 077 317 3217 / 011 703 7030
-          </p>
-        </div>
-
-        <div class="space-y-3">
-          <h4 class="text-[11px] font-medium text-white tracking-ultra uppercase">Collections</h4>
-          <ul class="space-y-2 text-xs text-neutral-400">
-            <li><a href="shop.html?cat=vanity" class="hover:text-white transition">Structured Vanity</a></li>
-            <li><a href="shop.html?cat=totes" class="hover:text-white transition">Work & Laptop Totes</a></li>
-            <li><a href="shop.html?cat=crossbody" class="hover:text-white transition">Crossbody & Slings</a></li>
-            <li><a href="shop.html?cat=shoulder" class="hover:text-white transition">Shoulder Satchels</a></li>
-            <li><a href="shop.html?cat=clutches" class="hover:text-white transition">Evening Clutches</a></li>
-            <li><a href="shop.html?cat=travel" class="hover:text-white transition">Travel Holdalls</a></li>
-          </ul>
-        </div>
-
-        <div class="space-y-3">
-          <h4 class="text-[11px] font-medium text-white tracking-ultra uppercase">Client Care</h4>
-          <ul class="space-y-2 text-xs text-neutral-400">
-            <li><a href="shop.html" class="hover:text-white transition">Shop All Products</a></li>
-            <li><a href="cart.html" class="hover:text-white transition">Shopping Bag</a></li>
-            <li><a href="checkout.html" class="hover:text-white transition">Direct Checkout</a></li>
-            <li><a href="about.html" class="hover:text-white transition">About Our Atelier</a></li>
-            <li><a href="contact.html" class="hover:text-white transition">Showroom Location</a></li>
-          </ul>
-        </div>
-
-        <div class="space-y-3">
-          <h4 class="text-[11px] font-medium text-white tracking-ultra uppercase">Secure Payments</h4>
-          <p class="text-xs text-neutral-400 leading-relaxed">
-            We accept Visa, Mastercard, Direct Bank Transfer (Commercial/Sampath Bank), and Cash on Delivery across Sri Lanka.
-          </p>
-          <div class="pt-2 flex flex-wrap gap-2 text-neutral-400 text-xs">
-            <span class="px-2.5 py-1 border border-white/10 bg-white/5">Visa / Mastercard</span>
-            <span class="px-2.5 py-1 border border-white/10 bg-white/5">Bank Deposit</span>
-            <span class="px-2.5 py-1 border border-white/10 bg-white/5">Cash on Delivery</span>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
-        <p>© 2026 CLARA Bags (DJ Industries). All Rights Reserved.</p>
-        <p class="text-[11px]">Designed with WooCommerce Block Theme Architecture.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
   <script src="js/products-data.js"></script>
   <script src="js/store.js"></script>
+  <script src="js/layout.js"></script>
+</head>
+<body data-page="checkout">
+  <script>Clara.header();</script>
+
+  <main id="main">
+    <section class="page-hero simple">
+      <div class="container page-hero__inner">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="sep"></span><a href="cart.html">Your bag</a><span class="sep"></span><span class="current">Checkout</span></nav>
+        <h1 class="h2">Secure <em>checkout</em></h1>
+        <div class="steps-bar"><span class="done"><i>✓</i>Bag</span><span class="line"></span><span class="now"><i>2</i>Details &amp; payment</span><span class="line"></span><span><i>3</i>Confirmation</span></div>
+      </div>
+    </section>
+
+    <section class="container section-tight">
+      <form id="checkoutForm" onsubmit="handlePlaceOrder(event)">
+        <div class="cart-layout checkout-layout">
+          <div>
+            <!-- 1. Contact -->
+            <div class="panel">
+              <div class="panel__title"><span class="step"><i>1</i><h2>Contact</h2></span><small>We'll send updates here</small></div>
+              <div class="form-grid">
+                <div class="field c3"><label for="chkEmail">Email address *</label><input class="input" type="email" id="chkEmail" required placeholder="dilani.perera@gmail.com" autocomplete="email"></div>
+                <div class="field c3"><label for="chkPhone">Mobile / WhatsApp *</label><input class="input" type="tel" id="chkPhone" required placeholder="077 123 4567" autocomplete="tel"></div>
+              </div>
+            </div>
+
+            <!-- 2. Delivery -->
+            <div class="panel">
+              <div class="panel__title"><span class="step"><i>2</i><h2>Delivery</h2></span><small>Islandwide</small></div>
+              <div class="form-grid">
+                <div class="field c3"><label for="chkFirstName">First name *</label><input class="input" type="text" id="chkFirstName" required placeholder="Dilani" autocomplete="given-name"></div>
+                <div class="field c3"><label for="chkLastName">Last name *</label><input class="input" type="text" id="chkLastName" required placeholder="Perera" autocomplete="family-name"></div>
+                <div class="field c6"><label for="chkAddress">Street address *</label><input class="input" type="text" id="chkAddress" required placeholder="No. 142/3, Galle Road" autocomplete="street-address"></div>
+                <div class="field c2"><label for="chkCity">City / town *</label><input class="input" type="text" id="chkCity" required placeholder="Mount Lavinia" autocomplete="address-level2"></div>
+                <div class="field c2"><label for="chkPostal">Postal code</label><input class="input" type="text" id="chkPostal" placeholder="10370" autocomplete="postal-code"></div>
+                <div class="field c2"><label for="chkProvince">District</label><input class="input" type="text" id="chkProvince" placeholder="Colombo" autocomplete="address-level1"></div>
+              </div>
+
+              <div class="field" style="margin-top:22px">
+                <label>Delivery method *</label>
+                <div>
+                  <label class="radio-card">
+                    <input type="radio" name="checkoutShipping" value="western" checked onchange="handleShippingChange('western')">
+                    <span><span class="radio-card__t">Colombo &amp; Western Province</span><span class="radio-card__d" style="display:block">Door-to-door insured courier · 1–2 business days</span></span>
+                    <span class="radio-card__p" id="rateWesternText">Rs. 350</span>
+                  </label>
+                  <label class="radio-card">
+                    <input type="radio" name="checkoutShipping" value="islandwide" onchange="handleShippingChange('islandwide')">
+                    <span><span class="radio-card__t">Islandwide courier</span><span class="radio-card__d" style="display:block">Tracked via Pronto, Domex or Certis Lanka · 2–4 business days</span></span>
+                    <span class="radio-card__p" id="rateIslandwideText">Rs. 550</span>
+                  </label>
+                  <label class="radio-card">
+                    <input type="radio" name="checkoutShipping" value="pickup" onchange="handleShippingChange('pickup')">
+                    <span><span class="radio-card__t">Collect from our boutique</span><span class="radio-card__d" style="display:block">587/A Galle Road, Mount Lavinia · open daily 9:30 AM – 7:30 PM</span></span>
+                    <span class="radio-card__p green">Free</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field" style="margin-top:18px"><label for="chkNotes">Delivery notes (optional)</label><input class="input" type="text" id="chkNotes" placeholder="Call before arrival, gift wrapping, etc."></div>
+            </div>
+
+            <!-- 3. Payment -->
+            <div class="panel">
+              <div class="panel__title"><span class="step"><i>3</i><h2>Payment</h2></span><small>Secure &amp; encrypted</small></div>
+              <div>
+                <label class="radio-card">
+                  <input type="radio" name="chkPayment" value="card" checked onchange="togglePaymentPanels('card')">
+                  <span><span class="radio-card__t">Credit / debit card</span><span class="radio-card__d" style="display:block">Visa, Mastercard or Amex · encrypted checkout</span></span>
+                  <span class="pay-icons"><span data-icon="card"></span></span>
+                  <div class="radio-card__extra" id="cardFieldsPanel">
+                    <div class="card-fields">
+                      <div class="field full"><label>Card number</label><input class="input" type="text" inputmode="numeric" placeholder="1234 5678 9012 3456" maxlength="19" autocomplete="cc-number"></div>
+                      <div class="field"><label>Expiry</label><input class="input" type="text" placeholder="MM / YY" maxlength="7" autocomplete="cc-exp"></div>
+                      <div class="field"><label>CVC</label><input class="input" type="password" inputmode="numeric" placeholder="123" maxlength="4" autocomplete="cc-csc"></div>
+                    </div>
+                  </div>
+                </label>
+                <label class="radio-card">
+                  <input type="radio" name="chkPayment" value="bank_transfer" onchange="togglePaymentPanels('bank_transfer')">
+                  <span><span class="radio-card__t">Direct bank transfer</span><span class="radio-card__d" style="display:block">Transfer to our Commercial Bank account</span></span>
+                  <span class="pay-icons"><span data-icon="bank"></span></span>
+                  <div class="radio-card__extra hidden" id="bankDetailsPanel">
+                    <div class="bank-box">
+                      <dl>
+                        <dt>Bank</dt><dd>Commercial Bank of Ceylon PLC</dd>
+                        <dt>Account name</dt><dd>CLARA BAGS (DJ INDUSTRIES)</dd>
+                        <dt>Account no.</dt><dd>8003492819</dd>
+                        <dt>Branch</dt><dd>Mount Lavinia</dd>
+                      </dl>
+                      <p class="small" style="margin-top:6px">Use your order number as the reference and WhatsApp the slip to 077 317 3217 for same-day dispatch.</p>
+                    </div>
+                  </div>
+                </label>
+                <label class="radio-card">
+                  <input type="radio" name="chkPayment" value="cod" onchange="togglePaymentPanels('cod')">
+                  <span><span class="radio-card__t">Cash on delivery</span><span class="radio-card__d" style="display:block">Pay the courier when your bag arrives</span></span>
+                  <span class="pay-icons"><span data-icon="cash"></span></span>
+                </label>
+                <label class="radio-card">
+                  <input type="radio" name="chkPayment" value="showroom" onchange="togglePaymentPanels('showroom')">
+                  <span><span class="radio-card__t">Pay at the boutique</span><span class="radio-card__d" style="display:block">We'll reserve your bag — pay by cash or card in store</span></span>
+                  <span class="pay-icons"><span data-icon="store"></span></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Summary -->
+          <aside class="sticky-col">
+            <div class="panel">
+              <div class="panel__title"><h2>Your order</h2><a href="cart.html" class="text-btn">Edit</a></div>
+              <div class="mini-items" id="checkoutOrderItems"></div>
+
+              <div class="field" style="margin-top:22px">
+                <label for="checkoutCouponInput">Voucher code</label>
+                <div class="coupon">
+                  <input type="text" id="checkoutCouponInput" placeholder="Enter code">
+                  <button type="button" class="btn btn-dark" onclick="handleCheckoutApplyCoupon()">Apply</button>
+                </div>
+                <p class="coupon-hint" id="chkCouponHint">First order? Try <button type="button" onclick="document.getElementById('checkoutCouponInput').value='WELCOME10'; handleCheckoutApplyCoupon()">WELCOME10</button> for 10% off.</p>
+              </div>
+
+              <div class="summary-rows" style="margin-top:22px;padding-top:20px;border-top:1px solid var(--line)">
+                <div><span class="muted">Subtotal</span><span id="chkSubtotal">Rs. 0</span></div>
+                <div id="chkDiscountRow" class="green hidden"><span id="chkDiscountLabel">Voucher</span><span id="chkDiscountVal">−Rs. 0</span></div>
+                <div><span class="muted">Delivery</span><span id="chkShippingFee">Rs. 350</span></div>
+              </div>
+              <div class="summary-total"><span>Total</span><b id="chkGrandTotal">Rs. 0</b></div>
+
+              <label class="check" style="margin-top:20px">
+                <input type="checkbox" required checked>
+                <span>I agree to CLARA's 7-day inspection &amp; exchange guarantee and delivery terms.</span>
+              </label>
+
+              <button type="submit" id="chkPlaceOrderBtn" class="btn btn-rose btn-block" style="margin-top:18px">
+                <span id="chkBtnIcon" data-icon="lock"></span><span id="chkBtnText">Place order</span>
+              </button>
+              <p class="secure-note">Questions? WhatsApp us on 077 317 3217</p>
+            </div>
+          </aside>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script>Clara.footer();</script>
+
   <script>
     let activeShippingMethod = "western";
 
     document.addEventListener("DOMContentLoaded", () => {
-      const cart = getCart();
-      if (cart.length === 0) {
-        window.location.href = "cart.html";
-        return;
-      }
+      if (getCart().length === 0) { window.location.href = "cart.html"; return; }
       renderCheckoutReview();
     });
 
     function renderCheckoutReview() {
       const cart = getCart();
-      const container = document.getElementById("checkoutOrderItems");
       const totals = calculateOrderTotals(activeShippingMethod);
 
-      // Render Items
-      container.innerHTML = cart.map(item => `
-        <div class="py-3 flex items-center justify-between gap-3 text-xs">
-          <div class="flex items-center gap-3 min-w-0">
-            <img src="${item.image}" alt="${item.name}" class="w-12 h-16 object-cover bg-neutral-100 border border-neutral-200 flex-shrink-0">
-            <div class="min-w-0">
-              <h5 class="font-medium text-neutral-900 truncate">${item.name}</h5>
-              <p class="text-[11px] text-neutral-500">Color: ${item.color} • Qty: ${item.quantity}</p>
-            </div>
-          </div>
-          <span class="font-editorial text-sm text-neutral-900 flex-shrink-0">
-            ${formatLKR(item.price * item.quantity)}
-          </span>
-        </div>
-      `).join('');
+      document.getElementById("checkoutOrderItems").innerHTML = cart.map(item => `
+        <div class="mini-item">
+          <div class="thumb"><img src="${item.image}" alt="${item.name}"><em>${item.quantity}</em></div>
+          <div><b>${item.name}</b><span>${item.color}</span></div>
+          <span class="p">${formatLKR(item.price * item.quantity)}</span>
+        </div>`).join("");
 
-      // Update Breakdown
       document.getElementById("chkSubtotal").textContent = formatLKR(totals.subtotal);
-      
+
       const discountRow = document.getElementById("chkDiscountRow");
       if (totals.discountAmount > 0) {
         discountRow.classList.remove("hidden");
         document.getElementById("chkDiscountLabel").textContent = `Voucher (${totals.coupon.code})`;
-        document.getElementById("chkDiscountVal").textContent = `-${formatLKR(totals.discountAmount)}`;
+        document.getElementById("chkDiscountVal").textContent = `−${formatLKR(totals.discountAmount)}`;
+        document.getElementById("checkoutCouponInput").value = totals.coupon.code;
+        document.getElementById("chkCouponHint").classList.add("hidden");
       } else {
         discountRow.classList.add("hidden");
       }
 
-      const shippingFeeElem = document.getElementById("chkShippingFee");
-      if (totals.isFreeDelivery) {
-        shippingFeeElem.textContent = "Complimentary";
-        shippingFeeElem.className = "text-emerald-700 font-medium";
-      } else {
-        shippingFeeElem.textContent = formatLKR(totals.shippingFee);
-        shippingFeeElem.className = "font-medium text-neutral-900";
-      }
+      const fee = document.getElementById("chkShippingFee");
+      fee.textContent = totals.isFreeDelivery ? "Free" : formatLKR(totals.shippingFee);
+      fee.className = totals.isFreeDelivery ? "green" : "";
 
       document.getElementById("chkGrandTotal").textContent = formatLKR(totals.grandTotal);
 
-      // Free shipping indicators in radio labels
-      const westText = document.getElementById("rateWesternText");
-      const islText = document.getElementById("rateIslandwideText");
-      if (totals.subtotal >= totals.freeDeliveryThreshold) {
-        westText.textContent = "Complimentary";
-        westText.className = "font-semibold text-xs text-emerald-700";
-        islText.textContent = "Complimentary";
-        islText.className = "font-semibold text-xs text-emerald-700";
-      } else {
-        westText.textContent = "Rs. 350";
-        westText.className = "font-semibold text-xs text-neutral-900";
-        islText.textContent = "Rs. 550";
-        islText.className = "font-semibold text-xs text-neutral-900";
-      }
+      const free = totals.subtotal >= totals.freeDeliveryThreshold;
+      const west = document.getElementById("rateWesternText");
+      const isl = document.getElementById("rateIslandwideText");
+      west.textContent = free ? "Free" : "Rs. 350";
+      isl.textContent = free ? "Free" : "Rs. 550";
+      west.classList.toggle("green", free);
+      isl.classList.toggle("green", free);
     }
 
-    function handleShippingChange(method) {
-      activeShippingMethod = method;
-      renderCheckoutReview();
-    }
+    function handleShippingChange(method) { activeShippingMethod = method; renderCheckoutReview(); }
 
-    function togglePaymentPanels(selectedMode) {
-      const cardPanel = document.getElementById("cardFieldsPanel");
-      const bankPanel = document.getElementById("bankDetailsPanel");
-
-      if (selectedMode === "card") {
-        cardPanel.classList.remove("hidden");
-        bankPanel.classList.add("hidden");
-      } else if (selectedMode === "bank_transfer") {
-        cardPanel.classList.add("hidden");
-        bankPanel.classList.remove("hidden");
-      } else {
-        cardPanel.classList.add("hidden");
-        bankPanel.classList.add("hidden");
-      }
+    function togglePaymentPanels(mode) {
+      document.getElementById("cardFieldsPanel").classList.toggle("hidden", mode !== "card");
+      document.getElementById("bankDetailsPanel").classList.toggle("hidden", mode !== "bank_transfer");
     }
 
     function handlePlaceOrder(event) {
       event.preventDefault();
-
       const btn = document.getElementById("chkPlaceOrderBtn");
       const btnText = document.getElementById("chkBtnText");
-      const btnIcon = document.getElementById("chkBtnIcon");
-
       btn.disabled = true;
-      btnText.textContent = "Securing Order...";
-      btnIcon.className = "fas fa-spinner fa-spin text-xs";
-
-      const paymentMethod = document.querySelector('input[name="chkPayment"]:checked').value;
+      btnText.textContent = "Placing your order…";
 
       const checkoutForm = {
         firstName: document.getElementById("chkFirstName").value.trim(),
@@ -672,7 +232,7 @@
         city: document.getElementById("chkCity").value.trim(),
         postalCode: document.getElementById("chkPostal").value.trim(),
         shippingMethod: activeShippingMethod,
-        paymentMethod: paymentMethod,
+        paymentMethod: document.querySelector('input[name="chkPayment"]:checked').value,
         notes: document.getElementById("chkNotes").value.trim()
       };
 
@@ -681,22 +241,18 @@
         if (result.success) {
           window.location.href = "order-confirmation.html";
         } else {
-          alert(result.message);
+          showToast(result.message);
           btn.disabled = false;
-          btnText.textContent = "Place Order & Confirm";
-          btnIcon.className = "fas fa-lock text-xs";
+          btnText.textContent = "Place order";
         }
       }, 900);
     }
 
     function handleCheckoutApplyCoupon() {
-      const input = document.getElementById("checkoutCouponInput");
-      const code = input ? input.value : "";
-      const res = applyCouponCode(code);
+      const res = applyCouponCode(document.getElementById("checkoutCouponInput").value);
       showToast(res.message);
       renderCheckoutReview();
     }
   </script>
 </body>
 </html>
-
