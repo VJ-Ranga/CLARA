@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed | CLARA Bags Sri Lanka</title>
+  <meta name="description" content="Thank you for your order. Your luxury handbag purchase has been confirmed and is being prepared for dispatch.">
+  
+  <link rel="icon" type="image/jpeg" href="assets/clara-rose-logo.jpg">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#121214',
+            charcoal: '#1A1A1E',
+            warmSilk: '#FAF8F5',
+            ecru: '#F4F0E8',
+            sand: '#E8E2D5',
+            gold: '#C5A880',
+            goldMuted: '#A68A68',
+            wine: '#7A1B24'
+          },
+          fontFamily: {
+            editorial: ['Cormorant Garamond', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
+          },
+          letterSpacing: {
+            'micro': '0.15em',
+            'ultra': '0.22em',
+            'mega': '0.32em'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Bespoke Luxury Stylesheet -->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="bg-[#FAF8F5] text-[#1A1A1E] font-sans antialiased selection:bg-[#7A1B24] selection:text-white">
+
+  <!-- Top Announcement Strip -->
+  <div class="bg-[#121214] text-[#D8D2C5] py-2.5 px-4 sm:px-8 text-[11px] tracking-ultra uppercase border-b border-white/10">
+    <div class="max-w-[1840px] w-full mx-auto flex items-center justify-center md:justify-between gap-4">
+      <div class="flex items-center gap-2.5 whitespace-nowrap">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
+        <span class="text-white/90">Complimentary Islandwide Courier Delivery Over Rs. 10,000</span>
+      </div>
+      <div class="hidden md:flex items-center gap-6 text-[11px] text-neutral-400 whitespace-nowrap">
+        <span>Mount Lavinia Flagship: No. 587/A Galle Road</span>
+        <span class="text-white/20">|</span>
+        <a href="tel:0773173217" class="hover:text-white transition text-[#C5A880]">
+          Client Care: 077 317 3217
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Luxury Header -->
+  <header class="sticky top-0 z-40 bg-[#FAF8F5]/96 backdrop-blur-md hairline-b transition-all">
+    <div class="max-w-[1840px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 h-22 sm:h-24 flex items-center justify-between gap-6">
+      
+      <!-- LEFT: Brand Logo & Emblem -->
+      <a href="index.html" class="flex items-center gap-4 group flex-shrink-0" title="CLARA Bags Homepage">
+        <div class="brand-emblem-wrap">
+          <img src="assets/clara-rose-logo.jpg" alt="CLARA Rose Blossom Emblem" class="w-full h-full object-cover">
+        </div>
+        <div class="flex flex-col">
+          <span class="font-editorial text-2xl sm:text-3xl lg:text-[32px] font-light tracking-[0.26em] text-[#121214] group-hover:text-[#7A1B24] transition-colors leading-none uppercase">
+            CLARA
+          </span>
+          <span class="text-[9.5px] font-medium uppercase tracking-mega text-[#A68A68] mt-1.5">
+            Atelier • Sri Lanka
+          </span>
+        </div>
+      </a>
+
+      <!-- CENTER: Navigation Menu -->
+      <nav class="hidden lg:flex items-center gap-6 xl:gap-9 text-[11px] font-medium tracking-ultra uppercase text-neutral-800 whitespace-nowrap">
+        <a href="shop.html" class="hover:text-[#7A1B24] transition">All Handbags</a>
+        <a href="shop.html?cat=vanity" class="hover:text-[#7A1B24] transition">Structured Vanity</a>
+        <a href="shop.html?cat=totes" class="hover:text-[#7A1B24] transition">Work & Totes</a>
+        <a href="shop.html?cat=crossbody" class="hover:text-[#7A1B24] transition">Crossbody</a>
+        <a href="about.html" class="hover:text-[#7A1B24] transition">The Atelier</a>
+        <a href="contact.html" class="hover:text-[#7A1B24] transition">Showroom</a>
+      </nav>
+
+      <!-- RIGHT: Utilities -->
+      <div class="flex items-center gap-4 flex-shrink-0">
+        <a href="shop.html" class="p-2 text-neutral-700 hover:text-black transition" title="Search Handbags">
+          <i class="fas fa-search text-sm"></i>
+        </a>
+
+        <!-- Shopping Bag Link -->
+        <a 
+          href="cart.html" 
+          class="relative flex items-center gap-2 px-3.5 py-1.5 border border-neutral-300 hover:border-black bg-white transition group"
+          title="View Shopping Bag"
+        >
+          <i class="fas fa-shopping-bag text-xs text-neutral-800 group-hover:text-[#7A1B24]"></i>
+          <span class="text-[10px] tracking-ultra uppercase font-medium text-neutral-800">Bag</span>
+        </a>
+
+        <button 
+          type="button" 
+          onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" 
+          class="lg:hidden p-2 text-neutral-800 hover:text-black transition"
+          aria-label="Toggle Navigation"
+        >
+          <i class="fas fa-bars text-lg"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-[#FAF8F5] hairline-b px-6 py-5 space-y-4 text-xs tracking-ultra uppercase">
+      <a href="shop.html" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">All Handbags</a>
+      <a href="shop.html?cat=vanity" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Structured Vanity</a>
+      <a href="shop.html?cat=totes" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Work & Laptop Totes</a>
+      <a href="shop.html?cat=crossbody" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Crossbody & Slings</a>
+      <a href="about.html" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">The Atelier Story</a>
+      <a href="contact.html" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Mount Lavinia Showroom</a>
+      <a href="cart.html" class="block font-medium text-[#7A1B24]">View Shopping Bag</a>
+    </div>
+  </header>
+
+  <!-- Main Order Confirmation -->
+  <main class="py-12 lg:py-20 bg-[#FAF8F5]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div id="orderConfirmationWrapper" class="space-y-10">
+        <!-- Injected by script -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#121214] text-white pt-16 pb-12 mt-16">
+    <div class="luxury-container text-center text-xs text-neutral-500 space-y-2">
+      <p>© 2026 CLARA Bags (DJ Industries). All Rights Reserved.</p>
+      <p>Showroom: No. 587/A, Galle Road, Mount Lavinia, Sri Lanka • Hotline: 077 317 3217</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/products-data.js"></script>
+  <script src="js/store.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const order = getLastOrder();
+      const wrapper = document.getElementById("orderConfirmationWrapper");
+
+      if (!order) {
+        wrapper.innerHTML = `
+          <div class="py-20 text-center">
+            <h2 class="font-editorial text-3xl font-light text-neutral-900 mb-2">No Recent Order Found</h2>
+            <p class="text-xs text-neutral-500 mb-6">You have not placed an order during this session.</p>
+            <a href="shop.html" class="inline-block px-8 py-3.5 bg-[#121214] text-white text-[11px] font-medium tracking-ultra uppercase">
+              Explore The Collection
+            </a>
+          </div>
+        `;
+        return;
+      }
+
+      const paymentTitles = {
+        card: "Credit / Debit Card (Online)",
+        bank_transfer: "Direct Bank Deposit",
+        cod: "Cash on Delivery (COD)",
+        showroom: "Showroom Collection (Mount Lavinia)"
+      };
+
+      wrapper.innerHTML = `
+        <!-- Success Banner -->
+        <div class="text-center space-y-3 pb-8 hairline-b">
+          <div class="w-16 h-16 mx-auto rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center text-2xl border border-emerald-200">
+            <i class="fas fa-check"></i>
+          </div>
+          <span class="text-[10px] tracking-mega uppercase font-medium text-[#C5A880] block">Order Successfully Placed</span>
+          <h1 class="font-editorial text-4xl sm:text-5xl font-light text-neutral-900">
+            Thank you, ${order.customer.firstName}.
+          </h1>
+          <p class="text-xs sm:text-sm text-neutral-600 max-w-lg mx-auto leading-relaxed">
+            Your order <strong>#${order.orderNumber}</strong> has been recorded. A confirmation receipt has been scheduled for <strong>${order.customer.email}</strong>.
+          </p>
+        </div>
+
+        <!-- Order Meta Summary Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-5 bg-white border border-neutral-300/80 shadow-2xs text-xs">
+          <div>
+            <span class="text-[10px] tracking-ultra uppercase text-neutral-400 block mb-0.5">Order Number</span>
+            <span class="font-mono font-bold text-neutral-900">#${order.orderNumber}</span>
+          </div>
+          <div>
+            <span class="text-[10px] tracking-ultra uppercase text-neutral-400 block mb-0.5">Date</span>
+            <span class="text-neutral-900 font-medium">${order.orderDate}</span>
+          </div>
+          <div>
+            <span class="text-[10px] tracking-ultra uppercase text-neutral-400 block mb-0.5">Total Amount</span>
+            <span class="font-editorial text-base text-neutral-900 font-normal">${formatLKR(order.grandTotal)}</span>
+          </div>
+          <div>
+            <span class="text-[10px] tracking-ultra uppercase text-neutral-400 block mb-0.5">Payment Method</span>
+            <span class="text-neutral-900 font-medium">${paymentTitles[order.paymentMethod] || order.paymentMethod}</span>
+          </div>
+        </div>
+
+        <!-- Conditional Payment Instructions Notice -->
+        ${order.paymentMethod === 'bank_transfer' ? `
+          <div class="p-6 bg-[#F4F0E8] border border-neutral-300/80 space-y-3">
+            <div class="flex items-center gap-2 text-neutral-900 font-medium text-xs uppercase tracking-ultra">
+              <i class="fas fa-university text-[#7A1B24]"></i>
+              <span>Direct Bank Deposit Instructions</span>
+            </div>
+            <p class="text-xs text-neutral-700 leading-relaxed">
+              Please transfer <strong>${formatLKR(order.grandTotal)}</strong> to our official corporate account within 24 hours to secure dispatch:
+            </p>
+            <div class="p-4 bg-white border border-neutral-200 font-mono text-xs space-y-1 text-neutral-800">
+              <p><strong>Bank:</strong> Commercial Bank of Ceylon PLC</p>
+              <p><strong>Account Name:</strong> CLARA BAGS (DJ INDUSTRIES)</p>
+              <p><strong>Account Number:</strong> 8003492819</p>
+              <p><strong>Branch:</strong> Mount Lavinia</p>
+              <p><strong>Reference:</strong> ${order.orderNumber}</p>
+            </div>
+            <p class="text-[11px] text-neutral-600">
+              After depositing, please WhatsApp your deposit receipt slip along with your Order No <strong>#${order.orderNumber}</strong> to <strong>077 317 3217</strong>.
+            </p>
+          </div>
+        ` : ''}
+
+        ${order.paymentMethod === 'cod' ? `
+          <div class="p-5 bg-white border border-neutral-300/80 flex items-start gap-3.5">
+            <div class="w-8 h-8 rounded-full bg-amber-50 text-amber-700 flex items-center justify-center text-sm flex-shrink-0">
+              <i class="fas fa-truck"></i>
+            </div>
+            <div class="text-xs space-y-1">
+              <h4 class="font-medium text-neutral-900">Cash on Delivery Confirmation</h4>
+              <p class="text-neutral-600 leading-relaxed">
+                Our courier will contact you at <strong>${order.customer.phone}</strong> prior to delivery at <strong>${order.customer.address}, ${order.customer.city}</strong>. Please have the exact sum of <strong>${formatLKR(order.grandTotal)}</strong> prepared in cash.
+              </p>
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- Order Items Breakdown Table -->
+        <div class="bg-white border border-neutral-300/80 shadow-xs overflow-hidden">
+          <div class="p-4 bg-[#F4F0E8] hairline-b text-[10px] tracking-mega uppercase font-medium text-neutral-600 flex justify-between">
+            <span>Itemized Receipt</span>
+            <span>Total</span>
+          </div>
+
+          <div class="divide-y divide-neutral-200 p-4 space-y-3">
+            ${order.items.map(item => `
+              <div class="pt-3 first:pt-0 flex items-center justify-between gap-4 text-xs">
+                <div class="flex items-center gap-3">
+                  <img src="${item.image}" alt="${item.name}" class="w-12 h-16 object-cover bg-neutral-100 border border-neutral-200">
+                  <div>
+                    <h5 class="font-medium text-neutral-900">${item.name}</h5>
+                    <p class="text-[11px] text-neutral-500 font-mono">${item.sku} • Color: ${item.color} • Qty: ${item.quantity}</p>
+                  </div>
+                </div>
+                <span class="font-editorial text-base text-neutral-900">${formatLKR(item.price * item.quantity)}</span>
+              </div>
+            `).join('')}
+          </div>
+
+          <div class="p-5 bg-[#FAF8F5] hairline-t space-y-2 text-xs text-neutral-600">
+            <div class="flex justify-between">
+              <span>Subtotal</span>
+              <span class="font-medium text-neutral-900">${formatLKR(order.subtotal)}</span>
+            </div>
+
+            ${order.discount > 0 ? `
+              <div class="flex justify-between text-emerald-700 font-medium">
+                <span>Voucher Discount</span>
+                <span>-${formatLKR(order.discount)}</span>
+              </div>
+            ` : ''}
+
+            <div class="flex justify-between">
+              <span>Courier Delivery (${order.shippingMethod.name})</span>
+              <span class="font-medium text-neutral-900">${order.shippingFee === 0 ? 'Complimentary' : formatLKR(order.shippingFee)}</span>
+            </div>
+
+            <div class="pt-3 hairline-t flex justify-between items-baseline text-sm">
+              <span class="text-xs uppercase tracking-ultra font-medium text-neutral-900">Total Paid / Payable</span>
+              <span class="font-editorial text-2xl font-light text-neutral-900">${formatLKR(order.grandTotal)}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Delivery Address Recap -->
+        <div class="p-6 bg-white border border-neutral-300/80 shadow-2xs grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+          <div>
+            <h4 class="text-[10px] tracking-mega uppercase font-medium text-neutral-400 mb-2">Delivery Destination</h4>
+            <p class="font-medium text-neutral-900">${order.customer.firstName} ${order.customer.lastName}</p>
+            <p class="text-neutral-600">${order.customer.address}</p>
+            <p class="text-neutral-600">${order.customer.city}${order.customer.postalCode ? ', ' + order.customer.postalCode : ''}</p>
+            <p class="text-neutral-600">Sri Lanka</p>
+          </div>
+
+          <div>
+            <h4 class="text-[10px] tracking-mega uppercase font-medium text-neutral-400 mb-2">Contact Details</h4>
+            <p class="text-neutral-600">Mobile / WhatsApp: <strong class="text-neutral-900">${order.customer.phone}</strong></p>
+            <p class="text-neutral-600">Email: <strong class="text-neutral-900">${order.customer.email}</strong></p>
+            ${order.customer.notes ? `<p class="text-neutral-500 mt-2"><strong>Notes:</strong> ${order.customer.notes}</p>` : ''}
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
+          <a 
+            href="shop.html" 
+            class="w-full sm:w-auto px-8 py-4 bg-[#121214] text-white hover:bg-neutral-800 text-[11px] font-medium tracking-ultra uppercase transition text-center"
+          >
+            Continue Browsing
+          </a>
+
+          <button 
+            type="button" 
+            onclick="window.print()" 
+            class="w-full sm:w-auto px-6 py-4 bg-white border border-neutral-300 text-neutral-800 hover:border-black text-[11px] font-medium tracking-ultra uppercase transition flex items-center justify-center gap-2"
+          >
+            <i class="fas fa-print text-xs"></i>
+            <span>Print Receipt</span>
+          </button>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>
+

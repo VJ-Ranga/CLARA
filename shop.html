@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Collection | CLARA Bags Sri Lanka</title>
+  <meta name="description" content="Explore our complete collection of handcrafted handbags, structured vanity bags, executive totes, and evening minaudières. Order online with islandwide courier delivery.">
+  
+  <link rel="icon" type="image/jpeg" href="assets/clara-rose-logo.jpg">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#121214',
+            charcoal: '#1A1A1E',
+            warmSilk: '#FAF8F5',
+            ecru: '#F4F0E8',
+            sand: '#E8E2D5',
+            gold: '#C5A880',
+            goldMuted: '#A68A68',
+            wine: '#7A1B24'
+          },
+          fontFamily: {
+            editorial: ['Cormorant Garamond', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
+          },
+          letterSpacing: {
+            'micro': '0.15em',
+            'ultra': '0.22em',
+            'mega': '0.32em'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Bespoke Luxury Stylesheet -->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="bg-[#FAF8F5] text-[#1A1A1E] font-sans antialiased selection:bg-[#7A1B24] selection:text-white">
+
+  <!-- Top Announcement Strip -->
+  <div class="bg-[#121214] text-[#D8D2C5] py-2.5 px-4 sm:px-8 text-[11px] tracking-ultra uppercase border-b border-white/10">
+    <div class="max-w-[1840px] w-full mx-auto flex items-center justify-center md:justify-between gap-4">
+      <div class="flex items-center gap-2.5 whitespace-nowrap">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
+        <span class="text-white/90">Complimentary Islandwide Courier Delivery Over Rs. 10,000</span>
+      </div>
+      <div class="hidden md:flex items-center gap-6 text-[11px] text-neutral-400 whitespace-nowrap">
+        <span>Mount Lavinia Flagship: No. 587/A Galle Road</span>
+        <span class="text-white/20">|</span>
+        <a href="tel:0773173217" class="hover:text-white transition text-[#C5A880]">
+          Client Care: 077 317 3217
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Luxury Header -->
+  <header class="sticky top-0 z-40 bg-[#FAF8F5]/96 backdrop-blur-md hairline-b transition-all">
+    <div class="max-w-[1840px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 h-22 sm:h-24 flex items-center justify-between gap-6">
+      
+      <!-- LEFT: Brand Logo & Emblem -->
+      <a href="index.html" class="flex items-center gap-4 group flex-shrink-0" title="CLARA Bags Homepage">
+        <div class="brand-emblem-wrap">
+          <img src="assets/clara-rose-logo.jpg" alt="CLARA Rose Blossom Emblem" class="w-full h-full object-cover">
+        </div>
+        <div class="flex flex-col">
+          <span class="font-editorial text-2xl sm:text-3xl lg:text-[32px] font-light tracking-[0.26em] text-[#121214] group-hover:text-[#7A1B24] transition-colors leading-none uppercase">
+            CLARA
+          </span>
+          <span class="text-[9.5px] font-medium uppercase tracking-mega text-[#A68A68] mt-1.5">
+            Atelier • Sri Lanka
+          </span>
+        </div>
+      </a>
+
+      <!-- CENTER: Navigation Menu -->
+      <nav class="hidden lg:flex items-center gap-6 xl:gap-9 text-[11px] font-medium tracking-ultra uppercase text-neutral-800 whitespace-nowrap">
+        <a href="shop.html" class="text-[#7A1B24] font-semibold transition">All Handbags</a>
+        <a href="shop.html?cat=vanity" class="hover:text-[#7A1B24] transition">Structured Vanity</a>
+        <a href="shop.html?cat=totes" class="hover:text-[#7A1B24] transition">Work & Totes</a>
+        <a href="shop.html?cat=crossbody" class="hover:text-[#7A1B24] transition">Crossbody</a>
+        <a href="about.html" class="hover:text-[#7A1B24] transition">The Atelier</a>
+        <a href="contact.html" class="hover:text-[#7A1B24] transition">Showroom</a>
+      </nav>
+
+      <!-- RIGHT: Utilities (Search, Cart, Mobile Menu) -->
+      <div class="flex items-center gap-4 flex-shrink-0">
+        <a href="shop.html" class="p-2.5 text-neutral-700 hover:text-black transition" title="Search Handbags">
+          <i class="fas fa-search text-sm"></i>
+        </a>
+
+        <!-- Shopping Bag Trigger -->
+        <button 
+          type="button" 
+          onclick="openSlideCart()" 
+          class="relative flex items-center gap-2.5 px-4 py-2 border border-neutral-300 hover:border-black bg-white transition group shadow-2xs"
+          title="View Shopping Bag"
+        >
+          <i class="fas fa-shopping-bag text-xs text-neutral-800 group-hover:text-[#7A1B24]"></i>
+          <span class="text-[10px] tracking-ultra uppercase font-medium text-neutral-800">Bag</span>
+          <span class="cart-count-badge hidden w-4 h-4 bg-[#7A1B24] text-white text-[9px] font-medium rounded-full flex items-center justify-center">
+            0
+          </span>
+        </button>
+
+        <button 
+          type="button" 
+          onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" 
+          class="lg:hidden p-2 text-neutral-800 hover:text-black transition"
+          aria-label="Toggle Navigation"
+        >
+          <i class="fas fa-bars text-lg"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-[#FAF8F5] hairline-b px-6 py-5 space-y-4 text-xs tracking-ultra uppercase">
+      <a href="shop.html" class="block font-medium text-[#7A1B24]">All Handbags</a>
+      <a href="shop.html?cat=vanity" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Structured Vanity</a>
+      <a href="shop.html?cat=totes" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Work & Laptop Totes</a>
+      <a href="shop.html?cat=crossbody" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Crossbody & Slings</a>
+      <a href="about.html" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">The Atelier Story</a>
+      <a href="contact.html" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Mount Lavinia Showroom</a>
+      <a href="cart.html" class="block font-medium text-[#7A1B24]">View Shopping Bag</a>
+      <a href="checkout.html" class="block font-medium text-neutral-900">Direct Online Checkout</a>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="py-14 lg:py-20 bg-[#F4F0E8] hairline-b">
+    <div class="luxury-container text-center">
+      
+      <div class="breadcrumb-nav text-[10px] tracking-mega uppercase text-neutral-500 mb-3.5">
+        <a href="index.html">Home</a>
+        <span class="mx-2.5">•</span>
+        <span class="text-neutral-900">The Handbag Collection</span>
+      </div>
+
+      <h1 class="font-editorial text-4xl sm:text-5xl lg:text-6xl font-light text-neutral-900 tracking-tight">
+        The Handbag Collection
+      </h1>
+      <p class="text-xs sm:text-sm text-neutral-600 max-w-2xl mx-auto mt-3 font-normal leading-relaxed">
+        Explore handcrafted structured vanity bags, executive totes, crossbody saddles, and evening minaudières. Select your preferred colorway and order securely online with islandwide courier delivery.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Main Catalog Body -->
+  <main class="py-14 lg:py-20 bg-[#FAF8F5]">
+    <div class="luxury-container">
+      
+      <!-- Filter Controls Bar -->
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 hairline-b mb-12">
+        
+        <!-- Category Tab Buttons -->
+        <div class="flex items-center gap-2.5 overflow-x-auto pb-2 scrollbar-none">
+          <button type="button" data-cat="all" class="cat-pill active px-4 py-2.5 text-[10px] tracking-ultra uppercase font-medium border border-neutral-900 bg-neutral-900 text-white transition whitespace-nowrap shadow-2xs">
+            All Silhouettes
+          </button>
+          <button type="button" data-cat="vanity" class="cat-pill px-4 py-2.5 text-[10px] tracking-ultra uppercase font-medium border border-neutral-300 bg-white text-neutral-700 hover:border-black transition whitespace-nowrap shadow-2xs">
+            Structured Vanity
+          </button>
+          <button type="button" data-cat="totes" class="cat-pill px-4 py-2.5 text-[10px] tracking-ultra uppercase font-medium border border-neutral-300 bg-white text-neutral-700 hover:border-black transition whitespace-nowrap shadow-2xs">
+            Work & Totes
+          </button>
+          <button type="button" data-cat="crossbody" class="cat-pill px-4 py-2.5 text-[10px] tracking-ultra uppercase font-medium border border-neutral-300 bg-white text-neutral-700 hover:border-black transition whitespace-nowrap shadow-2xs">
+            Crossbody & Slings
+          </button>
+          <button type="button" data-cat="shoulder" class="cat-pill px-4 py-2.5 text-[10px] tracking-ultra uppercase font-medium border border-neutral-300 bg-white text-neutral-700 hover:border-black transition whitespace-nowrap shadow-2xs">
+            Shoulder Satchels
+          </button>
+          <button type="button" data-cat="clutches" class="cat-pill px-4 py-2.5 text-[10px] tracking-ultra uppercase font-medium border border-neutral-300 bg-white text-neutral-700 hover:border-black transition whitespace-nowrap shadow-2xs">
+            Evening Clutches
+          </button>
+          <button type="button" data-cat="travel" class="cat-pill px-4 py-2.5 text-[10px] tracking-ultra uppercase font-medium border border-neutral-300 bg-white text-neutral-700 hover:border-black transition whitespace-nowrap shadow-2xs">
+            Travel Holdalls
+          </button>
+          <button type="button" data-cat="wallets" class="cat-pill px-4 py-2.5 text-[10px] tracking-ultra uppercase font-medium border border-neutral-300 bg-white text-neutral-700 hover:border-black transition whitespace-nowrap shadow-2xs">
+            Wallets & Cardholders
+          </button>
+        </div>
+
+        <!-- Search & Sort Row -->
+        <div class="flex items-center gap-3">
+          <!-- Search input -->
+          <div class="relative w-full sm:w-68">
+            <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400 text-xs"></i>
+            <input 
+              type="text" 
+              id="catalogSearchInput" 
+              placeholder="Search silhouettes, SKU, shade..." 
+              class="w-full pl-9 pr-3 py-2.5 bg-white border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-black shadow-2xs"
+            >
+          </div>
+
+          <!-- Sort select -->
+          <select 
+            id="catalogSortSelect" 
+            class="px-3.5 py-2.5 bg-white border border-neutral-300 text-xs text-neutral-800 focus:outline-none focus:border-black cursor-pointer font-medium shadow-2xs"
+          >
+            <option value="featured">Sort: Curated</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Top Client Rated</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- Result Count Tag -->
+      <div class="flex items-center justify-between text-xs text-neutral-500 mb-8">
+        <span id="catalogCountText" class="tracking-ultra uppercase text-[10px] font-medium text-neutral-600">Displaying silhouettes</span>
+      </div>
+
+      <!-- Products Grid (Full-Width Sculptural 2026 Layout) -->
+      <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 xl:gap-10">
+        <!-- Rendered by JavaScript -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Slide-Over Shopping Bag Drawer -->
+  <div id="slideCartDrawer" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-200 flex justify-end">
+    <div class="slide-cart-panel w-full max-w-md bg-[#FAF8F5] h-full flex flex-col shadow-2xl transform translate-x-full border-l border-neutral-300/60">
+      
+      <div class="p-5 border-b border-neutral-200 bg-white flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i class="fas fa-shopping-bag text-neutral-900 text-sm"></i>
+          <h3 class="font-editorial text-xl font-normal text-neutral-900">Your Shopping Bag</h3>
+        </div>
+        <button onclick="closeSlideCart()" class="p-2 text-neutral-400 hover:text-black transition" title="Close Drawer">
+          <i class="fas fa-times text-sm"></i>
+        </button>
+      </div>
+
+      <div class="p-4 bg-[#F4F0E8] border-b border-neutral-200/80">
+        <div class="text-[11px] text-neutral-700 mb-1.5" id="slideCartFreeShipText">
+          Add more items for <strong>Complimentary Islandwide Delivery</strong>
+        </div>
+        <div class="w-full h-1.5 bg-neutral-200 rounded-full overflow-hidden">
+          <div id="slideCartFreeShipBar" class="h-1.5 bg-[#121214] transition-all duration-300" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <div id="slideCartItems" class="flex-grow overflow-y-auto p-4 space-y-3"></div>
+
+      <div class="p-5 border-t border-neutral-200 bg-white space-y-3">
+        <div class="flex justify-between items-baseline text-sm">
+          <span class="text-neutral-500 uppercase tracking-ultra text-[10px]">Subtotal</span>
+          <span id="slideCartSubtotal" class="font-editorial text-2xl font-light text-neutral-900">Rs. 0</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2.5 pt-2">
+          <a 
+            href="cart.html" 
+            class="w-full py-3.5 bg-white border border-neutral-300 hover:border-black text-neutral-900 text-center text-[11px] font-medium tracking-ultra uppercase transition"
+          >
+            View Full Cart
+          </a>
+
+          <a 
+            id="slideCartCheckoutBtn"
+            href="checkout.html" 
+            class="w-full py-3.5 bg-[#121214] hover:bg-[#7A1B24] text-white text-center text-[11px] font-medium tracking-ultra uppercase transition shadow-sm"
+          >
+            Checkout
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-[#121214] text-white pt-18 pb-14">
+    <div class="luxury-container">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-14 border-b border-white/10">
+        
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3.5">
+            <div class="w-12 h-12 rounded-full overflow-hidden bg-black flex items-center justify-center border-2 border-[#C5A880]/80 shadow-md">
+              <img src="assets/clara-rose-logo.jpg" alt="CLARA Rose Blossom" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <span class="font-editorial text-2xl sm:text-3xl font-light tracking-[0.25em] text-white leading-none uppercase">CLARA</span>
+              <span class="block text-[9px] font-normal uppercase tracking-mega text-[#A68A68] mt-0.5">Bags • Sri Lanka</span>
+            </div>
+          </div>
+          <p class="text-xs text-neutral-400 leading-relaxed max-w-sm">
+            We create new fashion and trend in the bag industry. Handcrafted luxury handbags, structured vanity bags, executive totes, and travel companions.
+          </p>
+          <p class="text-xs text-neutral-500">
+            Showroom: No. 587/A, Galle Road, Mount Lavinia, Sri Lanka<br>
+            Hotlines: 077 317 3217 / 011 703 7030
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-[11px] font-medium text-white tracking-ultra uppercase">Collections</h4>
+          <ul class="space-y-2 text-xs text-neutral-400">
+            <li><a href="shop.html?cat=vanity" class="hover:text-white transition">Structured Vanity</a></li>
+            <li><a href="shop.html?cat=totes" class="hover:text-white transition">Work & Laptop Totes</a></li>
+            <li><a href="shop.html?cat=crossbody" class="hover:text-white transition">Crossbody & Slings</a></li>
+            <li><a href="shop.html?cat=shoulder" class="hover:text-white transition">Shoulder Satchels</a></li>
+            <li><a href="shop.html?cat=clutches" class="hover:text-white transition">Evening Clutches</a></li>
+            <li><a href="shop.html?cat=travel" class="hover:text-white transition">Travel Holdalls</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-[11px] font-medium text-white tracking-ultra uppercase">Client Care</h4>
+          <ul class="space-y-2 text-xs text-neutral-400">
+            <li><a href="shop.html" class="hover:text-white transition">Shop All Products</a></li>
+            <li><a href="cart.html" class="hover:text-white transition">Shopping Cart</a></li>
+            <li><a href="checkout.html" class="hover:text-white transition">Direct Checkout</a></li>
+            <li><a href="about.html" class="hover:text-white transition">About Our Atelier</a></li>
+            <li><a href="contact.html" class="hover:text-white transition">Showroom Location</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-[11px] font-medium text-white tracking-ultra uppercase">Secure Payments</h4>
+          <p class="text-xs text-neutral-400 leading-relaxed">
+            We accept Visa, Mastercard, Direct Bank Transfer (Commercial/Sampath Bank), and Cash on Delivery across Sri Lanka.
+          </p>
+          <div class="pt-2 flex flex-wrap gap-2 text-neutral-400 text-xs">
+            <span class="px-2.5 py-1 border border-white/10 bg-white/5">Visa / Mastercard</span>
+            <span class="px-2.5 py-1 border border-white/10 bg-white/5">Bank Deposit</span>
+            <span class="px-2.5 py-1 border border-white/10 bg-white/5">Cash on Delivery</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
+        <p>© 2026 CLARA Bags (DJ Industries). All Rights Reserved.</p>
+        <p class="text-[11px]">Designed with WooCommerce Block Theme Architecture.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/products-data.js"></script>
+  <script src="js/store.js"></script>
+  <script>
+    let activeCategory = "all";
+    let searchQuery = "";
+    let sortOrder = "featured";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Read category from URL query parameters (e.g. ?cat=vanity)
+      const urlParams = new URLSearchParams(window.location.search);
+      const catParam = urlParams.get("cat");
+      if (catParam) {
+        activeCategory = catParam;
+      }
+
+      // Update active category pill
+      document.querySelectorAll(".cat-pill").forEach(btn => {
+        if (btn.getAttribute("data-cat") === activeCategory) {
+          btn.classList.add("bg-neutral-900", "text-white", "border-neutral-900");
+          btn.classList.remove("bg-white", "text-neutral-700", "border-neutral-300");
+        } else {
+          btn.classList.remove("bg-neutral-900", "text-white", "border-neutral-900");
+          btn.classList.add("bg-white", "text-neutral-700", "border-neutral-300");
+        }
+
+        btn.addEventListener("click", () => {
+          activeCategory = btn.getAttribute("data-cat");
+          document.querySelectorAll(".cat-pill").forEach(b => {
+            b.classList.remove("bg-neutral-900", "text-white", "border-neutral-900");
+            b.classList.add("bg-white", "text-neutral-700", "border-neutral-300");
+          });
+          btn.classList.add("bg-neutral-900", "text-white", "border-neutral-900");
+          btn.classList.remove("bg-white", "text-neutral-700", "border-neutral-300");
+          renderCatalog();
+        });
+      });
+
+      // Search input
+      const searchInput = document.getElementById("catalogSearchInput");
+      if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+          searchQuery = e.target.value.trim().toLowerCase();
+          renderCatalog();
+        });
+      }
+
+      // Sort select
+      const sortSelect = document.getElementById("catalogSortSelect");
+      if (sortSelect) {
+        sortSelect.addEventListener("change", (e) => {
+          sortOrder = e.target.value;
+          renderCatalog();
+        });
+      }
+
+      renderCatalog();
+    });
+
+    function renderCatalog() {
+      const grid = document.getElementById("catalogGrid");
+      const countText = document.getElementById("catalogCountText");
+      if (!grid) return;
+
+      let filtered = CLARA_PRODUCTS.filter(p => {
+        const matchesCat = activeCategory === "all" || p.category === activeCategory;
+        const matchesSearch = p.name.toLowerCase().includes(searchQuery) ||
+                              p.sku.toLowerCase().includes(searchQuery) ||
+                              p.categoryName.toLowerCase().includes(searchQuery) ||
+                              p.material.toLowerCase().includes(searchQuery);
+        return matchesCat && matchesSearch;
+      });
+
+      if (sortOrder === "price-low") {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (sortOrder === "price-high") {
+        filtered.sort((a, b) => b.price - a.price);
+      } else if (sortOrder === "rating") {
+        filtered.sort((a, b) => b.rating - a.rating);
+      }
+
+      if (countText) {
+        countText.textContent = `Displaying ${filtered.length} of ${CLARA_PRODUCTS.length} Silhouettes`;
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-20 text-center">
+            <p class="font-editorial text-2xl font-light text-neutral-800 mb-2">No silhouettes found</p>
+            <p class="text-xs text-neutral-500 mb-4">Try adjusting your category selection or search keywords.</p>
+            <button onclick="resetCatalogFilters()" class="px-6 py-2.5 bg-[#121214] text-white text-[11px] tracking-ultra uppercase">
+              Reset Filters
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(p => `
+        <article class="product-card-luxury group">
+          <div class="card-media-wrap">
+            <a href="product.html?id=${p.id}" class="block w-full h-full relative" aria-label="${p.name}">
+              <img src="${p.images[0]}" alt="${p.name}" class="card-primary-img" onerror="this.src='assets/banner.jpg'">
+              <img src="${p.images[1] || p.images[0]}" alt="${p.name}" class="card-secondary-img" onerror="this.src='assets/banner.jpg'">
+            </a>
+            
+            ${p.badge ? `
+              <div class="absolute top-3.5 left-3.5 z-10">
+                <span class="bg-[#FAF8F5]/95 backdrop-blur-xs text-[9px] tracking-mega uppercase font-medium px-2.5 py-1 text-neutral-900 border border-neutral-300/60 shadow-2xs">
+                  ${p.badge}
+                </span>
+              </div>
+            ` : ''}
+
+            <div class="absolute top-3.5 right-3.5 z-10">
+              <span class="font-mono text-[9px] text-white/90 bg-[#121214]/75 backdrop-blur-xs px-2 py-0.5 tracking-wider border border-white/10">
+                ${p.sku}
+              </span>
+            </div>
+
+            <div class="quick-actions-bar">
+              <a href="product.html?id=${p.id}" class="flex-1 py-3 bg-white/95 hover:bg-white text-neutral-900 text-center text-[10px] tracking-ultra uppercase font-medium shadow-sm transition">
+                Explore
+              </a>
+              <button onclick="addToCart(${p.id}, '${p.colors[0]}', 1)" class="flex-1 py-3 bg-[#121214] hover:bg-[#7A1B24] text-white text-center text-[10px] tracking-ultra uppercase font-medium shadow-sm transition">
+                Add to Bag
+              </button>
+            </div>
+          </div>
+
+          <div class="pt-4 flex flex-col justify-between flex-grow">
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-[10px] tracking-ultra uppercase font-medium text-neutral-400">${p.categoryName}</span>
+                <div class="flex items-center gap-1.5" title="${p.colors.join(', ')}">
+                  ${p.colorHex.map((c, i) => `
+                    <span class="color-swatch-dot" style="background-color: ${c}" title="${p.colors[i] || ''}"></span>
+                  `).join('')}
+                </div>
+              </div>
+              <h3 class="font-editorial text-xl sm:text-2xl font-light text-neutral-900 hover:text-[#7A1B24] transition leading-snug">
+                <a href="product.html?id=${p.id}">${p.name}</a>
+              </h3>
+            </div>
+            
+            <div class="mt-3 pt-2.5 border-t border-neutral-200/50 flex flex-col gap-1.5">
+              <div class="flex items-baseline gap-2.5">
+                <span class="font-editorial text-2xl font-light text-neutral-900">${formatLKR(p.price)}</span>
+                ${p.originalPrice ? `<span class="text-xs text-neutral-400 line-through">${formatLKR(p.originalPrice)}</span>` : ''}
+              </div>
+              <div class="installment-pill">
+                <span class="installment-badge">KOKO</span>
+                <span>Or 3 × ${formatLKR(Math.round(p.price / 3))}</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function resetCatalogFilters() {
+      activeCategory = "all";
+      searchQuery = "";
+      document.getElementById("catalogSearchInput").value = "";
+      document.querySelectorAll(".cat-pill").forEach(b => {
+        if (b.getAttribute("data-cat") === "all") {
+          b.classList.add("bg-neutral-900", "text-white", "border-neutral-900");
+          b.classList.remove("bg-white", "text-neutral-700", "border-neutral-300");
+        } else {
+          b.classList.remove("bg-neutral-900", "text-white", "border-neutral-900");
+          b.classList.add("bg-white", "text-neutral-700", "border-neutral-300");
+        }
+      });
+      renderCatalog();
+    }
+  </script>
+</body>
+</html>
+

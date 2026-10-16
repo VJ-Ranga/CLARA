@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Bag | CLARA Bags Sri Lanka</title>
+  <meta name="description" content="Review your selected luxury handbags, choose your shipping destination, and proceed to secure checkout.">
+  
+  <link rel="icon" type="image/jpeg" href="assets/clara-rose-logo.jpg">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#121214',
+            charcoal: '#1A1A1E',
+            warmSilk: '#FAF8F5',
+            ecru: '#F4F0E8',
+            sand: '#E8E2D5',
+            gold: '#C5A880',
+            goldMuted: '#A68A68',
+            wine: '#7A1B24'
+          },
+          fontFamily: {
+            editorial: ['Cormorant Garamond', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
+          },
+          letterSpacing: {
+            'micro': '0.15em',
+            'ultra': '0.22em',
+            'mega': '0.32em'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Bespoke Luxury Stylesheet -->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="bg-[#FAF8F5] text-[#1A1A1E] font-sans antialiased selection:bg-[#7A1B24] selection:text-white">
+
+  <!-- Top Announcement Strip -->
+  <div class="bg-[#121214] text-[#D8D2C5] py-2.5 px-4 sm:px-8 text-[11px] tracking-ultra uppercase border-b border-white/10">
+    <div class="max-w-[1840px] w-full mx-auto flex items-center justify-center md:justify-between gap-4">
+      <div class="flex items-center gap-2.5 whitespace-nowrap">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
+        <span class="text-white/90">Complimentary Islandwide Courier Delivery Over Rs. 10,000</span>
+      </div>
+      <div class="hidden md:flex items-center gap-6 text-[11px] text-neutral-400 whitespace-nowrap">
+        <span>Mount Lavinia Flagship: No. 587/A Galle Road</span>
+        <span class="text-white/20">|</span>
+        <a href="tel:0773173217" class="hover:text-white transition text-[#C5A880]">
+          Client Care: 077 317 3217
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Luxury Header -->
+  <header class="sticky top-0 z-40 bg-[#FAF8F5]/96 backdrop-blur-md hairline-b transition-all">
+    <div class="max-w-[1840px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 h-22 sm:h-24 flex items-center justify-between gap-6">
+      
+      <!-- LEFT: Brand Logo & Emblem -->
+      <a href="index.html" class="flex items-center gap-4 group flex-shrink-0" title="CLARA Bags Homepage">
+        <div class="brand-emblem-wrap">
+          <img src="assets/clara-rose-logo.jpg" alt="CLARA Rose Blossom Emblem" class="w-full h-full object-cover">
+        </div>
+        <div class="flex flex-col">
+          <span class="font-editorial text-2xl sm:text-3xl lg:text-[32px] font-light tracking-[0.26em] text-[#121214] group-hover:text-[#7A1B24] transition-colors leading-none uppercase">
+            CLARA
+          </span>
+          <span class="text-[9.5px] font-medium uppercase tracking-mega text-[#A68A68] mt-1.5">
+            Atelier • Sri Lanka
+          </span>
+        </div>
+      </a>
+
+      <!-- CENTER: Navigation Menu -->
+      <nav class="hidden lg:flex items-center gap-6 xl:gap-9 text-[11px] font-medium tracking-ultra uppercase text-neutral-800 whitespace-nowrap">
+        <a href="shop.html" class="hover:text-[#7A1B24] transition">All Handbags</a>
+        <a href="shop.html?cat=vanity" class="hover:text-[#7A1B24] transition">Structured Vanity</a>
+        <a href="shop.html?cat=totes" class="hover:text-[#7A1B24] transition">Work & Totes</a>
+        <a href="shop.html?cat=crossbody" class="hover:text-[#7A1B24] transition">Crossbody</a>
+        <a href="about.html" class="hover:text-[#7A1B24] transition">The Atelier</a>
+        <a href="contact.html" class="hover:text-[#7A1B24] transition">Showroom</a>
+      </nav>
+
+      <!-- RIGHT: Utilities (Search, Cart, Mobile Menu) -->
+      <div class="flex items-center gap-4 flex-shrink-0">
+        <a href="shop.html" class="p-2 text-neutral-700 hover:text-black transition" title="Search Handbags">
+          <i class="fas fa-search text-sm"></i>
+        </a>
+
+        <!-- Shopping Bag Trigger -->
+        <a 
+          href="cart.html" 
+          class="relative flex items-center gap-2 px-3.5 py-1.5 border border-black bg-neutral-900 text-white transition group"
+          title="View Shopping Bag"
+        >
+          <i class="fas fa-shopping-bag text-xs text-[#C5A880]"></i>
+          <span class="text-[10px] tracking-ultra uppercase font-medium">Bag</span>
+          <span class="cart-count-badge hidden w-4 h-4 bg-[#7A1B24] text-white text-[9px] font-medium rounded-full flex items-center justify-center">
+            0
+          </span>
+        </a>
+
+        <button 
+          type="button" 
+          onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" 
+          class="lg:hidden p-2 text-neutral-800 hover:text-black transition"
+          aria-label="Toggle Navigation"
+        >
+          <i class="fas fa-bars text-lg"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-[#FAF8F5] hairline-b px-6 py-5 space-y-4 text-xs tracking-ultra uppercase">
+      <a href="shop.html" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">All Handbags</a>
+      <a href="shop.html?cat=vanity" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Structured Vanity</a>
+      <a href="shop.html?cat=totes" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Work & Laptop Totes</a>
+      <a href="shop.html?cat=crossbody" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Crossbody & Slings</a>
+      <a href="about.html" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">The Atelier Story</a>
+      <a href="contact.html" class="block font-medium text-neutral-800 hover:text-[#7A1B24]">Mount Lavinia Showroom</a>
+      <a href="cart.html" class="block font-medium text-[#7A1B24]">View Shopping Bag</a>
+      <a href="checkout.html" class="block font-medium text-neutral-900">Direct Online Checkout</a>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="py-12 bg-[#F4F0E8] hairline-b">
+    <div class="luxury-container text-center">
+      <div class="breadcrumb-nav text-[10px] tracking-mega uppercase text-neutral-500 mb-2.5">
+        <a href="index.html">Home</a>
+        <span class="mx-2.5">•</span>
+        <a href="shop.html">The Collection</a>
+        <span class="mx-2.5">•</span>
+        <span class="text-neutral-900">Shopping Bag</span>
+      </div>
+      <h1 class="font-editorial text-3xl sm:text-4xl lg:text-5xl font-light text-neutral-900">Your Shopping Bag</h1>
+    </div>
+  </section>
+
+  <!-- Main Cart Section -->
+  <main class="py-14 lg:py-20 bg-[#FAF8F5]">
+    <div class="luxury-container">
+      
+      <!-- Free Shipping Meter -->
+      <div class="mb-10 p-5 bg-white border border-neutral-200/80 max-w-4xl mx-auto shadow-2xs">
+        <div id="cartFreeShipText" class="text-xs text-neutral-700 mb-2 text-center"></div>
+        <div class="w-full h-1.5 bg-neutral-100 rounded-full overflow-hidden">
+          <div id="cartFreeShipBar" class="h-1.5 bg-[#121214] transition-all duration-300" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Cart State Content -->
+      <div id="cartContentWrapper">
+        <!-- Rendered dynamically by script -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#121214] text-white pt-18 pb-14">
+    <div class="luxury-container">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-14 border-b border-white/10">
+        
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3.5">
+            <div class="w-12 h-12 rounded-full overflow-hidden bg-black flex items-center justify-center border-2 border-[#C5A880]/80 shadow-md">
+              <img src="assets/clara-rose-logo.jpg" alt="CLARA Rose Blossom" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <span class="font-editorial text-2xl sm:text-3xl font-light tracking-[0.25em] text-white leading-none uppercase">CLARA</span>
+              <span class="block text-[9px] font-normal uppercase tracking-mega text-[#A68A68] mt-0.5">Bags • Sri Lanka</span>
+            </div>
+          </div>
+          <p class="text-xs text-neutral-400 leading-relaxed max-w-sm">
+            We create new fashion and trend in the bag industry. Handcrafted luxury handbags, structured vanity bags, executive totes, and travel companions.
+          </p>
+          <p class="text-xs text-neutral-500">
+            Showroom: No. 587/A, Galle Road, Mount Lavinia, Sri Lanka<br>
+            Hotlines: 077 317 3217 / 011 703 7030
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-[11px] font-medium text-white tracking-ultra uppercase">Collections</h4>
+          <ul class="space-y-2 text-xs text-neutral-400">
+            <li><a href="shop.html?cat=vanity" class="hover:text-white transition">Structured Vanity</a></li>
+            <li><a href="shop.html?cat=totes" class="hover:text-white transition">Work & Laptop Totes</a></li>
+            <li><a href="shop.html?cat=crossbody" class="hover:text-white transition">Crossbody & Slings</a></li>
+            <li><a href="shop.html?cat=shoulder" class="hover:text-white transition">Shoulder Satchels</a></li>
+            <li><a href="shop.html?cat=clutches" class="hover:text-white transition">Evening Clutches</a></li>
+            <li><a href="shop.html?cat=travel" class="hover:text-white transition">Travel Holdalls</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-[11px] font-medium text-white tracking-ultra uppercase">Client Care</h4>
+          <ul class="space-y-2 text-xs text-neutral-400">
+            <li><a href="shop.html" class="hover:text-white transition">Shop All Products</a></li>
+            <li><a href="cart.html" class="hover:text-white transition">Shopping Bag</a></li>
+            <li><a href="checkout.html" class="hover:text-white transition">Direct Checkout</a></li>
+            <li><a href="about.html" class="hover:text-white transition">About Our Atelier</a></li>
+            <li><a href="contact.html" class="hover:text-white transition">Showroom Location</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-[11px] font-medium text-white tracking-ultra uppercase">Secure Payments</h4>
+          <p class="text-xs text-neutral-400 leading-relaxed">
+            We accept Visa, Mastercard, Direct Bank Transfer (Commercial/Sampath Bank), and Cash on Delivery across Sri Lanka.
+          </p>
+          <div class="pt-2 flex flex-wrap gap-2 text-neutral-400 text-xs">
+            <span class="px-2.5 py-1 border border-white/10 bg-white/5">Visa / Mastercard</span>
+            <span class="px-2.5 py-1 border border-white/10 bg-white/5">Bank Deposit</span>
+            <span class="px-2.5 py-1 border border-white/10 bg-white/5">Cash on Delivery</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
+        <p>© 2026 CLARA Bags (DJ Industries). All Rights Reserved.</p>
+        <p class="text-[11px]">Designed with WooCommerce Block Theme Architecture.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/products-data.js"></script>
+  <script src="js/store.js"></script>
+  <script>
+    let selectedShipping = "western";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderCartPage();
+      window.addEventListener("clara:cart-updated", renderCartPage);
+    });
+
+    function renderCartPage() {
+      const wrapper = document.getElementById("cartContentWrapper");
+      const cart = getCart();
+      const totals = calculateOrderTotals(selectedShipping);
+
+      // Update Free Shipping Progress Bar
+      const shipBar = document.getElementById("cartFreeShipBar");
+      const shipText = document.getElementById("cartFreeShipText");
+      if (shipBar && shipText) {
+        if (totals.subtotal >= totals.freeDeliveryThreshold) {
+          shipBar.style.width = "100%";
+          shipBar.className = "h-1.5 bg-emerald-600 transition-all duration-300";
+          shipText.innerHTML = `🎉 <strong>Complimentary Islandwide Delivery</strong> Unlocked!`;
+        } else {
+          const pct = Math.min(100, Math.round((totals.subtotal / totals.freeDeliveryThreshold) * 100));
+          shipBar.style.width = `${pct}%`;
+          shipBar.className = "h-1.5 bg-[#121214] transition-all duration-300";
+          shipText.innerHTML = `Add <strong>${formatLKR(totals.amountNeededForFreeShipping)}</strong> more to unlock <strong>Complimentary Islandwide Delivery</strong>`;
+        }
+      }
+
+      // Empty State
+      if (cart.length === 0) {
+        wrapper.innerHTML = `
+          <div class="py-20 text-center max-w-md mx-auto">
+            <div class="w-16 h-16 mx-auto mb-4 border border-neutral-300 flex items-center justify-center text-neutral-400 text-xl">
+              <i class="fas fa-shopping-bag"></i>
+            </div>
+            <h2 class="font-editorial text-3xl font-light text-neutral-900 mb-2">Your Shopping Bag is Empty</h2>
+            <p class="text-xs text-neutral-500 mb-8 leading-relaxed">
+              Explore our permanent collection of handcrafted vanity silhouettes, executive work totes, and evening clutches.
+            </p>
+            <a 
+              href="shop.html" 
+              class="inline-block px-8 py-4 bg-[#121214] text-white hover:bg-neutral-800 text-[11px] font-medium tracking-ultra uppercase transition"
+            >
+              Discover Handbags
+            </a>
+          </div>
+        `;
+        return;
+      }
+
+      // Populated State (2 Columns)
+      wrapper.innerHTML = `
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          <!-- Left Column: Items Table & Voucher -->
+          <div class="lg:col-span-8 space-y-6">
+            
+            <div class="bg-white border border-neutral-300/80 overflow-hidden">
+              <div class="p-4 bg-[#F4F0E8] hairline-b text-[10px] tracking-mega uppercase font-medium text-neutral-600 grid grid-cols-12 gap-4">
+                <span class="col-span-6 sm:col-span-7">Silhouette</span>
+                <span class="col-span-3 sm:col-span-3 text-center">Quantity</span>
+                <span class="col-span-3 sm:col-span-2 text-right">Subtotal</span>
+              </div>
+
+              <div class="divide-y divide-neutral-200">
+                ${cart.map((item, idx) => `
+                  <div class="p-4 sm:p-5 grid grid-cols-12 gap-4 items-center">
+                    
+                    <!-- Product Info -->
+                    <div class="col-span-6 sm:col-span-7 flex items-center gap-4">
+                      <a href="product.html?id=${item.productId}" class="w-16 sm:w-20 aspect-[3/4] bg-neutral-100 flex-shrink-0 overflow-hidden border border-neutral-200">
+                        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+                      </a>
+                      <div class="min-w-0">
+                        <span class="text-[9px] font-mono text-neutral-500 uppercase">${item.sku}</span>
+                        <h4 class="font-editorial text-lg sm:text-xl font-normal text-neutral-900 hover:text-[#7A1B24] transition truncate">
+                          <a href="product.html?id=${item.productId}">${item.name}</a>
+                        </h4>
+                        <p class="text-[11px] text-neutral-500 mt-0.5">Color: <span class="text-neutral-800 font-medium">${item.color}</span></p>
+                        <p class="text-xs text-neutral-700 font-medium mt-1">${formatLKR(item.price)}</p>
+                        <button onclick="removeFromCart(${idx})" class="text-[10px] uppercase tracking-ultra text-neutral-400 hover:text-red-700 transition mt-2 flex items-center gap-1">
+                          <i class="fas fa-times text-[9px]"></i> Remove
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Quantity Stepper -->
+                    <div class="col-span-3 sm:col-span-3 flex justify-center">
+                      <div class="flex items-center border border-neutral-300 bg-white">
+                        <button onclick="updateCartQuantity(${idx}, ${item.quantity - 1})" class="w-7 h-8 flex items-center justify-center text-neutral-600 hover:bg-neutral-100 text-xs">
+                          -
+                        </button>
+                        <span class="w-8 text-center text-xs font-mono font-medium text-neutral-900">${item.quantity}</span>
+                        <button onclick="updateCartQuantity(${idx}, ${item.quantity + 1})" class="w-7 h-8 flex items-center justify-center text-neutral-600 hover:bg-neutral-100 text-xs">
+                          +
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Line Total -->
+                    <div class="col-span-3 sm:col-span-2 text-right">
+                      <span class="font-editorial text-lg sm:text-xl font-light text-neutral-900">
+                        ${formatLKR(item.price * item.quantity)}
+                      </span>
+                    </div>
+
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Voucher Code & Cart Actions -->
+            <div class="bg-white p-5 border border-neutral-300/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div class="w-full sm:w-auto">
+                <div class="flex items-center gap-2">
+                  <input 
+                    type="text" 
+                    id="cartCouponInput" 
+                    placeholder="Voucher code (e.g. WELCOME10)" 
+                    value="${totals.coupon ? totals.coupon.code : ''}"
+                    class="px-3.5 py-2.5 bg-neutral-50 border border-neutral-300 text-xs text-neutral-900 focus:outline-none focus:border-black uppercase tracking-wider"
+                  >
+                  <button 
+                    type="button" 
+                    onclick="handleApplyCoupon()" 
+                    class="px-5 py-2.5 bg-neutral-900 text-white text-[10px] tracking-ultra uppercase font-medium hover:bg-neutral-800 transition"
+                  >
+                    Apply
+                  </button>
+                  ${totals.coupon ? `
+                    <button onclick="handleRemoveCoupon()" class="text-xs text-red-700 hover:underline" title="Remove voucher">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  ` : ''}
+                </div>
+                <span class="text-[10px] text-neutral-500 block mt-1.5">
+                  Client codes: <button type="button" onclick="document.getElementById('cartCouponInput').value='WELCOME10'; handleApplyCoupon()" class="underline font-semibold hover:text-[#7A1B24]">WELCOME10</button> (10% off) or <button type="button" onclick="document.getElementById('cartCouponInput').value='CLARA2026'; handleApplyCoupon()" class="underline font-semibold hover:text-[#7A1B24]">CLARA2026</button> (Rs. 500 off)
+                </span>
+              </div>
+
+              <div class="flex items-center gap-4 text-xs">
+                <a href="shop.html" class="text-neutral-600 hover:text-black tracking-wide">← Continue Shopping</a>
+                <button onclick="clearCart()" class="text-neutral-400 hover:text-red-700 tracking-wide">Clear Bag</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Order Summary Card -->
+          <div class="lg:col-span-4 sticky top-28 space-y-4">
+            
+            <div class="bg-white p-6 border border-neutral-300/80 shadow-xs space-y-4">
+              <h3 class="font-editorial text-2xl font-light text-neutral-900 pb-3 hairline-b">
+                Order Summary
+              </h3>
+
+              <div class="space-y-2 text-xs text-neutral-600">
+                <div class="flex justify-between">
+                  <span>Subtotal (${totals.totalItems} items)</span>
+                  <span class="font-medium text-neutral-900">${formatLKR(totals.subtotal)}</span>
+                </div>
+
+                ${totals.discountAmount > 0 ? `
+                  <div class="flex justify-between text-emerald-700 font-medium">
+                    <span>Voucher Discount (${totals.coupon.code})</span>
+                    <span>-${formatLKR(totals.discountAmount)}</span>
+                  </div>
+                ` : ''}
+
+                <!-- Shipping Selector -->
+                <div class="pt-3 hairline-t">
+                  <label class="block text-[10px] tracking-mega uppercase font-medium text-neutral-700 mb-2">
+                    Shipping Method:
+                  </label>
+                  
+                  <div class="space-y-2">
+                    <label class="flex items-start gap-2.5 p-2.5 border border-neutral-200 cursor-pointer text-xs hover:border-black transition">
+                      <input type="radio" name="cartShipping" value="western" ${selectedShipping === 'western' ? 'checked' : ''} onchange="updateShippingSelection('western')" class="mt-0.5">
+                      <div class="flex-grow">
+                        <span class="block text-neutral-900 font-medium">Colombo & Western Province</span>
+                        <span class="text-[11px] text-neutral-500">${totals.subtotal >= totals.freeDeliveryThreshold ? 'Complimentary' : 'Rs. 350 (1–2 Days)'}</span>
+                      </div>
+                    </label>
+
+                    <label class="flex items-start gap-2.5 p-2.5 border border-neutral-200 cursor-pointer text-xs hover:border-black transition">
+                      <input type="radio" name="cartShipping" value="islandwide" ${selectedShipping === 'islandwide' ? 'checked' : ''} onchange="updateShippingSelection('islandwide')" class="mt-0.5">
+                      <div class="flex-grow">
+                        <span class="block text-neutral-900 font-medium">Islandwide Outstation Courier</span>
+                        <span class="text-[11px] text-neutral-500">${totals.subtotal >= totals.freeDeliveryThreshold ? 'Complimentary' : 'Rs. 550 (2–4 Days)'}</span>
+                      </div>
+                    </label>
+
+                    <label class="flex items-start gap-2.5 p-2.5 border border-neutral-200 cursor-pointer text-xs hover:border-black transition">
+                      <input type="radio" name="cartShipping" value="pickup" ${selectedShipping === 'pickup' ? 'checked' : ''} onchange="updateShippingSelection('pickup')" class="mt-0.5">
+                      <div class="flex-grow">
+                        <span class="block text-neutral-900 font-medium">Mount Lavinia Showroom Pickup</span>
+                        <span class="text-[11px] text-neutral-500">Free (No. 587/A Galle Road)</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="pt-3 hairline-t flex justify-between items-baseline">
+                  <span class="text-xs uppercase tracking-ultra font-medium text-neutral-900">Total Payable</span>
+                  <span class="font-editorial text-2xl font-light text-neutral-900">${formatLKR(totals.grandTotal)}</span>
+                </div>
+              </div>
+
+              <div class="pt-2">
+                <a 
+                  href="checkout.html" 
+                  class="block w-full py-4 bg-[#121214] hover:bg-[#7A1B24] text-white text-center text-[11px] font-medium tracking-ultra uppercase transition shadow-sm"
+                >
+                  Proceed to Checkout
+                </a>
+              </div>
+
+              <div class="pt-3 text-[10px] text-neutral-500 space-y-1.5 text-center">
+                <p><i class="fas fa-lock text-neutral-400 mr-1"></i> SSL Encrypted Direct Checkout</p>
+                <p>Card, Bank Transfer, or Cash on Delivery</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      `;
+    }
+
+    function updateShippingSelection(method) {
+      selectedShipping = method;
+      renderCartPage();
+    }
+
+    function handleApplyCoupon() {
+      const input = document.getElementById("cartCouponInput");
+      const res = applyCouponCode(input.value);
+      showToast(res.message);
+      renderCartPage();
+    }
+
+    function handleRemoveCoupon() {
+      removeAppliedCoupon();
+      showToast("Voucher removed.");
+      renderCartPage();
+    }
+  </script>
+</body>
+</html>
+

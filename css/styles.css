@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --color-obsidian: #0E0E10;
+  --color-onyx: #161618;
+  --color-warm-silk: #FAF8F5;
+  --color-ecru: #F4F1EA;
+  --color-ecru-dark: #E8E3D8;
+  --color-sand: #DFD9CD;
+  --color-gold: #C5A880;
+  --color-gold-muted: #A68A68;
+  --color-burgundy: #7A1B24;
+  --color-wine: #561118;
+  --color-text-main: #141416;
+  --color-text-muted: #6B6861;
+  --color-hairline: rgba(20, 20, 22, 0.08);
+  --color-hairline-dark: rgba(255, 255, 255, 0.12);
+  --color-concierge: #187747;
+}
+
+/* Base Editorial Typography */
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--color-text-main);
+  background-color: var(--color-warm-silk);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-editorial {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-ui {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Letter Spacing Utilities for Luxury Editorial */
+.tracking-micro {
+  letter-spacing: 0.18em;
+}
+
+.tracking-ultra {
+  letter-spacing: 0.25em;
+}
+
+.tracking-mega {
+  letter-spacing: 0.35em;
+}
+
+/* Custom Scrollbar for Bespoke Feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-warm-silk);
+}
+::-webkit-scrollbar-thumb {
+  background: #D8D2C4;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B8B0A0;
+}
+
+/* Luxury Card Image Hover */
+.luxury-card-media {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-ecru);
+}
+
+.luxury-card-media img.primary-img {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+}
+
+.luxury-card-media img.secondary-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card:hover .luxury-card-media img.secondary-img {
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+.product-card:hover .luxury-card-media img.primary-img {
+  transform: scale(1.04);
+}
+
+/* Floating Action Bar inside Product Card */
+.card-hover-actions {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card:hover .card-hover-actions {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide-over Drawer */
+.drawer-backdrop {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.drawer-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.drawer-panel {
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer-backdrop.active .drawer-panel {
+  transform: translateX(0);
+}
+
+/* Modal Windows */
+.modal-backdrop {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal-content-panel {
+  transform: translateY(16px) scale(0.98);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-backdrop.active .modal-content-panel {
+  transform: translateY(0) scale(1);
+}
+
+/* Subtle Hairline Dividers */
+.hairline-b {
+  border-bottom: 1px solid var(--color-hairline);
+}
+.hairline-t {
+  border-top: 1px solid var(--color-hairline);
+}
+.hairline-r {
+  border-right: 1px solid var(--color-hairline);
+}
+.hairline-l {
+  border-left: 1px solid var(--color-hairline);
+}
+
+/* Subtle Gold Underline Link */
+.editorial-link {
+  position: relative;
+  display: inline-block;
+}
+.editorial-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--color-obsidian);
+  transform-origin: bottom right;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.editorial-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Quick Toast Notification */
+#appToast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
