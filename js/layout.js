@@ -181,94 +181,44 @@ const Clara = (() => {
 
   function header() {
     const page = document.body.dataset.page || "";
-    const cat = new URLSearchParams(location.search).get("cat");
-    const on = (cond) => (cond ? "is-active" : "");
-
-    const messages = [
-      "Complimentary islandwide delivery over Rs. 10,000",
-      "10% off your first order with code WELCOME10",
-      "Cash on delivery available across Sri Lanka"
-    ];
+    const overlay = page === "home" || document.body.dataset.overlay === "1";
 
     const html = `
-      <div class="topbar">
-        <div class="container topbar__inner">
-          <div class="topbar__left"><a href="contact.html">Our boutique · Mount Lavinia</a></div>
-          <div class="topbar__msgs" aria-live="polite">${messages.map((m, i) => `<span class="${i === 0 ? "is-active" : ""}">${m}</span>`).join("")}</div>
-          <div class="topbar__right"><a href="tel:0773173217">${CLARA_INFO.phoneMobile}</a><a href="${waLink("Hello CLARA, I would like some help.")}" target="_blank" rel="noopener">WhatsApp</a></div>
-        </div>
-      </div>
-      <header class="site-header" id="siteHeader">
-        <div class="container masthead">
+      <header class="site-header ${overlay ? "is-overlay" : ""}" id="siteHeader">
+        <div class="masthead">
           <div class="masthead__left">
-            <button type="button" class="hbtn menu-btn" aria-label="Open menu" onclick="Clara.openMenu()">${icon("menu")}</button>
-            <button type="button" class="hbtn hbtn-icon-only" aria-label="Search" onclick="Clara.openSearch()">${icon("search")}</button>
-            <form class="search-inline" action="shop.html" role="search">
-              ${icon("search")}
-              <input type="search" name="q" placeholder="Search" aria-label="Search the collection" autocomplete="off">
-            </form>
+            <button type="button" class="hbtn" aria-label="Open menu" onclick="Clara.openMenu()">${icon("menu")}<span class="lbl">Menu</span></button>
+            <button type="button" class="hbtn" aria-label="Search" onclick="Clara.openSearch()">${icon("search")}<span class="lbl">Search</span></button>
           </div>
-          ${logo()}
+          <a href="index.html" class="wordmark" aria-label="CLARA — home">CLARA</a>
           <div class="masthead__right">
-            <a href="contact.html" class="hbtn hide-mobile">${icon("store")}<span class="lbl">Boutique</span></a>
-            <a href="shop.html?saved=1" class="hbtn hide-mobile" aria-label="Wishlist">${icon("heart")}<span class="lbl">Wishlist</span><span class="count wishlist-count">0</span></a>
-            <button type="button" class="hbtn" aria-label="Shopping bag" onclick="openSlideCart()">${icon("bag")}<span class="lbl">Bag</span><span class="count cart-count-badge">0</span></button>
+            <a href="contact.html" class="hbtn hide-mobile">${icon("phone")}<span class="lbl">Contact us</span></a>
+            <a href="shop.html?saved=1" class="hbtn hide-mobile" aria-label="Wishlist">${icon("heart")}<span class="count wishlist-count">0</span></a>
+            <button type="button" class="hbtn" aria-label="Shopping bag" onclick="openSlideCart()">${icon("bag")}<span class="count cart-count-badge">0</span></button>
           </div>
         </div>
-        <nav class="primary-nav-wrap" aria-label="Primary">
-          <ul class="primary-nav">
-            <li><a href="shop.html?cat=new" class="${on(page === "shop" && cat === "new")}">New In</a></li>
-            <li>
-              <a href="shop.html" class="${on(page === "shop" && !cat)}">Handbags</a>
-              <div class="mega">
-                <div class="container mega__inner">
-                  <div><h6>Handbags</h6><ul>
-                    <li><a href="shop.html">View all</a></li>
-                    ${CATEGORY_META.slice(0, 6).map(c => `<li><a href="shop.html?cat=${c.key}">${c.label}</a></li>`).join("")}
-                  </ul></div>
-                  <div><h6>Occasions</h6><ul>
-                    <li><a href="shop.html?cat=totes">The working week</a></li>
-                    <li><a href="shop.html?cat=vanity">Weddings &amp; celebrations</a></li>
-                    <li><a href="shop.html?cat=clutches">Evenings out</a></li>
-                    <li><a href="shop.html?cat=crossbody">Weekend &amp; travel</a></li>
-                  </ul></div>
-                  <div><h6>Gifts</h6><ul>
-                    <li><a href="shop.html?cat=wallets">Small leather goods</a></li>
-                    <li><a href="shop.html?price=under4">Gifts under Rs. 4,000</a></li>
-                    <li><a href="shop.html?saved=1">Your wishlist</a></li>
-                  </ul></div>
-                  <div class="mega__feature">
-                    <a href="shop.html?cat=new"><div class="img"><img src="assets/img/hero-palms.jpg" alt="" loading="lazy"></div><span>New arrivals</span></a>
-                    <a href="shop.html?cat=clutches"><div class="img"><img src="assets/img/evening-gown.jpg" alt="" loading="lazy"></div><span>The evening edit</span></a>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li><a href="shop.html?cat=clutches" class="${on(page === "shop" && cat === "clutches")}">Evening</a></li>
-            <li><a href="shop.html?cat=totes" class="${on(page === "shop" && cat === "totes")}">Work &amp; Totes</a></li>
-            <li><a href="shop.html?cat=wallets" class="${on(page === "shop" && cat === "wallets")}">Small Leather Goods</a></li>
-            <li><a href="about.html" class="${on(page === "about")}">Maison</a></li>
-            <li><a href="contact.html" class="${on(page === "contact")}">Boutique</a></li>
-          </ul>
-        </nav>
       </header>
+      ${overlay ? "" : '<div class="header-space" aria-hidden="true"></div>'}
 
       <div class="mnav" id="mobileNav" aria-hidden="true">
         <div class="mnav__scrim" onclick="Clara.closeMenu()"></div>
         <aside class="mnav__panel" aria-label="Menu">
-          <div class="mnav__head">${logo("")}<button type="button" class="icon-btn" aria-label="Close menu" onclick="Clara.closeMenu()">${icon("close")}</button></div>
+          <div class="mnav__head"><button type="button" class="hbtn" aria-label="Close menu" onclick="Clara.closeMenu()">${icon("close")}<span class="lbl">Close</span></button></div>
           <nav class="mnav__links">
-            <a href="shop.html?cat=new">New In ${icon("chev-right")}</a>
-            <a href="shop.html">All Handbags ${icon("chev-right")}</a>
-            ${CATEGORY_META.map(c => `<a href="shop.html?cat=${c.key}">${c.label} ${icon("chev-right")}</a>`).join("")}
-            <a href="shop.html?saved=1">Wishlist ${icon("heart")}</a>
-            <a href="about.html">Maison CLARA ${icon("chev-right")}</a>
-            <a href="contact.html">Visit the boutique ${icon("chev-right")}</a>
+            <a href="shop.html?cat=new">New In</a>
+            <a href="shop.html">Handbags</a>
+            <div class="mnav__sub">${CATEGORY_META.slice(0, 6).map(c => `<a href="shop.html?cat=${c.key}">${c.label}</a>`).join("")}</div>
+            <a href="shop.html?cat=clutches">Evening &amp; Celebrations</a>
+            <a href="shop.html?cat=wallets">Small Leather Goods</a>
+            <a href="shop.html?saved=1">Wishlist</a>
+            <a href="about.html">The Maison</a>
+            <a href="contact.html">The Boutique</a>
           </nav>
           <div class="mnav__foot">
+            <a href="tel:0773173217">${icon("phone")} ${CLARA_INFO.phoneMobile}</a>
+            <a href="${waLink("Hello CLARA, I would like some help.")}" target="_blank" rel="noopener">${icon("whatsapp")} WhatsApp us</a>
             <span>${CLARA_INFO.address}</span>
             <span>${CLARA_INFO.hours}</span>
-            <a href="tel:0773173217">${CLARA_INFO.phoneMobile}</a>
           </div>
         </aside>
       </div>
@@ -276,7 +226,7 @@ const Clara = (() => {
       <div class="search-ov" id="searchOverlay" aria-hidden="true">
         <button type="button" class="icon-btn close" aria-label="Close search" onclick="Clara.closeSearch()">${icon("close")}</button>
         <form action="shop.html" role="search">
-          <input type="search" name="q" placeholder="What are you looking for?" aria-label="Search the collection" autocomplete="off">
+          <input type="search" name="q" placeholder="Search CLARA" aria-label="Search the collection" autocomplete="off">
           <button type="submit" class="icon-btn" aria-label="Search">${icon("search")}</button>
         </form>
         <div class="search-ov__tags">
@@ -289,7 +239,6 @@ const Clara = (() => {
       </div>`;
 
     document.currentScript.insertAdjacentHTML("beforebegin", html);
-    rotateTopbar();
   }
 
   function checkoutHeader() {
@@ -297,21 +246,10 @@ const Clara = (() => {
       <header class="co-header">
         <div class="container co-header__inner">
           <a href="cart.html" class="back">${icon("chev-left")}<span>Back to bag</span></a>
-          ${logo("")}
+          <a href="index.html" class="wordmark" aria-label="CLARA — home">CLARA</a>
           <span class="secure">${icon("lock")}<span>Secure checkout</span></span>
         </div>
       </header>`);
-  }
-
-  function rotateTopbar() {
-    const items = document.querySelectorAll(".topbar__msgs span");
-    if (items.length < 2) return;
-    let i = 0;
-    setInterval(() => {
-      items[i].classList.remove("is-active");
-      i = (i + 1) % items.length;
-      items[i].classList.add("is-active");
-    }, 4500);
   }
 
   function setOverlay(id, open) {
@@ -356,7 +294,7 @@ const Clara = (() => {
       <footer class="site-footer">
         <div class="container footer-cols">
           <div class="footer-brand">
-            ${logo("Mount Lavinia · Sri Lanka")}
+            <a href="index.html" class="wordmark wordmark--sm">CLARA</a>
             <p>Handbags for the modern Sri Lankan woman — chosen with care at our boutique on Galle Road and delivered to your door.</p>
             <div class="socials">${socials}</div>
           </div>
@@ -459,7 +397,7 @@ const Clara = (() => {
     initCarousels();
     const h = document.getElementById("siteHeader");
     if (h) {
-      const onScroll = () => h.classList.toggle("is-scrolled", window.scrollY > 60);
+      const onScroll = () => h.classList.toggle("is-scrolled", window.scrollY > 40);
       onScroll();
       window.addEventListener("scroll", onScroll, { passive: true });
     }

@@ -12,7 +12,7 @@
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap">
   <link rel="stylesheet" href="css/main.css">
   <link rel="preload" as="image" href="assets/img/wide-shopping.jpg">
   <script src="js/products-data.js"></script>
@@ -23,162 +23,109 @@
   <script>Clara.header();</script>
 
   <main id="main">
-    <!-- HERO -->
-    <section class="hero">
-      <img src="assets/img/wide-shopping.jpg" alt="Woman in a wine-red coat carrying shopping bags" width="2400" height="1200">
-      <div class="container hero__content">
-        <span class="kicker light">The New Season</span>
-        <h1 class="title-xl">The Art of <i>Carrying</i></h1>
-        <p>Sculpted vanity bags, polished work totes and jewelled evening clutches — chosen for the modern Sri Lankan woman.</p>
-        <div class="hero__actions">
-          <a href="shop.html?cat=new" class="btn btn-white">Shop New In</a>
-          <a href="shop.html" class="btn btn-ghost-white">Discover Handbags</a>
-        </div>
+    <!-- 1. Hero -->
+    <section class="panel">
+      <img src="assets/img/wide-shopping.jpg" alt="Woman in a wine-red coat carrying shopping bags" width="2400" height="1200" style="object-position:50% 25%">
+      <div class="panel__cap">
+        <span class="kicker">The New Season</span>
+        <h1>The Art of Carrying</h1>
+        <div class="panel__links"><a href="shop.html?cat=new">Discover New In</a><a href="shop.html">Shop Handbags</a></div>
       </div>
     </section>
 
-    <!-- STATEMENT -->
-    <section class="section-sm">
-      <div class="container statement reveal">
-        <img src="assets/rose.png" alt="">
-        <p>From our boutique on Galle Road, Mount Lavinia — handbags made to be <i>carried every day</i> and remembered for years.</p>
-      </div>
+    <!-- 2. Intro -->
+    <section class="intro">
+      <span class="kicker reveal">Maison CLARA · Mount Lavinia</span>
+      <h2 class="reveal d1">Handbags for the modern Sri Lankan woman</h2>
+      <p class="reveal d2">Sculpted vanity bags, polished work totes and jewelled evening clutches — chosen with care at our boutique on Galle Road and delivered to your door.</p>
+      <a href="about.html" class="link reveal d3">Discover the Maison</a>
     </section>
 
-    <!-- CATEGORY TILES -->
+    <!-- 3. Selection carousel -->
     <section class="section" style="padding-top:0">
       <div class="container">
-        <div class="tiles">
-          <a href="shop.html?cat=vanity" class="tile reveal d1"><div class="tile__img"><img src="assets/img/cat-vanity.jpg" alt="Structured vanity bag" loading="lazy"></div><div class="tile__label"><h3>Structured Vanity</h3><span>Shop</span></div></a>
-          <a href="shop.html?cat=totes" class="tile reveal d2"><div class="tile__img"><img src="assets/img/cat-totes.jpg" alt="Black work tote" loading="lazy"></div><div class="tile__label"><h3>Work &amp; Totes</h3><span>Shop</span></div></a>
-          <a href="shop.html?cat=crossbody" class="tile reveal d3"><div class="tile__img"><img src="assets/img/cat-crossbody.jpg" alt="Pink chain crossbody bag" loading="lazy"></div><div class="tile__label"><h3>Crossbody</h3><span>Shop</span></div></a>
-          <a href="shop.html?cat=clutches" class="tile reveal d4"><div class="tile__img"><img src="assets/img/cat-clutches.jpg" alt="Snakeskin evening clutch" loading="lazy"></div><div class="tile__label"><h3>Evening</h3><span>Shop</span></div></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- NEW ARRIVALS CAROUSEL -->
-    <section class="section bg-paper">
-      <div class="container">
-        <div class="sec-head">
-          <div><span class="kicker">Just arrived</span><h2 class="title-lg">New Arrivals</h2></div>
-          <div class="sec-head__tools">
-            <a href="shop.html?cat=new" class="link">View all</a>
-            <div class="arrows"><button type="button" class="arrow" data-prev="new" aria-label="Previous"><span data-icon="chev-left"></span></button><button type="button" class="arrow" data-next="new" aria-label="Next"><span data-icon="chev-right"></span></button></div>
+        <div class="sel-head">
+          <span class="kicker">Selection</span>
+          <h2>Discover the Collection</h2>
+          <div class="sel-tabs" id="selTabs">
+            <button type="button" class="is-active" data-f="new">New In</button>
+            <button type="button" data-f="best">Most Loved</button>
+            <button type="button" data-f="evening">Evening</button>
+            <button type="button" data-f="gifts">Gifts</button>
           </div>
         </div>
-        <div class="carousel" data-carousel="new">
-          <div class="carousel__track" id="newTrack"></div>
+        <div class="carousel" data-carousel="sel">
+          <div class="carousel__track" id="selTrack"></div>
           <div class="progress"><i></i></div>
         </div>
+        <div class="carousel-nav"><button type="button" class="arrow" data-prev="sel" aria-label="Previous"><span data-icon="chev-left"></span></button><button type="button" class="arrow" data-next="sel" aria-label="Next"><span data-icon="chev-right"></span></button></div>
       </div>
     </section>
 
-    <!-- SIGNATURE SPLIT -->
+    <!-- 4. Celebration campaign -->
+    <section class="panel tall">
+      <img src="assets/img/wide-saree.jpg" alt="Woman in a saree with gold bridal jewellery" loading="lazy" style="object-position:55% 30%">
+      <div class="panel__cap">
+        <span class="kicker">The Celebration Edit</span>
+        <h2>For weddings, homecomings and every poruwa moment</h2>
+        <div class="panel__links"><a href="shop.html?cat=clutches">Shop Evening</a><a href="shop.html?cat=vanity">Shop Vanity Bags</a></div>
+      </div>
+    </section>
+
+    <!-- 5. Duo -->
+    <section class="panel-duo">
+      <a class="panel" href="shop.html?cat=totes">
+        <img src="assets/img/mood-day.jpg" alt="Woman in a white shirt dress" loading="lazy">
+        <div class="panel__cap"><span class="kicker">From nine to five</span><h2>The Working Week</h2><div class="panel__links"><span style="border-bottom:1px solid rgba(255,255,255,.8);padding-bottom:4px;font-size:13px">Shop Work &amp; Totes</span></div></div>
+      </a>
+      <a class="panel" href="shop.html?cat=crossbody">
+        <img src="assets/img/mood-weekend.jpg" alt="Woman in Milan wearing a pink crossbody bag" loading="lazy">
+        <div class="panel__cap"><span class="kicker">Hands-free</span><h2>Weekend &amp; Away</h2><div class="panel__links"><span style="border-bottom:1px solid rgba(255,255,255,.8);padding-bottom:4px;font-size:13px">Shop Crossbody</span></div></div>
+      </a>
+    </section>
+
+    <!-- 6. Signature -->
     <section class="split">
       <div class="split__img"><img src="assets/img/spotlight-sovereign.jpg" alt="The Sovereign structured vanity bag in Bordeaux Wine" loading="lazy"></div>
-      <div class="split__body">
+      <div class="split__body" style="background:#fff">
         <span class="kicker reveal">The Signature</span>
-        <h2 class="title-lg reveal d1">The Sovereign <i>Vanity</i></h2>
-        <p class="body-lg reveal d2">Architectural lines, a polished turn-lock that closes with a quiet click, and a detachable strap that takes it from hand to shoulder. Our most-loved silhouette.</p>
-        <dl class="specs reveal d3">
-          <div><dt>Dimensions</dt><dd>23 × 18 × 10 cm</dd></div>
-          <div><dt>Fits</dt><dd>Phone, cardholder, keys, lipstick &amp; compact</dd></div>
-          <div><dt>Colours</dt><dd><span class="dots"><i style="background:#6B1420" title="Bordeaux Wine"></i><i style="background:#141416" title="Onyx Noir"></i><i style="background:#D9A5A9" title="Rose Quartz"></i></span></dd></div>
-        </dl>
+        <h2 class="title-lg reveal d1">The Sovereign Vanity</h2>
+        <p class="body-lg reveal d2">Architectural lines, a polished turn-lock that closes with a quiet click and a detachable strap that takes it from hand to shoulder. Our most-loved silhouette, in Bordeaux Wine, Onyx Noir and Rose Quartz.</p>
         <div class="price-line reveal d3"><span>Rs. 5,950</span><s>Rs. 6,800</s></div>
         <div class="reveal d4" style="display:flex;gap:12px;flex-wrap:wrap">
           <button type="button" class="btn" onclick="addToCart(1, 'Bordeaux Wine', 1)">Add to bag</button>
-          <a href="product.html?id=1" class="btn btn-outline">View details</a>
+          <a href="product.html?id=1" class="btn btn-outline">Discover</a>
         </div>
       </div>
     </section>
 
-    <!-- BESTSELLERS GRID -->
+    <!-- 7. Categories -->
     <section class="section">
       <div class="container">
-        <div class="sec-head centered">
-          <span class="kicker reveal">Most loved</span>
-          <h2 class="title-lg reveal d1">Bestsellers</h2>
-        </div>
-        <div class="grid" id="bestGrid"></div>
-        <div class="center reveal" style="margin-top:56px"><a href="shop.html" class="btn btn-outline">Shop all handbags</a></div>
+        <div class="sel-head"><span class="kicker">Explore</span><h2>Shop by Category</h2></div>
+        <div class="cat-strip" id="catStrip"></div>
       </div>
     </section>
 
-    <!-- CAMPAIGN: CELEBRATIONS -->
-    <section class="campaign">
-      <img src="assets/img/wide-saree.jpg" alt="Woman in a saree with gold bridal jewellery" loading="lazy">
-      <div class="container" style="position:relative;z-index:2">
-        <div class="campaign__body reveal">
-          <span class="kicker light">The Celebration Edit</span>
-          <h2 class="title-lg">For weddings, homecomings <i>&amp; every poruwa moment</i></h2>
-          <p>Jewelled minaudières and sculpted vanity bags, made to sit beautifully beside your finest saree.</p>
-          <div><a href="shop.html?cat=clutches" class="btn btn-white">Discover the edit</a></div>
-        </div>
+    <!-- 8. Campaign -->
+    <section class="panel tall">
+      <img src="assets/img/wide-coat.jpg" alt="Woman in a white coat with a quilted black chain bag" loading="lazy" style="object-position:60% 20%">
+      <div class="panel__cap">
+        <span class="kicker">Icons</span>
+        <h2>Quiet luxury, every day</h2>
+        <div class="panel__links"><a href="shop.html?cat=shoulder">Shop Shoulder Bags</a></div>
       </div>
     </section>
 
-    <!-- DUO -->
+    <!-- 9. Services -->
     <section class="section">
-      <div class="container duo">
-        <a href="shop.html?cat=totes" class="reveal d1">
-          <img src="assets/img/mood-day.jpg" alt="Woman in a white shirt dress" loading="lazy">
-          <div class="cap"><span class="kicker light">From nine to five</span><h3>The Working Week</h3><span class="link" style="color:#fff;width:max-content">Shop totes</span></div>
-        </a>
-        <a href="shop.html?cat=crossbody" class="reveal d2">
-          <img src="assets/img/mood-weekend.jpg" alt="Woman in Milan wearing a pink crossbody bag" loading="lazy">
-          <div class="cap"><span class="kicker light">Hands-free</span><h3>Weekend &amp; Away</h3><span class="link" style="color:#fff;width:max-content">Shop crossbody</span></div>
-        </a>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section class="bg-paper">
-      <div class="container services">
-        <div class="service reveal d1"><span data-icon="truck"></span><h4>Complimentary Delivery</h4><p>Free islandwide delivery on orders over Rs. 10,000.</p></div>
-        <div class="service reveal d2"><span data-icon="store"></span><h4>Boutique Collection</h4><p>Order online and collect from Mount Lavinia, free.</p></div>
-        <div class="service reveal d3"><span data-icon="exchange"></span><h4>7-Day Exchange</h4><p>Inspect your bag at home with our exchange guarantee.</p></div>
-        <div class="service reveal d4"><span data-icon="lock"></span><h4>Secure Payment</h4><p>Card, bank transfer or cash on delivery.</p></div>
-      </div>
-    </section>
-
-    <!-- VISIT -->
-    <section class="section">
-      <div class="container visit">
-        <div class="visit__body">
-          <span class="kicker reveal">The Boutique</span>
-          <h2 class="title-lg reveal d1">Visit us in <i>Mount Lavinia</i></h2>
-          <p class="body-lg reveal d2">Feel every leather, try every strap and receive personal styling advice. Retail and wholesale clients are always welcome.</p>
-          <div class="visit__rows reveal d3">
-            <div><span data-icon="pin"></span><span>No. 587/A, Galle Road, Mount Lavinia</span></div>
-            <div><span data-icon="clock"></span><span>Monday – Sunday · 9:30 AM – 7:30 PM</span></div>
-            <div><span data-icon="phone"></span><span><a href="tel:0773173217">077 317 3217</a> · <a href="tel:0117037030">011 703 7030</a></span></div>
-          </div>
-          <div class="reveal d4"><a href="contact.html" class="btn">Plan your visit</a></div>
-        </div>
-        <div class="visit__media reveal d2">
-          <div class="a"><img src="assets/img/boutique.jpg" alt="Boutique interior" loading="lazy"></div>
-          <div class="b"><img src="assets/banner.jpg" alt="CLARA boutique banner — 587/A Galle Road, Mount Lavinia" loading="lazy"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- INSTAGRAM -->
-    <section class="section" style="padding-top:0">
       <div class="container">
-        <div class="sec-head centered">
-          <span class="kicker reveal">@clara_bags</span>
-          <h2 class="title-lg reveal d1">#CLARAwoman</h2>
+        <div class="sel-head"><span class="kicker">At your service</span><h2>CLARA Services</h2></div>
+        <div class="svc">
+          <a href="contact.html" class="reveal d1"><div class="img"><img src="assets/img/boutique.jpg" alt="Boutique interior" loading="lazy"></div><h3>Visit the Boutique</h3><p>No. 587/A, Galle Road, Mount Lavinia — open every day, 9:30 AM to 7:30 PM.</p><span class="link">Plan your visit</span></a>
+          <a href="https://wa.me/94773173217?text=Hello%20CLARA%2C%20I%20would%20like%20some%20styling%20advice." target="_blank" rel="noopener" class="reveal d2"><div class="img"><img src="assets/img/ig-jewel.jpg" alt="Hands with fine jewellery" loading="lazy"></div><h3>Personal Advice</h3><p>Message our team on WhatsApp for availability, sizes and styling help.</p><span class="link">Chat on WhatsApp</span></a>
+          <a href="product.html?id=1#delivery" class="reveal d3"><div class="img"><img src="assets/img/ig-flatlay.jpg" alt="Handbag essentials laid out" loading="lazy"></div><h3>Delivery &amp; Exchange</h3><p>Complimentary islandwide delivery over Rs. 10,000 and a 7-day exchange guarantee.</p><span class="link">Learn more</span></a>
         </div>
-      </div>
-      <div class="gram">
-        <a href="https://www.instagram.com/clara_bags/" target="_blank" rel="noopener" aria-label="CLARA on Instagram"><img src="assets/img/ig-rose.jpg" alt="" loading="lazy"></a>
-        <a href="https://www.instagram.com/clara_bags/" target="_blank" rel="noopener" aria-label="CLARA on Instagram"><img src="assets/img/ig-red.jpg" alt="" loading="lazy"></a>
-        <a href="https://www.instagram.com/clara_bags/" target="_blank" rel="noopener" aria-label="CLARA on Instagram"><img src="assets/img/ig-flatlay.jpg" alt="" loading="lazy"></a>
-        <a href="https://www.instagram.com/clara_bags/" target="_blank" rel="noopener" aria-label="CLARA on Instagram"><img src="assets/img/ig-jewel.jpg" alt="" loading="lazy"></a>
-        <a href="https://www.instagram.com/clara_bags/" target="_blank" rel="noopener" aria-label="CLARA on Instagram"><img src="assets/img/ig-pink.jpg" alt="" loading="lazy"></a>
-        <a href="https://www.instagram.com/clara_bags/" target="_blank" rel="noopener" aria-label="CLARA on Instagram"><img src="assets/img/ig-coat.jpg" alt="" loading="lazy"></a>
       </div>
     </section>
   </main>
@@ -186,13 +133,26 @@
   <script>Clara.footer();</script>
 
   <script>
+    const SEL = {
+      new: () => [...CLARA_PRODUCTS].sort((a, b) => (b.isNew - a.isNew) || (b.isFeatured - a.isFeatured)).slice(0, 8),
+      best: () => [...CLARA_PRODUCTS].sort((a, b) => b.reviewCount - a.reviewCount).slice(0, 8),
+      evening: () => CLARA_PRODUCTS.filter(p => ["clutches", "crossbody", "vanity"].includes(p.category) || p.id === 8),
+      gifts: () => [...CLARA_PRODUCTS].sort((a, b) => a.price - b.price).slice(0, 6)
+    };
+    function renderSel(f) {
+      const track = document.getElementById("selTrack");
+      track.innerHTML = SEL[f]().map((p, i) => Clara.productCard(p, { index: i, reveal: false, badges: false })).join("");
+      track.scrollLeft = 0;
+      track.dispatchEvent(new Event("scroll"));
+    }
     document.addEventListener("DOMContentLoaded", () => {
-      const newIn = [...CLARA_PRODUCTS].sort((a, b) => (b.isNew - a.isNew) || (b.isFeatured - a.isFeatured)).slice(0, 8);
-      document.getElementById("newTrack").innerHTML = newIn.map((p, i) => Clara.productCard(p, { index: i, reveal: false })).join("");
-
-      const best = [...CLARA_PRODUCTS].sort((a, b) => b.reviewCount - a.reviewCount).slice(0, 4);
-      document.getElementById("bestGrid").innerHTML = best.map((p, i) => Clara.productCard(p, { index: i })).join("");
-
+      renderSel("new");
+      document.querySelectorAll("#selTabs button").forEach(b => b.addEventListener("click", () => {
+        document.querySelectorAll("#selTabs button").forEach(x => x.classList.toggle("is-active", x === b));
+        renderSel(b.dataset.f);
+      }));
+      document.getElementById("catStrip").innerHTML = CATEGORY_META.slice(0, 6).map((c, i) =>
+        `<a href="shop.html?cat=${c.key}" class="reveal d${i % 4 + 1}"><div class="img"><img src="${c.image}" alt="${c.label}" loading="lazy"></div><span>${c.label}</span></a>`).join("");
       Clara.observeReveals();
       Clara.initCarousels();
     });
