@@ -200,41 +200,99 @@ const Clara = (() => {
       </header>
       ${overlay ? "" : '<div class="header-space" aria-hidden="true"></div>'}
 
-      <div class="mnav" id="mobileNav" aria-hidden="true">
-        <div class="mnav__scrim" onclick="Clara.closeMenu()"></div>
-        <aside class="mnav__panel" aria-label="Menu">
-          <div class="mnav__head"><button type="button" class="hbtn" aria-label="Close menu" onclick="Clara.closeMenu()">${icon("close")}<span class="lbl">Close</span></button></div>
-          <nav class="mnav__links">
-            <a href="shop.html?cat=new">New In</a>
-            <a href="shop.html">Handbags</a>
-            <div class="mnav__sub">${CATEGORY_META.slice(0, 6).map(c => `<a href="shop.html?cat=${c.key}">${c.label}</a>`).join("")}</div>
-            <a href="shop.html?cat=clutches">Evening &amp; Celebrations</a>
-            <a href="shop.html?cat=wallets">Small Leather Goods</a>
-            <a href="shop.html?saved=1">Wishlist</a>
-            <a href="about.html">The Maison</a>
-            <a href="contact.html">The Boutique</a>
-          </nav>
-          <div class="mnav__foot">
-            <a href="tel:0773173217">${icon("phone")} ${CLARA_INFO.phoneMobile}</a>
-            <a href="${waLink("Hello CLARA, I would like some help.")}" target="_blank" rel="noopener">${icon("whatsapp")} WhatsApp us</a>
-            <span>${CLARA_INFO.address}</span>
-            <span>${CLARA_INFO.hours}</span>
+<div class="menu" id="mobileNav" aria-hidden="true">
+        <div class="menu__scrim" onclick="Clara.closeMenu()"></div>
+        <aside class="menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+          <div class="menu__bar">
+            <button type="button" class="hbtn" onclick="Clara.closeMenu()" aria-label="Close menu">${icon("close")}<span class="lbl">Close</span></button>
+            <a href="index.html" class="wordmark">CLARA</a>
+            <button type="button" class="hbtn" onclick="openSlideCart()" aria-label="Shopping bag">${icon("bag")}<span class="count cart-count-badge">0</span></button>
+          </div>
+          <div class="menu__levels">
+            <div class="menu__level is-active" data-level="root">
+              <ul class="menu__list">
+                <li><a href="shop.html?cat=new">New In</a></li>
+                <li><button type="button" data-go="bags">Handbags ${icon("chev-right")}</button></li>
+                <li><button type="button" data-go="moments">Occasions ${icon("chev-right")}</button></li>
+                <li><a href="shop.html?cat=wallets">Small Leather Goods</a></li>
+                <li><a href="about.html">The Maison</a></li>
+                <li><a href="contact.html">The Boutique</a></li>
+              </ul>
+              <div class="menu__cards">
+                <a href="shop.html?cat=new"><span class="img"><img src="assets/img/hero-palms.jpg" alt="" loading="lazy"></span><span>New Arrivals</span></a>
+                <a href="shop.html?cat=clutches"><span class="img"><img src="assets/img/evening-gown.jpg" alt="" loading="lazy"></span><span>The Evening Edit</span></a>
+              </div>
+              <ul class="menu__util">
+                <li><a href="shop.html?saved=1">${icon("heart")}Wishlist <span class="wishlist-count menu__n">0</span></a></li>
+                <li><a href="cart.html">${icon("bag")}Shopping bag <span class="cart-count-badge menu__n">0</span></a></li>
+                <li><a href="contact.html">${icon("store")}Visit the boutique</a></li>
+              </ul>
+            </div>
+            <div class="menu__level" data-level="bags">
+              <button type="button" class="menu__back" data-back>${icon("chev-left")}Back</button>
+              <h3 class="menu__title">Handbags</h3>
+              <ul class="menu__list sm">
+                <li><a href="shop.html">View all handbags</a></li>
+                ${CATEGORY_META.map(c => `<li><a href="shop.html?cat=${c.key}">${c.label}</a></li>`).join("")}
+              </ul>
+              <div class="menu__thumbs">
+                ${CATEGORY_META.slice(0, 4).map(c => `<a href="shop.html?cat=${c.key}"><span class="img"><img src="${c.image}" alt="" loading="lazy"></span><span>${c.label}</span></a>`).join("")}
+              </div>
+            </div>
+            <div class="menu__level" data-level="moments">
+              <button type="button" class="menu__back" data-back>${icon("chev-left")}Back</button>
+              <h3 class="menu__title">Occasions</h3>
+              <ul class="menu__list sm">
+                <li><a href="shop.html?cat=totes">The working week</a></li>
+                <li><a href="shop.html?cat=vanity">Weddings &amp; celebrations</a></li>
+                <li><a href="shop.html?cat=clutches">Evenings out</a></li>
+                <li><a href="shop.html?cat=crossbody">Weekend &amp; travel</a></li>
+                <li><a href="shop.html?price=under4">Gifts under Rs. 4,000</a></li>
+              </ul>
+              <div class="menu__cards">
+                <a href="shop.html?cat=vanity"><span class="img"><img src="assets/img/mood-celebration.jpg" alt="" loading="lazy"></span><span>Celebrations</span></a>
+                <a href="shop.html?cat=totes"><span class="img"><img src="assets/img/mood-day.jpg" alt="" loading="lazy"></span><span>The Working Week</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="menu__foot">
+            <div class="menu__cta">
+              <a href="tel:0773173217" class="btn btn-outline">${icon("phone")}Call</a>
+              <a href="${waLink("Hello CLARA, I would like some help.")}" target="_blank" rel="noopener" class="btn">${icon("whatsapp")}WhatsApp</a>
+            </div>
+            <p>${CLARA_INFO.address} · ${CLARA_INFO.hours}</p>
           </div>
         </aside>
       </div>
 
-      <div class="search-ov" id="searchOverlay" aria-hidden="true">
-        <button type="button" class="icon-btn close" aria-label="Close search" onclick="Clara.closeSearch()">${icon("close")}</button>
-        <form action="shop.html" role="search">
-          <input type="search" name="q" placeholder="Search CLARA" aria-label="Search the collection" autocomplete="off">
-          <button type="submit" class="icon-btn" aria-label="Search">${icon("search")}</button>
-        </form>
-        <div class="search-ov__tags">
-          <a class="tag" href="shop.html?q=vanity">Vanity bags</a>
-          <a class="tag" href="shop.html?q=laptop">Laptop totes</a>
-          <a class="tag" href="shop.html?cat=clutches">Wedding clutches</a>
-          <a class="tag" href="shop.html?q=noir">Black</a>
-          <a class="tag" href="shop.html?cat=wallets">Wallets</a>
+      <div class="srch" id="searchOverlay" aria-hidden="true">
+        <div class="srch__scrim" onclick="Clara.closeSearch()"></div>
+        <div class="srch__sheet" role="dialog" aria-modal="true" aria-label="Search">
+          <form class="srch__bar" action="shop.html" role="search">
+            ${icon("search")}
+            <input type="search" name="q" id="srchInput" placeholder="Search bags, colours, styles" aria-label="Search the collection" autocomplete="off" enterkeyhint="search">
+            <button type="button" class="srch__close" onclick="Clara.closeSearch()">Close</button>
+          </form>
+          <div class="srch__body">
+            <div class="srch__idle" id="srchIdle">
+              <div>
+                <h6>Popular searches</h6>
+                <ul class="srch__popular">
+                  ${["Vanity bag", "Laptop tote", "Wedding clutch", "Crossbody", "Black", "Wallet"].map(t => `<li><a href="shop.html?q=${encodeURIComponent(t.toLowerCase())}">${icon("search")}${t}</a></li>`).join("")}
+                </ul>
+              </div>
+              <div>
+                <h6>Shop by category</h6>
+                <div class="srch__cats">
+                  ${CATEGORY_META.slice(0, 4).map(c => `<a href="shop.html?cat=${c.key}"><span class="img"><img src="${c.image}" alt="" loading="lazy"></span><span>${c.label}</span></a>`).join("")}
+                </div>
+              </div>
+            </div>
+            <div class="srch__results hidden" id="srchResults">
+              <div class="srch__meta"><span id="srchCount"></span><a id="srchAll" class="link" href="shop.html">View all results</a></div>
+              <div class="srch__grid" id="srchGrid"></div>
+            </div>
+          </div>
         </div>
       </div>`;
 
@@ -258,14 +316,72 @@ const Clara = (() => {
     el.classList.toggle("is-open", open);
     el.setAttribute("aria-hidden", String(!open));
     document.body.classList.toggle("no-scroll", open);
+    document.body.classList.toggle("overlay-open", open);
   }
-  const openMenu = () => setOverlay("mobileNav", true);
+
+  function menuGo(level) {
+    const levels = document.querySelectorAll("#mobileNav .menu__level");
+    levels.forEach(l => {
+      const isRoot = l.dataset.level === "root";
+      l.classList.toggle("is-active", l.dataset.level === level);
+      l.classList.toggle("is-behind", isRoot && level !== "root");
+    });
+    const active = document.querySelector(`#mobileNav .menu__level[data-level="${level}"]`);
+    if (active) active.scrollTop = 0;
+  }
+
+  function openMenu() {
+    closeSearch();
+    menuGo("root");
+    setOverlay("mobileNav", true);
+    setTimeout(() => document.querySelector("#mobileNav .menu__list a, #mobileNav .menu__list button")?.focus({ preventScroll: true }), 350);
+  }
   const closeMenu = () => setOverlay("mobileNav", false);
+
   function openSearch() {
+    closeMenu();
     setOverlay("searchOverlay", true);
-    setTimeout(() => document.querySelector("#searchOverlay input").focus(), 100);
+    setTimeout(() => document.getElementById("srchInput")?.focus(), 250);
   }
   const closeSearch = () => setOverlay("searchOverlay", false);
+
+  // Search matching with everyday synonyms (e.g. "black" finds "Onyx Noir")
+  const SYNONYMS = {
+    black: ["noir", "onyx", "midnight"], white: ["ivory", "alabaster", "cream", "white"],
+    cream: ["ivory", "alabaster", "oatmeal", "ecru"], beige: ["oatmeal", "ecru", "taupe", "sand", "camel"],
+    brown: ["cognac", "tan", "camel", "espresso", "chestnut", "cocoa", "brown"], tan: ["cognac", "camel", "butterscotch"],
+    red: ["bordeaux", "wine", "merlot", "scarlet", "red"], wine: ["bordeaux", "merlot", "wine"], maroon: ["bordeaux", "merlot", "wine"],
+    pink: ["rose", "blush", "quartz"], green: ["green", "emerald", "olive"], gold: ["gold", "champagne", "mustard"],
+    silver: ["silver", "sterling"], bag: [""], bags: [""], handbag: [""], handbags: [""],
+    laptop: ["laptop", "macbook"], office: ["totes", "laptop", "executive"], work: ["totes", "executive"],
+    wedding: ["evening", "clutch", "minaudière", "vanity"], party: ["evening", "clutch"], gift: ["wallet", "gift"],
+    purse: ["wallet", "clutch"], sling: ["crossbody", "sling"], travel: ["weekender", "travel"]
+  };
+  function matches(p, q) {
+    const hay = [p.name, p.categoryName, p.category, p.colors.join(" "), p.material, p.shortDescription, p.sku].join(" ").toLowerCase();
+    return q.toLowerCase().split(/\s+/).filter(Boolean).every(w => {
+      const stem = w.replace(/(es|s)$/, "");
+      const options = [w, stem, ...(SYNONYMS[w] || []), ...(SYNONYMS[stem] || [])];
+      return options.some(o => o === "" || new RegExp(`(^|[^a-zà-ÿ])${o.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`).test(hay));
+    });
+  }
+
+  function liveSearch(q) {
+    q = q.trim().toLowerCase();
+    const idle = document.getElementById("srchIdle");
+    const res = document.getElementById("srchResults");
+    if (!q) { idle.classList.remove("hidden"); res.classList.add("hidden"); return; }
+    const hits = CLARA_PRODUCTS.filter(p => matches(p, q));
+    idle.classList.add("hidden");
+    res.classList.remove("hidden");
+    document.getElementById("srchCount").textContent = hits.length ? `${hits.length} ${hits.length === 1 ? "result" : "results"} for “${q}”` : `No results for “${q}”`;
+    const all = document.getElementById("srchAll");
+    all.href = `shop.html?q=${encodeURIComponent(q)}`;
+    all.classList.toggle("hidden", !hits.length);
+    document.getElementById("srchGrid").innerHTML = hits.length
+      ? hits.slice(0, 8).map(p => `<a href="product.html?id=${p.id}" class="srch__item"><span class="img"><img src="${p.images[0]}" alt=""></span><span class="n">${escapeHtml(p.name)}</span><span class="p">${formatLKR(p.price)}</span></a>`).join("")
+      : `<p class="srch__none">Try “tote”, “clutch”, “black” or browse <a class="link-plain" href="shop.html">all handbags</a>.</p>`;
+  }
 
   // ---------------------------------------------------------------------------
   // Footer
@@ -402,13 +518,17 @@ const Clara = (() => {
       window.addEventListener("scroll", onScroll, { passive: true });
     }
     document.addEventListener("keydown", e => { if (e.key === "Escape") { closeMenu(); closeSearch(); } });
+    document.querySelectorAll("#mobileNav [data-go]").forEach(b => b.addEventListener("click", () => menuGo(b.dataset.go)));
+    document.querySelectorAll("#mobileNav [data-back]").forEach(b => b.addEventListener("click", () => menuGo("root")));
+    const si = document.getElementById("srchInput");
+    if (si) si.addEventListener("input", () => liveSearch(si.value));
   });
 
   return {
     icon, hydrateIcons, escapeHtml, waLink,
     header, checkoutHeader, footer, minimalFooter, logo,
     productCard, discountPct, initCarousels, observeReveals,
-    getWishlist, isSaved, toggleWishlist, updateWishlistBadge, addRecent, getRecent,
+    getWishlist, isSaved, toggleWishlist, matches, updateWishlistBadge, addRecent, getRecent,
     openMenu, closeMenu, openSearch, closeSearch, joinNews
   };
 })();

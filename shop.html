@@ -34,6 +34,10 @@
         <div class="fgroup"><button type="button" onclick="this.parentElement.classList.toggle('is-closed')">Price <span data-icon="chev-down"></span></button><div class="fopts" id="fPrice"></div></div>
         <button type="button" class="clear-filters" onclick="resetFilters()">Clear all filters</button>
       </aside>
+      <div class="filters__foot" id="filtersFoot">
+        <button type="button" class="btn btn-outline" onclick="resetFilters()">Clear</button>
+        <button type="button" class="btn" id="showResults" onclick="toggleFilters(false)">Show results</button>
+      </div>
 
       <section>
         <div class="toolbar">
@@ -145,7 +149,7 @@
       const grid = document.getElementById("catalogGrid");
       let list = CLARA_PRODUCTS.filter(p => {
         if (!inCat(p, state.cat)) return false;
-        if (state.q && ![p.name, p.sku, p.categoryName, p.material, p.colors.join(" "), p.shortDescription].join(" ").toLowerCase().includes(state.q)) return false;
+        if (state.q && !Clara.matches(p, state.q)) return false;
         if (state.colours.size && ![...families(p)].some(f => state.colours.has(f))) return false;
         if (state.price && !PRICES.find(x => x.key === state.price).test(p)) return false;
         return true;
@@ -160,6 +164,7 @@
       list.sort(sorts[state.sort]);
 
       document.getElementById("countText").textContent = `${list.length} ${list.length === 1 ? "product" : "products"}`;
+      document.getElementById("showResults").textContent = `Show ${list.length} ${list.length === 1 ? "result" : "results"}`;
 
       const chips = [];
       if (state.q) chips.push([`Search: ${state.q}`, () => { state.q = ""; renderHead(); renderGrid(); }]);
@@ -191,6 +196,7 @@
 
     function toggleFilters(open) {
       document.getElementById("filters").classList.toggle("is-open", open);
+      document.getElementById("filtersFoot").classList.toggle("is-open", open);
       document.body.classList.toggle("no-scroll", open);
     }
 
