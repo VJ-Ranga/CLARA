@@ -1240,3 +1240,15 @@ html[data-h="3"] { --header-h: 72px; }
   .demo__share { font-size: 0; width: 30px; padding: 0; }
   .demo__share::after { content: "Link"; font-size: 10.5px; }
 }
+/* Header 2: matching icon + label buttons on both sides */
+.hv2__left, .hv2__right { gap: 10px; }
+.hv2 .hbtn { gap: 8px; padding: 0 6px; }
+.hv2 .hbtn .ic { width: 18px; height: 18px; }
+.hv2 .hbtn .count { position: static; display: inline; white-space: nowrap; min-width: 0; height: auto; background: none !important; color: var(--ink) !important; font-size: 11px; padding: 0; margin-left: -4px; }
+.hv2 .hbtn .count::before { content: "("; } .hv2 .hbtn .count::after { content: ")"; }
+.hv2 .hbtn .count:not(.is-visible) { display: none; }
+@media (max-width: 1200px) { .hv2 .hbtn .lbl { display: none; } }
+@media (max-width: 980px) {
+  .hv2 .hbtn .count { position: absolute; top: 2px; right: -2px; min-width: 16px; height: 16px; border-radius: 50%; background: var(--ink) !important; color: #fff !important; font-size: 9.5px; display: grid; place-items: center; margin: 0; padding: 0 4px; }
+  .hv2 .hbtn .count::before, .hv2 .hbtn .count::after { content: none; }
+}

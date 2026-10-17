@@ -71,6 +71,7 @@ const Clara = (() => {
     exchange: '<path d="M4 9h12a4 4 0 0 1 0 8h-3"/><path d="m8 5-4 4 4 4"/>',
     gift: '<rect x="3.5" y="8" width="17" height="4"/><path d="M5 12v8h14v-8M12 8v12"/><path d="M12 8S10.5 3.5 8 4.2C6 4.8 7 8 12 8zm0 0s1.5-4.5 4-3.8C18 4.8 17 8 12 8z"/>',
     filter: '<path d="M4 6h16M7 12h10M10 18h4"/>',
+    grid: '<rect x="4" y="4" width="6.5" height="6.5"/><rect x="13.5" y="4" width="6.5" height="6.5"/><rect x="4" y="13.5" width="6.5" height="6.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5"/>',
     user: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>'
   };
   const WHATSAPP = '<path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.96 1.35-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.13 1.01-2.42.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.66.5.24.58.82 2.01.89 2.15.07.15.12.32.02.51-.1.19-.14.31-.29.48-.14.17-.3.38-.43.51-.14.14-.29.3-.13.59.17.29.74 1.22 1.58 1.97 1.09.97 2.01 1.27 2.3 1.42.29.14.46.12.63-.07.17-.19.72-.84.92-1.13.19-.29.38-.24.65-.14.27.1 1.7.8 1.99.95.29.14.48.22.55.34.07.12.07.7-.17 1.38z"/>';
@@ -324,7 +325,9 @@ const Clara = (() => {
           <div class="hv2__left">
             <button type="button" class="hbtn hv2__m" aria-label="Open menu" onclick="Clara.openMenu()">${icon("menu")}</button>
             <button type="button" class="hbtn hv2__m" aria-label="Search" onclick="Clara.openSearch()">${icon("search")}</button>
-            <button type="button" class="hv2__search" onclick="Clara.openSearch()">${icon("search")}<span>Search</span></button>
+            <button type="button" class="hbtn hide-mobile" onclick="Clara.openSearch()">${icon("search")}<span class="lbl">Search</span></button>
+            <a href="contact.html" class="hbtn hide-mobile">${icon("phone")}<span class="lbl">Contact us</span></a>
+            <a href="shop.html" class="hbtn hide-mobile">${icon("grid")}<span class="lbl">Shop</span></a>
           </div>
           <a href="index.html" class="hv2__logo" aria-label="CLARA — home">
             <span class="hv2__row"><img src="assets/rose.png" alt="" width="28" height="28"><span>CLARA</span></span>
@@ -332,7 +335,8 @@ const Clara = (() => {
           </a>
           <div class="hv2__right">
             <a href="contact.html" class="hbtn hide-mobile">${icon("store")}<span class="lbl">Boutique</span></a>
-            ${counts}
+            <a href="shop.html?saved=1" class="hbtn hide-mobile" aria-label="Wishlist">${icon("heart")}<span class="lbl">Wishlist</span><span class="count wishlist-count">0</span></a>
+            <button type="button" class="hbtn" aria-label="Shopping bag" onclick="openSlideCart()">${icon("bag")}<span class="lbl">Bag</span><span class="count cart-count-badge">0</span></button>
           </div>
         </div>
         <nav class="hv2__nav" aria-label="Primary"><ul class="primary-nav">${navItems()}</ul></nav>
