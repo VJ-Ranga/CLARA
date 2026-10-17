@@ -22,6 +22,9 @@ const CLARA_INFO = {
   }
 };
 
+// Client design preview: set to false once a design is chosen to hide the switcher bar.
+const DESIGN_PREVIEW = true;
+
 const CATEGORY_META = [
   { key: "vanity", label: "Structured Vanity", image: "assets/img/cat-vanity.jpg" },
   { key: "totes", label: "Work & Totes", image: "assets/img/cat-totes.jpg" },
@@ -170,6 +173,109 @@ const Clara = (() => {
   }
 
   // ---------------------------------------------------------------------------
+  // Design variants (client preview switcher)
+  // ---------------------------------------------------------------------------
+  const VARIANT_KEY = "clara_variants_v1";
+  const VARIANT_NAMES = {
+    h: ["Maison", "Classic Boutique", "Modern"],
+    f: ["Columns", "Noir", "Minimal"],
+    p: ["Editorial", "Classic Gallery", "Showcase"]
+  };
+  const VARIANT_AREAS = { h: "Header", f: "Footer", p: "Product page" };
+  const variants = (() => {
+    const v = Object.assign({ h: 1, f: 1, p: 1 }, store(VARIANT_KEY, {}));
+    const qs = new URLSearchParams(location.search);
+    let fromUrl = false;
+    ["h", "f", "p"].forEach(k => { const n = parseInt(qs.get(k), 10); if (n >= 1 && n <= 3) { v[k] = n; fromUrl = true; } });
+    if (fromUrl) save(VARIANT_KEY, v);
+    const root = document.documentElement;
+    root.dataset.h = v.h; root.dataset.f = v.f; root.dataset.p = v.p;
+    let hidden = false;
+    try { hidden = sessionStorage.getItem("clara_demo_hidden") === "1"; } catch (e) { /* ignore */ }
+    if (DESIGN_PREVIEW && !hidden) root.classList.add("has-demo");
+    return v;
+  })();
+
+  function setVariant(k, n) {
+    variants[k] = n;
+    save(VARIANT_KEY, variants);
+    if (k === "p" && document.body.dataset.page !== "product") { location.href = "product.html?id=1"; return; }
+    const url = new URL(location.href);
+    ["h", "f", "p"].forEach(x => url.searchParams.delete(x));
+    location.replace(url.toString());
+  }
+
+  function hideDemo(hide) {
+    try { sessionStorage.setItem("clara_demo_hidden", hide ? "1" : "0"); } catch (e) { /* ignore */ }
+    document.documentElement.classList.toggle("has-demo", !hide);
+  }
+
+  function shareDesign() {
+    const url = new URL(location.href);
+    ["h", "f", "p"].forEach(k => url.searchParams.set(k, variants[k]));
+    const text = url.toString();
+    const done = () => typeof showToast === "function" && showToast("Link copied — it opens with this design combination");
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, () => prompt("Copy this link:", text));
+    else prompt("Copy this link:", text);
+  }
+
+  function demoBar() {
+    if (!DESIGN_PREVIEW) return "";
+    return `
+      <div class="demo" role="region" aria-label="Design preview">
+        <span class="demo__label">Design preview</span>
+        ${["h", "f", "p"].map(k => `
+          <div class="demo__grp">
+            <span class="demo__area" data-short="${k.toUpperCase()}">${VARIANT_AREAS[k]}</span>
+            ${[1, 2, 3].map(n => `<button type="button" class="${variants[k] === n ? "is-active" : ""}" title="${VARIANT_NAMES[k][n - 1]}" aria-pressed="${variants[k] === n}" onclick="Clara.setVariant('${k}', ${n})">${n}</button>`).join("")}
+            <em>${VARIANT_NAMES[k][variants[k] - 1]}</em>
+          </div>`).join("")}
+        <button type="button" class="demo__share" onclick="Clara.shareDesign()">Copy link</button>
+        <button type="button" class="demo__hide" onclick="Clara.hideDemo(true)" aria-label="Hide design preview bar">${icon("close")}</button>
+      </div>
+      <button type="button" class="demo-pill" onclick="Clara.hideDemo(false)">${icon("menu")}Design options</button>`;
+  }
+
+  // Shared primary navigation (used by the Classic and Modern headers)
+  function navItems() {
+    const page = document.body.dataset.page || "";
+    const cat = new URLSearchParams(location.search).get("cat");
+    const on = (c) => (c ? "is-active" : "");
+    return `
+      <li><a href="shop.html?cat=new" class="${on(page === "shop" && cat === "new")}">New In</a></li>
+      <li>
+        <a href="shop.html" class="${on(page === "shop" && !cat)}">Handbags</a>
+        <div class="mega">
+          <div class="container mega__inner">
+            <div><h6>Handbags</h6><ul>
+              <li><a href="shop.html">View all</a></li>
+              ${CATEGORY_META.slice(0, 6).map(c => `<li><a href="shop.html?cat=${c.key}">${c.label}</a></li>`).join("")}
+            </ul></div>
+            <div><h6>Occasions</h6><ul>
+              <li><a href="shop.html?cat=totes">The working week</a></li>
+              <li><a href="shop.html?cat=vanity">Weddings &amp; celebrations</a></li>
+              <li><a href="shop.html?cat=clutches">Evenings out</a></li>
+              <li><a href="shop.html?cat=crossbody">Weekend &amp; travel</a></li>
+            </ul></div>
+            <div><h6>Gifts</h6><ul>
+              <li><a href="shop.html?cat=wallets">Small leather goods</a></li>
+              <li><a href="shop.html?price=under4">Gifts under Rs. 4,000</a></li>
+              <li><a href="shop.html?saved=1">Your wishlist</a></li>
+            </ul></div>
+            <div class="mega__feature">
+              <a href="shop.html?cat=new"><div class="img"><img src="assets/img/hero-palms.jpg" alt="" loading="lazy"></div><span>New arrivals</span></a>
+              <a href="shop.html?cat=clutches"><div class="img"><img src="assets/img/evening-gown.jpg" alt="" loading="lazy"></div><span>The evening edit</span></a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="shop.html?cat=clutches" class="${on(page === "shop" && cat === "clutches")}">Evening</a></li>
+      <li><a href="shop.html?cat=wallets" class="${on(page === "shop" && cat === "wallets")}">Small Leather Goods</a></li>
+      <li><a href="about.html" class="${on(page === "about")}">Maison</a></li>
+      <li><a href="contact.html" class="${on(page === "contact")}">Boutique</a></li>`;
+  }
+
+  // ---------------------------------------------------------------------------
   // Header
   // ---------------------------------------------------------------------------
   function logo(tag = "Mount Lavinia · Sri Lanka") {
@@ -181,10 +287,14 @@ const Clara = (() => {
 
   function header() {
     const page = document.body.dataset.page || "";
-    const overlay = page === "home" || document.body.dataset.overlay === "1";
+    const overlay = variants.h === 1 && (page === "home" || document.body.dataset.overlay === "1");
+    const counts = `
+      <a href="shop.html?saved=1" class="hbtn hide-mobile" aria-label="Wishlist">${icon("heart")}<span class="count wishlist-count">0</span></a>
+      <button type="button" class="hbtn" aria-label="Shopping bag" onclick="openSlideCart()">${icon("bag")}<span class="count cart-count-badge">0</span></button>`;
 
-    const html = `
-      <header class="site-header ${overlay ? "is-overlay" : ""}" id="siteHeader">
+    const headers = {
+      1: `
+      <header class="site-header hv1 ${overlay ? "is-overlay" : ""}" id="siteHeader">
         <div class="masthead">
           <div class="masthead__left">
             <button type="button" class="hbtn" aria-label="Open menu" onclick="Clara.openMenu()">${icon("menu")}<span class="lbl">Menu</span></button>
@@ -193,14 +303,62 @@ const Clara = (() => {
           <a href="index.html" class="wordmark" aria-label="CLARA — home">CLARA</a>
           <div class="masthead__right">
             <a href="contact.html" class="hbtn hide-mobile">${icon("phone")}<span class="lbl">Contact us</span></a>
-            <a href="shop.html?saved=1" class="hbtn hide-mobile" aria-label="Wishlist">${icon("heart")}<span class="count wishlist-count">0</span></a>
-            <button type="button" class="hbtn" aria-label="Shopping bag" onclick="openSlideCart()">${icon("bag")}<span class="count cart-count-badge">0</span></button>
+            ${counts}
           </div>
         </div>
-      </header>
+      </header>`,
+      2: `
+      <header class="site-header hv2" id="siteHeader">
+        <div class="hv2__top">
+          <div class="container hv2__topin">
+            <a href="contact.html" class="hide-mobile">Boutique · Mount Lavinia</a>
+            <span class="hv2__msgs">
+              <span class="is-active">Complimentary islandwide delivery over Rs. 10,000</span>
+              <span>10% off your first order with code WELCOME10</span>
+              <span>Cash on delivery available across Sri Lanka</span>
+            </span>
+            <a href="tel:0773173217" class="hide-mobile">${CLARA_INFO.phoneMobile}</a>
+          </div>
+        </div>
+        <div class="container hv2__main">
+          <div class="hv2__left">
+            <button type="button" class="hbtn hv2__m" aria-label="Open menu" onclick="Clara.openMenu()">${icon("menu")}</button>
+            <button type="button" class="hbtn hv2__m" aria-label="Search" onclick="Clara.openSearch()">${icon("search")}</button>
+            <button type="button" class="hv2__search" onclick="Clara.openSearch()">${icon("search")}<span>Search</span></button>
+          </div>
+          <a href="index.html" class="hv2__logo" aria-label="CLARA — home">
+            <span class="hv2__row"><img src="assets/rose.png" alt="" width="28" height="28"><span>CLARA</span></span>
+            <span class="hv2__tag">Mount Lavinia · Sri Lanka</span>
+          </a>
+          <div class="hv2__right">
+            <a href="contact.html" class="hbtn hide-mobile">${icon("store")}<span class="lbl">Boutique</span></a>
+            ${counts}
+          </div>
+        </div>
+        <nav class="hv2__nav" aria-label="Primary"><ul class="primary-nav">${navItems()}</ul></nav>
+      </header>`,
+      3: `
+      <header class="site-header hv3" id="siteHeader">
+        <div class="hv3__in">
+          <div class="hv3__left">
+            <button type="button" class="hbtn hv3__m" aria-label="Open menu" onclick="Clara.openMenu()">${icon("menu")}</button>
+            <a href="index.html" class="hv3__logo" aria-label="CLARA — home"><img src="assets/rose.png" alt="" width="24" height="24"><span>CLARA</span></a>
+          </div>
+          <nav class="hv3__nav" aria-label="Primary"><ul class="primary-nav">${navItems()}</ul></nav>
+          <div class="hv3__right">
+            <button type="button" class="hbtn" aria-label="Search" onclick="Clara.openSearch()">${icon("search")}</button>
+            ${counts}
+          </div>
+        </div>
+      </header>`
+    };
+
+    const html = `
+      ${demoBar()}
+      ${headers[variants.h]}
       ${overlay ? "" : '<div class="header-space" aria-hidden="true"></div>'}
 
-<div class="menu" id="mobileNav" aria-hidden="true">
+      <div class="menu" id="mobileNav" aria-hidden="true">
         <div class="menu__scrim" onclick="Clara.closeMenu()"></div>
         <aside class="menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
           <div class="menu__bar">
@@ -301,6 +459,7 @@ const Clara = (() => {
 
   function checkoutHeader() {
     document.currentScript.insertAdjacentHTML("beforebegin", `
+      ${demoBar()}
       <header class="co-header">
         <div class="container co-header__inner">
           <a href="cart.html" class="back">${icon("chev-left")}<span>Back to bag</span></a>
@@ -395,7 +554,17 @@ const Clara = (() => {
       `<a href="${waLink("Hello CLARA, I would like some help.")}" target="_blank" rel="noopener" aria-label="WhatsApp">${icon("whatsapp")}</a>`
     ].filter(Boolean).join("");
 
-    document.currentScript.insertAdjacentHTML("beforebegin", `
+    const newsForm = (id) => `
+        <form onsubmit="Clara.joinNews(event)">
+          <label for="${id}" class="visually-hidden">Email address</label>
+          <input id="${id}" type="email" required placeholder="Your email address" autocomplete="email">
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="ok">Thank you for joining. Use code <b>WELCOME10</b> for 10% off your first order.</p>`;
+    const year = new Date().getFullYear();
+
+    const footers = {
+      1: `
       <section class="container news" id="newsletter">
         <span class="kicker">The CLARA Letter</span>
         <h2 class="title-md">Be the first to know</h2>
@@ -442,7 +611,64 @@ const Clara = (() => {
           <span>© ${new Date().getFullYear()} CLARA Bags · DJ Industries. All rights reserved.</span>
           <span class="pay"><span>Visa</span><span>Mastercard</span><span>Amex</span><span>Bank transfer</span><span>Cash on delivery</span></span>
         </div>
-      </footer>`);
+      </footer>`,
+      2: `
+      <footer class="ft2" data-news>
+        <div class="container ft2__top">
+          <div class="ft2__news">
+            <span class="kicker">The CLARA Letter</span>
+            <h2>Be the first to know</h2>
+            <p>New arrivals, boutique events and private offers — plus 10% off your first order.</p>
+            ${newsForm("newsEmail2")}
+          </div>
+          <div class="ft2__cols">
+            <div><h4>Shop</h4><ul>
+              <li><a href="shop.html?cat=new">New In</a></li>
+              <li><a href="shop.html">All Handbags</a></li>
+              ${CATEGORY_META.slice(0, 4).map(c => `<li><a href="shop.html?cat=${c.key}">${c.label}</a></li>`).join("")}
+            </ul></div>
+            <div><h4>Client Services</h4><ul>
+              <li><a href="contact.html">Contact us</a></li>
+              <li><a href="product.html?id=1#delivery">Delivery &amp; returns</a></li>
+              <li><a href="shop.html?saved=1">Wishlist</a></li>
+              <li><a href="contact.html#enquiry">Wholesale</a></li>
+              <li><a href="about.html">The Maison</a></li>
+            </ul></div>
+            <div><h4>The Boutique</h4><ul>
+              <li>${CLARA_INFO.address}</li>
+              <li>${CLARA_INFO.hours}</li>
+              <li><a href="tel:0773173217">${CLARA_INFO.phoneMobile}</a></li>
+              <li><a href="mailto:${CLARA_INFO.email}">${CLARA_INFO.email}</a></li>
+            </ul></div>
+          </div>
+        </div>
+        <div class="ft2__mark" aria-hidden="true">CLARA</div>
+        <div class="container ft2__legal">
+          <span>© ${year} CLARA Bags · DJ Industries</span>
+          <div class="socials">${socials}</div>
+          <span class="pay"><span>Visa</span><span>Mastercard</span><span>Amex</span><span>Bank transfer</span><span>COD</span></span>
+        </div>
+      </footer>`,
+      3: `
+      <footer class="ft3" data-news>
+        <div class="container ft3__in">
+          <img src="assets/rose.png" alt="" width="34" height="34">
+          <a href="index.html" class="wordmark">CLARA</a>
+          <p class="ft3__tag">Handbags for the modern Sri Lankan woman · Mount Lavinia</p>
+          <nav class="ft3__links" aria-label="Footer">
+            <a href="shop.html?cat=new">New In</a><a href="shop.html">Handbags</a><a href="shop.html?cat=clutches">Evening</a>
+            <a href="shop.html?cat=wallets">Small Leather Goods</a><a href="about.html">The Maison</a><a href="contact.html">The Boutique</a>
+            <a href="product.html?id=1#delivery">Delivery &amp; Returns</a><a href="shop.html?saved=1">Wishlist</a>
+          </nav>
+          <div class="ft3__news">${newsForm("newsEmail3")}</div>
+          <p class="ft3__contact">${CLARA_INFO.address} · <a href="tel:0773173217">${CLARA_INFO.phoneMobile}</a> · <a href="mailto:${CLARA_INFO.email}">${CLARA_INFO.email}</a></p>
+          <div class="socials">${socials}</div>
+          <p class="ft3__legal">© ${year} CLARA Bags · DJ Industries · Visa · Mastercard · Amex · Bank transfer · Cash on delivery</p>
+        </div>
+      </footer>`
+    };
+
+    document.currentScript.insertAdjacentHTML("beforebegin", footers[variants.f]);
   }
 
   function minimalFooter() {
@@ -458,7 +684,7 @@ const Clara = (() => {
     const email = event.target.querySelector("input").value.trim();
     const list = store("clara_circle", []);
     if (email && !list.includes(email)) save("clara_circle", [...list, email]);
-    event.target.closest(".news").classList.add("is-joined");
+    event.target.closest("[data-news], .news").classList.add("is-joined");
   }
 
   // ---------------------------------------------------------------------------
@@ -511,6 +737,11 @@ const Clara = (() => {
     updateWishlistBadge();
     observeReveals();
     initCarousels();
+    const msgs = document.querySelectorAll(".hv2__msgs span");
+    if (msgs.length > 1) {
+      let mi = 0;
+      setInterval(() => { msgs[mi].classList.remove("is-active"); mi = (mi + 1) % msgs.length; msgs[mi].classList.add("is-active"); }, 4500);
+    }
     const h = document.getElementById("siteHeader");
     if (h) {
       const onScroll = () => h.classList.toggle("is-scrolled", window.scrollY > 40);
@@ -529,6 +760,7 @@ const Clara = (() => {
     header, checkoutHeader, footer, minimalFooter, logo,
     productCard, discountPct, initCarousels, observeReveals,
     getWishlist, isSaved, toggleWishlist, matches, updateWishlistBadge, addRecent, getRecent,
-    openMenu, closeMenu, openSearch, closeSearch, joinNews
+    openMenu, closeMenu, openSearch, closeSearch, joinNews,
+    variants, setVariant, hideDemo, shareDesign
   };
 })();

@@ -28,7 +28,7 @@
       </nav>
     </div>
 
-    <section class="container pdp">
+    <section class="container pdp" id="pdpSection">
       <div>
         <div class="pdp__gallery" id="gallery"></div>
         <div class="pdp__dots" id="galleryDots"></div>
@@ -146,12 +146,7 @@
       $("crumbCat").textContent = p.categoryName; $("crumbCat").href = `shop.html?cat=${p.category}`;
       $("crumbName").textContent = p.name;
 
-      $("gallery").innerHTML = p.images.map((src, i) => `<button type="button" onclick="openLightbox(${i})" aria-label="Enlarge image ${i + 1}"><img src="${src}" alt="${p.name} — view ${i + 1}" ${i ? 'loading="lazy"' : ""}></button>`).join("");
-      $("galleryDots").innerHTML = p.images.map((_, i) => `<i class="${i ? "" : "is-active"}"></i>`).join("");
-      $("gallery").addEventListener("scroll", () => {
-        const g = $("gallery"); const i = Math.round(g.scrollLeft / g.clientWidth);
-        document.querySelectorAll("#galleryDots i").forEach((d, k) => d.classList.toggle("is-active", k === i));
-      }, { passive: true });
+      renderGallery(p);
 
       $("pCat").textContent = p.categoryName; $("pCat").href = `shop.html?cat=${p.category}`;
       $("pSku").textContent = `Ref. ${p.sku}`;
@@ -201,6 +196,51 @@
         if (e.key === "ArrowLeft") lbStep(-1);
       });
     });
+
+    // ---- Gallery: three layouts chosen in the design preview bar ----
+    let imgIndex = 0;
+    function renderGallery(p) {
+      const v = Clara.variants.p;
+      $("pdpSection").classList.add(`pv${v}`);
+      const g = $("gallery");
+      $("galleryDots").innerHTML = p.images.map((_, i) => `<i class="${i ? "" : "is-active"}"></i>`).join("");
+      if (v === 1) {
+        g.innerHTML = p.images.map((src, i) => `<button type="button" onclick="openLightbox(${i})" aria-label="Enlarge image ${i + 1}"><img src="${src}" alt="${p.name} — view ${i + 1}" ${i ? 'loading="lazy"' : ""}></button>`).join("");
+        g.addEventListener("scroll", () => {
+          const i = Math.round(g.scrollLeft / g.clientWidth);
+          document.querySelectorAll("#galleryDots i").forEach((d, k) => d.classList.toggle("is-active", k === i));
+        }, { passive: true });
+        return;
+      }
+      g.className = v === 2 ? "g2" : "g3";
+      g.innerHTML = `
+        ${v === 2 ? `<div class="g2__thumbs">${p.images.map((src, i) => `<button type="button" class="${i ? "" : "is-active"}" onclick="showImg(${i})" aria-label="View image ${i + 1}"><img src="${src}" alt=""></button>`).join("")}</div>` : ""}
+        <div class="gstage">
+          <button type="button" class="gstage__img" onclick="openLightbox(imgIndex)" aria-label="Enlarge image"><img id="stageImg" src="${p.images[0]}" alt="${p.name}"></button>
+          <button type="button" class="gstage__nav prev" onclick="showImg(imgIndex - 1)" aria-label="Previous image">${Clara.icon("chev-left")}</button>
+          <button type="button" class="gstage__nav next" onclick="showImg(imgIndex + 1)" aria-label="Next image">${Clara.icon("chev-right")}</button>
+          <span class="gstage__count" id="stageCount">1 / ${p.images.length}</span>
+        </div>`;
+      let x0 = null;
+      const stage = g.querySelector(".gstage");
+      stage.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+      stage.addEventListener("touchend", e => {
+        if (x0 === null) return;
+        const dx = e.changedTouches[0].clientX - x0;
+        if (Math.abs(dx) > 40) showImg(imgIndex + (dx < 0 ? 1 : -1));
+        x0 = null;
+      }, { passive: true });
+    }
+    function showImg(i) {
+      const imgs = currentProduct.images;
+      imgIndex = (i + imgs.length) % imgs.length;
+      const img = $("stageImg");
+      img.style.opacity = 0;
+      setTimeout(() => { img.src = imgs[imgIndex]; img.style.opacity = 1; }, 160);
+      $("stageCount").textContent = `${imgIndex + 1} / ${imgs.length}`;
+      document.querySelectorAll(".g2__thumbs button").forEach((b, k) => b.classList.toggle("is-active", k === imgIndex));
+      document.querySelectorAll("#galleryDots i").forEach((d, k) => d.classList.toggle("is-active", k === imgIndex));
+    }
 
     function updateWa() {
       $("pWhatsApp").href = Clara.waLink(`Hello CLARA, I'm interested in the ${currentProduct.name} in ${selectedColor} (${formatLKR(currentProduct.price)}). Is it available?`);
