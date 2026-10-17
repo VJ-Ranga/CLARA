@@ -49,6 +49,8 @@ const Clara = (() => {
     "chev-down": '<path d="m6 9 6 6 6-6"/>',
     "chev-left": '<path d="m15 5-7 7 7 7"/>',
     "chev-right": '<path d="m9 5 7 7-7 7"/>',
+    play: '<path d="M8 5v14l11-7z"/>',
+    pause: '<path d="M9 5v14M15 5v14"/>',
     plus: '<path d="M12 4v16M4 12h16"/>',
     minus: '<path d="M4 12h16"/>',
     truck: '<path d="M2.5 6.5h12v9.5h-12zM14.5 9.5h4l3 3v3.5h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/>',
@@ -180,17 +182,20 @@ const Clara = (() => {
   const VARIANT_NAMES = {
     h: ["Maison", "Classic Boutique", "Modern"],
     f: ["Columns", "Noir", "Minimal"],
-    p: ["Editorial", "Classic Gallery", "Showcase"]
+    p: ["Editorial", "Classic Gallery", "Showcase"],
+    v: ["Photo", "Video", "Slider"]
   };
-  const VARIANT_AREAS = { h: "Header", f: "Footer", p: "Product page" };
+  const VARIANT_KEYS = ["v", "h", "f", "p"];
+  const VARIANT_AREAS = { v: "Home hero", h: "Header", f: "Footer", p: "Product page" };
+  const VARIANT_SHORT = { v: "HERO", h: "H", f: "F", p: "P" };
   const variants = (() => {
-    const v = Object.assign({ h: 1, f: 1, p: 1 }, store(VARIANT_KEY, {}));
+    const v = Object.assign({ v: 1, h: 1, f: 1, p: 1 }, store(VARIANT_KEY, {}));
     const qs = new URLSearchParams(location.search);
     let fromUrl = false;
-    ["h", "f", "p"].forEach(k => { const n = parseInt(qs.get(k), 10); if (n >= 1 && n <= 3) { v[k] = n; fromUrl = true; } });
+    VARIANT_KEYS.forEach(k => { const n = parseInt(qs.get(k), 10); if (n >= 1 && n <= 3) { v[k] = n; fromUrl = true; } });
     if (fromUrl) save(VARIANT_KEY, v);
     const root = document.documentElement;
-    root.dataset.h = v.h; root.dataset.f = v.f; root.dataset.p = v.p;
+    root.dataset.h = v.h; root.dataset.f = v.f; root.dataset.p = v.p; root.dataset.v = v.v;
     let hidden = false;
     try { hidden = sessionStorage.getItem("clara_demo_hidden") === "1"; } catch (e) { /* ignore */ }
     if (DESIGN_PREVIEW && !hidden) root.classList.add("has-demo");
@@ -201,8 +206,9 @@ const Clara = (() => {
     variants[k] = n;
     save(VARIANT_KEY, variants);
     if (k === "p" && document.body.dataset.page !== "product") { location.href = "product.html?id=1"; return; }
+    if (k === "v" && document.body.dataset.page !== "home") { location.href = "index.html"; return; }
     const url = new URL(location.href);
-    ["h", "f", "p"].forEach(x => url.searchParams.delete(x));
+    VARIANT_KEYS.forEach(x => url.searchParams.delete(x));
     location.replace(url.toString());
   }
 
@@ -213,7 +219,7 @@ const Clara = (() => {
 
   function shareDesign() {
     const url = new URL(location.href);
-    ["h", "f", "p"].forEach(k => url.searchParams.set(k, variants[k]));
+    VARIANT_KEYS.forEach(k => url.searchParams.set(k, variants[k]));
     const text = url.toString();
     const done = () => typeof showToast === "function" && showToast("Link copied — it opens with this design combination");
     if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, () => prompt("Copy this link:", text));
@@ -225,9 +231,9 @@ const Clara = (() => {
     return `
       <div class="demo" role="region" aria-label="Design preview">
         <span class="demo__label">Design preview</span>
-        ${["h", "f", "p"].map(k => `
-          <div class="demo__grp">
-            <span class="demo__area" data-short="${k.toUpperCase()}">${VARIANT_AREAS[k]}</span>
+        ${VARIANT_KEYS.map(k => `
+          <div class="demo__grp demo__grp--${k}">
+            <span class="demo__area" data-short="${VARIANT_SHORT[k]}">${VARIANT_AREAS[k]}</span>
             ${[1, 2, 3].map(n => `<button type="button" class="${variants[k] === n ? "is-active" : ""}" title="${VARIANT_NAMES[k][n - 1]}" aria-pressed="${variants[k] === n}" onclick="Clara.setVariant('${k}', ${n})">${n}</button>`).join("")}
             <em>${VARIANT_NAMES[k][variants[k] - 1]}</em>
           </div>`).join("")}

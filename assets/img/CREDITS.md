@@ -50,3 +50,11 @@ Photos in this folder are from [Unsplash](https://unsplash.com) and used under t
 | p-1628149455678.jpg | https://unsplash.com/photos/1628149455678-16f37bc392f4 |
 | rack.jpg | https://unsplash.com/photos/1612423284934-2850a4ea6b0f |
 | spotlight-sovereign.jpg | https://unsplash.com/photos/1584917865442-de89df76afd3 |
+| hero-duo-1.jpg | https://unsplash.com/photos/1617922001439-4a2e6562f328 |
+| hero-duo-2.jpg | https://unsplash.com/photos/1632149877166-f75d49000351 |
+
+## Video
+
+| File | Source |
+|------|--------|
+| ../video/hero.mp4 / .webm, hero-mobile.mp4 / .webm, hero-poster.jpg | Mixkit clip 49513, free under the Mixkit License — https://mixkit.co/license/#videoFree |

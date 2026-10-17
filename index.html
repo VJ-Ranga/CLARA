@@ -14,7 +14,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="preload" as="image" href="assets/img/wide-shopping.jpg">
   <script src="js/products-data.js"></script>
   <script src="js/store.js"></script>
   <script src="js/layout.js"></script>
@@ -23,15 +22,60 @@
   <script>Clara.header();</script>
 
   <main id="main">
-    <!-- 1. Hero -->
-    <section class="panel">
-      <img src="assets/img/wide-shopping.jpg" alt="Woman in a wine-red coat carrying shopping bags" width="2400" height="1200" style="object-position:50% 25%">
-      <div class="panel__cap">
-        <span class="kicker">The New Season</span>
-        <h1>The Art of Carrying</h1>
-        <div class="panel__links"><a href="shop.html?cat=new">Discover New In</a><a href="shop.html">Shop Handbags</a></div>
-      </div>
-    </section>
+    <!-- 1. Hero — three options, chosen in the design preview bar (Home hero 1/2/3) -->
+    <template id="hero1">
+      <section class="panel hero-photo">
+        <div class="hero-duo">
+          <img src="assets/img/hero-duo-1.jpg" alt="Woman in a summer dress carrying a black quilted chain bag" width="1400" height="1750" style="object-position:50% 40%">
+          <img src="assets/img/hero-duo-2.jpg" alt="Woman in a white coat holding a quilted black clutch" loading="lazy" width="1400" height="1750" style="object-position:50% 30%">
+        </div>
+        <div class="panel__cap">
+          <span class="kicker">The New Season</span>
+          <h1>The Art of Carrying</h1>
+          <div class="panel__links"><a href="shop.html?cat=new">Discover New In</a><a href="shop.html">Shop Handbags</a></div>
+        </div>
+      </section>
+    </template>
+    <template id="hero2">
+      <section class="panel hero-video">
+        <video muted loop playsinline preload="auto" poster="assets/video/hero-poster.jpg" aria-hidden="true"></video>
+        <div class="panel__cap">
+          <span class="kicker">The New Season</span>
+          <h1>Grace in Every Step</h1>
+          <div class="panel__links"><a href="shop.html?cat=new">Discover New In</a><a href="shop.html">Shop Handbags</a></div>
+        </div>
+        <button type="button" class="hero-toggle" aria-label="Pause background video"><span data-icon="pause"></span></button>
+      </section>
+    </template>
+    <template id="hero3">
+      <section class="hs" aria-roledescription="carousel" aria-label="Featured collections">
+        <div class="hs__slide" role="group" aria-roledescription="slide" aria-label="1 of 4">
+          <img src="assets/img/wide-shopping.jpg" alt="Woman in a wine-red coat carrying shopping bags" style="object-position:50% 25%">
+          <div class="panel__cap"><span class="kicker">The New Season</span><h1>The Art of Carrying</h1><div class="panel__links"><a href="shop.html?cat=new">Discover New In</a><a href="shop.html">Shop Handbags</a></div></div>
+        </div>
+        <div class="hs__slide" role="group" aria-roledescription="slide" aria-label="2 of 4">
+          <img src="assets/img/wide-saree.jpg" alt="Woman in a saree with gold bridal jewellery" loading="lazy" style="object-position:55% 30%">
+          <div class="panel__cap"><span class="kicker">The Celebration Edit</span><h2>For every poruwa moment</h2><div class="panel__links"><a href="shop.html?cat=clutches">Shop Evening</a><a href="shop.html?cat=vanity">Shop Vanity Bags</a></div></div>
+        </div>
+        <div class="hs__slide" role="group" aria-roledescription="slide" aria-label="3 of 4">
+          <img src="assets/img/wide-milan.jpg" alt="Woman in Milan wearing a pink crossbody bag" loading="lazy" style="object-position:50% 30%">
+          <div class="panel__cap"><span class="kicker">Hands-free</span><h2>Weekend &amp; Away</h2><div class="panel__links"><a href="shop.html?cat=crossbody">Shop Crossbody</a></div></div>
+        </div>
+        <div class="hs__slide" role="group" aria-roledescription="slide" aria-label="4 of 4">
+          <img src="assets/img/wide-evening.jpg" alt="Woman in profile wearing drop earrings" loading="lazy" style="object-position:60% 40%">
+          <div class="panel__cap"><span class="kicker">After Dark</span><h2>The Evening Edit</h2><div class="panel__links"><a href="shop.html?cat=clutches">Shop Clutches</a></div></div>
+        </div>
+        <div class="hs__ctrl">
+          <button type="button" class="hs__arrow" data-step="-1" aria-label="Previous slide"><span data-icon="chev-left"></span></button>
+          <div class="hs__dots"></div>
+          <button type="button" class="hs__arrow" data-step="1" aria-label="Next slide"><span data-icon="chev-right"></span></button>
+          <button type="button" class="hs__pause" aria-label="Pause slideshow"><span data-icon="pause"></span></button>
+        </div>
+      </section>
+    </template>
+    <script>
+      document.currentScript.replaceWith(document.getElementById("hero" + Clara.variants.v).content.cloneNode(true));
+    </script>
 
     <!-- 2. Intro -->
     <section class="intro">
@@ -155,7 +199,86 @@
         `<a href="shop.html?cat=${c.key}" class="reveal d${i % 4 + 1}"><div class="img"><img src="${c.image}" alt="${c.label}" loading="lazy"></div><span>${c.label}</span></a>`).join("");
       Clara.observeReveals();
       Clara.initCarousels();
+      initHero();
     });
+
+    const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function setToggle(btn, playing, what) {
+      btn.innerHTML = Clara.icon(playing ? "pause" : "play");
+      btn.setAttribute("aria-label", `${playing ? "Pause" : "Play"} ${what}`);
+    }
+
+    function initHero() {
+      const video = document.querySelector(".hero-video video");
+      if (video) {
+        const btn = document.querySelector(".hero-toggle");
+        video.preload = reduceMotion ? "none" : "auto";
+        const ext = video.canPlayType('video/mp4; codecs="avc1.640028"') ? "mp4" : "webm";
+        video.src = `assets/video/hero${matchMedia("(max-width: 760px)").matches ? "-mobile" : ""}.${ext}`;
+        const sync = () => setToggle(btn, !video.paused, "background video");
+        video.addEventListener("play", sync);
+        video.addEventListener("pause", sync);
+        btn.addEventListener("click", () => (video.paused ? video.play() : video.pause()));
+        if (!reduceMotion) video.play().catch(sync);
+        sync();
+      }
+      const hs = document.querySelector(".hs");
+      if (hs) initSlider(hs);
+    }
+
+    function initSlider(hs) {
+      const slides = [...hs.querySelectorAll(".hs__slide")];
+      const dotsEl = hs.querySelector(".hs__dots");
+      const pauseBtn = hs.querySelector(".hs__pause");
+      dotsEl.innerHTML = slides.map((_, i) => `<button type="button" class="hs__dot" aria-label="Go to slide ${i + 1}"><i></i></button>`).join("");
+      const dots = [...dotsEl.children];
+      let cur = 0, playing = !reduceMotion;
+
+      function go(n) {
+        cur = (n + slides.length) % slides.length;
+        slides.forEach((s, i) => {
+          s.classList.toggle("is-active", i === cur);
+          s.setAttribute("aria-hidden", i !== cur);
+          s.querySelectorAll("a").forEach(a => (a.tabIndex = i === cur ? 0 : -1));
+        });
+        dots.forEach((d, i) => {
+          d.classList.toggle("is-done", i < cur);
+          d.classList.remove("is-active");
+          d.setAttribute("aria-current", i === cur);
+        });
+        void dotsEl.offsetWidth; // restart the progress animation
+        dots[cur].classList.add("is-active");
+        const next = slides[(cur + 1) % slides.length].querySelector("img");
+        next.loading = "eager";
+      }
+      function setPlaying(p) {
+        playing = p;
+        hs.classList.toggle("is-playing", p);
+        setToggle(pauseBtn, p, "slideshow");
+      }
+
+      dots.forEach((d, i) => d.addEventListener("click", () => go(i)));
+      dots.forEach(d => d.addEventListener("animationend", () => go(cur + 1)));
+      hs.querySelectorAll("[data-step]").forEach(b => b.addEventListener("click", () => go(cur + Number(b.dataset.step))));
+      pauseBtn.addEventListener("click", () => setPlaying(!playing));
+      const ctrl = hs.querySelector(".hs__ctrl");
+      ctrl.addEventListener("mouseenter", () => hs.classList.add("is-paused"));
+      ctrl.addEventListener("mouseleave", () => hs.classList.remove("is-paused"));
+      hs.addEventListener("focusin", () => hs.classList.add("is-paused"));
+      hs.addEventListener("focusout", () => hs.classList.remove("is-paused"));
+
+      let x0 = null;
+      hs.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+      hs.addEventListener("touchend", e => {
+        if (x0 === null) return;
+        const dx = e.changedTouches[0].clientX - x0;
+        if (Math.abs(dx) > 45) go(cur + (dx < 0 ? 1 : -1));
+        x0 = null;
+      });
+
+      go(0);
+      setPlaying(playing);
+    }
   </script>
 </body>
 </html>
