@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Order Confirmed | CLARA Bags Sri Lanka</title>
+  <title>Thank You | CLARA Sri Lanka</title>
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#FBF7F3">
+  <meta name="theme-color" content="#FFFFFF">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap">
   <link rel="stylesheet" href="css/main.css">
   <script src="js/products-data.js"></script>
   <script src="js/store.js"></script>
@@ -18,8 +18,8 @@
 <body data-page="confirmation">
   <script>Clara.header();</script>
 
-  <main id="main" class="section-tight">
-    <div class="container-narrow" id="orderConfirmationWrapper" style="display:grid;gap:24px"></div>
+  <main id="main" class="section">
+    <div class="container narrow" id="orderConfirmationWrapper"></div>
   </main>
 
   <script>Clara.footer();</script>
@@ -27,117 +27,66 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const order = getLastOrder();
-      const wrapper = document.getElementById("orderConfirmationWrapper");
-      const ic = Clara.icon;
-      const e = Clara.escapeHtml;
+      const w = document.getElementById("orderConfirmationWrapper");
+      const ic = Clara.icon, e = Clara.escapeHtml;
 
       if (!order) {
-        wrapper.innerHTML = `
-          <div class="panel empty-state" style="padding:72px 24px">
-            <div class="bubble">${ic("bag")}</div>
-            <h3>No recent order found</h3>
-            <p>You haven't placed an order in this browser yet.</p>
-            <a href="shop.html" class="btn btn-rose">Explore the collection</a>
-          </div>`;
+        w.innerHTML = `<div class="empty">${ic("bag")}<h3>No recent order</h3><p>You haven't placed an order in this browser yet.</p><a href="shop.html" class="btn">Discover handbags</a></div>`;
         return;
       }
-
-      const paymentTitles = {
-        card: "Credit / debit card",
-        bank_transfer: "Direct bank transfer",
-        cod: "Cash on delivery",
-        showroom: "Pay at the boutique"
-      };
+      const pay = { card: "Card", bank_transfer: "Bank transfer", cod: "Cash on delivery", showroom: "Pay at boutique" };
       const c = order.customer;
 
-      wrapper.innerHTML = `
-        <div class="confirm-hero">
+      w.innerHTML = `
+        <div class="confirm">
           <div class="tick">${ic("check")}</div>
-          <span class="eyebrow center">Order confirmed</span>
-          <h1 class="h2">Thank you, <em>${e(c.firstName)}</em></h1>
-          <p class="lead" style="max-width:560px">Your order <b>#${e(order.orderNumber)}</b> has been received. We'll be in touch on <b>${e(c.phone)}</b> and <b>${e(c.email)}</b> to confirm dispatch.</p>
-          <div class="steps-bar" style="margin-top:8px"><span class="done"><i>✓</i>Bag</span><span class="line"></span><span class="done"><i>✓</i>Details &amp; payment</span><span class="line"></span><span class="now"><i>3</i>Confirmation</span></div>
+          <span class="kicker">Order #${e(order.orderNumber)}</span>
+          <h1 class="title-lg">Thank you, <i>${e(c.firstName)}</i></h1>
+          <p class="body-lg" style="max-width:560px">Your order has been received. Our team will contact you on <b>${e(c.phone)}</b> to confirm dispatch, and a copy is on its way to ${e(c.email)}.</p>
         </div>
 
-        <div class="order-meta">
-          <div><small>Order number</small><b>#${e(order.orderNumber)}</b></div>
-          <div><small>Date</small><b>${e(order.orderDate)}</b></div>
-          <div><small>Total</small><b>${formatLKR(order.grandTotal)}</b></div>
-          <div><small>Payment</small><b>${paymentTitles[order.paymentMethod] || e(order.paymentMethod)}</b></div>
+        <div class="omt">
+          <div><small>Order</small><span>#${e(order.orderNumber)}</span></div>
+          <div><small>Date</small><span>${e(order.orderDate)}</span></div>
+          <div><small>Total</small><span>${formatLKR(order.grandTotal)}</span></div>
+          <div><small>Payment</small><span>${pay[order.paymentMethod] || e(order.paymentMethod)}</span></div>
         </div>
 
         ${order.paymentMethod === "bank_transfer" ? `
-          <div class="notice">
-            ${ic("bank")}
-            <div style="flex:1">
-              <h4>Complete your bank transfer</h4>
-              <p>Please transfer <b>${formatLKR(order.grandTotal)}</b> within 24 hours to secure dispatch:</p>
-              <div class="bank-box" style="background:#fff;margin-top:12px">
-                <dl>
-                  <dt>Bank</dt><dd>Commercial Bank of Ceylon PLC</dd>
-                  <dt>Account name</dt><dd>CLARA BAGS (DJ INDUSTRIES)</dd>
-                  <dt>Account no.</dt><dd>8003492819</dd>
-                  <dt>Branch</dt><dd>Mount Lavinia</dd>
-                  <dt>Reference</dt><dd>${e(order.orderNumber)}</dd>
-                </dl>
-              </div>
-              <p class="small" style="margin-top:10px">Then WhatsApp your deposit slip with order <b>#${e(order.orderNumber)}</b> to <b>077 317 3217</b>.</p>
-              <a class="btn btn-whatsapp btn-sm no-print" style="margin-top:12px" target="_blank" rel="noopener" href="${Clara.waLink(`Hello CLARA, here is my bank deposit slip for order #${order.orderNumber}.`)}">${ic("whatsapp")}Send slip on WhatsApp</a>
-            </div>
-          </div>` : ""}
+          <div class="notice">${ic("bank")}<div>
+            <h4>Complete your bank transfer</h4>
+            <p>Please transfer <b>${formatLKR(order.grandTotal)}</b> within 24 hours, using <b>${e(order.orderNumber)}</b> as the reference.</p>
+            <div class="bank" style="background:#fff;margin-top:12px"><dl>
+              <dt>Bank</dt><dd>Commercial Bank of Ceylon PLC</dd>
+              <dt>Account name</dt><dd>CLARA BAGS (DJ INDUSTRIES)</dd>
+              <dt>Account no.</dt><dd>8003492819</dd>
+              <dt>Branch</dt><dd>Mount Lavinia</dd>
+            </dl></div>
+            <a class="btn btn-outline btn-sm no-print" style="margin-top:14px" target="_blank" rel="noopener" href="${Clara.waLink(`Hello CLARA, here is my bank slip for order #${order.orderNumber}.`)}">${ic("whatsapp")}Send slip on WhatsApp</a>
+          </div></div>` : ""}
+        ${order.paymentMethod === "cod" ? `<div class="notice">${ic("truck")}<div><h4>Cash on delivery</h4><p>Our courier will call <b>${e(c.phone)}</b> before delivering to ${e(c.address)}, ${e(c.city)}. Please have <b>${formatLKR(order.grandTotal)}</b> ready.</p></div></div>` : ""}
+        ${order.paymentMethod === "showroom" ? `<div class="notice">${ic("store")}<div><h4>Reserved at our boutique</h4><p>Your bag is waiting at 587/A Galle Road, Mount Lavinia — open daily 9:30 AM to 7:30 PM.</p></div></div>` : ""}
 
-        ${order.paymentMethod === "cod" ? `
-          <div class="notice">
-            ${ic("truck")}
-            <div>
-              <h4>Cash on delivery</h4>
-              <p>Our courier will call <b>${e(c.phone)}</b> before delivering to <b>${e(c.address)}, ${e(c.city)}</b>. Please have <b>${formatLKR(order.grandTotal)}</b> ready in cash.</p>
-            </div>
-          </div>` : ""}
-
-        ${order.paymentMethod === "showroom" ? `
-          <div class="notice">
-            ${ic("store")}
-            <div>
-              <h4>Reserved at our boutique</h4>
-              <p>Your bag is waiting at <b>587/A Galle Road, Mount Lavinia</b> — open daily 9:30 AM to 7:30 PM. Please bring your order number.</p>
-            </div>
-          </div>` : ""}
-
-        <div class="panel">
-          <div class="panel__title"><h2>Order summary</h2><small>${order.items.length} ${order.items.length === 1 ? "style" : "styles"}</small></div>
-          <div class="mini-items" style="max-height:none">
-            ${order.items.map(item => `
-              <div class="mini-item">
-                <div class="thumb"><img src="${item.image}" alt="${e(item.name)}"><em>${item.quantity}</em></div>
-                <div><b>${e(item.name)}</b><span>${e(item.color)} · ${e(item.sku)}</span></div>
-                <span class="p">${formatLKR(item.price * item.quantity)}</span>
-              </div>`).join("")}
+        <div class="box">
+          <h3>Order summary</h3>
+          <div class="lines">${order.items.map(i => `
+            <div class="line"><div class="th"><img src="${i.image}" alt="${e(i.name)}"><em>${i.quantity}</em></div><div>${e(i.name)}<small>${e(i.color)} · ${e(i.sku)}</small></div><span>${formatLKR(i.price * i.quantity)}</span></div>`).join("")}
           </div>
-          <div class="summary-rows" style="margin-top:22px;padding-top:20px;border-top:1px solid var(--line)">
-            <div><span class="muted">Subtotal</span><span>${formatLKR(order.subtotal)}</span></div>
+          <div class="sum-rows" style="margin-top:22px;padding-top:18px;border-top:1px solid var(--line)">
+            <div><span>Subtotal</span><span>${formatLKR(order.subtotal)}</span></div>
             ${order.discount > 0 ? `<div class="green"><span>Voucher</span><span>−${formatLKR(order.discount)}</span></div>` : ""}
-            <div><span class="muted">${e(order.shippingMethod.name)}</span><span class="${order.shippingFee === 0 ? "green" : ""}">${order.shippingFee === 0 ? "Free" : formatLKR(order.shippingFee)}</span></div>
+            <div><span>${e(order.shippingMethod.name)}</span><span>${order.shippingFee === 0 ? "Free" : formatLKR(order.shippingFee)}</span></div>
           </div>
-          <div class="summary-total"><span>Total</span><b>${formatLKR(order.grandTotal)}</b></div>
+          <div class="sum-total"><span>Total</span><b>${formatLKR(order.grandTotal)}</b></div>
         </div>
 
-        <div class="panel">
-          <div class="addr-grid">
-            <div>
-              <h5>Delivering to</h5>
-              <p><b>${e(c.firstName)} ${e(c.lastName)}</b><br>${e(c.address)}<br>${e(c.city)}${c.postalCode ? ", " + e(c.postalCode) : ""}<br>Sri Lanka</p>
-            </div>
-            <div>
-              <h5>Contact</h5>
-              <p>${e(c.phone)}<br>${e(c.email)}</p>
-              ${c.notes ? `<p class="small" style="margin-top:8px"><b>Notes:</b> ${e(c.notes)}</p>` : ""}
-            </div>
-          </div>
+        <div class="box two">
+          <div><h3>Delivery</h3><p>${e(c.firstName)} ${e(c.lastName)}<br>${e(c.address)}<br>${e(c.city)}${c.postalCode ? ", " + e(c.postalCode) : ""}<br>Sri Lanka</p></div>
+          <div><h3>Contact</h3><p>${e(c.phone)}<br>${e(c.email)}</p>${c.notes ? `<p class="small" style="margin-top:8px">Notes: ${e(c.notes)}</p>` : ""}</div>
         </div>
 
-        <div class="no-print" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between">
-          <a href="shop.html" class="btn btn-rose">Continue shopping</a>
+        <div class="no-print" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:36px">
+          <a href="shop.html" class="btn">Continue shopping</a>
           <button type="button" class="btn btn-outline" onclick="window.print()">${ic("printer")}Print receipt</button>
         </div>`;
     });

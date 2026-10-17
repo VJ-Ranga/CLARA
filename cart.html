@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Bag | CLARA Bags Sri Lanka</title>
-  <meta name="description" content="Review your CLARA shopping bag, apply a voucher and choose delivery or showroom pickup.">
-  <meta name="theme-color" content="#FBF7F3">
+  <title>Shopping Bag | CLARA Sri Lanka</title>
+  <meta name="description" content="Your CLARA shopping bag.">
+  <meta name="theme-color" content="#FFFFFF">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap">
   <link rel="stylesheet" href="css/main.css">
   <script src="js/products-data.js"></script>
   <script src="js/store.js"></script>
@@ -19,28 +19,18 @@
   <script>Clara.header();</script>
 
   <main id="main">
-    <section class="page-hero simple">
-      <div class="container page-hero__inner">
-        <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="sep"></span><a href="shop.html">Shop</a><span class="sep"></span><span class="current">Your bag</span></nav>
-        <h1 class="h2">Your <em>bag</em></h1>
-        <div class="steps-bar"><span class="now"><i>1</i>Bag</span><span class="line"></span><span><i>2</i>Details &amp; payment</span><span class="line"></span><span><i>3</i>Confirmation</span></div>
-      </div>
-    </section>
-
-    <section class="container section-tight">
+    <div class="container page-head">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="sep"></span><span class="cur">Shopping bag</span></nav>
+      <h1 class="title-lg">Shopping Bag</h1>
+    </div>
+    <div class="container" style="padding-bottom:clamp(64px,8vw,110px)">
       <div id="cartContentWrapper"></div>
-    </section>
+    </div>
 
-    <section class="section bg-ivory" id="cartSuggestions">
+    <section class="section bg-paper" id="suggest">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="eyebrow">Before you go</span>
-            <h2 class="h2" style="margin-top:14px">Pairs <em>beautifully</em> with</h2>
-          </div>
-          <a href="shop.html" class="link-underline">Shop all <span data-icon="arrow"></span></a>
-        </div>
-        <div class="product-grid" id="cartSuggestGrid"></div>
+        <div class="sec-head"><div><span class="kicker">Before you go</span><h2 class="title-lg">You May Also Like</h2></div><a href="shop.html" class="link">Shop all</a></div>
+        <div class="grid" id="suggestGrid"></div>
       </div>
     </section>
   </main>
@@ -52,141 +42,102 @@
     const ic = Clara.icon;
 
     function renderCartPage() {
-      const wrapper = document.getElementById("cartContentWrapper");
+      const wrap = document.getElementById("cartContentWrapper");
       const cart = getCart();
-      const totals = calculateOrderTotals(selectedShipping);
+      const t = calculateOrderTotals(selectedShipping);
 
-      if (cart.length === 0) {
-        wrapper.innerHTML = `
-          <div class="panel empty-state" style="padding:72px 24px">
-            <div class="bubble">${ic("bag")}</div>
-            <h3>Your bag is empty</h3>
-            <p>Explore structured vanity bags, work totes and evening clutches — there's something waiting for you.</p>
-            <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px">
-              <a href="shop.html" class="btn btn-rose">Shop the collection</a>
-              <a href="shop.html?saved=1" class="btn btn-outline">${ic("heart")}View wishlist</a>
-            </div>
-          </div>`;
-        renderSuggestions([]);
+      if (!cart.length) {
+        wrap.innerHTML = `<div class="empty">${ic("bag")}<h3>Your bag is empty</h3><p>Discover vanity bags, work totes and evening clutches from our latest collection.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><a href="shop.html" class="btn">Shop handbags</a><a href="shop.html?saved=1" class="btn btn-outline">View wishlist</a></div></div>`;
+        renderSuggest([]);
         return;
       }
 
-      const free = totals.subtotal >= totals.freeDeliveryThreshold;
-      const pct = Math.min(100, Math.round((totals.subtotal / totals.freeDeliveryThreshold) * 100));
-      const shipOptions = [
-        { key: "western", t: "Colombo &amp; Western Province", d: "1–2 business days", p: free ? "Free" : "Rs. 350" },
-        { key: "islandwide", t: "Islandwide courier", d: "2–4 business days", p: free ? "Free" : "Rs. 550" },
-        { key: "pickup", t: "Collect from our boutique", d: "587/A Galle Road, Mount Lavinia", p: "Free" }
+      const free = t.subtotal >= t.freeDeliveryThreshold;
+      const pct = Math.min(100, Math.round((t.subtotal / t.freeDeliveryThreshold) * 100));
+      const opts = [
+        ["western", "Colombo & Western Province", "1–2 business days", free ? "Free" : "Rs. 350"],
+        ["islandwide", "Islandwide courier", "2–4 business days", free ? "Free" : "Rs. 550"],
+        ["pickup", "Collect from our boutique", "587/A Galle Road, Mount Lavinia", "Free"]
       ];
 
-      wrapper.innerHTML = `
-        <div class="cart-layout">
+      const qtyCtl = (idx, q) => `<div class="qty sm">
+          <button type="button" onclick="updateCartQuantity(${idx}, ${q - 1})" aria-label="Decrease">${ic("minus")}</button><span>${q}</span>
+          <button type="button" onclick="updateCartQuantity(${idx}, ${q + 1})" aria-label="Increase">${ic("plus")}</button></div>`;
+
+      wrap.innerHTML = `
+        <div class="cart">
           <div>
-            <div class="panel" style="padding:0;overflow:hidden">
-              <div class="ship-meter ${free ? "is-done" : ""}" style="padding:18px clamp(20px,3vw,34px)">
-                ${free ? `${ic("check")} You've unlocked complimentary islandwide delivery`
-                       : `You're <strong>${formatLKR(totals.amountNeededForFreeShipping)}</strong> away from complimentary delivery`}
-                <div class="ship-meter__bar"><i style="width:${free ? 100 : pct}%"></i></div>
-              </div>
-              <div style="padding:clamp(20px,3vw,34px)">
-                ${cart.map((item, idx) => {
-                  const product = getProductById(item.productId);
-                  const hex = product.colorHex[product.colors.indexOf(item.color)] || "#ccc";
-                  return `
-                  <div class="cart-row">
-                    <a href="product.html?id=${item.productId}"><img src="${item.image}" alt="${item.name}"></a>
-                    <div>
-                      <h3><a href="product.html?id=${item.productId}">${item.name}</a></h3>
-                      <div class="meta"><span><i style="background:${hex}"></i> ${item.color}</span><span>·</span><span>${formatLKR(item.price)}</span></div>
-                      <div class="cart-row__actions">
-                        <div class="qty">
-                          <button type="button" onclick="updateCartQuantity(${idx}, ${item.quantity - 1})" aria-label="Decrease quantity">${ic("minus")}</button>
-                          <span>${item.quantity}</span>
-                          <button type="button" onclick="updateCartQuantity(${idx}, ${item.quantity + 1})" aria-label="Increase quantity">${ic("plus")}</button>
-                        </div>
-                        <button type="button" class="text-btn" onclick="removeFromCart(${idx})">${ic("trash")}Remove</button>
+            <div class="ship-bar ${free ? "done" : ""}">
+              ${free ? "Your order qualifies for complimentary islandwide delivery." : `Spend <b>${formatLKR(t.amountNeededForFreeShipping)}</b> more for complimentary islandwide delivery.`}
+              <div class="ship-bar__track"><i style="width:${free ? 100 : pct}%"></i></div>
+            </div>
+            <table class="cart-table">
+              <thead><tr><th>Product</th><th class="q">Quantity</th><th class="r">Total</th></tr></thead>
+              <tbody>
+                ${cart.map((item, idx) => `
+                  <tr>
+                    <td><div class="ci">
+                      <a href="product.html?id=${item.productId}"><img src="${item.image}" alt="${item.name}"></a>
+                      <div>
+                        <h3><a href="product.html?id=${item.productId}">${item.name}</a></h3>
+                        <div class="meta"><span>Colour: ${item.color}</span><span>${formatLKR(item.price)}</span></div>
+                        <div class="m-only">${qtyCtl(idx, item.quantity)}<span>${formatLKR(item.price * item.quantity)}</span></div>
+                        <button type="button" class="rm" onclick="removeFromCart(${idx})">Remove</button>
                       </div>
-                    </div>
-                    <div class="cart-row__total">${formatLKR(item.price * item.quantity)}</div>
-                  </div>`;
-                }).join("")}
-                <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:22px;flex-wrap:wrap">
-                  <a href="shop.html" class="link-underline">${ic("chev-left")} Continue shopping</a>
-                  <button type="button" class="text-btn" onclick="clearCart()">Clear bag</button>
-                </div>
-              </div>
+                    </div></td>
+                    <td class="q">${qtyCtl(idx, item.quantity)}</td>
+                    <td class="r">${formatLKR(item.price * item.quantity)}</td>
+                  </tr>`).join("")}
+              </tbody>
+            </table>
+            <div style="display:flex;justify-content:space-between;gap:16px;margin-top:22px;flex-wrap:wrap">
+              <a href="shop.html" class="link">Continue shopping</a>
+              <button type="button" class="link" onclick="clearCart()">Clear bag</button>
             </div>
           </div>
 
-          <aside class="sticky-col">
-            <div class="panel">
-              <div class="panel__title"><h2>Order summary</h2><small>${totals.totalItems} ${totals.totalItems === 1 ? "item" : "items"}</small></div>
-
-              <div class="field" style="margin-bottom:22px">
-                <label for="cartCouponInput">Voucher code</label>
-                <div class="coupon">
-                  <input type="text" id="cartCouponInput" placeholder="Enter code" value="${totals.coupon ? totals.coupon.code : ""}">
-                  <button type="button" class="btn btn-dark" onclick="handleApplyCoupon()">Apply</button>
-                </div>
-                ${totals.coupon
-                  ? `<span class="applied">${ic("check")}${totals.coupon.code} · ${totals.coupon.label}<button type="button" onclick="handleRemoveCoupon()" aria-label="Remove voucher">${ic("close")}</button></span>`
-                  : `<p class="coupon-hint">First order? Try <button type="button" onclick="useCode('WELCOME10')">WELCOME10</button> for 10% off.</p>`}
-              </div>
-
-              <div class="field" style="margin-bottom:20px">
-                <label>Delivery</label>
-                <div>
-                  ${shipOptions.map(o => `
-                    <label class="radio-card">
-                      <input type="radio" name="cartShipping" value="${o.key}" ${selectedShipping === o.key ? "checked" : ""} onchange="updateShippingSelection('${o.key}')">
-                      <span><span class="radio-card__t">${o.t}</span><span class="radio-card__d" style="display:block">${o.d}</span></span>
-                      <span class="radio-card__p ${o.p === "Free" ? "green" : ""}">${o.p}</span>
-                    </label>`).join("")}
-                </div>
-              </div>
-
-              <div class="summary-rows">
-                <div><span class="muted">Subtotal</span><span>${formatLKR(totals.subtotal)}</span></div>
-                ${totals.discountAmount > 0 ? `<div class="green"><span>Voucher (${totals.coupon.code})</span><span>−${formatLKR(totals.discountAmount)}</span></div>` : ""}
-                <div><span class="muted">Delivery</span><span class="${totals.shippingFee === 0 ? "green" : ""}">${totals.shippingFee === 0 ? "Free" : formatLKR(totals.shippingFee)}</span></div>
-              </div>
-              <div class="summary-total"><span>Total</span><b>${formatLKR(totals.grandTotal)}</b></div>
-
-              <a href="checkout.html" class="btn btn-rose btn-block" style="margin-top:20px">${ic("lock")}Secure checkout</a>
-              <p class="secure-note">Card · Bank transfer · Cash on delivery</p>
+          <aside class="summary">
+            <h2>Order Summary</h2>
+            <div class="sum-rows">
+              <div><span>Subtotal (${t.totalItems} ${t.totalItems === 1 ? "item" : "items"})</span><span>${formatLKR(t.subtotal)}</span></div>
+              ${t.discountAmount > 0 ? `<div class="green"><span>Voucher ${t.coupon.code}</span><span>−${formatLKR(t.discountAmount)}</span></div>` : ""}
+              <div><span>Delivery</span><span class="${t.shippingFee === 0 ? "green" : ""}">${t.shippingFee === 0 ? "Free" : formatLKR(t.shippingFee)}</span></div>
             </div>
+
+            <div style="margin-top:22px">
+              ${opts.map(([k, title, desc, price]) => `
+                <label class="ropt"><input type="radio" name="cartShipping" value="${k}" ${selectedShipping === k ? "checked" : ""} onchange="setShipping('${k}')">
+                  <span><span class="ropt__t">${title}</span><span class="ropt__d">${desc}</span></span>
+                  <span class="ropt__p ${price === "Free" ? "green" : ""}">${price}</span></label>`).join("")}
+            </div>
+
+            <div class="coupon">
+              <input type="text" id="cartCouponInput" placeholder="Voucher code" value="${t.coupon ? t.coupon.code : ""}" aria-label="Voucher code">
+              <button type="button" class="btn" onclick="applyCode()">Apply</button>
+            </div>
+            ${t.coupon
+              ? `<p class="applied">${ic("check")} ${t.coupon.label} applied · <button type="button" onclick="removeCode()">Remove</button></p>`
+              : `<p class="hint">First order? Use <button type="button" onclick="useCode('WELCOME10')">WELCOME10</button> for 10% off.</p>`}
+
+            <div class="sum-total"><span>Total</span><b>${formatLKR(t.grandTotal)}</b></div>
+            <a href="checkout.html" class="btn btn-block" style="margin-top:20px">Proceed to checkout</a>
+            <p class="small center" style="margin-top:14px">Card · Bank transfer · Cash on delivery</p>
           </aside>
         </div>`;
-
-      renderSuggestions(cart.map(i => i.productId));
+      renderSuggest(cart.map(i => i.productId));
     }
 
-    function renderSuggestions(excludeIds) {
-      const grid = document.getElementById("cartSuggestGrid");
-      const list = CLARA_PRODUCTS.filter(p => !excludeIds.includes(p.id))
-        .sort((a, b) => b.reviewCount - a.reviewCount).slice(0, 4);
-      grid.innerHTML = list.map((p, i) => Clara.productCard(p, { index: i })).join("");
-      Clara.observeReveals(grid);
+    function renderSuggest(exclude) {
+      const list = CLARA_PRODUCTS.filter(p => !exclude.includes(p.id)).sort((a, b) => b.reviewCount - a.reviewCount).slice(0, 4);
+      document.getElementById("suggestGrid").innerHTML = list.map((p, i) => Clara.productCard(p, { index: i })).join("");
+      Clara.observeReveals();
     }
 
-    function updateShippingSelection(method) { selectedShipping = method; renderCartPage(); }
-
-    function handleApplyCoupon() {
-      const res = applyCouponCode(document.getElementById("cartCouponInput").value);
-      showToast(res.message);
-      renderCartPage();
-    }
-
-    function useCode(code) {
-      document.getElementById("cartCouponInput").value = code;
-      handleApplyCoupon();
-    }
-
-    function handleRemoveCoupon() {
-      removeAppliedCoupon();
-      showToast("Voucher removed");
-      renderCartPage();
-    }
+    function setShipping(k) { selectedShipping = k; renderCartPage(); }
+    function applyCode() { const r = applyCouponCode(document.getElementById("cartCouponInput").value); showToast(r.message); renderCartPage(); }
+    function useCode(c) { document.getElementById("cartCouponInput").value = c; applyCode(); }
+    function removeCode() { removeAppliedCoupon(); showToast("Voucher removed"); renderCartPage(); }
 
     document.addEventListener("DOMContentLoaded", () => {
       renderCartPage();

@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product | CLARA Bags Sri Lanka</title>
-  <meta name="description" content="CLARA handbag details — dimensions, materials, colours, delivery and payment options.">
-  <meta name="theme-color" content="#FBF7F3">
+  <title>Handbag | CLARA Sri Lanka</title>
+  <meta name="description" content="CLARA handbag — dimensions, materials, colours, delivery and payment options.">
+  <meta name="theme-color" content="#FFFFFF">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap">
   <link rel="stylesheet" href="css/main.css">
   <script src="js/products-data.js"></script>
   <script src="js/store.js"></script>
@@ -19,134 +19,112 @@
   <script>Clara.header();</script>
 
   <main id="main">
-    <div class="container" style="padding-top:28px">
+    <div class="container" style="padding-top:22px;padding-bottom:18px">
       <nav class="crumbs" aria-label="Breadcrumb">
         <a href="index.html">Home</a><span class="sep"></span>
-        <a href="shop.html">Shop</a><span class="sep"></span>
-        <a id="pdpCatBreadcrumb" href="shop.html">Category</a><span class="sep"></span>
-        <span class="current" id="pdpNameBreadcrumb">Bag</span>
+        <a href="shop.html">Handbags</a><span class="sep"></span>
+        <a id="crumbCat" href="shop.html"></a><span class="sep"></span>
+        <span class="cur" id="crumbName"></span>
       </nav>
     </div>
 
-    <section class="container section-tight" style="padding-top:28px">
-      <div class="pdp">
-        <!-- Gallery -->
-        <div class="gallery">
-          <div class="gallery__thumbs" id="pdpThumbnailStrip"></div>
-          <div class="gallery__main" id="pdpMain">
-            <img id="pdpMainImage" src="" alt="">
-            <div class="pcard__badges" id="pdpBadgeContainer"></div>
-            <button type="button" class="heart-btn" id="pdpHeart" aria-label="Save to wishlist">
-              <span data-icon="heart"></span>
-            </button>
-            <div class="gallery__nav">
-              <button type="button" aria-label="Previous image" onclick="stepImage(-1)"><span data-icon="chev-left"></span></button>
-              <button type="button" aria-label="Next image" onclick="stepImage(1)"><span data-icon="chev-right"></span></button>
-            </div>
-          </div>
+    <section class="container pdp">
+      <div>
+        <div class="pdp__gallery" id="gallery"></div>
+        <div class="pdp__dots" id="galleryDots"></div>
+      </div>
+
+      <div class="pdp__info">
+        <div class="pdp__meta"><a class="kicker" id="pCat" href="shop.html"></a><span class="small" id="pSku"></span></div>
+        <h1 id="pName"></h1>
+        <div class="pdp__rating"><span class="stars" id="pStars"></span><span id="pRating"></span></div>
+        <div class="pdp__price"><span class="now" id="pPrice"></span><s id="pWas"></s><span class="off" id="pOff"></span></div>
+        <p class="pdp__note" id="pKoko"></p>
+        <p class="body-lg" id="pShort" style="font-size:15px"></p>
+
+        <div>
+          <div class="opt-head"><span>Colour</span><b id="pColour"></b></div>
+          <div class="swatch-row" id="pSwatches"></div>
         </div>
 
-        <!-- Buy box -->
-        <div class="buybox">
-          <div class="buybox__head">
-            <div class="buybox__top">
-              <a class="eyebrow" id="pdpCategoryTag" href="shop.html"></a>
-              <span class="small" id="pdpSkuCode"></span>
-            </div>
-            <h1 id="pdpTitle"></h1>
-            <div class="rating-line">
-              <span class="stars" id="pdpStars"></span>
-              <span id="pdpRatingText"></span>
-              <span class="in-stock" id="pdpStockBadge"></span>
-            </div>
+        <div class="buy" id="buyRow">
+          <div class="qty">
+            <button type="button" onclick="changeQty(-1)" aria-label="Decrease quantity"><span data-icon="minus"></span></button>
+            <input type="number" id="pQty" value="1" min="1" max="10" aria-label="Quantity">
+            <button type="button" onclick="changeQty(1)" aria-label="Increase quantity"><span data-icon="plus"></span></button>
           </div>
-
-          <div>
-            <div class="price"><b id="pdpPrice"></b><s id="pdpOriginalPrice"></s><span class="save" id="pdpSave"></span></div>
-          </div>
-
-          <div class="koko-note"><span class="koko-tag">KOKO</span><span id="pdpInstallmentText"></span></div>
-
-          <p class="lead" id="pdpShortDescription" style="font-size:15.5px"></p>
-
-          <div>
-            <div class="opt-label">Colour <b id="pdpActiveColorName"></b></div>
-            <div class="swatch-picker" id="pdpColorSwatches"></div>
-          </div>
-
-          <div>
-            <div class="opt-label">Quantity</div>
-            <div class="buy-row" id="pdpBuyRow">
-              <div class="qty lg">
-                <button type="button" onclick="changePdpQty(-1)" aria-label="Decrease quantity"><span data-icon="minus"></span></button>
-                <input type="number" id="pdpQuantityInput" value="1" min="1" max="10" aria-label="Quantity">
-                <button type="button" onclick="changePdpQty(1)" aria-label="Increase quantity"><span data-icon="plus"></span></button>
-              </div>
-              <button type="button" class="btn btn-dark" onclick="handlePdpAddToCart()"><span data-icon="bag"></span>Add to bag</button>
-              <button type="button" class="heart-btn" id="pdpHeart2" aria-label="Save to wishlist"><span data-icon="heart"></span></button>
-            </div>
-          </div>
-
-          <div style="display:grid;gap:10px">
-            <button type="button" class="btn btn-rose btn-block" onclick="handlePdpBuyNow()">Buy it now <span data-icon="arrow" data-icon-class="arrow"></span></button>
-            <a id="pdpWhatsappConciergeLink" class="btn btn-whatsapp btn-block" target="_blank" rel="noopener noreferrer" href="https://wa.me/94773173217">
-              <span data-icon="whatsapp"></span>Ask about this bag on WhatsApp
-            </a>
-          </div>
-
-          <div class="assure">
-            <div><span data-icon="truck"></span><span><b>Free islandwide delivery</b> on orders over Rs. 10,000</span></div>
-            <div><span data-icon="store"></span><span>Collect free from our <b>Mount Lavinia boutique</b></span></div>
-            <div><span data-icon="exchange"></span><span><b>7-day</b> inspection &amp; exchange guarantee</span></div>
-          </div>
-
-          <div class="accordion">
-            <div class="acc is-open">
-              <button type="button" onclick="toggleAccordion(this)" aria-expanded="true">Details &amp; dimensions <span data-icon="plus"></span></button>
-              <div class="acc__body"><div><div class="acc__content">
-                <div><strong>Dimensions:</strong> <span id="pdpDimText"></span></div>
-                <div><strong>Strap:</strong> <span id="pdpStrapText"></span></div>
-                <div><strong>Materials:</strong> <span id="pdpMatText"></span></div>
-                <div><strong>What fits:</strong> <span id="pdpWhatFitsText"></span></div>
-                <ul id="pdpFeaturesList"></ul>
-              </div></div></div>
-            </div>
-            <div class="acc">
-              <button type="button" onclick="toggleAccordion(this)" aria-expanded="false">The story <span data-icon="plus"></span></button>
-              <div class="acc__body"><div><div class="acc__content"><p id="pdpFullDescription"></p></div></div></div>
-            </div>
-            <div class="acc">
-              <button type="button" onclick="toggleAccordion(this)" aria-expanded="false">Delivery &amp; payment <span data-icon="plus"></span></button>
-              <div class="acc__body"><div><div class="acc__content">
-                <div><strong>Colombo &amp; Western Province:</strong> 1–2 business days · Rs. 350</div>
-                <div><strong>Islandwide:</strong> 2–4 business days · Rs. 550</div>
-                <div><strong>Free delivery</strong> on orders over Rs. 10,000, or collect free from our boutique.</div>
-                <div><strong>Payment:</strong> Visa, Mastercard, Amex, direct bank transfer, cash on delivery or pay at the boutique.</div>
-              </div></div></div>
-            </div>
-          </div>
+          <button type="button" class="btn" onclick="addCurrent()">Add to bag</button>
         </div>
+        <button type="button" class="btn btn-outline btn-block" onclick="buyNow()" style="margin-top:-12px">Buy it now</button>
+
+        <div class="pdp__links">
+          <button type="button" id="pWish" onclick="Clara.toggleWishlist(currentProduct.id)"><span data-icon="heart"></span><span class="wish-label">Add to wishlist</span></button>
+          <a id="pWhatsApp" href="#" target="_blank" rel="noopener"><span data-icon="whatsapp"></span>Ask on WhatsApp</a>
+        </div>
+
+        <div class="assure">
+          <div><span data-icon="truck"></span>Complimentary islandwide delivery over Rs. 10,000</div>
+          <div><span data-icon="store"></span>Free collection from our Mount Lavinia boutique</div>
+          <div><span data-icon="exchange"></span>7-day inspection &amp; exchange guarantee</div>
+        </div>
+
+        <div class="accs">
+          <div class="acc is-open"><button type="button" onclick="toggleAcc(this)" aria-expanded="true">Description <span data-icon="plus"></span></button>
+            <div class="acc__body"><div><div class="acc__inner"><p id="pDesc"></p></div></div></div></div>
+          <div class="acc"><button type="button" onclick="toggleAcc(this)" aria-expanded="false">Details &amp; dimensions <span data-icon="plus"></span></button>
+            <div class="acc__body"><div><div class="acc__inner">
+              <div><b>Dimensions</b> · <span id="pDim"></span></div>
+              <div><b>Strap</b> · <span id="pStrap"></span></div>
+              <div><b>Materials</b> · <span id="pMat"></span></div>
+              <div><b>What fits</b> · <span id="pFits"></span></div>
+              <ul id="pFeatures"></ul>
+            </div></div></div></div>
+          <div class="acc" id="delivery"><button type="button" onclick="toggleAcc(this)" aria-expanded="false">Delivery &amp; returns <span data-icon="plus"></span></button>
+            <div class="acc__body"><div><div class="acc__inner">
+              <div><b>Colombo &amp; Western Province</b> · 1–2 business days · Rs. 350</div>
+              <div><b>Islandwide</b> · 2–4 business days · Rs. 550</div>
+              <div><b>Complimentary</b> on orders over Rs. 10,000, or collect free from our boutique.</div>
+              <div><b>7-day exchange</b> · Inspect your bag at home; if it isn't right, we'll exchange it.</div>
+            </div></div></div></div>
+          <div class="acc"><button type="button" onclick="toggleAcc(this)" aria-expanded="false">Payment <span data-icon="plus"></span></button>
+            <div class="acc__body"><div><div class="acc__inner">
+              <div>Visa, Mastercard and Amex, direct bank transfer, cash on delivery, or pay at the boutique.</div>
+            </div></div></div></div>
+        </div>
+
+        <p class="small">Need advice? Call <a class="link-plain" href="tel:0773173217">077 317 3217</a> or visit us at 587/A Galle Road, Mount Lavinia.</p>
       </div>
     </section>
 
-    <section class="section bg-ivory">
+    <section class="section">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="eyebrow">Complete the look</span>
-            <h2 class="h2" style="margin-top:14px">You may also <em>love</em></h2>
-          </div>
-          <a href="shop.html" class="link-underline">View all <span data-icon="arrow"></span></a>
+        <div class="sec-head">
+          <div><span class="kicker">Complete the look</span><h2 class="title-lg">You May Also Like</h2></div>
+          <div class="arrows"><button type="button" class="arrow" data-prev="rel" aria-label="Previous"><span data-icon="chev-left"></span></button><button type="button" class="arrow" data-next="rel" aria-label="Next"><span data-icon="chev-right"></span></button></div>
         </div>
-        <div class="product-grid" id="pdpRelatedGrid"></div>
+        <div class="carousel" data-carousel="rel"><div class="carousel__track" id="relTrack"></div><div class="progress"><i></i></div></div>
+      </div>
+    </section>
+
+    <section class="section bg-paper hidden" id="recentSection">
+      <div class="container">
+        <div class="sec-head"><div><span class="kicker">Your history</span><h2 class="title-lg">Recently Viewed</h2></div></div>
+        <div class="grid" id="recentGrid"></div>
       </div>
     </section>
   </main>
 
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Image viewer">
+    <img id="lbImg" src="" alt="">
+    <button type="button" class="close" onclick="closeLightbox()" aria-label="Close"><span data-icon="close"></span></button>
+    <button type="button" class="nav prev" onclick="lbStep(-1)" aria-label="Previous image"><span data-icon="chev-left"></span></button>
+    <button type="button" class="nav next" onclick="lbStep(1)" aria-label="Next image"><span data-icon="chev-right"></span></button>
+  </div>
+
   <div class="sticky-buy" id="stickyBuy">
-    <img id="stickyImg" src="" alt="">
-    <div class="t"><b id="stickyName"></b><span id="stickyPrice"></span></div>
-    <button type="button" class="btn btn-rose" onclick="handlePdpAddToCart()">Add to bag</button>
+    <img id="sbImg" src="" alt="">
+    <div class="t"><b id="sbName"></b><span id="sbPrice"></span></div>
+    <button type="button" class="btn" onclick="addCurrent()">Add to bag</button>
   </div>
 
   <script>Clara.footer();</script>
@@ -154,160 +132,94 @@
   <script>
     let currentProduct = null;
     let selectedColor = "";
-    let imageIndex = 0;
+    let lbIndex = 0;
+    const $ = id => document.getElementById(id);
 
     document.addEventListener("DOMContentLoaded", () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      currentProduct = getProductById(urlParams.get("id") || 1);
-      const p = currentProduct;
+      const p = currentProduct = getProductById(new URLSearchParams(location.search).get("id") || 1);
       selectedColor = p.colors[0];
+      const recentBefore = Clara.getRecent().filter(id => id !== p.id);
+      Clara.addRecent(p.id);
 
-      document.title = `${p.name} | CLARA Bags Sri Lanka`;
-      const meta = document.querySelector('meta[name="description"]');
-      if (meta) meta.content = p.shortDescription;
+      document.title = `${p.name} | CLARA Sri Lanka`;
+      document.querySelector('meta[name="description"]').content = p.shortDescription;
+      $("crumbCat").textContent = p.categoryName; $("crumbCat").href = `shop.html?cat=${p.category}`;
+      $("crumbName").textContent = p.name;
 
-      const catLink = document.getElementById("pdpCatBreadcrumb");
-      catLink.textContent = p.categoryName;
-      catLink.href = `shop.html?cat=${p.category}`;
-      document.getElementById("pdpNameBreadcrumb").textContent = p.name;
+      $("gallery").innerHTML = p.images.map((src, i) => `<button type="button" onclick="openLightbox(${i})" aria-label="Enlarge image ${i + 1}"><img src="${src}" alt="${p.name} — view ${i + 1}" ${i ? 'loading="lazy"' : ""}></button>`).join("");
+      $("galleryDots").innerHTML = p.images.map((_, i) => `<i class="${i ? "" : "is-active"}"></i>`).join("");
+      $("gallery").addEventListener("scroll", () => {
+        const g = $("gallery"); const i = Math.round(g.scrollLeft / g.clientWidth);
+        document.querySelectorAll("#galleryDots i").forEach((d, k) => d.classList.toggle("is-active", k === i));
+      }, { passive: true });
 
-      // Gallery
-      document.getElementById("pdpThumbnailStrip").innerHTML = p.images.map((img, idx) => `
-        <button type="button" class="${idx === 0 ? "is-active" : ""}" onclick="showImage(${idx})" aria-label="View image ${idx + 1}">
-          <img src="${img}" alt="">
-        </button>`).join("");
-      showImage(0);
+      $("pCat").textContent = p.categoryName; $("pCat").href = `shop.html?cat=${p.category}`;
+      $("pSku").textContent = `Ref. ${p.sku}`;
+      $("pName").textContent = p.name;
+      $("pStars").innerHTML = Array.from({ length: 5 }, () => Clara.icon("star")).join("");
+      $("pRating").textContent = `${p.rating.toFixed(1)} · ${p.reviewCount} reviews`;
+      $("pPrice").textContent = formatLKR(p.price);
+      $("pWas").textContent = p.originalPrice ? formatLKR(p.originalPrice) : "";
+      $("pOff").textContent = Clara.discountPct(p) ? `${Clara.discountPct(p)}% off` : "";
+      if (!p.originalPrice) $("pPrice").classList.remove("now");
+      $("pKoko").textContent = `Or 3 interest-free payments of ${formatLKR(Math.round(p.price / 3))} with KOKO. ${p.stockQuantity <= 9 ? `Only ${p.stockQuantity} left.` : "In stock."}`;
+      $("pShort").textContent = p.shortDescription;
 
-      const pct = Clara.discountPct(p);
-      document.getElementById("pdpBadgeContainer").innerHTML =
-        (p.isNew ? `<span class="badge new">New in</span>` : p.badge ? `<span class="badge">${p.badge}</span>` : "") +
-        (pct ? `<span class="badge sale">−${pct}%</span>` : "");
+      $("pColour").textContent = selectedColor;
+      $("pSwatches").innerHTML = p.colors.map((c, i) => `<button type="button" class="${i ? "" : "is-active"}" style="background:${p.colorHex[i]}" title="${c}" aria-label="${c}" onclick="pickColour(${i}, this)"></button>`).join("");
 
-      // Meta
-      const catTag = document.getElementById("pdpCategoryTag");
-      catTag.textContent = p.categoryName;
-      catTag.href = `shop.html?cat=${p.category}`;
-      document.getElementById("pdpSkuCode").textContent = `Ref. ${p.sku}`;
-      document.getElementById("pdpTitle").textContent = p.name;
-      document.getElementById("pdpStars").innerHTML = Array.from({ length: 5 }, () => Clara.icon("star")).join("");
-      document.getElementById("pdpRatingText").textContent = `${p.rating.toFixed(1)} · ${p.reviewCount} reviews`;
-      document.getElementById("pdpStockBadge").textContent = p.stockQuantity <= 9 ? `Only ${p.stockQuantity} left` : p.stockStatus;
+      $("pDesc").textContent = p.description;
+      $("pDim").textContent = p.dimensions;
+      $("pStrap").textContent = p.strapDrop;
+      $("pMat").textContent = p.material;
+      $("pFits").textContent = p.whatFits;
+      $("pFeatures").innerHTML = p.features.map(f => `<li>${f}</li>`).join("");
 
-      // Price
-      document.getElementById("pdpPrice").textContent = formatLKR(p.price);
-      document.getElementById("pdpOriginalPrice").textContent = p.originalPrice ? formatLKR(p.originalPrice) : "";
-      document.getElementById("pdpSave").textContent = p.originalPrice ? `You save ${formatLKR(p.originalPrice - p.price)}` : "";
-      document.getElementById("pdpInstallmentText").innerHTML = `Pay in 3 interest-free instalments of <b>${formatLKR(Math.round(p.price / 3))}</b>`;
-      document.getElementById("pdpShortDescription").textContent = p.shortDescription;
+      const wish = $("pWish");
+      wish.dataset.wish = p.id;
+      if (Clara.isSaved(p.id)) { wish.classList.add("is-saved"); wish.querySelector(".wish-label").textContent = "Saved to wishlist"; }
+      updateWa();
 
-      // Colours
-      document.getElementById("pdpActiveColorName").textContent = selectedColor;
-      document.getElementById("pdpColorSwatches").innerHTML = p.colors.map((color, idx) => `
-        <button type="button" class="${idx === 0 ? "is-active" : ""}" style="background:${p.colorHex[idx]}" title="${color}" aria-label="${color}" onclick="selectPdpColor(${idx}, this)"></button>`).join("");
-
-      // Specs
-      document.getElementById("pdpDimText").textContent = p.dimensions;
-      document.getElementById("pdpStrapText").textContent = p.strapDrop;
-      document.getElementById("pdpMatText").textContent = p.material;
-      document.getElementById("pdpWhatFitsText").textContent = p.whatFits || "Phone, keys, wallet and daily essentials";
-      document.getElementById("pdpFullDescription").textContent = p.description;
-      document.getElementById("pdpFeaturesList").innerHTML = p.features.map(f => `<li>${f}</li>`).join("");
-
-      // Wishlist hearts
-      ["pdpHeart", "pdpHeart2"].forEach(id => {
-        const btn = document.getElementById(id);
-        btn.dataset.id = p.id;
-        btn.classList.toggle("is-saved", Clara.isSaved(p.id));
-        btn.addEventListener("click", () => Clara.toggleWishlist(p.id, btn));
-      });
-
-      // Sticky mobile bar
-      document.getElementById("stickyImg").src = p.images[0];
-      document.getElementById("stickyName").textContent = p.name;
-      document.getElementById("stickyPrice").textContent = formatLKR(p.price);
-      const buyRow = document.getElementById("pdpBuyRow");
-      const sticky = document.getElementById("stickyBuy");
+      $("sbImg").src = p.images[0]; $("sbName").textContent = p.name; $("sbPrice").textContent = formatLKR(p.price);
       if ("IntersectionObserver" in window) {
-        new IntersectionObserver(([e]) => {
-          sticky.classList.toggle("is-visible", !e.isIntersecting && e.boundingClientRect.top < 0);
-        }).observe(buyRow);
+        new IntersectionObserver(([e]) => $("stickyBuy").classList.toggle("is-visible", !e.isIntersecting && e.boundingClientRect.top < 0)).observe($("buyRow"));
       }
 
-      // Hover zoom
-      const main = document.getElementById("pdpMain");
-      const mainImg = document.getElementById("pdpMainImage");
-      main.addEventListener("mousemove", e => {
-        if (e.target.closest("button")) { main.classList.remove("is-zoom"); return; }
-        const r = main.getBoundingClientRect();
-        mainImg.style.transformOrigin = `${((e.clientX - r.left) / r.width) * 100}% ${((e.clientY - r.top) / r.height) * 100}%`;
-        main.classList.add("is-zoom");
-      });
-      main.addEventListener("mouseleave", () => main.classList.remove("is-zoom"));
+      $("relTrack").innerHTML = getRelatedProducts(p.id, 8).map((x, i) => Clara.productCard(x, { index: i, reveal: false })).join("");
+      const recent = recentBefore.map(id => getProductById(id)).slice(0, 4);
+      if (recent.length) {
+        $("recentSection").classList.remove("hidden");
+        $("recentGrid").innerHTML = recent.map((x, i) => Clara.productCard(x, { index: i })).join("");
+      }
 
-      updatePdpWhatsappLink();
-      renderRelatedProducts();
-      Clara.hydrateIcons();
+      if (location.hash === "#delivery") toggleAcc($("delivery").querySelector("button"));
+      Clara.hydrateIcons(); Clara.initCarousels(); Clara.observeReveals();
+      document.addEventListener("keydown", e => {
+        if (!$("lightbox").classList.contains("is-open")) return;
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowRight") lbStep(1);
+        if (e.key === "ArrowLeft") lbStep(-1);
+      });
     });
 
-    function showImage(idx) {
-      const imgs = currentProduct.images;
-      imageIndex = (idx + imgs.length) % imgs.length;
-      const mainImg = document.getElementById("pdpMainImage");
-      mainImg.style.opacity = 0;
-      setTimeout(() => {
-        mainImg.src = imgs[imageIndex];
-        mainImg.alt = `${currentProduct.name} — image ${imageIndex + 1}`;
-        mainImg.style.opacity = 1;
-      }, 150);
-      document.querySelectorAll("#pdpThumbnailStrip button").forEach((b, i) => b.classList.toggle("is-active", i === imageIndex));
+    function updateWa() {
+      $("pWhatsApp").href = Clara.waLink(`Hello CLARA, I'm interested in the ${currentProduct.name} in ${selectedColor} (${formatLKR(currentProduct.price)}). Is it available?`);
     }
-
-    function stepImage(delta) { showImage(imageIndex + delta); }
-
-    function updatePdpWhatsappLink() {
-      const link = document.getElementById("pdpWhatsappConciergeLink");
-      const msg = `Hello CLARA, I'm interested in the ${currentProduct.name} in ${selectedColor} (${formatLKR(currentProduct.price)}). Is it available?`;
-      link.href = Clara.waLink(msg);
+    function pickColour(i, btn) {
+      selectedColor = currentProduct.colors[i];
+      $("pColour").textContent = selectedColor;
+      document.querySelectorAll("#pSwatches button").forEach(b => b.classList.toggle("is-active", b === btn));
+      updateWa();
     }
+    function changeQty(d) { const q = $("pQty"); q.value = Math.max(1, Math.min(10, (parseInt(q.value, 10) || 1) + d)); }
+    const qty = () => Math.max(1, Math.min(10, parseInt($("pQty").value, 10) || 1));
+    function addCurrent() { addToCart(currentProduct.id, selectedColor, qty(), { openDrawer: true }); }
+    function buyNow() { addToCart(currentProduct.id, selectedColor, qty(), { openDrawer: false }); location.href = "checkout.html"; }
+    function toggleAcc(btn) { const a = btn.closest(".acc"); btn.setAttribute("aria-expanded", String(a.classList.toggle("is-open"))); }
 
-    function selectPdpColor(idx, btn) {
-      selectedColor = currentProduct.colors[idx];
-      document.getElementById("pdpActiveColorName").textContent = selectedColor;
-      document.querySelectorAll("#pdpColorSwatches button").forEach(b => b.classList.remove("is-active"));
-      btn.classList.add("is-active");
-      updatePdpWhatsappLink();
-    }
-
-    function changePdpQty(delta) {
-      const input = document.getElementById("pdpQuantityInput");
-      const val = Math.max(1, Math.min(10, (parseInt(input.value, 10) || 1) + delta));
-      input.value = val;
-    }
-
-    function getPdpQty() {
-      return Math.max(1, Math.min(10, parseInt(document.getElementById("pdpQuantityInput").value, 10) || 1));
-    }
-
-    function handlePdpAddToCart() {
-      addToCart(currentProduct.id, selectedColor, getPdpQty(), { openDrawer: true });
-    }
-
-    function handlePdpBuyNow() {
-      addToCart(currentProduct.id, selectedColor, getPdpQty(), { openDrawer: false });
-      window.location.href = "checkout.html";
-    }
-
-    function toggleAccordion(btn) {
-      const item = btn.closest(".acc");
-      const open = item.classList.toggle("is-open");
-      btn.setAttribute("aria-expanded", String(open));
-    }
-
-    function renderRelatedProducts() {
-      const grid = document.getElementById("pdpRelatedGrid");
-      grid.innerHTML = getRelatedProducts(currentProduct.id, 4).map((p, i) => Clara.productCard(p, { index: i })).join("");
-      Clara.observeReveals(grid);
-    }
+    function openLightbox(i) { lbIndex = i; $("lbImg").src = currentProduct.images[i]; $("lightbox").classList.add("is-open"); document.body.classList.add("no-scroll"); }
+    function closeLightbox() { $("lightbox").classList.remove("is-open"); document.body.classList.remove("no-scroll"); }
+    function lbStep(d) { const n = currentProduct.images.length; lbIndex = (lbIndex + d + n) % n; $("lbImg").src = currentProduct.images[lbIndex]; }
   </script>
 </body>
 </html>

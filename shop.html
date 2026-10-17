@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Collection | CLARA Bags Sri Lanka</title>
-  <meta name="description" content="Shop CLARA handbags — structured vanity bags, work and laptop totes, crossbody bags, evening clutches, weekenders and wallets. Islandwide delivery across Sri Lanka.">
-  <meta name="theme-color" content="#FBF7F3">
+  <title>Handbags | CLARA Sri Lanka</title>
+  <meta name="description" content="Shop CLARA handbags — structured vanity bags, work and laptop totes, crossbody bags, evening clutches, weekenders and small leather goods. Islandwide delivery across Sri Lanka.">
+  <meta name="theme-color" content="#FFFFFF">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap">
   <link rel="stylesheet" href="css/main.css">
   <script src="js/products-data.js"></script>
   <script src="js/store.js"></script>
@@ -19,177 +19,191 @@
   <script>Clara.header();</script>
 
   <main id="main">
-    <section class="page-hero">
-      <div class="container page-hero__inner">
-        <div>
-          <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="sep"></span><span class="current" id="crumbCurrent">The collection</span></nav>
-          <h1 class="display" id="shopTitle" style="font-size:clamp(2.6rem,5vw,4.4rem)">The <em>collection</em></h1>
-          <p class="lead" id="shopIntro">Structured vanity bags, polished work totes, hands-free crossbodies and evening clutches — each chosen to make you feel put-together, wherever the day takes you.</p>
-        </div>
-        <div class="page-hero__img"><img id="shopHeroImg" src="assets/img/hero-palms.jpg" alt=""></div>
-      </div>
-    </section>
-
-    <div class="toolbar">
-      <div class="container toolbar__inner">
-        <div class="chip-row" id="catChips" role="tablist" aria-label="Categories"></div>
-        <div class="toolbar__tools">
-          <label class="field-pill">
-            <span data-icon="search"></span>
-            <span class="visually-hidden">Search the collection</span>
-            <input type="search" id="catalogSearchInput" placeholder="Search bags" autocomplete="off">
-          </label>
-          <label class="field-pill">
-            <span class="visually-hidden">Sort by</span>
-            <span data-icon="menu"></span>
-            <select id="catalogSortSelect">
-              <option value="featured">Featured</option>
-              <option value="new">Newest</option>
-              <option value="price-low">Price: low to high</option>
-              <option value="price-high">Price: high to low</option>
-              <option value="rating">Top rated</option>
-            </select>
-            <span data-icon="chev-down" data-icon-class="caret" style="position:absolute;right:14px;pointer-events:none"></span>
-          </label>
-        </div>
-      </div>
+    <div class="container page-head">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="sep"></span><span class="cur" id="crumbCur">Handbags</span></nav>
+      <h1 class="title-lg" id="shopTitle">Handbags</h1>
+      <p id="shopIntro"></p>
     </div>
+    <nav class="cat-links container" id="catLinks" aria-label="Categories"></nav>
 
-    <section class="container" style="padding-bottom:clamp(64px,8vw,120px)">
-      <div class="result-line">
-        <span id="catalogCountText">Showing all styles</span>
-        <span class="small">Free delivery over Rs. 10,000</span>
-      </div>
-      <div class="product-grid" id="catalogGrid"></div>
-    </section>
+    <div class="container shop">
+      <aside class="filters" id="filters" aria-label="Filters">
+        <div class="filters__head"><span>Filter</span><button type="button" class="icon-btn" onclick="toggleFilters(false)" aria-label="Close filters"><span data-icon="close"></span></button></div>
+        <div class="fgroup"><button type="button" onclick="this.parentElement.classList.toggle('is-closed')">Category <span data-icon="chev-down"></span></button><div class="fopts" id="fCategory"></div></div>
+        <div class="fgroup"><button type="button" onclick="this.parentElement.classList.toggle('is-closed')">Colour <span data-icon="chev-down"></span></button><div class="fopts" id="fColour"></div></div>
+        <div class="fgroup"><button type="button" onclick="this.parentElement.classList.toggle('is-closed')">Price <span data-icon="chev-down"></span></button><div class="fopts" id="fPrice"></div></div>
+        <button type="button" class="clear-filters" onclick="resetFilters()">Clear all filters</button>
+      </aside>
+
+      <section>
+        <div class="toolbar">
+          <button type="button" class="filter-toggle" onclick="toggleFilters(true)"><span data-icon="filter"></span>Filter</button>
+          <span class="toolbar__count" id="countText"></span>
+          <div class="toolbar__right">
+            <label class="select"><span class="hide-mobile">Sort by</span>
+              <select id="sortSelect" aria-label="Sort products">
+                <option value="featured">Featured</option>
+                <option value="new">New arrivals</option>
+                <option value="price-low">Price, low to high</option>
+                <option value="price-high">Price, high to low</option>
+                <option value="rating">Top rated</option>
+              </select>
+              <span data-icon="chev-down"></span>
+            </label>
+            <div class="density" role="group" aria-label="Grid size">
+              <button type="button" data-cols="3" aria-label="3 per row"><svg viewBox="0 0 18 18"><rect x="0" y="0" width="5" height="18"/><rect x="6.5" y="0" width="5" height="18"/><rect x="13" y="0" width="5" height="18"/></svg></button>
+              <button type="button" data-cols="4" class="is-active" aria-label="4 per row"><svg viewBox="0 0 18 18"><rect x="0" y="0" width="3.6" height="18"/><rect x="4.8" y="0" width="3.6" height="18"/><rect x="9.6" y="0" width="3.6" height="18"/><rect x="14.4" y="0" width="3.6" height="18"/></svg></button>
+            </div>
+          </div>
+        </div>
+        <div class="active-filters" id="activeFilters"></div>
+        <div class="grid" id="catalogGrid"></div>
+      </section>
+    </div>
   </main>
 
   <script>Clara.footer();</script>
 
   <script>
-    const CHIP_DEFS = [
-      { key: "all", label: "All bags" },
-      { key: "new", label: "New in" },
-      ...CATEGORY_META.map(c => ({ key: c.key, label: c.label })),
-      { key: "saved", label: "Wishlist", icon: "heart" }
-    ];
-
-    const CAT_COPY = {
-      all: ["The <em>collection</em>", "Structured vanity bags, polished work totes, hands-free crossbodies and evening clutches — each chosen to make you feel put-together, wherever the day takes you.", "assets/img/hero-palms.jpg"],
-      new: ["New <em>in</em>", "The latest silhouettes to arrive at our Mount Lavinia boutique — fresh shapes, new shades and pieces you won't see everywhere.", "assets/img/mood-weekend.jpg"],
-      vanity: ["Structured <em>vanity</em>", "Sculpted top-handle bags that hold their shape beautifully — made for weddings, dinners and every day you want to feel polished.", "assets/img/cat-vanity.jpg"],
-      totes: ["Work &amp; <em>totes</em>", "Room for your laptop, documents and everything in between — totes that look as composed at 6 PM as they did at 9.", "assets/img/mood-day.jpg"],
-      crossbody: ["Crossbody &amp; <em>slings</em>", "Hands-free and effortlessly chic — for shopping in Colombo, weekends away and everything spontaneous.", "assets/img/cat-crossbody.jpg"],
-      shoulder: ["Shoulder <em>bags</em>", "Soft pleats, baguettes and turn-lock satchels that sit comfortably under the arm all day long.", "assets/img/cat-shoulder.jpg"],
-      clutches: ["The evening <em>edit</em>", "Jewelled minaudières and sculptural clutches for weddings, homecomings and nights to remember.", "assets/img/evening-gown.jpg"],
-      travel: ["Travel &amp; <em>weekender</em>", "Cabin-friendly holdalls with a separate shoe compartment — for beach weekends and business trips alike.", "assets/img/cat-travel.jpg"],
-      wallets: ["Wallets &amp; <em>gifts</em>", "Quilted continental wallets and small leather goods — the perfect gift, beautifully boxed.", "assets/img/cat-wallets.jpg"],
-      saved: ["Your <em>wishlist</em>", "The pieces you've fallen for, saved in one place. Tap the heart on any bag to add it here.", "assets/img/ig-rose.jpg"]
+    const COPY = {
+      all: ["Handbags", "Structured vanity bags, polished work totes, hands-free crossbodies and evening clutches — each chosen to make you feel put-together."],
+      new: ["New In", "The latest silhouettes to arrive at our Mount Lavinia boutique."],
+      vanity: ["Structured Vanity", "Sculpted top-handle bags that hold their shape — for weddings, dinners and every polished day."],
+      totes: ["Work & Totes", "Room for your laptop, documents and everything in between."],
+      crossbody: ["Crossbody & Slings", "Hands-free and effortlessly chic, for weekends and everything spontaneous."],
+      shoulder: ["Shoulder Bags", "Soft pleats, baguettes and turn-lock satchels that sit beautifully under the arm."],
+      clutches: ["Evening", "Jewelled minaudières and sculptural clutches for nights to remember."],
+      travel: ["Travel & Weekender", "Cabin-friendly holdalls with a separate shoe compartment."],
+      wallets: ["Small Leather Goods", "Quilted continental wallets — the perfect gift, beautifully boxed."],
+      saved: ["Wishlist", "The pieces you've fallen for, saved in one place."]
     };
 
+    const COLOUR_FAMILIES = [
+      { key: "black", label: "Black", hex: "#141416", words: ["noir", "black", "onyx", "midnight"] },
+      { key: "neutral", label: "Ivory & Cream", hex: "#EFE8DC", words: ["ivory", "alabaster", "cream", "oatmeal", "ecru"] },
+      { key: "brown", label: "Brown & Tan", hex: "#8B5A2B", words: ["cognac", "tan", "camel", "espresso", "brown", "chestnut", "cocoa", "taupe", "butterscotch", "mustard"] },
+      { key: "red", label: "Red & Pink", hex: "#7A1B24", words: ["bordeaux", "wine", "merlot", "scarlet", "red", "quartz", "blush", "rose"] },
+      { key: "green", label: "Green", hex: "#1C4D3A", words: ["green", "emerald", "olive"] },
+      { key: "metal", label: "Metallic", hex: "#C9B07A", words: ["gold", "silver", "champagne", "sterling", "bronze"] }
+    ];
+    const PRICES = [
+      { key: "under4", label: "Under Rs. 4,000", test: p => p.price < 4000 },
+      { key: "4to6", label: "Rs. 4,000 – 6,000", test: p => p.price >= 4000 && p.price <= 6000 },
+      { key: "over6", label: "Over Rs. 6,000", test: p => p.price > 6000 }
+    ];
+
+    const families = (p) => new Set(p.colors.flatMap(c => COLOUR_FAMILIES.filter(f => f.words.some(w => c.toLowerCase().includes(w))).map(f => f.key)));
+
     const params = new URLSearchParams(location.search);
-    let activeCategory = params.get("saved") ? "saved" : (params.get("cat") || "all");
-    if (!CAT_COPY[activeCategory]) activeCategory = "all";
-    let searchQuery = (params.get("q") || "").trim().toLowerCase();
-    let sortOrder = "featured";
+    const state = {
+      cat: params.get("saved") ? "saved" : (params.get("cat") || "all"),
+      q: (params.get("q") || "").trim().toLowerCase(),
+      colours: new Set(),
+      price: params.get("price") || "",
+      sort: "featured"
+    };
+    if (!COPY[state.cat]) state.cat = "all";
 
-    function renderChips() {
-      const row = document.getElementById("catChips");
-      row.innerHTML = CHIP_DEFS.map(c => {
-        let n;
-        if (c.key === "all") n = CLARA_PRODUCTS.length;
-        else if (c.key === "new") n = CLARA_PRODUCTS.filter(p => p.isNew).length;
-        else if (c.key === "saved") n = Clara.getWishlist().length;
-        else n = CLARA_PRODUCTS.filter(p => p.category === c.key).length;
-        return `<button type="button" role="tab" class="chip ${c.key === activeCategory ? "is-active" : ""}" data-cat="${c.key}" aria-selected="${c.key === activeCategory}">
-          ${c.icon ? Clara.icon(c.icon) : ""}${c.label}<span class="n">${n}</span></button>`;
-      }).join("");
-      row.querySelectorAll(".chip").forEach(btn => btn.addEventListener("click", () => {
-        activeCategory = btn.dataset.cat;
-        const url = new URL(location.href);
-        url.searchParams.delete("cat"); url.searchParams.delete("saved");
-        if (activeCategory === "saved") url.searchParams.set("saved", "1");
-        else if (activeCategory !== "all") url.searchParams.set("cat", activeCategory);
-        history.replaceState(null, "", url);
-        renderChips();
-        renderHero();
-        renderCatalog();
-      }));
-      const active = row.querySelector(".is-active");
-      if (active) active.scrollIntoView({ inline: "center", block: "nearest" });
+    const inCat = (p, cat) => cat === "all" || (cat === "new" && p.isNew) || (cat === "saved" && Clara.getWishlist().includes(p.id)) || p.category === cat;
+
+    function renderHead() {
+      const [title, intro] = COPY[state.cat];
+      document.getElementById("shopTitle").textContent = state.q ? `Results for “${state.q}”` : title;
+      document.getElementById("shopIntro").textContent = state.q ? "" : intro;
+      document.getElementById("crumbCur").textContent = title;
+      document.title = `${title} | CLARA Sri Lanka`;
+      const links = [["all", "All"], ["new", "New In"], ...CATEGORY_META.map(c => [c.key, c.label])];
+      document.getElementById("catLinks").innerHTML = links.map(([k, l]) => `<a href="#" data-cat="${k}" class="${state.cat === k ? "is-active" : ""}">${l}</a>`).join("");
+      document.querySelectorAll("#catLinks a").forEach(a => a.addEventListener("click", e => { e.preventDefault(); setCat(a.dataset.cat); }));
     }
 
-    function renderHero() {
-      const [title, intro, img] = CAT_COPY[activeCategory];
-      document.getElementById("shopTitle").innerHTML = title;
-      document.getElementById("shopIntro").textContent = intro;
-      document.getElementById("shopHeroImg").src = img;
-      const plain = title.replace(/<[^>]+>/g, "").replace("&amp;", "&");
-      document.getElementById("crumbCurrent").textContent = plain;
-      document.title = `${plain} | CLARA Bags Sri Lanka`;
+    function renderFilters() {
+      const cats = [["all", "All handbags"], ["new", "New In"], ...CATEGORY_META.map(c => [c.key, c.label]), ["saved", "Wishlist"]];
+      document.getElementById("fCategory").innerHTML = cats.map(([k, l]) => `
+        <label class="fopt"><input type="radio" name="fcat" value="${k}" ${state.cat === k ? "checked" : ""}>${l}<span class="n">${CLARA_PRODUCTS.filter(p => inCat(p, k)).length}</span></label>`).join("");
+      document.getElementById("fColour").innerHTML = COLOUR_FAMILIES.map(f => `
+        <label class="fopt"><input type="checkbox" value="${f.key}" ${state.colours.has(f.key) ? "checked" : ""}><span class="sw" style="background:${f.hex}"></span>${f.label}<span class="n">${CLARA_PRODUCTS.filter(p => families(p).has(f.key)).length}</span></label>`).join("");
+      document.getElementById("fPrice").innerHTML = [{ key: "", label: "Any price" }, ...PRICES].map(pr => `
+        <label class="fopt"><input type="radio" name="fprice" value="${pr.key}" ${state.price === pr.key ? "checked" : ""}>${pr.label}</label>`).join("");
+
+      document.querySelectorAll("#fCategory input").forEach(i => i.addEventListener("change", () => setCat(i.value)));
+      document.querySelectorAll("#fColour input").forEach(i => i.addEventListener("change", () => { i.checked ? state.colours.add(i.value) : state.colours.delete(i.value); renderGrid(); }));
+      document.querySelectorAll("#fPrice input").forEach(i => i.addEventListener("change", () => { state.price = i.value; renderGrid(); }));
     }
 
-    function renderCatalog() {
+    function setCat(cat) {
+      state.cat = cat;
+      state.q = "";
+      const url = new URL(location.href);
+      ["cat", "saved", "q"].forEach(k => url.searchParams.delete(k));
+      if (cat === "saved") url.searchParams.set("saved", "1"); else if (cat !== "all") url.searchParams.set("cat", cat);
+      history.replaceState(null, "", url);
+      renderHead(); renderFilters(); renderGrid();
+    }
+
+    function renderGrid() {
       const grid = document.getElementById("catalogGrid");
-      const countText = document.getElementById("catalogCountText");
-      const saved = Clara.getWishlist();
-
-      let filtered = CLARA_PRODUCTS.filter(p => {
-        const matchesCat = activeCategory === "all"
-          || (activeCategory === "new" && p.isNew)
-          || (activeCategory === "saved" && saved.includes(p.id))
-          || p.category === activeCategory;
-        const haystack = [p.name, p.sku, p.categoryName, p.material, p.colors.join(" "), p.shortDescription].join(" ").toLowerCase();
-        return matchesCat && (!searchQuery || haystack.includes(searchQuery));
+      let list = CLARA_PRODUCTS.filter(p => {
+        if (!inCat(p, state.cat)) return false;
+        if (state.q && ![p.name, p.sku, p.categoryName, p.material, p.colors.join(" "), p.shortDescription].join(" ").toLowerCase().includes(state.q)) return false;
+        if (state.colours.size && ![...families(p)].some(f => state.colours.has(f))) return false;
+        if (state.price && !PRICES.find(x => x.key === state.price).test(p)) return false;
+        return true;
       });
+      const sorts = {
+        "price-low": (a, b) => a.price - b.price,
+        "price-high": (a, b) => b.price - a.price,
+        rating: (a, b) => b.rating - a.rating,
+        new: (a, b) => b.isNew - a.isNew,
+        featured: (a, b) => b.isFeatured - a.isFeatured
+      };
+      list.sort(sorts[state.sort]);
 
-      if (sortOrder === "price-low") filtered.sort((a, b) => a.price - b.price);
-      else if (sortOrder === "price-high") filtered.sort((a, b) => b.price - a.price);
-      else if (sortOrder === "rating") filtered.sort((a, b) => b.rating - a.rating);
-      else if (sortOrder === "new") filtered.sort((a, b) => (b.isNew - a.isNew));
-      else filtered.sort((a, b) => (b.isFeatured - a.isFeatured));
+      document.getElementById("countText").textContent = `${list.length} ${list.length === 1 ? "product" : "products"}`;
 
-      countText.innerHTML = `Showing <b>${filtered.length}</b> ${filtered.length === 1 ? "style" : "styles"}${searchQuery ? ` for “${Clara.escapeHtml(searchQuery)}”` : ""}`;
+      const chips = [];
+      if (state.q) chips.push([`Search: ${state.q}`, () => { state.q = ""; renderHead(); renderGrid(); }]);
+      state.colours.forEach(c => chips.push([COLOUR_FAMILIES.find(f => f.key === c).label, () => { state.colours.delete(c); renderFilters(); renderGrid(); }]));
+      if (state.price) chips.push([PRICES.find(x => x.key === state.price).label, () => { state.price = ""; renderFilters(); renderGrid(); }]);
+      const af = document.getElementById("activeFilters");
+      af.innerHTML = chips.map(([l], i) => `<button type="button" data-i="${i}">${Clara.escapeHtml(l)} ${Clara.icon("close")}</button>`).join("");
+      af.querySelectorAll("button").forEach(b => b.addEventListener("click", chips[b.dataset.i][1]));
+      af.classList.toggle("hidden", !chips.length);
 
-      if (filtered.length === 0) {
-        const isSaved = activeCategory === "saved" && !searchQuery;
-        grid.innerHTML = `
-          <div class="empty-state" style="grid-column:1/-1">
-            <div class="bubble">${Clara.icon(isSaved ? "heart" : "search")}</div>
-            <h3>${isSaved ? "Your wishlist is empty" : "Nothing found"}</h3>
-            <p>${isSaved ? "Tap the heart on any bag to save it for later." : "Try another colour, style or category — or browse the full collection."}</p>
-            <button type="button" class="btn btn-dark" onclick="resetCatalogFilters()">Browse all bags</button>
-          </div>`;
+      if (!list.length) {
+        const saved = state.cat === "saved" && !state.colours.size && !state.price && !state.q;
+        grid.innerHTML = `<div class="empty" style="grid-column:1/-1">${Clara.icon(saved ? "heart" : "search")}
+          <h3>${saved ? "Your wishlist is empty" : "No products found"}</h3>
+          <p>${saved ? "Tap the heart on any bag to save it here." : "Try removing a filter or browse the full collection."}</p>
+          <button type="button" class="btn btn-outline" onclick="resetFilters()">View all handbags</button></div>`;
         return;
       }
-
-      grid.innerHTML = filtered.map((p, i) => Clara.productCard(p, { index: i })).join("");
+      grid.innerHTML = list.map((p, i) => Clara.productCard(p, { index: i })).join("");
       Clara.observeReveals(grid);
     }
 
-    function resetCatalogFilters() {
-      activeCategory = "all";
-      searchQuery = "";
-      document.getElementById("catalogSearchInput").value = "";
-      history.replaceState(null, "", "shop.html");
-      renderChips(); renderHero(); renderCatalog();
+    function resetFilters() {
+      state.colours.clear(); state.price = ""; state.q = "";
+      setCat("all");
+      document.getElementById("sortSelect").value = "featured"; state.sort = "featured";
+      renderGrid();
+    }
+
+    function toggleFilters(open) {
+      document.getElementById("filters").classList.toggle("is-open", open);
+      document.body.classList.toggle("no-scroll", open);
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      const searchInput = document.getElementById("catalogSearchInput");
-      searchInput.value = searchQuery;
-      searchInput.addEventListener("input", e => { searchQuery = e.target.value.trim().toLowerCase(); renderCatalog(); });
-      document.getElementById("catalogSortSelect").addEventListener("change", e => { sortOrder = e.target.value; renderCatalog(); });
-
-      renderChips();
-      renderHero();
-      renderCatalog();
+      document.getElementById("sortSelect").addEventListener("change", e => { state.sort = e.target.value; renderGrid(); });
+      document.querySelectorAll(".density button").forEach(b => b.addEventListener("click", () => {
+        document.querySelectorAll(".density button").forEach(x => x.classList.toggle("is-active", x === b));
+        document.getElementById("catalogGrid").classList.toggle("cols-3", b.dataset.cols === "3");
+      }));
+      document.getElementById("filters").addEventListener("click", e => { if (e.target.id === "filters") toggleFilters(false); });
+      renderHead(); renderFilters(); renderGrid();
       Clara.hydrateIcons();
-
-      window.addEventListener("clara:wishlist-updated", () => {
-        renderChips();
-        if (activeCategory === "saved") renderCatalog();
-      });
+      window.addEventListener("clara:wishlist-updated", () => { renderFilters(); if (state.cat === "saved") renderGrid(); });
     });
   </script>
 </body>
