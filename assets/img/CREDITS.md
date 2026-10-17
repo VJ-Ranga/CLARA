@@ -52,9 +52,23 @@ Photos in this folder are from [Unsplash](https://unsplash.com) and used under t
 | spotlight-sovereign.jpg | https://unsplash.com/photos/1584917865442-de89df76afd3 |
 | hero-duo-1.jpg | https://unsplash.com/photos/1617922001439-4a2e6562f328 |
 | hero-duo-2.jpg | https://unsplash.com/photos/1632149877166-f75d49000351 |
+| hero-a1.jpg | https://images.unsplash.com/photo-1784850027162-e788ab11a625 |
+| hero-a2.jpg | https://images.unsplash.com/photo-1649544284889-2c30c3267013 |
+| slide-city.jpg | https://images.unsplash.com/photo-1588190437916-425872ddf591 |
+| slide-red.jpg | https://images.unsplash.com/photo-1786874228638-11b2d6aed176 |
+| slide-night.jpg | https://images.unsplash.com/photo-1764973638375-c157bc261162 |
+| slide-saree.jpg | https://images.unsplash.com/photo-1761125135351-268e72e39158 |
 
 ## Video
 
 | File | Source |
 |------|--------|
-| ../video/hero.mp4 / .webm, hero-mobile.mp4 / .webm, hero-poster.jpg | Mixkit clip 49513, free under the Mixkit License — https://mixkit.co/license/#videoFree |
+| ../video/hero.mp4 / .webm, hero-mobile.mp4 / .webm, hero-poster.jpg | Black-and-white edit of three stock clips (woman walking with a black bag, hands opening a box bag, bridal clutch close-up) — sources listed below |
+
+Video clips used in the hero edit (Pexels License — https://www.pexels.com/license/):
+
+| Clip | Source |
+|------|--------|
+| Woman in a beige suit walking with a black bag | https://www.pexels.com/video/8439873/ |
+| Hands opening a black box bag | https://www.pexels.com/video/13677962/ |
+| Bridal clutch close-up | https://www.pexels.com/video/35764319/ |

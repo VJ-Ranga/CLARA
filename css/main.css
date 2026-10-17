@@ -1254,12 +1254,57 @@ html[data-h="3"] { --header-h: 72px; }
 }
 
 /* =========================================================================
-   HOME HERO OPTIONS — 1 Photo (diptych) · 2 Video · 3 Slider
+   HOME HERO OPTIONS — 1 Editorial split · 2 Video · 3 Slider
    ========================================================================= */
-/* 1 · Photo diptych */
-.hero-duo { display: grid; grid-template-columns: 1fr 1fr; position: absolute; inset: 0; }
-.hero-duo img { width: 100%; height: 100%; object-fit: cover; }
-.panel.hero-photo::after { background: linear-gradient(0deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.1) 38%, rgba(0,0,0,0) 62%, rgba(0,0,0,.3) 100%); }
+/* 1 · Editorial split — black brand panel + campaign photo */
+.hx { position: relative; display: grid; grid-template-columns: minmax(380px, 40%) 1fr; height: 100svh; min-height: 600px; overflow: hidden; background: var(--ink); color: #fff; }
+@supports not (height: 100svh) { .hx { height: 100vh; } }
+.hx__copy { position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: calc(var(--top) + 32px) clamp(28px, 5vw, 88px) clamp(40px, 7vh, 80px); }
+.hx__rose { position: absolute; z-index: -1; right: -18%; bottom: -10%; width: 78%; max-width: 520px; opacity: .07; pointer-events: none; }
+.hx__copy .kicker { color: #E5484F; } /* lighter brand red for AA contrast on black */
+.hx__rule { width: 56px; height: 2px; margin: 22px 0 26px; background: var(--rose); }
+.hx h1 { font-size: clamp(46px, 5.6vw, 92px); font-weight: 300; line-height: .98; letter-spacing: -.01em; text-transform: uppercase; }
+.hx__intro { max-width: 340px; margin-top: 26px; color: rgba(255,255,255,.72); font-size: 15px; font-weight: 300; line-height: 1.75; }
+.hx__links { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; margin-top: 36px; }
+.hx__btn { background: var(--rose); border-color: var(--rose); color: #fff; }
+.hx__btn:hover { background: #fff; border-color: #fff; color: var(--ink); }
+.hx__link { color: #fff; font-size: 13px; letter-spacing: .08em; padding-bottom: 4px; border-bottom: 1px solid rgba(255,255,255,.6); transition: border-color .2s, color .2s; }
+.hx__link:hover { color: var(--rose); border-color: var(--rose); }
+.hx__visual { position: relative; min-width: 0; overflow: hidden; }
+.hx__main { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 40%; animation: hxReveal 1.4s var(--ease) both; }
+.hx__visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,18,16,.55) 0%, rgba(20,18,16,0) 30%); pointer-events: none; }
+.hx__inset { position: absolute; z-index: 2; right: clamp(24px, 4vw, 64px); bottom: clamp(28px, 7vh, 72px); width: clamp(150px, 15vw, 230px); background: var(--rose); box-shadow: 14px 16px 0 rgba(0,0,0,.35); animation: hxFloat 1s .35s var(--ease) both; }
+.hx__inset img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 30% 50%; }
+.hx__inset figcaption { padding: 10px 14px 12px; font-size: 10px; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; }
+.hx__copy > * { animation: hxUp .9s var(--ease) both; }
+.hx__copy > :nth-child(3) { animation-delay: .1s; }
+.hx__copy > :nth-child(4) { animation-delay: .2s; }
+.hx__copy > :nth-child(5) { animation-delay: .3s; }
+.hx__copy > :nth-child(6) { animation-delay: .4s; }
+.hx__copy > .hx__rose { animation: none; }
+@keyframes hxReveal { from { opacity: 0; transform: scale(1.06); } to { opacity: 1; transform: none; } }
+@keyframes hxFloat { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+@keyframes hxUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@media (max-width: 1024px) {
+  .hx { grid-template-columns: minmax(320px, 46%) 1fr; }
+  .hx__inset { width: 150px; }
+}
+@media (max-width: 760px) {
+  .hx { display: block; min-height: 640px; }
+  .hx__visual { position: absolute; inset: 0; }
+  .hx__main { object-position: 70% 50%; }
+  .hx__visual::after { background: linear-gradient(0deg, rgba(20,18,16,.95) 0%, rgba(20,18,16,.75) 42%, rgba(20,18,16,.1) 75%, rgba(20,18,16,.35) 100%); }
+  .hx__copy { height: 100%; justify-content: flex-end; padding: calc(var(--top) + 24px) 20px 44px; }
+  .hx__rose { display: none; }
+  .hx h1 { font-size: clamp(40px, 12vw, 60px); }
+  .hx__intro { font-size: 14px; margin-top: 18px; }
+  .hx__links { margin-top: 26px; }
+  .hx__inset { right: 20px; top: calc(var(--top) + 20px); bottom: auto; width: 96px; box-shadow: 8px 10px 0 rgba(0,0,0,.35); }
+  .hx__inset figcaption { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hx__main, .hx__inset, .hx__copy > * { animation: none; }
+}
 
 /* 2 · Video */
 .panel.hero-video { background: #2a2622; }
@@ -1267,6 +1312,9 @@ html[data-h="3"] { --header-h: 72px; }
 .hero-video video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .hero-toggle { position: absolute; z-index: 3; left: var(--gutter); bottom: clamp(24px, 4vh, 40px); width: 42px; height: 42px; display: grid; place-items: center; color: #fff; border: 1px solid rgba(255,255,255,.55); border-radius: 50%; transition: background .2s, color .2s; }
 .hero-toggle:hover { background: #fff; color: var(--ink); }
+/* Brand accent shared by video + slider heroes: red rule above the kicker, red primary link */
+.hero-video .panel__cap .kicker::before, .hs .panel__cap .kicker::before { content: ""; display: block; width: 44px; height: 2px; margin: 0 auto 16px; background: var(--rose); }
+.hero-video .panel__links a:first-child, .hs .panel__links a:first-child { border-bottom: 2px solid var(--rose); }
 .hero-toggle .ic { width: 15px; height: 15px; }
 
 /* 3 · Slider */
@@ -1299,8 +1347,6 @@ html[data-h="3"] { --header-h: 72px; }
 .hs__count { font-size: 12px; letter-spacing: .14em; min-width: 52px; text-align: center; color: rgba(255,255,255,.85); }
 
 @media (max-width: 760px) {
-  .hero-duo { grid-template-columns: 1fr; }
-  .hero-duo img + img { display: none; }
   .hs { min-height: 480px; }
   .hs__arrow { display: none; }
   .hs__ctrl { gap: 12px; justify-content: flex-start; }

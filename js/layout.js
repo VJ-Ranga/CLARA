@@ -183,7 +183,7 @@ const Clara = (() => {
     h: ["Maison", "Classic Boutique", "Modern"],
     f: ["Columns", "Noir", "Minimal"],
     p: ["Editorial", "Classic Gallery", "Showcase"],
-    v: ["Photo", "Video", "Slider"]
+    v: ["Editorial", "Video", "Slider"]
   };
   const VARIANT_KEYS = ["v", "h", "f", "p"];
   const VARIANT_AREAS = { v: "Home hero", h: "Header", f: "Footer", p: "Product page" };
