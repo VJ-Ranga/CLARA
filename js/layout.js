@@ -178,7 +178,9 @@ const Clara = (() => {
   // ---------------------------------------------------------------------------
   // Design variants (client preview switcher)
   // ---------------------------------------------------------------------------
-  const VARIANT_KEY = "clara_variants_v1";
+  const VARIANT_KEY = "clara_variants_v2";
+  // Client's chosen design: Slider hero, Classic Boutique header, Noir footer, Classic Gallery product page
+  const VARIANT_DEFAULTS = { v: 3, h: 2, f: 2, p: 2 };
   const VARIANT_NAMES = {
     h: ["Maison", "Classic Boutique", "Modern"],
     f: ["Columns", "Noir", "Minimal"],
@@ -189,7 +191,7 @@ const Clara = (() => {
   const VARIANT_AREAS = { v: "Home hero", h: "Header", f: "Footer", p: "Product page" };
   const VARIANT_SHORT = { v: "HERO", h: "H", f: "F", p: "P" };
   const variants = (() => {
-    const v = Object.assign({ v: 1, h: 1, f: 1, p: 1 }, store(VARIANT_KEY, {}));
+    const v = Object.assign({}, VARIANT_DEFAULTS,store(VARIANT_KEY, {}));
     const qs = new URLSearchParams(location.search);
     let fromUrl = false;
     VARIANT_KEYS.forEach(k => { const n = parseInt(qs.get(k), 10); if (n >= 1 && n <= 3) { v[k] = n; fromUrl = true; } });
