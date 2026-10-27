@@ -339,6 +339,28 @@ function injectFloatingConcierge() {
   document.body.appendChild(a);
 }
 
+function injectBackToTop() {
+  const path = window.location.pathname;
+  if (path.endsWith("checkout.html") || path.endsWith("order-confirmation.html")) return;
+  if (document.getElementById("claraToTop")) return;
+
+  const btn = document.createElement("button");
+  btn.id = "claraToTop";
+  btn.type = "button";
+  btn.className = "to-top";
+  btn.setAttribute("aria-label", "Back to top");
+  btn.innerHTML = window.Clara ? Clara.icon("chev-up") : "&uarr;";
+  btn.addEventListener("click", () => {
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+  });
+  document.body.appendChild(btn);
+
+  const sync = () => btn.classList.toggle("is-visible", window.scrollY > 600);
+  window.addEventListener("scroll", sync, { passive: true });
+  sync();
+}
+
 function renderSlideCartContent() {
   const container = document.getElementById("slideCartItems");
   if (!container) return;
@@ -433,6 +455,7 @@ document.addEventListener("DOMContentLoaded", () => {
   injectSlideCartDrawer();
   updateHeaderCartBadge();
   injectFloatingConcierge();
+  injectBackToTop();
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeSlideCart();
