@@ -250,7 +250,7 @@ const Clara = (() => {
           </a>
           <div class="hv2__right">
             <a href="contact.html" class="hbtn hide-mobile">${icon("store")}<span class="lbl">Boutique</span></a>
-            <a href="shop.html?saved=1" class="hbtn hide-mobile" aria-label="Wishlist">${icon("heart")}<span class="lbl">Wishlist</span><span class="count wishlist-count">0</span></a>
+            <a href="shop.html?saved=1" class="hbtn hide-mobile hv2__wish" aria-label="Wishlist">${icon("heart")}<span class="lbl">Wishlist</span><span class="count wishlist-count">0</span></a>
             <button type="button" class="hbtn" aria-label="Shopping bag" onclick="openSlideCart()">${icon("bag")}<span class="lbl">Bag</span><span class="count cart-count-badge">0</span></button>
           </div>
         </div>
@@ -570,11 +570,23 @@ const Clara = (() => {
       let mi = 0;
       setInterval(() => { msgs[mi].classList.remove("is-active"); mi = (mi + 1) % msgs.length; msgs[mi].classList.add("is-active"); }, 4500);
     }
+    // Header: fold into a slim compact bar once the page is scrolled.
+    // The header is fixed and .header-space keeps the full height, so content never jumps.
     const h = document.getElementById("siteHeader");
     if (h) {
-      const onScroll = () => h.classList.toggle("is-scrolled", window.scrollY > 40);
-      onScroll();
-      window.addEventListener("scroll", onScroll, { passive: true });
+      let compact = null, ticking = false;
+      const sync = () => {
+        ticking = false;
+        const y = window.scrollY;
+        h.classList.toggle("is-scrolled", y > 40);
+        const next = compact ? y > 40 : y > 80; // small hysteresis avoids flicker at the threshold
+        if (next === compact) return;
+        compact = next;
+        h.classList.toggle("is-compact", next);
+        document.documentElement.classList.toggle("hdr-compact", next);
+      };
+      sync();
+      window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(sync); } }, { passive: true });
     }
     document.addEventListener("keydown", e => { if (e.key === "Escape") { closeMenu(); closeSearch(); } });
     document.querySelectorAll("#mobileNav [data-go]").forEach(b => b.addEventListener("click", () => menuGo(b.dataset.go)));

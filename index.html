@@ -25,7 +25,7 @@
     <!-- 1. Hero slider -->
     <section class="hs" aria-roledescription="carousel" aria-label="Featured collections">
       <div class="hs__slide" role="group" aria-roledescription="slide" aria-label="1 of 4">
-        <img src="assets/img/slide-city.jpg" alt="Woman in a black coat carrying a red quilted chain bag on a city street" style="object-position:65% 40%">
+        <img src="assets/img/slide-city.jpg" alt="Woman in a black coat carrying a red quilted chain bag on a city street" style="object-position:65% 85%">
         <div class="panel__cap"><span class="kicker">The New Season</span><h1>The Art of Carrying</h1><div class="panel__links"><a href="shop.html?cat=new">Discover New In</a><a href="shop.html">Shop Handbags</a></div></div>
       </div>
       <div class="hs__slide" role="group" aria-roledescription="slide" aria-label="2 of 4">
@@ -48,7 +48,16 @@
       </div>
     </section>
 
-    <!-- 2. Intro -->
+    <!-- 2. Shop by category -->
+    <section class="cats" aria-labelledby="catsTitle">
+      <div class="cats__head">
+        <div><span class="kicker">Shop by Category</span><h2 id="catsTitle">The collections</h2></div>
+        <a href="shop.html" class="link">All styles</a>
+      </div>
+      <div class="cats__row" id="catsRow"></div>
+    </section>
+
+    <!-- 3. Intro -->
     <section class="intro">
       <span class="kicker reveal">Maison CLARA · Mount Lavinia</span>
       <h2 class="reveal d1">Handbags for the modern Sri Lankan woman</h2>
@@ -56,7 +65,7 @@
       <a href="about.html" class="link reveal d3">Discover the Maison</a>
     </section>
 
-    <!-- 3. Selection carousel -->
+    <!-- 4. Selection carousel -->
     <section class="section" style="padding-top:0">
       <div class="container">
         <div class="sel-head">
@@ -74,16 +83,6 @@
           <div class="progress"><i></i></div>
         </div>
         <div class="carousel-nav"><button type="button" class="arrow" data-prev="sel" aria-label="Previous"><span data-icon="chev-left"></span></button><button type="button" class="arrow" data-next="sel" aria-label="Next"><span data-icon="chev-right"></span></button></div>
-      </div>
-    </section>
-
-    <!-- 4. Celebration campaign -->
-    <section class="panel tall">
-      <img src="assets/img/wide-saree.jpg" alt="Woman in a saree with gold bridal jewellery" loading="lazy" style="object-position:55% 30%">
-      <div class="panel__cap">
-        <span class="kicker">The Celebration Edit</span>
-        <h2>For weddings, homecomings and every poruwa moment</h2>
-        <div class="panel__links"><a href="shop.html?cat=clutches">Shop Evening</a><a href="shop.html?cat=vanity">Shop Vanity Bags</a></div>
       </div>
     </section>
 
@@ -114,15 +113,7 @@
       </div>
     </section>
 
-    <!-- 7. Categories -->
-    <section class="section">
-      <div class="container">
-        <div class="sel-head"><span class="kicker">Explore</span><h2>Shop by Category</h2></div>
-        <div class="cat-strip" id="catStrip"></div>
-      </div>
-    </section>
-
-    <!-- 8. Campaign -->
+    <!-- 7. Campaign -->
     <section class="panel tall">
       <img src="assets/img/wide-coat.jpg" alt="Woman in a white coat with a quilted black chain bag" loading="lazy" style="object-position:60% 20%">
       <div class="panel__cap">
@@ -132,7 +123,7 @@
       </div>
     </section>
 
-    <!-- 9. Services -->
+    <!-- 8. Services -->
     <section class="section">
       <div class="container">
         <div class="sel-head"><span class="kicker">At your service</span><h2>CLARA Services</h2></div>
@@ -166,8 +157,9 @@
         document.querySelectorAll("#selTabs button").forEach(x => x.classList.toggle("is-active", x === b));
         renderSel(b.dataset.f);
       }));
-      document.getElementById("catStrip").innerHTML = CATEGORY_META.slice(0, 6).map((c, i) =>
-        `<a href="shop.html?cat=${c.key}" class="reveal d${i % 4 + 1}"><div class="img"><img src="${c.image}" alt="${c.label}" loading="lazy"></div><span>${c.label}</span></a>`).join("");
+      const HOME_CATS = ["vanity", "totes", "crossbody", "clutches"];
+      document.getElementById("catsRow").innerHTML = HOME_CATS.map(k => CATEGORY_META.find(c => c.key === k)).map(c =>
+        `<a href="shop.html?cat=${c.key}" class="cats__tile"><span class="cats__img"><img src="${c.image}" alt="${c.label}" loading="lazy" width="800" height="1000"></span><span class="cats__lbl">${c.label}</span></a>`).join("");
       Clara.observeReveals();
       Clara.initCarousels();
       initSlider(document.querySelector(".hs"));
