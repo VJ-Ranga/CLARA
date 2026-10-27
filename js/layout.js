@@ -1,7 +1,7 @@
 /**
- * CLARA Bags — Shared layout & UI kit (Maison edition)
- * Renders the top bar, masthead header with mega menu, mobile menu, search overlay,
- * newsletter + footer, the checkout header, product cards and carousels on every page,
+ * CLARA Bags — Shared layout & UI kit
+ * Renders the Classic Boutique header with mega menu, mobile menu, search overlay,
+ * the Noir footer with newsletter, the checkout header, product cards and carousels on every page,
  * and handles the wishlist, recently viewed items and scroll reveals.
  * Load after products-data.js and store.js.
  */
@@ -21,9 +21,6 @@ const CLARA_INFO = {
     tiktok: ""
   }
 };
-
-// Client design preview: set to false once a design is chosen to hide the switcher bar.
-const DESIGN_PREVIEW = true;
 
 const CATEGORY_META = [
   { key: "vanity", label: "Structured Vanity", image: "assets/img/cat-vanity.jpg" },
@@ -175,77 +172,7 @@ const Clara = (() => {
       </article>`;
   }
 
-  // ---------------------------------------------------------------------------
-  // Design variants (client preview switcher)
-  // ---------------------------------------------------------------------------
-  const VARIANT_KEY = "clara_variants_v2";
-  // Client's chosen design: Slider hero, Classic Boutique header, Noir footer, Classic Gallery product page
-  const VARIANT_DEFAULTS = { v: 3, h: 2, f: 2, p: 2 };
-  const VARIANT_NAMES = {
-    h: ["Maison", "Classic Boutique", "Modern"],
-    f: ["Columns", "Noir", "Minimal"],
-    p: ["Editorial", "Classic Gallery", "Showcase"],
-    v: ["Photo", "Video", "Slider"]
-  };
-  const VARIANT_KEYS = ["v", "h", "f", "p"];
-  const VARIANT_AREAS = { v: "Home hero", h: "Header", f: "Footer", p: "Product page" };
-  const VARIANT_SHORT = { v: "HERO", h: "H", f: "F", p: "P" };
-  const variants = (() => {
-    const v = Object.assign({}, VARIANT_DEFAULTS,store(VARIANT_KEY, {}));
-    const qs = new URLSearchParams(location.search);
-    let fromUrl = false;
-    VARIANT_KEYS.forEach(k => { const n = parseInt(qs.get(k), 10); if (n >= 1 && n <= 3) { v[k] = n; fromUrl = true; } });
-    if (fromUrl) save(VARIANT_KEY, v);
-    const root = document.documentElement;
-    root.dataset.h = v.h; root.dataset.f = v.f; root.dataset.p = v.p; root.dataset.v = v.v;
-    let hidden = false;
-    try { hidden = sessionStorage.getItem("clara_demo_hidden") === "1"; } catch (e) { /* ignore */ }
-    if (DESIGN_PREVIEW && !hidden) root.classList.add("has-demo");
-    return v;
-  })();
-
-  function setVariant(k, n) {
-    variants[k] = n;
-    save(VARIANT_KEY, variants);
-    if (k === "p" && document.body.dataset.page !== "product") { location.href = "product.html?id=1"; return; }
-    if (k === "v" && document.body.dataset.page !== "home") { location.href = "index.html"; return; }
-    const url = new URL(location.href);
-    VARIANT_KEYS.forEach(x => url.searchParams.delete(x));
-    location.replace(url.toString());
-  }
-
-  function hideDemo(hide) {
-    try { sessionStorage.setItem("clara_demo_hidden", hide ? "1" : "0"); } catch (e) { /* ignore */ }
-    document.documentElement.classList.toggle("has-demo", !hide);
-  }
-
-  function shareDesign() {
-    const url = new URL(location.href);
-    VARIANT_KEYS.forEach(k => url.searchParams.set(k, variants[k]));
-    const text = url.toString();
-    const done = () => typeof showToast === "function" && showToast("Link copied — it opens with this design combination");
-    if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, () => prompt("Copy this link:", text));
-    else prompt("Copy this link:", text);
-  }
-
-  function demoBar() {
-    if (!DESIGN_PREVIEW) return "";
-    return `
-      <div class="demo" role="region" aria-label="Design preview">
-        <span class="demo__label">Design preview</span>
-        ${VARIANT_KEYS.map(k => `
-          <div class="demo__grp demo__grp--${k}">
-            <span class="demo__area" data-short="${VARIANT_SHORT[k]}">${VARIANT_AREAS[k]}</span>
-            ${[1, 2, 3].map(n => `<button type="button" class="${variants[k] === n ? "is-active" : ""}" title="${VARIANT_NAMES[k][n - 1]}" aria-pressed="${variants[k] === n}" onclick="Clara.setVariant('${k}', ${n})">${n}</button>`).join("")}
-            <em>${VARIANT_NAMES[k][variants[k] - 1]}</em>
-          </div>`).join("")}
-        <button type="button" class="demo__share" onclick="Clara.shareDesign()">Copy link</button>
-        <button type="button" class="demo__hide" onclick="Clara.hideDemo(true)" aria-label="Hide design preview bar">${icon("close")}</button>
-      </div>
-      <button type="button" class="demo-pill" onclick="Clara.hideDemo(false)">${icon("menu")}Design options</button>`;
-  }
-
-  // Shared primary navigation (used by the Classic and Modern headers)
+  // Primary navigation with mega menu
   function navItems() {
     const page = document.body.dataset.page || "";
     const cat = new URLSearchParams(location.search).get("cat");
@@ -295,28 +222,7 @@ const Clara = (() => {
   }
 
   function header() {
-    const page = document.body.dataset.page || "";
-    const overlay = variants.h === 1 && (page === "home" || document.body.dataset.overlay === "1");
-    const counts = `
-      <a href="shop.html?saved=1" class="hbtn hide-mobile" aria-label="Wishlist">${icon("heart")}<span class="count wishlist-count">0</span></a>
-      <button type="button" class="hbtn" aria-label="Shopping bag" onclick="openSlideCart()">${icon("bag")}<span class="count cart-count-badge">0</span></button>`;
-
-    const headers = {
-      1: `
-      <header class="site-header hv1 ${overlay ? "is-overlay" : ""}" id="siteHeader">
-        <div class="masthead">
-          <div class="masthead__left">
-            <button type="button" class="hbtn" aria-label="Open menu" onclick="Clara.openMenu()">${icon("menu")}<span class="lbl">Menu</span></button>
-            <button type="button" class="hbtn" aria-label="Search" onclick="Clara.openSearch()">${icon("search")}<span class="lbl">Search</span></button>
-          </div>
-          <a href="index.html" class="wordmark" aria-label="CLARA — home">CLARA</a>
-          <div class="masthead__right">
-            <a href="contact.html" class="hbtn hide-mobile">${icon("phone")}<span class="lbl">Contact us</span></a>
-            ${counts}
-          </div>
-        </div>
-      </header>`,
-      2: `
+    const html = `
       <header class="site-header hv2" id="siteHeader">
         <div class="hv2__top">
           <div class="container hv2__topin">
@@ -348,27 +254,8 @@ const Clara = (() => {
           </div>
         </div>
         <nav class="hv2__nav" aria-label="Primary"><ul class="primary-nav">${navItems()}</ul></nav>
-      </header>`,
-      3: `
-      <header class="site-header hv3" id="siteHeader">
-        <div class="hv3__in">
-          <div class="hv3__left">
-            <button type="button" class="hbtn hv3__m" aria-label="Open menu" onclick="Clara.openMenu()">${icon("menu")}</button>
-            <a href="index.html" class="hv3__logo" aria-label="CLARA — home"><img src="assets/rose.png" alt="" width="24" height="24"><span>CLARA</span></a>
-          </div>
-          <nav class="hv3__nav" aria-label="Primary"><ul class="primary-nav">${navItems()}</ul></nav>
-          <div class="hv3__right">
-            <button type="button" class="hbtn" aria-label="Search" onclick="Clara.openSearch()">${icon("search")}</button>
-            ${counts}
-          </div>
-        </div>
-      </header>`
-    };
-
-    const html = `
-      ${demoBar()}
-      ${headers[variants.h]}
-      ${overlay ? "" : '<div class="header-space" aria-hidden="true"></div>'}
+      </header>
+      <div class="header-space" aria-hidden="true"></div>
 
       <div class="menu" id="mobileNav" aria-hidden="true">
         <div class="menu__scrim" onclick="Clara.closeMenu()"></div>
@@ -471,7 +358,6 @@ const Clara = (() => {
 
   function checkoutHeader() {
     document.currentScript.insertAdjacentHTML("beforebegin", `
-      ${demoBar()}
       <header class="co-header">
         <div class="container co-header__inner">
           <a href="cart.html" class="back">${icon("chev-left")}<span>Back to bag</span></a>
@@ -566,72 +452,21 @@ const Clara = (() => {
       `<a href="${waLink("Hello CLARA, I would like some help.")}" target="_blank" rel="noopener" aria-label="WhatsApp">${icon("whatsapp")}</a>`
     ].filter(Boolean).join("");
 
-    const newsForm = (id) => `
-        <form onsubmit="Clara.joinNews(event)">
-          <label for="${id}" class="visually-hidden">Email address</label>
-          <input id="${id}" type="email" required placeholder="Your email address" autocomplete="email">
-          <button type="submit">Subscribe</button>
-        </form>
-        <p class="ok">Thank you for joining. Use code <b>WELCOME10</b> for 10% off your first order.</p>`;
     const year = new Date().getFullYear();
 
-    const footers = {
-      1: `
-      <section class="container news" id="newsletter">
-        <span class="kicker">The CLARA Letter</span>
-        <h2 class="title-md">Be the first to know</h2>
-        <p>New arrivals, boutique events and private offers. Join today and receive 10% off your first order.</p>
-        <form onsubmit="Clara.joinNews(event)">
-          <label for="newsEmail" class="visually-hidden">Email address</label>
-          <input id="newsEmail" type="email" required placeholder="Your email address" autocomplete="email">
-          <button type="submit">Subscribe</button>
-        </form>
-        <p class="ok">Thank you for joining. Use code <b>WELCOME10</b> for 10% off your first order.</p>
-      </section>
-      <footer class="site-footer">
-        <div class="container footer-cols">
-          <div class="footer-brand">
-            <a href="index.html" class="wordmark wordmark--sm">CLARA</a>
-            <p>Handbags for the modern Sri Lankan woman — chosen with care at our boutique on Galle Road and delivered to your door.</p>
-            <div class="socials">${socials}</div>
-          </div>
-          <div><h4>Shop</h4><ul>
-            <li><a href="shop.html?cat=new">New In</a></li>
-            <li><a href="shop.html">All Handbags</a></li>
-            ${CATEGORY_META.slice(0, 5).map(c => `<li><a href="shop.html?cat=${c.key}">${c.label}</a></li>`).join("")}
-          </ul></div>
-          <div><h4>Client Services</h4><ul>
-            <li><a href="contact.html">Contact us</a></li>
-            <li><a href="product.html?id=1#delivery">Delivery &amp; returns</a></li>
-            <li><a href="cart.html">Shopping bag</a></li>
-            <li><a href="shop.html?saved=1">Wishlist</a></li>
-            <li><a href="contact.html#enquiry">Wholesale</a></li>
-          </ul></div>
-          <div><h4>Maison</h4><ul>
-            <li><a href="about.html">Our story</a></li>
-            <li><a href="contact.html">The boutique</a></li>
-            <li><a href="${s.instagram}" target="_blank" rel="noopener">Instagram</a></li>
-          </ul></div>
-          <div><h4>Visit Us</h4><ul>
-            <li>${CLARA_INFO.address}, Sri Lanka</li>
-            <li>${CLARA_INFO.hours}</li>
-            <li><a href="tel:0773173217">${CLARA_INFO.phoneMobile}</a> · <a href="tel:0117037030">${CLARA_INFO.phoneLand}</a></li>
-            <li><a href="mailto:${CLARA_INFO.email}">${CLARA_INFO.email}</a></li>
-          </ul></div>
-        </div>
-        <div class="container footer-legal">
-          <span>© ${new Date().getFullYear()} CLARA Bags · DJ Industries. All rights reserved.</span>
-          <span class="pay"><span>Visa</span><span>Mastercard</span><span>Amex</span><span>Bank transfer</span><span>Cash on delivery</span></span>
-        </div>
-      </footer>`,
-      2: `
+    document.currentScript.insertAdjacentHTML("beforebegin", `
       <footer class="ft2" data-news>
         <div class="container ft2__top">
           <div class="ft2__news">
             <span class="kicker">The CLARA Letter</span>
             <h2>Be the first to know</h2>
             <p>New arrivals, boutique events and private offers — plus 10% off your first order.</p>
-            ${newsForm("newsEmail2")}
+            <form onsubmit="Clara.joinNews(event)">
+              <label for="newsEmail" class="visually-hidden">Email address</label>
+              <input id="newsEmail" type="email" required placeholder="Your email address" autocomplete="email">
+              <button type="submit">Subscribe</button>
+            </form>
+            <p class="ok">Thank you for joining. Use code <b>WELCOME10</b> for 10% off your first order.</p>
           </div>
           <div class="ft2__cols">
             <div><h4>Shop</h4><ul>
@@ -660,27 +495,7 @@ const Clara = (() => {
           <div class="socials">${socials}</div>
           <span class="pay"><span>Visa</span><span>Mastercard</span><span>Amex</span><span>Bank transfer</span><span>COD</span></span>
         </div>
-      </footer>`,
-      3: `
-      <footer class="ft3" data-news>
-        <div class="container ft3__in">
-          <img src="assets/rose.png" alt="" width="34" height="34">
-          <a href="index.html" class="wordmark">CLARA</a>
-          <p class="ft3__tag">Handbags for the modern Sri Lankan woman · Mount Lavinia</p>
-          <nav class="ft3__links" aria-label="Footer">
-            <a href="shop.html?cat=new">New In</a><a href="shop.html">Handbags</a><a href="shop.html?cat=clutches">Evening</a>
-            <a href="shop.html?cat=wallets">Small Leather Goods</a><a href="about.html">The Maison</a><a href="contact.html">The Boutique</a>
-            <a href="product.html?id=1#delivery">Delivery &amp; Returns</a><a href="shop.html?saved=1">Wishlist</a>
-          </nav>
-          <div class="ft3__news">${newsForm("newsEmail3")}</div>
-          <p class="ft3__contact">${CLARA_INFO.address} · <a href="tel:0773173217">${CLARA_INFO.phoneMobile}</a> · <a href="mailto:${CLARA_INFO.email}">${CLARA_INFO.email}</a></p>
-          <div class="socials">${socials}</div>
-          <p class="ft3__legal">© ${year} CLARA Bags · DJ Industries · Visa · Mastercard · Amex · Bank transfer · Cash on delivery</p>
-        </div>
-      </footer>`
-    };
-
-    document.currentScript.insertAdjacentHTML("beforebegin", footers[variants.f]);
+      </footer>`);
   }
 
   function minimalFooter() {
@@ -696,7 +511,7 @@ const Clara = (() => {
     const email = event.target.querySelector("input").value.trim();
     const list = store("clara_circle", []);
     if (email && !list.includes(email)) save("clara_circle", [...list, email]);
-    event.target.closest("[data-news], .news").classList.add("is-joined");
+    event.target.closest("[data-news]").classList.add("is-joined");
   }
 
   // ---------------------------------------------------------------------------
@@ -772,7 +587,6 @@ const Clara = (() => {
     header, checkoutHeader, footer, minimalFooter, logo,
     productCard, discountPct, initCarousels, observeReveals,
     getWishlist, isSaved, toggleWishlist, matches, updateWishlistBadge, addRecent, getRecent,
-    openMenu, closeMenu, openSearch, closeSearch, joinNews,
-    variants, setVariant, hideDemo, shareDesign
+    openMenu, closeMenu, openSearch, closeSearch, joinNews
   };
 })();

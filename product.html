@@ -28,10 +28,9 @@
       </nav>
     </div>
 
-    <section class="container pdp" id="pdpSection">
+    <section class="container pdp">
       <div>
-        <div class="pdp__gallery" id="gallery"></div>
-        <div class="pdp__dots" id="galleryDots"></div>
+        <div class="g2" id="gallery"></div>
       </div>
 
       <div class="pdp__info">
@@ -197,24 +196,12 @@
       });
     });
 
-    // ---- Gallery: three layouts chosen in the design preview bar ----
+    // ---- Gallery: thumbnail column + main stage ----
     let imgIndex = 0;
     function renderGallery(p) {
-      const v = Clara.variants.p;
-      $("pdpSection").classList.add(`pv${v}`);
       const g = $("gallery");
-      $("galleryDots").innerHTML = p.images.map((_, i) => `<i class="${i ? "" : "is-active"}"></i>`).join("");
-      if (v === 1) {
-        g.innerHTML = p.images.map((src, i) => `<button type="button" onclick="openLightbox(${i})" aria-label="Enlarge image ${i + 1}"><img src="${src}" alt="${p.name} — view ${i + 1}" ${i ? 'loading="lazy"' : ""}></button>`).join("");
-        g.addEventListener("scroll", () => {
-          const i = Math.round(g.scrollLeft / g.clientWidth);
-          document.querySelectorAll("#galleryDots i").forEach((d, k) => d.classList.toggle("is-active", k === i));
-        }, { passive: true });
-        return;
-      }
-      g.className = v === 2 ? "g2" : "g3";
       g.innerHTML = `
-        ${v === 2 ? `<div class="g2__thumbs">${p.images.map((src, i) => `<button type="button" class="${i ? "" : "is-active"}" onclick="showImg(${i})" aria-label="View image ${i + 1}"><img src="${src}" alt=""></button>`).join("")}</div>` : ""}
+        <div class="g2__thumbs">${p.images.map((src, i) => `<button type="button" class="${i ? "" : "is-active"}" onclick="showImg(${i})" aria-label="View image ${i + 1}"><img src="${src}" alt=""></button>`).join("")}</div>
         <div class="gstage">
           <button type="button" class="gstage__img" onclick="openLightbox(imgIndex)" aria-label="Enlarge image"><img id="stageImg" src="${p.images[0]}" alt="${p.name}"></button>
           <button type="button" class="gstage__nav prev" onclick="showImg(imgIndex - 1)" aria-label="Previous image">${Clara.icon("chev-left")}</button>
@@ -239,7 +226,6 @@
       setTimeout(() => { img.src = imgs[imgIndex]; img.style.opacity = 1; }, 160);
       $("stageCount").textContent = `${imgIndex + 1} / ${imgs.length}`;
       document.querySelectorAll(".g2__thumbs button").forEach((b, k) => b.classList.toggle("is-active", k === imgIndex));
-      document.querySelectorAll("#galleryDots i").forEach((d, k) => d.classList.toggle("is-active", k === imgIndex));
     }
 
     function updateWa() {
