@@ -49,53 +49,42 @@
     </section>
 
     <!-- 2. Shop by category -->
-    <section class="cats" aria-labelledby="catsTitle">
-      <div class="cats__head">
+    <section class="hsec cats" aria-labelledby="catsTitle">
+      <div class="shead">
         <div><span class="kicker">Shop by Category</span><h2 id="catsTitle">The collections</h2></div>
         <a href="shop.html" class="link">All styles</a>
       </div>
-      <div class="cats__row" id="catsRow"></div>
+      <div class="hrow" id="catsRow"></div>
     </section>
 
-    <!-- 3. Intro -->
-    <section class="intro">
-      <span class="kicker reveal">Maison CLARA · Mount Lavinia</span>
-      <h2 class="reveal d1">Handbags for the modern Sri Lankan woman</h2>
-      <p class="reveal d2">Sculpted vanity bags, polished work totes and jewelled evening clutches — chosen with care at our boutique on Galle Road and delivered to your door.</p>
-      <a href="about.html" class="link reveal d3">Discover the Maison</a>
-    </section>
-
-    <!-- 4. Selection carousel -->
-    <section class="section" style="padding-top:0">
-      <div class="container">
-        <div class="sel-head">
-          <span class="kicker">Selection</span>
-          <h2>Discover the Collection</h2>
-          <div class="sel-tabs" id="selTabs">
-            <button type="button" class="is-active" data-f="new">New In</button>
-            <button type="button" data-f="best">Most Loved</button>
-            <button type="button" data-f="evening">Evening</button>
-            <button type="button" data-f="gifts">Gifts</button>
-          </div>
-        </div>
-        <div class="carousel" data-carousel="sel">
-          <div class="carousel__track" id="selTrack"></div>
-          <div class="progress"><i></i></div>
-        </div>
-        <div class="carousel-nav"><button type="button" class="arrow" data-prev="sel" aria-label="Previous"><span data-icon="chev-left"></span></button><button type="button" class="arrow" data-next="sel" aria-label="Next"><span data-icon="chev-right"></span></button></div>
+    <!-- 3. New In -->
+    <section class="hsec" aria-labelledby="newTitle">
+      <div class="shead">
+        <div><span class="kicker">Just arrived</span><h2 id="newTitle">New In</h2></div>
+        <a href="shop.html?cat=new" class="link">View all</a>
       </div>
+      <div class="hrow prow" id="newRow"></div>
     </section>
 
-    <!-- 5. Duo -->
+    <!-- 4. Duo -->
     <section class="panel-duo">
       <a class="panel" href="shop.html?cat=totes">
         <img src="assets/img/mood-day.jpg" alt="Woman in a white shirt dress" loading="lazy">
-        <div class="panel__cap"><span class="kicker">From nine to five</span><h2>The Working Week</h2><div class="panel__links"><span style="border-bottom:1px solid rgba(255,255,255,.8);padding-bottom:4px;font-size:13px">Shop Work &amp; Totes</span></div></div>
+        <div class="panel__cap"><span class="kicker">From nine to five</span><h2>The Working Week</h2><div class="panel__links"><span>Shop Work &amp; Totes</span></div></div>
       </a>
       <a class="panel" href="shop.html?cat=crossbody">
         <img src="assets/img/mood-weekend.jpg" alt="Woman in Milan wearing a pink crossbody bag" loading="lazy">
-        <div class="panel__cap"><span class="kicker">Hands-free</span><h2>Weekend &amp; Away</h2><div class="panel__links"><span style="border-bottom:1px solid rgba(255,255,255,.8);padding-bottom:4px;font-size:13px">Shop Crossbody</span></div></div>
+        <div class="panel__cap"><span class="kicker">Hands-free</span><h2>Weekend &amp; Away</h2><div class="panel__links"><span>Shop Crossbody</span></div></div>
       </a>
+    </section>
+
+    <!-- 5. Most Loved -->
+    <section class="hsec" aria-labelledby="lovedTitle">
+      <div class="shead">
+        <div><span class="kicker">Best sellers</span><h2 id="lovedTitle">Most Loved</h2></div>
+        <a href="shop.html" class="link">View all</a>
+      </div>
+      <div class="hrow prow" id="lovedRow"></div>
     </section>
 
     <!-- 6. Signature -->
@@ -123,15 +112,27 @@
       </div>
     </section>
 
-    <!-- 8. Services -->
-    <section class="section">
-      <div class="container">
-        <div class="sel-head"><span class="kicker">At your service</span><h2>CLARA Services</h2></div>
-        <div class="svc">
-          <a href="contact.html" class="reveal d1"><div class="img"><img src="assets/img/boutique.jpg" alt="Boutique interior" loading="lazy"></div><h3>Visit the Boutique</h3><p>No. 587/A, Galle Road, Mount Lavinia — open every day, 9:30 AM to 7:30 PM.</p><span class="link">Plan your visit</span></a>
-          <a href="https://wa.me/94773173217?text=Hello%20CLARA%2C%20I%20would%20like%20some%20styling%20advice." target="_blank" rel="noopener" class="reveal d2"><div class="img"><img src="assets/img/ig-jewel.jpg" alt="Hands with fine jewellery" loading="lazy"></div><h3>Personal Advice</h3><p>Message our team on WhatsApp for availability, sizes and styling help.</p><span class="link">Chat on WhatsApp</span></a>
-          <a href="product.html?id=1#delivery" class="reveal d3"><div class="img"><img src="assets/img/ig-flatlay.jpg" alt="Handbag essentials laid out" loading="lazy"></div><h3>Delivery &amp; Exchange</h3><p>Complimentary islandwide delivery over Rs. 10,000 and a 7-day exchange guarantee.</p><span class="link">Learn more</span></a>
+    <!-- 8. Intro / brand story -->
+    <section class="hsec is-paper" aria-labelledby="introTitle">
+      <div class="shead intro">
+        <div class="reveal"><span class="kicker">Maison CLARA · Mount Lavinia</span><h2 id="introTitle">Handbags for the modern Sri Lankan woman</h2></div>
+        <div class="intro__body reveal d1">
+          <p>Sculpted vanity bags, polished work totes and jewelled evening clutches — chosen with care at our boutique on Galle Road and delivered to your door.</p>
+          <a href="about.html" class="link">Discover the Maison</a>
         </div>
+      </div>
+    </section>
+
+    <!-- 9. Services -->
+    <section class="hsec" id="services" aria-labelledby="svcTitle">
+      <div class="shead">
+        <div><span class="kicker">At your service</span><h2 id="svcTitle">CLARA Services</h2></div>
+        <a href="contact.html" class="link">Contact us</a>
+      </div>
+      <div class="hrow svc">
+        <a href="contact.html" class="reveal d1"><span class="hrow__img"><img src="assets/img/boutique.jpg" alt="Boutique interior" loading="lazy"></span><h3 class="hrow__lbl">Visit the Boutique</h3><p>No. 587/A, Galle Road, Mount Lavinia — open every day, 9:30 AM to 7:30 PM.</p><span class="link">Plan your visit</span></a>
+        <a href="https://wa.me/94773173217?text=Hello%20CLARA%2C%20I%20would%20like%20some%20styling%20advice." target="_blank" rel="noopener" class="reveal d2"><span class="hrow__img"><img src="assets/img/ig-jewel.jpg" alt="Hands with fine jewellery" loading="lazy"></span><h3 class="hrow__lbl">Personal Advice</h3><p>Message our team on WhatsApp for availability, sizes and styling help.</p><span class="link">Chat on WhatsApp</span></a>
+        <a href="product.html?id=1#delivery" class="reveal d3"><span class="hrow__img"><img src="assets/img/ig-flatlay.jpg" alt="Handbag essentials laid out" loading="lazy"></span><h3 class="hrow__lbl">Delivery &amp; Exchange</h3><p>Complimentary islandwide delivery over Rs. 10,000 and a 7-day exchange guarantee.</p><span class="link">Learn more</span></a>
       </div>
     </section>
   </main>
@@ -139,29 +140,19 @@
   <script>Clara.footer();</script>
 
   <script>
-    const SEL = {
-      new: () => [...CLARA_PRODUCTS].sort((a, b) => (b.isNew - a.isNew) || (b.isFeatured - a.isFeatured)).slice(0, 8),
-      best: () => [...CLARA_PRODUCTS].sort((a, b) => b.reviewCount - a.reviewCount).slice(0, 8),
-      evening: () => CLARA_PRODUCTS.filter(p => ["clutches", "crossbody", "vanity"].includes(p.category) || p.id === 8),
-      gifts: () => [...CLARA_PRODUCTS].sort((a, b) => a.price - b.price).slice(0, 6)
-    };
-    function renderSel(f) {
-      const track = document.getElementById("selTrack");
-      track.innerHTML = SEL[f]().map((p, i) => Clara.productCard(p, { index: i, reveal: false, badges: false })).join("");
-      track.scrollLeft = 0;
-      track.dispatchEvent(new Event("scroll"));
+    // Product rows: the four newest, then the four most-reviewed not already shown
+    function fillRow(id, list) {
+      document.getElementById(id).innerHTML = list.map((p, i) => Clara.productCard(p, { index: i, reveal: false, badges: false })).join("");
     }
     document.addEventListener("DOMContentLoaded", () => {
-      renderSel("new");
-      document.querySelectorAll("#selTabs button").forEach(b => b.addEventListener("click", () => {
-        document.querySelectorAll("#selTabs button").forEach(x => x.classList.toggle("is-active", x === b));
-        renderSel(b.dataset.f);
-      }));
+      const newIn = [...CLARA_PRODUCTS].sort((a, b) => (b.isNew - a.isNew) || (b.isFeatured - a.isFeatured)).slice(0, 4);
+      const loved = [...CLARA_PRODUCTS].filter(p => !newIn.includes(p)).sort((a, b) => b.reviewCount - a.reviewCount).slice(0, 4);
+      fillRow("newRow", newIn);
+      fillRow("lovedRow", loved);
       const HOME_CATS = ["vanity", "totes", "crossbody", "clutches"];
       document.getElementById("catsRow").innerHTML = HOME_CATS.map(k => CATEGORY_META.find(c => c.key === k)).map(c =>
-        `<a href="shop.html?cat=${c.key}" class="cats__tile"><span class="cats__img"><img src="${c.image}" alt="${c.label}" loading="lazy" width="800" height="1000"></span><span class="cats__lbl">${c.label}</span></a>`).join("");
+        `<a href="shop.html?cat=${c.key}"><span class="hrow__img"><img src="${c.image}" alt="${c.label}" loading="lazy" width="800" height="1000"></span><span class="hrow__lbl">${c.label}</span></a>`).join("");
       Clara.observeReveals();
-      Clara.initCarousels();
       initSlider(document.querySelector(".hs"));
     });
 
