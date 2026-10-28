@@ -146,12 +146,19 @@
   <script>
     let currentProduct = null;
     let selectedColor = "";
+    let baseImages = [];
+    // Optional per-colour photos: colorImages: { "Onyx Noir": ["assets/img/...jpg", ...] } in products-data.js.
+    // Colours without their own photos fall back to the product's main images.
+    const imagesFor = colour => (currentProduct.colorImages && currentProduct.colorImages[colour] || []).length ? currentProduct.colorImages[colour] : baseImages;
     let lbIndex = 0;
     const $ = id => document.getElementById(id);
 
     document.addEventListener("DOMContentLoaded", () => {
-      const p = currentProduct = getProductById(new URLSearchParams(location.search).get("id") || 1);
+      // Copy, so swapping images per colour never touches the shared catalogue entry.
+      const p = currentProduct = { ...getProductById(new URLSearchParams(location.search).get("id") || 1) };
+      baseImages = p.images;
       selectedColor = p.colors[0];
+      p.images = imagesFor(selectedColor);
       const recentBefore = Clara.getRecent().filter(id => id !== p.id);
       Clara.addRecent(p.id);
 
@@ -268,6 +275,13 @@
       selectedColor = currentProduct.colors[i];
       $("pColour").textContent = selectedColor;
       document.querySelectorAll("#pSwatches button").forEach(b => b.classList.toggle("is-active", b === btn));
+      const imgs = imagesFor(selectedColor);
+      if (imgs !== currentProduct.images) {
+        currentProduct.images = imgs;
+        imgIndex = 0;
+        renderGallery(currentProduct);
+        $("sbImg").src = imgs[0];
+      }
       updateWa();
     }
     function changeQty(d) { const q = $("pQty"); q.value = Math.max(1, Math.min(10, (parseInt(q.value, 10) || 1) + d)); }

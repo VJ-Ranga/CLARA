@@ -1,6 +1,11 @@
 /**
  * CLARA Bags — Master Product Catalog Data
  * Single source of truth for all products across the website.
+ *
+ * Per-colour photos (optional): add colorImages to a product, keyed by the exact
+ * colour name from its colors list. Picking that colour swaps the gallery to those
+ * photos; colours not listed keep using images.
+ *   colorImages: { "Onyx Noir": ["assets/img/sovereign-noir-1.jpg", "assets/img/sovereign-noir-2.jpg"] },
  */
 
 const CLARA_PRODUCTS = [
