@@ -278,6 +278,7 @@ const Clara = (() => {
           <div class="menu__levels">
             <div class="menu__level is-active" data-level="root">
               <ul class="menu__list">
+                <li><a href="shop.html">Shop All</a></li>
                 <li><a href="shop.html?cat=new">New In</a></li>
                 <li><button type="button" data-go="bags">Handbags ${icon("chev-right")}</button></li>
                 <li><button type="button" data-go="moments">Occasions ${icon("chev-right")}</button></li>
@@ -292,8 +293,6 @@ const Clara = (() => {
               </div>
               <ul class="menu__util">
                 <li><a href="shop.html?saved=1">${icon("heart")}Wishlist <span class="wishlist-count menu__n">0</span></a></li>
-                <li><a href="cart.html">${icon("bag")}Shopping bag <span class="cart-count-badge menu__n">0</span></a></li>
-                <li><a href="contact.html">${icon("store")}Visit the boutique</a></li>
               </ul>
             </div>
             <div class="menu__level" data-level="bags">
