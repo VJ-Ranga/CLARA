@@ -2,10 +2,10 @@
  * CLARA Bags — Master Product Catalog Data
  * Single source of truth for all products across the website.
  *
- * Per-colour photos (optional): add colorImages to a product, keyed by the exact
- * colour name from its colors list. Picking that colour swaps the gallery to those
- * photos; colours not listed keep using images.
- *   colorImages: { "Onyx Noir": ["assets/img/sovereign-noir-1.jpg", "assets/img/sovereign-noir-2.jpg"] },
+ * Colour photo (optional): add colorImage to a product, keyed by the exact colour
+ * name from its colors list. The photo must also be in that product's images list;
+ * picking the colour jumps the gallery to it (like a WooCommerce variation image).
+ *   colorImage: { "Onyx Noir": "assets/img/sovereign-noir.jpg" },
  */
 
 const CLARA_PRODUCTS = [
@@ -26,17 +26,17 @@ const CLARA_PRODUCTS = [
     stockQuantity: 14,
     colors: ["Bordeaux Wine", "Onyx Noir", "Rose Quartz"],
     colorHex: ["#6B1420", "#141416", "#D9A5A9"],
-    // DEMO per-colour photos (stock images) — replace with the client's real shots.
-    colorImages: {
-      "Bordeaux Wine": ["assets/img/p-1575032617751.jpg", "assets/img/p-1550614000.jpg"],
-      "Onyx Noir": ["assets/img/p-1614179689702.jpg", "assets/img/p-1492707892479.jpg"],
-      "Rose Quartz": ["assets/img/p-1566150905458.jpg"]
+    // DEMO colour photos (stock images) — replace with the client's real shots.
+    colorImage: {
+      "Bordeaux Wine": "assets/img/p-1575032617751.jpg",
+      "Onyx Noir": "assets/img/p-1614179689702.jpg",
+      "Rose Quartz": "assets/img/p-1566150905458.jpg"
     },
     images: [
       "assets/img/p-1575032617751.jpg",
-      "assets/img/p-1606522754091.jpg",
-      "assets/img/p-1506152983158.jpg",
-      "assets/img/p-1617019114583.jpg"
+      "assets/img/p-1614179689702.jpg",
+      "assets/img/p-1566150905458.jpg",
+      "assets/img/p-1550614000.jpg"
     ],
     shortDescription: "An architectural vanity silhouette defined by rigid contours, polished brass turn-lock hardware, and an ergonomic arched top handle.",
     description: "The Sovereign Structured Vanity Bag represents the pinnacle of CLARA craftsmanship. Designed with an unwavering attention to architectural balance, its rigid frame preserves a pristine silhouette whether placed on a pedestal or draped across the shoulder. The exterior features premium micro-textured vegan leather, resistant to scuffs and daily wear, while the interior is lined in plush suede-touch microfibre with dedicated card and lipstick sleeves.",
@@ -321,16 +321,16 @@ const CLARA_PRODUCTS = [
     stockQuantity: 7,
     colors: ["Alabaster Ivory", "Imperial Emerald", "Matte Noir"],
     colorHex: ["#F5F2EB", "#0B4F37", "#111111"],
-    // DEMO per-colour photos (stock images) — replace with the client's real shots.
-    colorImages: {
-      "Alabaster Ivory": ["assets/img/p-1606522754091.jpg", "assets/img/p-1506152983158.jpg", "assets/img/p-1617019114583.jpg"],
-      "Imperial Emerald": ["assets/img/p-1594223274512.jpg"],
-      "Matte Noir": ["assets/img/p-1614179689702.jpg", "assets/img/p-1492707892479.jpg"]
+    // DEMO colour photos (stock images) — replace with the client's real shots.
+    colorImage: {
+      "Alabaster Ivory": "assets/img/p-1606522754091.jpg",
+      "Imperial Emerald": "assets/img/p-1594223274512.jpg",
+      "Matte Noir": "assets/img/p-1614179689702.jpg"
     },
     images: [
-      "assets/img/p-1594223274512.jpg",
       "assets/img/p-1606522754091.jpg",
-      "assets/img/p-1612902456551.jpg",
+      "assets/img/p-1594223274512.jpg",
+      "assets/img/p-1614179689702.jpg",
       "assets/img/p-1617019114583.jpg"
     ],
     shortDescription: "An architectural masterpiece defined by sharp geometric angles and an integrated sculpted arch handle.",
