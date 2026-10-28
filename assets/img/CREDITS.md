@@ -17,8 +17,6 @@ Photos in this folder are from [Unsplash](https://unsplash.com) and used under t
 | hero-palms.jpg | https://unsplash.com/photos/1617922001439-4a2e6562f328 |
 | hero-woman.jpg | https://unsplash.com/photos/1632149877166-f75d49000351 |
 | ig-coat.jpg | https://unsplash.com/photos/1485462537746-965f33f7f6a7 |
-| ig-flatlay.jpg | https://unsplash.com/photos/1492707892479-7bc8d5a4ee93 |
-| ig-jewel.jpg | https://unsplash.com/photos/1633934542430-0905ccb5f050 |
 | ig-pink.jpg | https://unsplash.com/photos/1531746020798-e6953c6e8e04 |
 | ig-red.jpg | https://unsplash.com/photos/1572804013309-59a88b7e92f1 |
 | ig-rose.jpg | https://unsplash.com/photos/1518895949257-7621c3c786d7 |

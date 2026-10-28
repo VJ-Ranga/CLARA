@@ -1166,13 +1166,28 @@ body.no-scroll .wa-float { opacity: 0; pointer-events: none; }
 }
 @media (prefers-reduced-motion: reduce) { .story > img { transform: none; transition: none; } }
 
-/* Services: three tall tiles with label, note and link */
-.svc { --cols: 3; }
-.svc > a { display: flex; flex-direction: column; align-items: flex-start; }
-.svc .hrow__img { align-self: stretch; }
-.svc .hrow__lbl { border-bottom: 0; padding-bottom: 0; }
-.svc p { margin: 8px 0 14px; max-width: 420px; font-size: 14px; color: var(--ink-2); font-weight: 300; }
-.svc .link { margin-top: auto; } /* links line up across tiles */
+/* Customer reviews: a row of quote cards that scrolls (swipe, arrows, dots, gentle auto-advance) */
+.rev__track { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 16px) / 3); gap: 8px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; }
+.rev__track::-webkit-scrollbar { display: none; }
+.rev__card { scroll-snap-align: start; display: flex; flex-direction: column; gap: 22px; margin: 0; padding: clamp(28px, 3vw, 44px); background: var(--paper); min-height: 320px; }
+.rev__stars { display: flex; gap: 4px; }
+.rev__stars .ic { width: 15px; height: 15px; fill: var(--line); stroke: none; }
+.rev__stars .on .ic { fill: var(--rose); }
+.rev__card blockquote { margin: 0; font-size: clamp(16px, 1.3vw, 19px); font-weight: 300; line-height: 1.7; color: var(--ink); text-wrap: pretty; }
+.rev__card figcaption { margin-top: auto; font-size: 13px; color: var(--ink-2); }
+.rev__card figcaption strong { font-weight: 500; color: var(--ink); letter-spacing: .02em; }
+.rev__card figcaption a { display: block; width: fit-content; margin-top: 8px; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+.rev__card figcaption a:hover { color: var(--rose); }
+.rev__nav { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 28px; }
+.rev__arrow { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; transition: border-color .2s, color .2s; }
+.rev__arrow:hover { border-color: var(--ink); }
+.rev__arrow .ic { width: 16px; height: 16px; }
+.rev__dots { display: flex; gap: 8px; }
+.rev__dots button { width: 24px; height: 2px; background: var(--line); transition: background .3s, width .3s; }
+.rev__dots button.is-active { width: 40px; background: var(--ink); }
+@media (max-width: 980px) { .rev__track { grid-auto-columns: calc((100% - 8px) / 2); } }
+@media (max-width: 600px) { .rev__track { grid-auto-columns: 86%; } .rev__card { min-height: 0; } }
+@media (prefers-reduced-motion: reduce) { .rev__track { scroll-behavior: auto; } }
 
 @media (max-width: 760px) {
   .hrow { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 42%; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 var(--side); scrollbar-width: none; margin: 0 calc(-1 * var(--side)); padding: 0 var(--side) 4px; }
