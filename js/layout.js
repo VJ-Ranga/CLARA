@@ -208,8 +208,8 @@ const Clara = (() => {
       </li>
       <li><a href="shop.html?cat=clutches" class="${on(page === "shop" && cat === "clutches")}">Evening</a></li>
       <li><a href="shop.html?cat=wallets" class="${on(page === "shop" && cat === "wallets")}">Small Leather Goods</a></li>
-      <li><a href="about.html" class="${on(page === "about")}">Maison</a></li>
-      <li><a href="contact.html" class="${on(page === "contact")}">Boutique</a></li>`;
+      <li><a href="about.html" class="${on(page === "about")}">About Us</a></li>
+      <li><a href="contact.html" class="${on(page === "contact")}">Contact Us</a></li>`;
   }
 
   // ---------------------------------------------------------------------------
@@ -227,7 +227,7 @@ const Clara = (() => {
       <header class="site-header hv2" id="siteHeader">
         <div class="hv2__top">
           <div class="container hv2__topin">
-            <a href="contact.html" class="hide-mobile">Boutique · Mount Lavinia</a>
+            <a href="contact.html" class="hide-mobile">Visit our shop · Mount Lavinia</a>
             <span class="hv2__msgs">
               <span class="is-active">Complimentary islandwide delivery over Rs. 10,000</span>
               <span>10% off your first order with code WELCOME10</span>
@@ -249,7 +249,6 @@ const Clara = (() => {
             <span class="hv2__tag">Mount Lavinia · Sri Lanka</span>
           </a>
           <div class="hv2__right">
-            <a href="contact.html" class="hbtn hide-mobile">${icon("store")}<span class="lbl">Boutique</span></a>
             <a href="shop.html?saved=1" class="hbtn hide-mobile hv2__wish" aria-label="Wishlist">${icon("heart")}<span class="lbl">Wishlist</span><span class="count wishlist-count">0</span></a>
             <button type="button" class="hbtn" aria-label="Shopping bag" onclick="openSlideCart()">${icon("bag")}<span class="lbl">Bag</span><span class="count cart-count-badge">0</span></button>
           </div>
@@ -273,8 +272,8 @@ const Clara = (() => {
                 <li><button type="button" data-go="bags">Handbags ${icon("chev-right")}</button></li>
                 <li><button type="button" data-go="moments">Occasions ${icon("chev-right")}</button></li>
                 <li><a href="shop.html?cat=wallets">Small Leather Goods</a></li>
-                <li><a href="about.html">The Maison</a></li>
-                <li><a href="contact.html">The Boutique</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
               </ul>
               <div class="menu__cards">
                 <a href="shop.html?cat=new"><span class="img"><img src="assets/img/hero-palms.jpg" alt="" loading="lazy"></span><span>New Arrivals</span></a>
@@ -480,9 +479,9 @@ const Clara = (() => {
               <li><a href="product.html?id=1#delivery">Delivery &amp; returns</a></li>
               <li><a href="shop.html?saved=1">Wishlist</a></li>
               <li><a href="contact.html#enquiry">Wholesale</a></li>
-              <li><a href="about.html">The Maison</a></li>
+              <li><a href="about.html">About us</a></li>
             </ul></div>
-            <div><h4>The Boutique</h4><ul>
+            <div><h4>Visit Us</h4><ul>
               <li>${CLARA_INFO.address}</li>
               <li>${CLARA_INFO.hours}</li>
               <li><a href="tel:0773173217">${CLARA_INFO.phoneMobile}</a></li>
