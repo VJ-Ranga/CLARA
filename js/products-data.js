@@ -26,6 +26,12 @@ const CLARA_PRODUCTS = [
     stockQuantity: 14,
     colors: ["Bordeaux Wine", "Onyx Noir", "Rose Quartz"],
     colorHex: ["#6B1420", "#141416", "#D9A5A9"],
+    // DEMO per-colour photos (stock images) — replace with the client's real shots.
+    colorImages: {
+      "Bordeaux Wine": ["assets/img/p-1575032617751.jpg", "assets/img/p-1550614000.jpg"],
+      "Onyx Noir": ["assets/img/p-1614179689702.jpg", "assets/img/p-1492707892479.jpg"],
+      "Rose Quartz": ["assets/img/p-1566150905458.jpg"]
+    },
     images: [
       "assets/img/p-1575032617751.jpg",
       "assets/img/p-1606522754091.jpg",
@@ -315,6 +321,12 @@ const CLARA_PRODUCTS = [
     stockQuantity: 7,
     colors: ["Alabaster Ivory", "Imperial Emerald", "Matte Noir"],
     colorHex: ["#F5F2EB", "#0B4F37", "#111111"],
+    // DEMO per-colour photos (stock images) — replace with the client's real shots.
+    colorImages: {
+      "Alabaster Ivory": ["assets/img/p-1606522754091.jpg", "assets/img/p-1506152983158.jpg", "assets/img/p-1617019114583.jpg"],
+      "Imperial Emerald": ["assets/img/p-1594223274512.jpg"],
+      "Matte Noir": ["assets/img/p-1614179689702.jpg", "assets/img/p-1492707892479.jpg"]
+    },
     images: [
       "assets/img/p-1594223274512.jpg",
       "assets/img/p-1606522754091.jpg",
