@@ -84,7 +84,7 @@
         <div><span class="kicker">Best sellers</span><h2 id="lovedTitle">Most Loved</h2></div>
         <a href="shop.html" class="link">View all</a>
       </div>
-      <div class="hrow prow" id="lovedRow"></div>
+      <div class="hrow prow prow--2" id="lovedRow"></div>
     </section>
 
     <!-- 6. Signature -->
@@ -146,7 +146,7 @@
     }
     document.addEventListener("DOMContentLoaded", () => {
       const newIn = [...CLARA_PRODUCTS].sort((a, b) => (b.isNew - a.isNew) || (b.isFeatured - a.isFeatured)).slice(0, 4);
-      const loved = [...CLARA_PRODUCTS].filter(p => !newIn.includes(p)).sort((a, b) => b.reviewCount - a.reviewCount).slice(0, 4);
+      const loved = [...CLARA_PRODUCTS].filter(p => !newIn.includes(p)).sort((a, b) => b.reviewCount - a.reviewCount).slice(0, 8);
       fillRow("newRow", newIn);
       fillRow("lovedRow", loved);
       const HOME_CATS = ["vanity", "totes", "crossbody", "clutches"];
