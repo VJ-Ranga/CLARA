@@ -72,6 +72,7 @@
     const COPY = {
       all: ["Handbags", "Structured vanity bags, polished work totes, hands-free crossbodies and evening clutches — each chosen to make you feel put-together."],
       new: ["New In", "The latest silhouettes to arrive at our Mount Lavinia boutique."],
+      sale: ["Sale", "Selected pieces at a special price, while stock lasts."],
       vanity: ["Structured Vanity", "Sculpted top-handle bags that hold their shape — for weddings, dinners and every polished day."],
       totes: ["Work & Totes", "Room for your laptop, documents and everything in between."],
       crossbody: ["Crossbody & Slings", "Hands-free and effortlessly chic, for weekends and everything spontaneous."],
@@ -108,14 +109,14 @@
     };
     if (!COPY[state.cat]) state.cat = "all";
 
-    const inCat = (p, cat) => cat === "all" || (cat === "new" && p.isNew) || (cat === "saved" && Clara.getWishlist().includes(p.id)) || p.category === cat;
+    const inCat = (p, cat) => cat === "all" || (cat === "new" && p.isNew) || (cat === "sale" && p.originalPrice > p.price) || (cat === "saved" && Clara.getWishlist().includes(p.id)) || p.category === cat;
 
     function renderHead() {
       const [title, intro] = COPY[state.cat];
       document.getElementById("shopTitle").textContent = state.q ? `Results for “${state.q}”` : title;
       document.getElementById("crumbCur").textContent = title;
       document.title = `${title} | CLARA Sri Lanka`;
-      const links = [["all", "All"], ["new", "New In"], ...CATEGORY_META.map(c => [c.key, c.label])];
+      const links = [["all", "All"], ["new", "New In"], ...CATEGORY_META.map(c => [c.key, c.label]), ["sale", "Sale"]];
       document.getElementById("catLinks").innerHTML = links.map(([k, l]) => `<a href="#" data-cat="${k}" class="${state.cat === k ? "is-active" : ""}">${l}</a>`).join("");
       document.querySelectorAll("#catLinks a").forEach(a => a.addEventListener("click", e => { e.preventDefault(); setCat(a.dataset.cat); }));
       const nav = document.getElementById("catLinks"), act = nav.querySelector("a.is-active");

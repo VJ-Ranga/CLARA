@@ -219,8 +219,7 @@ const Clara = (() => {
       </li>
       <li><a href="shop.html?cat=clutches" class="${on(page === "shop" && cat === "clutches")}">Evening</a></li>
       <li><a href="shop.html?cat=wallets" class="${on(page === "shop" && cat === "wallets")}">Small Leather Goods</a></li>
-      <li><a href="about.html" class="${on(page === "about")}">About Us</a></li>
-      <li><a href="contact.html" class="${on(page === "contact")}">Contact Us</a></li>`;
+      <li><a href="shop.html?cat=sale" class="is-sale ${on(page === "shop" && cat === "sale")}">Sale</a></li>`;
   }
 
   // ---------------------------------------------------------------------------
