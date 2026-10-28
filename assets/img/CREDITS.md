@@ -51,3 +51,13 @@ Photos in this folder are from [Unsplash](https://unsplash.com) and used under t
 | slide-red.jpg | https://images.unsplash.com/photo-1786874228638-11b2d6aed176 |
 | slide-night.jpg | https://images.unsplash.com/photo-1764973638375-c157bc261162 |
 | slide-saree.jpg | https://images.unsplash.com/photo-1761125135351-268e72e39158 |
+
+## Payment logos (assets/img/pay/)
+
+| File | Source |
+|---|---|
+| mintpay.png | Official logo from https://mintpay.lk/img/logo/mintpay-primary-logo.webp (trimmed, resized) |
+| koko.png | Official logo from https://paykoko.com/img/logo1.7ff549c0.png (trimmed) |
+| visa.svg, master.svg, american_express.svg | https://github.com/activemerchant/payment_icons (MIT) |
+
+Waiting on client: confirm Mintpay / KOKO merchant accounts and ask both for their merchant brand kit; swap these files if they send newer artwork.

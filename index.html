@@ -120,7 +120,7 @@
   <script>
     // Product rows: the four newest, then the four most-reviewed not already shown
     function fillRow(id, list) {
-      document.getElementById(id).innerHTML = list.map((p, i) => Clara.productCard(p, { index: i, reveal: false, badges: false })).join("");
+      document.getElementById(id).innerHTML = list.map((p, i) => Clara.productCard(p, { index: i, reveal: false, badges: false, bnpl: false })).join("");
     }
     document.addEventListener("DOMContentLoaded", () => {
       const newIn = [...CLARA_PRODUCTS].sort((a, b) => (b.isNew - a.isNew) || (b.isFeatured - a.isFeatured)).slice(0, 4);

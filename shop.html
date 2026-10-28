@@ -19,17 +19,18 @@
   <script>Clara.header();</script>
 
   <main id="main">
-    <div class="container page-head">
+    <section class="shop-head" aria-labelledby="shopTitle">
       <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="sep"></span><span class="cur" id="crumbCur">Handbags</span></nav>
-      <h1 class="title-lg" id="shopTitle">Handbags</h1>
-      <p id="shopIntro"></p>
-    </div>
-    <nav class="cat-links container" id="catLinks" aria-label="Categories"></nav>
+      <div class="shead">
+        <div><span class="kicker">Shop</span><h1 id="shopTitle">Handbags</h1></div>
+        <span class="shead__count" id="countText" aria-live="polite"></span>
+      </div>
+    </section>
+    <nav class="cat-links shop-tabs" id="catLinks" aria-label="Categories"></nav>
 
-    <div class="container shop">
+    <div class="shop">
       <aside class="filters" id="filters" aria-label="Filters">
         <div class="filters__head"><span>Filter</span><button type="button" class="icon-btn" onclick="toggleFilters(false)" aria-label="Close filters"><span data-icon="close"></span></button></div>
-        <div class="fgroup"><button type="button" onclick="this.parentElement.classList.toggle('is-closed')">Category <span data-icon="chev-down"></span></button><div class="fopts" id="fCategory"></div></div>
         <div class="fgroup"><button type="button" onclick="this.parentElement.classList.toggle('is-closed')">Colour <span data-icon="chev-down"></span></button><div class="fopts" id="fColour"></div></div>
         <div class="fgroup"><button type="button" onclick="this.parentElement.classList.toggle('is-closed')">Price <span data-icon="chev-down"></span></button><div class="fopts" id="fPrice"></div></div>
         <button type="button" class="clear-filters" onclick="resetFilters()">Clear all filters</button>
@@ -42,7 +43,6 @@
       <section>
         <div class="toolbar">
           <button type="button" class="filter-toggle" onclick="toggleFilters(true)"><span data-icon="filter"></span>Filter</button>
-          <span class="toolbar__count" id="countText"></span>
           <div class="toolbar__right">
             <label class="select"><span class="hide-mobile">Sort by</span>
               <select id="sortSelect" aria-label="Sort products">
@@ -113,24 +113,21 @@
     function renderHead() {
       const [title, intro] = COPY[state.cat];
       document.getElementById("shopTitle").textContent = state.q ? `Results for “${state.q}”` : title;
-      document.getElementById("shopIntro").textContent = state.q ? "" : intro;
       document.getElementById("crumbCur").textContent = title;
       document.title = `${title} | CLARA Sri Lanka`;
       const links = [["all", "All"], ["new", "New In"], ...CATEGORY_META.map(c => [c.key, c.label])];
       document.getElementById("catLinks").innerHTML = links.map(([k, l]) => `<a href="#" data-cat="${k}" class="${state.cat === k ? "is-active" : ""}">${l}</a>`).join("");
       document.querySelectorAll("#catLinks a").forEach(a => a.addEventListener("click", e => { e.preventDefault(); setCat(a.dataset.cat); }));
+      const nav = document.getElementById("catLinks"), act = nav.querySelector("a.is-active");
+      if (act) nav.scrollLeft = act.offsetLeft - (nav.clientWidth - act.offsetWidth) / 2;
     }
 
     function renderFilters() {
-      const cats = [["all", "All handbags"], ["new", "New In"], ...CATEGORY_META.map(c => [c.key, c.label]), ["saved", "Wishlist"]];
-      document.getElementById("fCategory").innerHTML = cats.map(([k, l]) => `
-        <label class="fopt"><input type="radio" name="fcat" value="${k}" ${state.cat === k ? "checked" : ""}>${l}<span class="n">${CLARA_PRODUCTS.filter(p => inCat(p, k)).length}</span></label>`).join("");
       document.getElementById("fColour").innerHTML = COLOUR_FAMILIES.map(f => `
         <label class="fopt"><input type="checkbox" value="${f.key}" ${state.colours.has(f.key) ? "checked" : ""}><span class="sw" style="background:${f.hex}"></span>${f.label}<span class="n">${CLARA_PRODUCTS.filter(p => families(p).has(f.key)).length}</span></label>`).join("");
       document.getElementById("fPrice").innerHTML = [{ key: "", label: "Any price" }, ...PRICES].map(pr => `
         <label class="fopt"><input type="radio" name="fprice" value="${pr.key}" ${state.price === pr.key ? "checked" : ""}>${pr.label}</label>`).join("");
 
-      document.querySelectorAll("#fCategory input").forEach(i => i.addEventListener("change", () => setCat(i.value)));
       document.querySelectorAll("#fColour input").forEach(i => i.addEventListener("change", () => { i.checked ? state.colours.add(i.value) : state.colours.delete(i.value); renderGrid(); }));
       document.querySelectorAll("#fPrice input").forEach(i => i.addEventListener("change", () => { state.price = i.value; renderGrid(); }));
     }

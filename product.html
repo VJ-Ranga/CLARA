@@ -38,7 +38,8 @@
         <h1 id="pName"></h1>
         <div class="pdp__rating"><span class="stars" id="pStars"></span><span id="pRating"></span></div>
         <div class="pdp__price"><span class="now" id="pPrice"></span><s id="pWas"></s><span class="off" id="pOff"></span></div>
-        <p class="pdp__note" id="pKoko"></p>
+        <p class="pdp__note" id="pStock"></p>
+        <div class="bnpl-box" id="pBnpl"></div>
         <p class="body-lg" id="pShort" style="font-size:15px"></p>
 
         <div>
@@ -113,6 +114,20 @@
     </section>
   </main>
 
+  <dialog class="bnpl-dialog" id="bnplDialog" aria-labelledby="bnplTitle" onclick="if (event.target === this) this.close()">
+    <div class="bnpl-dialog__body">
+      <button type="button" class="icon-btn bnpl-dialog__close" onclick="this.closest('dialog').close()" aria-label="Close"><span data-icon="close"></span></button>
+      <div class="bnpl-dialog__logos" id="bnplLogos"></div>
+      <h2 id="bnplTitle">Pay in 3, interest free</h2>
+      <ol>
+        <li>Choose Mintpay or KOKO at checkout.</li>
+        <li>Pay the first instalment today.</li>
+        <li>Pay the rest over the next 2 months.</li>
+        <li>No interest, no extra fees.</li>
+      </ol>
+    </div>
+  </dialog>
+
   <div class="lightbox" id="lightbox" role="dialog" aria-label="Image viewer">
     <img id="lbImg" src="" alt="">
     <button type="button" class="close" onclick="closeLightbox()" aria-label="Close"><span data-icon="close"></span></button>
@@ -153,10 +168,17 @@
       $("pStars").innerHTML = Array.from({ length: 5 }, () => Clara.icon("star")).join("");
       $("pRating").textContent = `${p.rating.toFixed(1)} · ${p.reviewCount} reviews`;
       $("pPrice").textContent = formatLKR(p.price);
-      $("pWas").textContent = p.originalPrice ? formatLKR(p.originalPrice) : "";
-      $("pOff").textContent = Clara.discountPct(p) ? `${Clara.discountPct(p)}% off` : "";
-      if (!p.originalPrice) $("pPrice").classList.remove("now");
-      $("pKoko").textContent = `Or 3 interest-free payments of ${formatLKR(Math.round(p.price / 3))} with KOKO. ${p.stockQuantity <= 9 ? `Only ${p.stockQuantity} left.` : "In stock."}`;
+      const onSale = p.originalPrice > p.price;
+      $("pWas").textContent = onSale ? formatLKR(p.originalPrice) : "";
+      $("pOff").textContent = onSale && Clara.discountPct(p) ? `${Clara.discountPct(p)}% off` : "";
+      $("pPrice").classList.toggle("now", onSale);
+      $("pStock").textContent = p.stockQuantity <= 9 ? `Only ${p.stockQuantity} left.` : "In stock.";
+      const inst = formatLKR(Clara.bnplAmount(p.price)), n = Clara.BNPL.count;
+      $("pBnpl").innerHTML = `
+        <p>Pay in ${n} interest-free instalments of <b>${inst}</b></p>
+        <ul>${Clara.BNPL.providers.map(pr => `<li>${Clara.bnplLogo(pr)}<span>${n} × ${inst} · 0% interest</span></li>`).join("")}</ul>
+        <button type="button" class="bnpl-how" onclick="document.getElementById('bnplDialog').showModal()">How it works</button>`;
+      $("bnplLogos").innerHTML = Clara.BNPL.providers.map(Clara.bnplLogo).join("");
       $("pShort").textContent = p.shortDescription;
 
       $("pColour").textContent = selectedColor;

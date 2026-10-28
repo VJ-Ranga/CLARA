@@ -147,10 +147,20 @@ const Clara = (() => {
     return p.originalPrice && p.originalPrice > p.price ? Math.round((1 - p.price / p.originalPrice) * 100) : 0;
   }
 
+  // Buy now, pay later (Mintpay / KOKO). Instalment count and providers live here only.
+  // Logos are the providers' official marks from their websites.
+  const BNPL = { count: 3, providers: [{ key: "mintpay", label: "Mintpay", logo: "assets/img/pay/mintpay.png", w: 275, h: 72 }, { key: "koko", label: "KOKO", logo: "assets/img/pay/koko.png", w: 201, h: 64 }] };
+  const bnplAmount = price => Math.ceil(price / BNPL.count);
+  const bnplLogo = pr => `<img class="bnpl-logo bnpl-logo--${pr.key}" src="${pr.logo}" alt="${pr.label}" width="${pr.w}" height="${pr.h}" loading="lazy" decoding="async">`;
+  function bnpl(price) {
+    return `<div class="card__bnpl">or ${BNPL.count} × ${formatLKR(bnplAmount(price))} with <span class="bnpl-logos">${BNPL.providers.map(bnplLogo).join("")}</span></div>`;
+  }
+
   function productCard(p, opts = {}) {
     const saved = isSaved(p.id);
     const href = `product.html?id=${p.id}`;
-    const flag = p.isNew ? `<span class="card__flag">New</span>` : p.badge && opts.badges !== false ? `<span class="card__flag">${escapeHtml(p.badge)}</span>` : "";
+    const onSale = p.originalPrice > p.price;
+    const flag = onSale ? `<span class="card__flag sale">Sale</span>` : p.isNew ? `<span class="card__flag">New</span>` : "";
     const reveal = opts.reveal === false ? "" : `reveal d${(opts.index || 0) % 4 + 1}`;
     const firstColor = p.colors[0].replace(/'/g, "\\'");
     return `
@@ -167,7 +177,8 @@ const Clara = (() => {
         <div class="card__body">
           <span class="card__cat">${escapeHtml(p.categoryName)}</span>
           <h3 class="card__name"><a href="${href}">${escapeHtml(p.name)}</a></h3>
-          <div class="card__price">${p.originalPrice ? `<span class="now">${formatLKR(p.price)}</span><s>${formatLKR(p.originalPrice)}</s>` : `<span>${formatLKR(p.price)}</span>`}</div>
+          <div class="card__price">${onSale ? `<span class="now">${formatLKR(p.price)}</span><s>${formatLKR(p.originalPrice)}</s>` : `<span>${formatLKR(p.price)}</span>`}</div>
+          ${opts.bnpl === false ? "" : bnpl(p.price)}
           <div class="card__colors">${p.colorHex.map((c, i) => `<i style="background:${c}" title="${escapeHtml(p.colors[i] || "")}"></i>`).join("")}<span>${p.colors.length} colours</span></div>
         </div>
       </article>`;
@@ -493,7 +504,7 @@ const Clara = (() => {
         <div class="container ft2__legal">
           <span>© ${year} CLARA Bags · DJ Industries</span>
           <div class="socials">${socials}</div>
-          <span class="pay"><span>Visa</span><span>Mastercard</span><span>Amex</span><span>Bank transfer</span><span>COD</span></span>
+          <span class="pay" role="group" aria-label="Payment methods"><img src="assets/img/pay/visa.svg" alt="Visa" width="38" height="24"><img src="assets/img/pay/master.svg" alt="Mastercard" width="38" height="24"><img src="assets/img/pay/american_express.svg" alt="American Express" width="38" height="24"><span class="pay__logo"><img src="assets/img/pay/mintpay.png" alt="Mintpay" width="275" height="72"></span><span class="pay__logo"><img src="assets/img/pay/koko.png" alt="KOKO" width="201" height="64"></span><span>Bank transfer</span><span>COD</span></span>
         </div>
       </footer>`);
   }
@@ -597,7 +608,7 @@ const Clara = (() => {
   return {
     icon, hydrateIcons, escapeHtml, waLink,
     header, checkoutHeader, footer, minimalFooter, logo,
-    productCard, discountPct, initCarousels, observeReveals,
+    productCard, discountPct, BNPL, bnplAmount, bnplLogo, initCarousels, observeReveals,
     getWishlist, isSaved, toggleWishlist, matches, updateWishlistBadge, addRecent, getRecent,
     openMenu, closeMenu, openSearch, closeSearch, joinNews
   };
