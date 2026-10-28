@@ -282,6 +282,7 @@ const Clara = (() => {
                 <li><button type="button" data-go="bags">Handbags ${icon("chev-right")}</button></li>
                 <li><button type="button" data-go="moments">Occasions ${icon("chev-right")}</button></li>
                 <li><a href="shop.html?cat=wallets">Small Leather Goods</a></li>
+                <li><a href="shop.html?cat=sale" class="is-sale">Sale</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
               </ul>

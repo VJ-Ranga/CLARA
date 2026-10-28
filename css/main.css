@@ -161,7 +161,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   transform: scaleX(0); transition: transform .35s var(--ease);
 }
 .primary-nav > li:hover > a::after, .primary-nav > li > a.is-active::after, .primary-nav > li:focus-within > a::after { transform: scaleX(1); }
-.primary-nav .is-sale { color: var(--rose); }
+.primary-nav .is-sale, .menu__list .is-sale { color: var(--rose); }
 
 .mega { position: absolute; left: 0; right: 0; top: 100%; background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); opacity: 0; visibility: hidden; transition: opacity .25s, visibility .25s; }
 .primary-nav > li:hover .mega, .primary-nav > li:focus-within .mega { opacity: 1; visibility: visible; }
