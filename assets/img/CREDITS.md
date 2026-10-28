@@ -49,7 +49,6 @@ Photos in this folder are from [Unsplash](https://unsplash.com) and used under t
 | p-1627123424574.jpg | https://unsplash.com/photos/1627123424574-724758594e93 |
 | p-1628149455678.jpg | https://unsplash.com/photos/1628149455678-16f37bc392f4 |
 | rack.jpg | https://unsplash.com/photos/1612423284934-2850a4ea6b0f |
-| spotlight-sovereign.jpg | https://unsplash.com/photos/1584917865442-de89df76afd3 |
 | slide-city.jpg | https://images.unsplash.com/photo-1588190437916-425872ddf591 |
 | slide-red.jpg | https://images.unsplash.com/photo-1786874228638-11b2d6aed176 |
 | slide-night.jpg | https://images.unsplash.com/photo-1764973638375-c157bc261162 |

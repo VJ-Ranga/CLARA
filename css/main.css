@@ -1124,8 +1124,6 @@ body.no-scroll .wa-float { opacity: 0; pointer-events: none; }
 :root { --side: clamp(16px, 2.1vw, 30px); --sec-y: clamp(56px, 6.6vw, 96px); }
 .hsec { padding: var(--sec-y) var(--side); background: #fff; }
 .hsec + .hsec { padding-top: 0; }
-.hsec.is-paper { background: var(--paper); }
-.hsec.is-paper + .hsec { padding-top: var(--sec-y); }
 
 .shead { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px 32px; margin-bottom: clamp(22px, 2.6vw, 36px); }
 .shead h2 { margin-top: 12px; font-weight: 300; font-size: clamp(30px, 3.4vw, 50px); line-height: 1.05; letter-spacing: .005em; text-wrap: balance; }
@@ -1141,16 +1139,32 @@ body.no-scroll .wa-float { opacity: 0; pointer-events: none; }
 .hrow > a:hover .hrow__lbl { border-color: var(--rose); }
 
 /* Intro: heading left, copy + link right */
-.intro { margin: 0; align-items: flex-end; }
-.intro > div:first-child { max-width: 760px; }
-.intro__body { max-width: 500px; display: grid; justify-items: start; gap: 22px; padding-bottom: 6px; }
-.intro__body p { color: var(--ink-2); font-weight: 300; font-size: 16px; line-height: 1.85; text-wrap: pretty; }
 
 /* Product rows (New In, Most Loved): product cards on the tile grid */
 .prow .card__media { aspect-ratio: 4/5; }
 .prow .card__body { padding-top: 14px; }
 .prow .card__name { font-size: 14.5px; }
 .prow--2 { row-gap: 44px; } /* Most Loved: two rows of four */
+
+/* Our story: full-bleed photo with the caption on a dark fade at the left; the image eases in
+   and the caption rises line by line as it scrolls into view */
+.story { justify-content: flex-start; align-items: center; text-align: left; }
+.story > img { object-position: 85% 20%; transform: scale(1.08); transition: transform 2.4s var(--ease); }
+.story:has(.is-in) > img { transform: none; }
+.story::after { background: linear-gradient(90deg, rgba(20,18,16,.82) 0%, rgba(20,18,16,.6) 32%, rgba(20,18,16,.1) 58%, rgba(20,18,16,0) 70%); }
+.story .panel__cap { justify-items: start; max-width: 720px; padding: 0 clamp(20px, 7vw, 120px); gap: 16px; }
+.story .panel__cap .kicker::before { content: ""; display: block; width: 44px; height: 2px; margin-bottom: 16px; background: var(--rose); }
+.story .panel__cap h2 { text-wrap: balance; }
+.story .panel__cap p { font-size: 16px; line-height: 1.8; color: rgba(255,255,255,.9); text-wrap: pretty; }
+.story .panel__links { justify-content: flex-start; }
+.story .panel__links a:first-child { border-bottom: 2px solid var(--rose); }
+@media (max-width: 760px) {
+  .story { align-items: flex-end; }
+  .story > img { object-position: 62% 20%; }
+  .story::after { background: linear-gradient(0deg, rgba(20,18,16,.92) 0%, rgba(20,18,16,.78) 42%, rgba(20,18,16,.15) 68%, rgba(20,18,16,0) 80%); }
+  .story .panel__cap { padding: 0 20px 48px; }
+}
+@media (prefers-reduced-motion: reduce) { .story > img { transform: none; transition: none; } }
 
 /* Services: three tall tiles with label, note and link */
 .svc { --cols: 3; }
@@ -1160,9 +1174,6 @@ body.no-scroll .wa-float { opacity: 0; pointer-events: none; }
 .svc p { margin: 8px 0 14px; max-width: 420px; font-size: 14px; color: var(--ink-2); font-weight: 300; }
 .svc .link { margin-top: auto; } /* links line up across tiles */
 
-@media (max-width: 900px) {
-  .intro { flex-direction: column; align-items: flex-start; gap: 22px; }
-}
 @media (max-width: 760px) {
   .hrow { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 42%; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 var(--side); scrollbar-width: none; margin: 0 calc(-1 * var(--side)); padding: 0 var(--side) 4px; }
   .hrow::-webkit-scrollbar { display: none; }
