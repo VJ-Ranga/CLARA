@@ -42,7 +42,7 @@
         <div class="bnpl-box" id="pBnpl"></div>
         <p class="body-lg" id="pShort" style="font-size:15px"></p>
 
-        <div>
+        <div id="pColourOpt">
           <div class="opt-head"><span>Colour</span><b id="pColour"></b></div>
           <div class="swatch-row" id="pSwatches"></div>
         </div>
@@ -253,6 +253,17 @@
     function updateWa() {
       $("pWhatsApp").href = Clara.waLink(`Hello CLARA, I'm interested in the ${currentProduct.name} in ${selectedColor} (${formatLKR(currentProduct.price)}). Is it available?`);
     }
+    // Stacked layout (gallery on top): put the colour picker right under the photos.
+    const stacked = matchMedia("(max-width: 980px)");
+    function placeColour() {
+      const opt = $("pColourOpt");
+      if (stacked.matches) $("gallery").after(opt);
+      else $("pShort").after(opt);
+      opt.classList.toggle("pdp__colour-m", stacked.matches);
+    }
+    placeColour();
+    stacked.addEventListener("change", placeColour);
+
     function pickColour(i, btn) {
       selectedColor = currentProduct.colors[i];
       $("pColour").textContent = selectedColor;

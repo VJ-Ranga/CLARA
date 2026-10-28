@@ -414,6 +414,7 @@ ul { margin: 0; padding: 0; list-style: none; }
    ========================================================================== */
 .pdp { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(32px, 5vw, 80px); align-items: start; padding-top: 20px; }
 .pdp__info { position: sticky; top: calc(var(--top) + 24px); display: grid; gap: 22px; }
+.pdp__colour-m { margin-top: 18px; }
 .pdp__info h1 { font-family: var(--serif); font-size: clamp(30px, 2.8vw, 40px); line-height: 1.1; }
 .pdp__meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .pdp__price { display: flex; gap: 14px; align-items: baseline; font-size: 20px; }
