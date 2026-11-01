@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Order | CLARA Sri Lanka</title>
+  <meta name="description" content="Check the status of your CLARA order with your order number and email address.">
+  <meta name="theme-color" content="#FFFFFF">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/products-data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/layout.js"></script>
+</head>
+<body data-page="track">
+  <script>Clara.header();</script>
+
+  <main id="main">
+    <section class="container page-head">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="sep"></span><span class="cur">Track Order</span></nav>
+      <span class="kicker">Client services</span>
+      <h1 class="title-lg">Track your <i>order</i></h1>
+      <p>Enter your order number and the email you used at checkout.</p>
+    </section>
+    <section class="section-sm" style="padding-top:0">
+      <div class="container narrow doc">
+        <form id="trackForm" class="track" onsubmit="trackOrder(event)">
+          <div class="fgrid">
+            <div class="fld c3"><label for="trackNo">Order number *</label><input class="input" id="trackNo" type="text" required placeholder="e.g. CL-12345" autocomplete="off"></div>
+            <div class="fld c3"><label for="trackEmail">Email *</label><input class="input" id="trackEmail" type="email" required autocomplete="email"></div>
+          </div>
+          <button type="submit" class="btn" style="margin-top:18px">Track order</button>
+        </form>
+        <div id="trackResult" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>Clara.footer();</script>
+
+  <script>
+    function trackOrder(event) {
+      event.preventDefault();
+      const e = Clara.escapeHtml;
+      const no = document.getElementById("trackNo").value.trim().replace(/^#/, "").toUpperCase();
+      const email = document.getElementById("trackEmail").value.trim().toLowerCase();
+      const order = getLastOrder();
+      const out = document.getElementById("trackResult");
+
+      if (!order || order.orderNumber.toUpperCase() !== no || order.customer.email.toLowerCase() !== email) {
+        const wa = Clara.waLink(`Hello CLARA, please can you check on order #${no}?`);
+        out.innerHTML = `<div class="notice">${Clara.icon("search")}<div><h4>We couldn't find that order here</h4><p>Check your order number and email, or send us the number on WhatsApp and we'll check it for you.</p><a class="btn btn-outline btn-sm" style="margin-top:14px" target="_blank" rel="noopener" href="${wa}">${Clara.icon("whatsapp")}Ask on WhatsApp</a></div></div>`;
+        return;
+      }
+
+      out.innerHTML = `
+        <div class="omt">
+          <div><small>Order</small><span>#${e(order.orderNumber)}</span></div>
+          <div><small>Date</small><span>${e(order.orderDate)}</span></div>
+          <div><small>Total</small><span>${formatLKR(order.grandTotal)}</span></div>
+          <div><small>Status</small><span>${e(order.status)}</span></div>
+        </div>
+        <div class="box">
+          <h3>Items</h3>
+          <div class="lines">${order.items.map(i => `
+            <div class="line"><div class="th"><img src="${i.image}" alt="${e(i.name)}"><em>${i.quantity}</em></div><div>${e(i.name)}<small>${e(i.color)} · ${e(i.sku)}</small></div><span>${formatLKR(i.price * i.quantity)}</span></div>`).join("")}
+          </div>
+        </div>
+        <div class="box"><h3>Delivery</h3><p>${e(order.shippingMethod.name)}</p><p class="small" style="margin-top:8px">Our team will contact you on ${e(order.customer.phone)} to confirm dispatch.</p></div>`;
+    }
+  </script>
+</body>
+</html>

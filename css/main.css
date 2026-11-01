@@ -1281,3 +1281,31 @@ body.no-scroll .wa-float { opacity: 0; pointer-events: none; }
 }
 /* Sticky panels follow the header height */
 .filters, .pdp__info, .summary, .g2, .toolbar { transition: top .4s var(--ease); }
+
+/* Delivery, policy, FAQ, track order and 404 pages */
+.doc { font-size: 15px; line-height: 1.8; font-weight: 300; color: var(--ink-2); }
+.doc > * + * { margin-top: 14px; }
+.doc h2 { margin-top: 40px; font-size: 22px; font-weight: 400; line-height: 1.3; color: var(--ink); }
+.doc b { font-weight: 500; color: var(--ink); }
+.doc a:not(.btn) { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.doc ul, .doc ol { padding-left: 20px; display: grid; gap: 6px; }
+.doc ul { list-style: disc; }
+.doc ol { list-style: decimal; }
+.doc__date { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.doc__table table { width: 100%; border-collapse: collapse; }
+.doc__table th, .doc__table td { padding: 14px 12px 14px 0; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.doc__table th { font-size: 11px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--ink); }
+.doc__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+.doc .acc > button { gap: 16px; text-align: left; }
+.doc .accs { margin-top: 14px; }
+.track { max-width: 640px; }
+.notfound { display: grid; justify-items: center; gap: 16px; text-align: center; }
+.notfound p { max-width: 460px; color: var(--ink-2); font-weight: 300; }
+.notfound .doc__cta { justify-content: center; margin-top: 12px; }
+.notfound .btn { min-width: 240px; }
+.ft2__legal-links { display: inline-flex; flex-wrap: wrap; gap: 4px 16px; margin-left: 16px; }
+.ft2__legal-links a:hover { color: #fff; }
+@media (max-width: 720px) {
+  .omt { grid-template-columns: 1fr 1fr; }
+  .ft2__legal-links { display: flex; margin: 8px 0 0; }
+}

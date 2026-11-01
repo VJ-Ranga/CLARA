@@ -486,7 +486,9 @@ const Clara = (() => {
             </ul></div>
             <div><h4>Client Services</h4><ul>
               <li><a href="contact.html">Contact us</a></li>
-              <li><a href="product.html?id=1#delivery">Delivery &amp; returns</a></li>
+              <li><a href="delivery.html">Delivery &amp; returns</a></li>
+              <li><a href="track-order.html">Track order</a></li>
+              <li><a href="faq.html">FAQ</a></li>
               <li><a href="shop.html?saved=1">Wishlist</a></li>
               <li><a href="contact.html#enquiry">Wholesale</a></li>
               <li><a href="about.html">About us</a></li>
@@ -501,7 +503,7 @@ const Clara = (() => {
         </div>
         <div class="ft2__mark" aria-hidden="true">CLARA</div>
         <div class="container ft2__legal">
-          <span>© ${year} CLARA Bags · DJ Industries</span>
+          <span>© ${year} CLARA Bags · DJ Industries<span class="ft2__legal-links"><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a></span></span>
           <div class="socials">${socials}</div>
           <span class="pay" role="group" aria-label="Payment methods"><img src="assets/img/pay/visa.svg" alt="Visa" width="38" height="24"><img src="assets/img/pay/master.svg" alt="Mastercard" width="38" height="24"><img src="assets/img/pay/american_express.svg" alt="American Express" width="38" height="24"><span class="pay__logo"><img src="assets/img/pay/mintpay.png" alt="Mintpay" width="275" height="72"></span><span class="pay__logo"><img src="assets/img/pay/koko.png" alt="KOKO" width="201" height="64"></span><span>Bank transfer</span><span>COD</span></span>
         </div>

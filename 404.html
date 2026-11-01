@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | CLARA Sri Lanka</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#FFFFFF">
+  <script>
+    const base = document.createElement("base");
+    base.href = location.hostname.endsWith("github.io") ? "/CLARA/" : "/";
+    document.head.appendChild(base);
+  </script>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/products-data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/layout.js"></script>
+</head>
+<body data-page="notfound">
+  <script>Clara.header();</script>
+
+  <main id="main">
+    <section class="section">
+      <div class="container narrow notfound">
+        <span class="kicker">Error 404</span>
+        <h1 class="title-lg">This page has <i>moved on</i></h1>
+        <p>The page you're looking for isn't here. It may have been moved, or the link may be wrong.</p>
+        <div class="doc__cta">
+          <a class="btn" href="shop.html">Shop all handbags</a>
+          <a class="btn btn-outline" href="index.html">Back to home</a>
+        </div>
+        <button type="button" class="link" onclick="Clara.openSearch()">Search the store</button>
+      </div>
+    </section>
+  </main>
+
+  <script>Clara.footer();</script>
+</body>
+</html>
