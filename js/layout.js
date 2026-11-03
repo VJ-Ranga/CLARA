@@ -227,7 +227,7 @@ const Clara = (() => {
   // ---------------------------------------------------------------------------
   function logo(tag = "Mount Lavinia · Sri Lanka") {
     return `<a href="index.html" class="logo" aria-label="CLARA — home">
-      <span class="logo__row"><img class="logo__rose" src="assets/rose.png" alt="" width="30" height="30"><span class="logo__name">CLARA</span></span>
+      <img class="logo__img" src="assets/logo/clara-logo-horizontal.png" alt="" width="622" height="216">
       ${tag ? `<span class="logo__tag">${tag}</span>` : ""}
     </a>`;
   }
@@ -255,7 +255,7 @@ const Clara = (() => {
             <a href="shop.html" class="hbtn hide-mobile">${icon("grid")}<span class="lbl">Shop</span></a>
           </div>
           <a href="index.html" class="hv2__logo" aria-label="CLARA — home">
-            <span class="hv2__row"><img src="assets/rose.png" alt="" width="28" height="28"><span>CLARA</span></span>
+            <img class="hv2__img" src="assets/logo/clara-logo-horizontal.png" alt="" width="622" height="216">
             <span class="hv2__tag">Mount Lavinia · Sri Lanka</span>
           </a>
           <div class="hv2__right">
@@ -272,7 +272,7 @@ const Clara = (() => {
         <aside class="menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
           <div class="menu__bar">
             <button type="button" class="hbtn" onclick="Clara.closeMenu()" aria-label="Close menu">${icon("close")}<span class="lbl">Close</span></button>
-            <a href="index.html" class="wordmark">CLARA</a>
+            <a href="index.html" class="wordmark" aria-label="CLARA — home"><img class="wordmark__img" src="assets/logo/clara-logo-horizontal.png" alt="" width="622" height="216"></a>
             <button type="button" class="hbtn" onclick="openSlideCart()" aria-label="Shopping bag">${icon("bag")}<span class="count cart-count-badge">0</span></button>
           </div>
           <div class="menu__levels">
@@ -371,7 +371,7 @@ const Clara = (() => {
       <header class="co-header">
         <div class="container co-header__inner">
           <a href="cart.html" class="back">${icon("chev-left")}<span>Back to bag</span></a>
-          <a href="index.html" class="wordmark" aria-label="CLARA — home">CLARA</a>
+          <a href="index.html" class="wordmark" aria-label="CLARA — home"><img class="wordmark__img" src="assets/logo/clara-logo-horizontal.png" alt="" width="622" height="216"></a>
           <span class="secure">${icon("lock")}<span>Secure checkout</span></span>
         </div>
       </header>`);
@@ -501,7 +501,7 @@ const Clara = (() => {
             </ul></div>
           </div>
         </div>
-        <div class="ft2__mark" aria-hidden="true">CLARA</div>
+        <div class="ft2__mark" aria-hidden="true"><img src="assets/logo/clara-logo-wordmark-white.png" alt="" width="1200" height="697" loading="lazy" decoding="async"></div>
         <div class="container ft2__legal">
           <span>© ${year} CLARA Bags · DJ Industries<span class="ft2__legal-links"><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a></span></span>
           <div class="socials">${socials}</div>
