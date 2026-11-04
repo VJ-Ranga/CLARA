@@ -256,7 +256,6 @@ const Clara = (() => {
           </div>
           <a href="index.html" class="hv2__logo" aria-label="CLARA — home">
             <img class="hv2__img" src="assets/logo/clara-logo-horizontal.png" alt="" width="622" height="216">
-            <span class="hv2__tag">Mount Lavinia · Sri Lanka</span>
           </a>
           <div class="hv2__right">
             <a href="shop.html?saved=1" class="hbtn hide-mobile hv2__wish" aria-label="Wishlist">${icon("heart")}<span class="lbl">Wishlist</span><span class="count wishlist-count">0</span></a>
@@ -501,7 +500,7 @@ const Clara = (() => {
             </ul></div>
           </div>
         </div>
-        <div class="ft2__mark" aria-hidden="true"><img src="assets/logo/clara-logo-wordmark-white.png" alt="" width="1200" height="697" loading="lazy" decoding="async"></div>
+        <div class="ft2__mark" aria-hidden="true">CLARA</div>
         <div class="container ft2__legal">
           <span>© ${year} CLARA Bags · DJ Industries<span class="ft2__legal-links"><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a></span></span>
           <div class="socials">${socials}</div>
