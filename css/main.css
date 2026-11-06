@@ -1318,3 +1318,15 @@ body.no-scroll .wa-float { opacity: 0; pointer-events: none; }
   .hv2__img, .hv2.is-compact .hv2__img { height: 40px; }
   .wordmark__img { height: 36px; }
 }
+
+/* About: vision and mission */
+.vm-wrap { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.vm { display: grid; grid-template-columns: 1fr 1fr; }
+.vm__item { display: grid; gap: 16px; align-content: start; padding: 8px clamp(24px, 4vw, 64px); text-align: center; justify-items: center; }
+.vm__item + .vm__item { border-left: 1px solid var(--line); }
+.vm__item p { font-weight: 300; font-size: clamp(19px, 1.8vw, 24px); line-height: 1.5; max-width: 460px; color: var(--ink); }
+@media (max-width: 720px) {
+  .vm { grid-template-columns: 1fr; }
+  .vm__item { padding: 8px 0; }
+  .vm__item + .vm__item { border-left: 0; border-top: 1px solid var(--line); margin-top: 32px; padding-top: 40px; }
+}
