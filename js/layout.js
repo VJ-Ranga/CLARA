@@ -13,7 +13,7 @@ const CLARA_INFO = {
   email: "clara2bags@gmail.com",
   corporateEmail: "sl.djindustries@gmail.com",
   address: "No. 587/A, Galle Road, Mount Lavinia",
-  hours: "Open daily, 9:30 AM – 7:30 PM",
+  hours: "Phone & WhatsApp daily, 9:30 AM – 7:30 PM",
   // Add the Facebook and TikTok page links here and their icons will appear in the footer.
   social: {
     instagram: "https://www.instagram.com/clara_bags/",
@@ -237,7 +237,7 @@ const Clara = (() => {
       <header class="site-header hv2" id="siteHeader">
         <div class="hv2__top">
           <div class="container hv2__topin">
-            <a href="contact.html" class="hide-mobile">Visit our shop · Mount Lavinia</a>
+            <a href="https://wa.me/${CLARA_INFO.phoneMobileIntl}" target="_blank" rel="noopener" class="hide-mobile">Chat on WhatsApp</a>
             <span class="hv2__msgs">
               <span class="is-active">Complimentary islandwide delivery over Rs. 10,000</span>
               <span>10% off your first order with code WELCOME10</span>
@@ -469,7 +469,7 @@ const Clara = (() => {
           <div class="ft2__news">
             <span class="kicker">The CLARA Letter</span>
             <h2>Be the first to know</h2>
-            <p>New arrivals, boutique events and private offers — plus 10% off your first order.</p>
+            <p>New arrivals and private offers — plus 10% off your first order.</p>
             <form onsubmit="Clara.joinNews(event)">
               <label for="newsEmail" class="visually-hidden">Email address</label>
               <input id="newsEmail" type="email" required placeholder="Your email address" autocomplete="email">
@@ -492,7 +492,7 @@ const Clara = (() => {
               <li><a href="contact.html#enquiry">Wholesale</a></li>
               <li><a href="about.html">About us</a></li>
             </ul></div>
-            <div><h4>Visit Us</h4><ul>
+            <div><h4>Contact Us</h4><ul>
               <li>${CLARA_INFO.address}</li>
               <li>${CLARA_INFO.hours}</li>
               <li><a href="tel:0773173217">${CLARA_INFO.phoneMobile}</a></li>

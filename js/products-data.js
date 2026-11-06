@@ -110,7 +110,7 @@ const CLARA_PRODUCTS = [
       "assets/img/p-1605733513597.jpg",
       "assets/img/p-1483985988355.jpg"
     ],
-    shortDescription: "Featured on our Mount Lavinia showroom façade. Sumptuous tactile suede framed by polished twist hardware and accordion gusseting.",
+    shortDescription: "Sumptuous tactile suede framed by polished twist hardware and accordion gusseting.",
     description: "As showcased on the CLARA Mount Lavinia flagship banner, the Riviera Satchel marries textural suede softness with structured edge-painted contours. Its multi-compartment accordion construction organizes belongings effortlessly, while the silver-chrome lock plate commands attention wherever you arrive.",
     dimensions: "31 cm (Length) × 24 cm (Height) × 12 cm (Depth)",
     strapDrop: "Adjustable leather shoulder strap: 42 cm – 52 cm drop",
@@ -369,7 +369,7 @@ const CLARA_PRODUCTS = [
       "assets/img/p-1483985988355.jpg",
       "assets/img/p-1624687943971.jpg"
     ],
-    shortDescription: "Matches the striking mannequin showcase from our Mount Lavinia boutique. Rich patterned canvas framed with cognac leatherette straps.",
+    shortDescription: "Rich patterned canvas framed with cognac leatherette straps.",
     description: "Inspired by European cobblestone ateliers, the Montmartre Tote features a stylized geometric motif printed on durable textured canvas. Cognac brown leatherette shoulder straps provide comfort and enduring structural integrity for shopping, work, and city outings.",
     dimensions: "35 cm (Length) × 28 cm (Height) × 13 cm (Depth)",
     strapDrop: "Flat shoulder straps: 25 cm drop",

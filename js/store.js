@@ -10,8 +10,7 @@ const FREE_SHIPPING_MIN = 10000;
 
 const SHIPPING_METHODS = {
   western: { id: "western", name: "Colombo & Western Province Courier (1–2 Days)", fee: 350 },
-  islandwide: { id: "islandwide", name: "Islandwide Outstation Courier (2–4 Days)", fee: 550 },
-  pickup: { id: "pickup", name: "Flagship Showroom Collection (Mount Lavinia — No. 587/A)", fee: 0 }
+  islandwide: { id: "islandwide", name: "Islandwide Outstation Courier (2–4 Days)", fee: 550 }
 };
 
 const VALID_COUPONS = {
@@ -147,7 +146,7 @@ function calculateOrderTotals(shippingMethodKey = "western") {
 
   // Free shipping check
   const method = SHIPPING_METHODS[shippingMethodKey] || SHIPPING_METHODS.western;
-  const isFreeDelivery = (subtotal >= FREE_SHIPPING_MIN) || (method.id === "pickup");
+  const isFreeDelivery = (subtotal >= FREE_SHIPPING_MIN);
   const shippingFee = isFreeDelivery ? 0 : method.fee;
 
   // Coupon discount
@@ -211,7 +210,7 @@ function placeOrder(checkoutForm) {
       postalCode: checkoutForm.postalCode || "",
       notes: checkoutForm.notes || ""
     },
-    paymentMethod: checkoutForm.paymentMethod, // 'card', 'bank_transfer', 'cod', 'showroom'
+    paymentMethod: checkoutForm.paymentMethod, // 'card', 'bank_transfer', 'cod'
     shippingMethod: totals.shippingMethod,
     items: [...cart],
     subtotal: totals.subtotal,
@@ -316,7 +315,7 @@ function injectSlideCartDrawer() {
           <a href="cart.html" class="btn btn-outline">View bag</a>
           <a id="slideCartCheckoutBtn" href="checkout.html" class="btn btn-rose">${storeIcon("lock")}Checkout</a>
         </div>
-        <p class="drawer__note">Card · Bank transfer · Cash on delivery · Showroom pickup</p>
+        <p class="drawer__note">Card · Bank transfer · Cash on delivery</p>
       </div>
     </aside>
   `;

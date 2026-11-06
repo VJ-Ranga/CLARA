@@ -34,7 +34,7 @@
         w.innerHTML = `<div class="empty">${ic("bag")}<h3>No recent order</h3><p>You haven't placed an order in this browser yet.</p><a href="shop.html" class="btn">Discover handbags</a></div>`;
         return;
       }
-      const pay = { card: "Card", bank_transfer: "Bank transfer", cod: "Cash on delivery", showroom: "Pay at boutique" };
+      const pay = { card: "Card", bank_transfer: "Bank transfer", cod: "Cash on delivery" };
       const c = order.customer;
 
       w.innerHTML = `
@@ -65,7 +65,7 @@
             <a class="btn btn-outline btn-sm no-print" style="margin-top:14px" target="_blank" rel="noopener" href="${Clara.waLink(`Hello CLARA, here is my bank slip for order #${order.orderNumber}.`)}">${ic("whatsapp")}Send slip on WhatsApp</a>
           </div></div>` : ""}
         ${order.paymentMethod === "cod" ? `<div class="notice">${ic("truck")}<div><h4>Cash on delivery</h4><p>Our courier will call <b>${e(c.phone)}</b> before delivering to ${e(c.address)}, ${e(c.city)}. Please have <b>${formatLKR(order.grandTotal)}</b> ready.</p></div></div>` : ""}
-        ${order.paymentMethod === "showroom" ? `<div class="notice">${ic("store")}<div><h4>Reserved at our boutique</h4><p>Your bag is waiting at 587/A Galle Road, Mount Lavinia — open daily 9:30 AM to 7:30 PM.</p></div></div>` : ""}
+        
 
         <div class="box">
           <h3>Order summary</h3>

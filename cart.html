@@ -57,8 +57,7 @@
       const pct = Math.min(100, Math.round((t.subtotal / t.freeDeliveryThreshold) * 100));
       const opts = [
         ["western", "Colombo & Western Province", "1–2 business days", free ? "Free" : "Rs. 350"],
-        ["islandwide", "Islandwide courier", "2–4 business days", free ? "Free" : "Rs. 550"],
-        ["pickup", "Collect from our boutique", "587/A Galle Road, Mount Lavinia", "Free"]
+        ["islandwide", "Islandwide courier", "2–4 business days", free ? "Free" : "Rs. 550"]
       ];
 
       const qtyCtl = (idx, q) => `<div class="qty sm">
